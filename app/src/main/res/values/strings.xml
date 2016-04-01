@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">BuYoApp</string>
+
+    <!--自定义字符串-->
+    <string name="business">商家</string>
+    <string name="customer">用户</string>
+</resources>
