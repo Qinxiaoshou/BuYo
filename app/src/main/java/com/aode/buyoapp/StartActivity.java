@@ -50,7 +50,7 @@ public class StartActivity extends Activity {
      * 点击商家按钮进入商家端登录界面
      *
      */
-    private void startBusiness(View v){
+    public void startBusiness(View v){
         startActivity(new Intent(StartActivity.this,LoginActivity.class));
     }
 
@@ -58,7 +58,7 @@ public class StartActivity extends Activity {
      * 点击用户按钮进入用户端首页界面
      *
      */
-    private void startCustomer(View v){
+    public void startCustomer(View v){
 
     }
 }
