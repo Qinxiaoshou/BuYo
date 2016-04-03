@@ -8,7 +8,14 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dip"
+        android:background="#FE4040"
         android:layout_weight="1">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="#ffeeeeee"
+            android:layout_alignParentBottom="true"/>
 
         <ImageView
             android:layout_width="150dp"
@@ -128,7 +135,7 @@
 
             <Button
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="50dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="10dp"

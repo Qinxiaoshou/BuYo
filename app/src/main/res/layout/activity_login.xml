@@ -9,14 +9,14 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dip"
+        android:background="#FE4040"
         android:layout_weight="1">
-       <!-- android:background="#FE4040"-->
 
         <View
             android:layout_width="match_parent"
             android:layout_height="120dp"
+            android:background="#ffeeeeee"
             android:layout_alignParentBottom="true"/>
-            <!--android:background="#ffeeeeee"-->
 
         <!--<com.aode.buyoapp.view.CircleImageView
              android:layout_width = "126dp"
