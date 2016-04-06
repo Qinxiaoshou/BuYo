@@ -9,4 +9,13 @@
     <string name="register">注册</string>
     <string name="login">登录</string>
     <string name="confirm_pwd">确认密码</string>
+
+
+    <string-array name="student">
+        <item>全部</item>
+        <item>机票</item>
+        <item>彩票</item>
+        <item>电影票</item>
+        <item>火车票</item>
+    </string-array>
 </resources>

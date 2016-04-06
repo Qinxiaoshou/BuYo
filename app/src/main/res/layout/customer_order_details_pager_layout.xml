@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/pic_list_item_bg"
+        android:orientation="vertical"
+        android:paddingTop="8dp">
+
+        <RelativeLayout
+            android:id="@+id/rl_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_store_logo"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/store" />
+
+            <TextView
+                android:id="@+id/tv_store_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_toRightOf="@id/iv_store_logo"
+                android:text="河源绿色特产" />
+
+            <ImageView
+                android:id="@+id/iv_right"
+                android:layout_width="19dp"
+                android:layout_height="19dp"
+                android:layout_toRightOf="@id/tv_store_name"
+                android:src="@drawable/right"
+
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:paddingRight="10dp"
+                android:text="已付款"
+                android:textColor="#f64500" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_1"
+            android:layout_below="@id/rl_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <!--在这里添加商品信息条目-->
+            <include layout="@layout/business_check_who_hava_permisson_product_item_content"/>
+            <include layout="@layout/business_check_who_hava_permisson_product_item_content"/>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_1"
+            android:gravity="right"
+            android:text="共1件商品 合计:￥44.00(含邮费￥11.00)"
+            android:textSize="13sp" />
+
+        <RelativeLayout
+            android:layout_below="@+id/tv_result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="5dp">
+
+
+            <Button
+                android:id="@+id/bt_3"
+                style="@style/common_button_style"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/textView"
+                android:layout_marginEnd="15dp"
+                android:layout_marginRight="15dp"
+                android:padding="5dp"
+                android:text="确认收货" />
+
+
+            <Button
+                android:id="@+id/bt_1"
+                style="@style/common_button_style"
+                android:padding="5dp"
+                android:text="查看物流"
+                android:layout_marginRight="19dp"
+                android:layout_marginEnd="19dp"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@+id/bt_3"
+                android:layout_toStartOf="@+id/bt_3" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="15dp" />
+</RelativeLayout>

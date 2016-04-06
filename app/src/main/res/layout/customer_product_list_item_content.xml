@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="15dp"
+    android:orientation="vertical">
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:paddingLeft="12dp"
+      android:orientation="horizontal">
+          <ImageView
+              android:layout_width="100dp"
+              android:layout_height="100dp"
+              android:src="@drawable/cheese_3"
+              />
+
+      <LinearLayout
+          android:padding="5dp"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical">
+          <TextView
+              android:textColor="#242424"
+              android:textSize="15sp"
+              android:text="鹏威 2016春季新款男鞋子 英伦男士轻便休闲真皮豆豆鞋 时尚百搭一..."
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content" />
+          <TextView
+              android:paddingTop="12dp"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textSize="17sp"
+              android:text="￥239.00"
+              android:textColor="#f7282b"
+              />
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="100%"
+              android:textColor="#7c7e83"/>
+      </LinearLayout>
+  </LinearLayout>
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#e0e0e0"/>
+</LinearLayout>

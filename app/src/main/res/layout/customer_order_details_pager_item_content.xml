@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="210dp"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/pic_list_item_bg"
+        android:orientation="vertical"
+        android:paddingTop="8dp">
+
+        <RelativeLayout
+            android:id="@+id/rl_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_store_logo"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/store" />
+
+            <TextView
+                android:id="@+id/tv_store_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_toRightOf="@id/iv_store_logo"
+                android:text="河源绿色特产" />
+
+            <ImageView
+                android:id="@+id/iv_right"
+                android:layout_width="19dp"
+                android:layout_height="19dp"
+                android:layout_toRightOf="@id/tv_store_name"
+                android:src="@drawable/right"
+
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:paddingRight="10dp"
+                android:text="交易成功"
+                android:textColor="#f64500" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rl_1"
+            android:background="#f5f5f5"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#dcdcdc" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="100dp"
+                    android:layout_height="90dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="90dp"
+                        android:background="@drawable/cheese_3" />
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="8dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_title"
+                        android:layout_width="190dp"
+                        android:layout_height="wrap_content"
+                        android:text="广东河源特产正品霸王花米粉 米排粉米线米线炒米粉早餐10斤袋装"
+                        android:textColor="#3a3f3e"
+                        android:textSize="14sp" />
+
+                    <RelativeLayout
+                        android:id="@+id/rl_p"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="￥33.0"
+                            android:textColor="#393e3d" />
+
+                        <TextView
+                            android:id="@+id/tv_realprice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tv_price"
+                            android:text="￥33.0"
+                            android:textColor="#999999" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@id/rl_p"
+                        android:gravity="right"
+                        android:text="x1"
+                        android:textColor="#999999" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#dcdcdc" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_1"
+            android:gravity="right"
+            android:text="共1件商品 合计:￥44.00(含邮费￥11.00)"
+            android:textSize="13sp" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            android:paddingBottom="5dp">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_toLeftOf="@+id/bt_1"
+                android:layout_toStartOf="@+id/bt_1"
+                android:text="更多"
+                android:textColor="#596065"
+                android:textSize="17sp" />
+
+            <Button
+                android:id="@+id/bt_3"
+                style="@style/common_button_style"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/textView"
+                android:layout_marginEnd="15dp"
+                android:layout_marginRight="15dp"
+                android:padding="5dp"
+                android:text="追加评论" />
+
+            <Button
+                android:id="@+id/bt_2"
+                style="@style/common_button_style"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_toLeftOf="@+id/bt_3"
+                android:layout_toStartOf="@+id/bt_3"
+                android:padding="5dp"
+                android:text="卖了换钱" />
+
+            <Button
+                android:id="@+id/bt_1"
+                style="@style/common_button_style"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_toLeftOf="@+id/bt_2"
+                android:layout_toStartOf="@+id/bt_2"
+                android:padding="5dp"
+                android:text="查看物流" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="15dp" />
+</LinearLayout>

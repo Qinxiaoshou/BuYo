@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+      <LinearLayout
+          android:id="@+id/ll_f_downproduct_productdate"
+          android:layout_below="@+id/tv_f_driver"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:paddingLeft="12dp"
+          android:orientation="horizontal">
+          <ImageView
+              android:layout_width="100dp"
+              android:layout_height="100dp"
+              android:src="@drawable/cheese_3"
+              />
+
+          <LinearLayout
+              android:paddingLeft="5dp"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+              <TextView
+                  android:textColor="#242424"
+                  android:textSize="15sp"
+                  android:text="鹏威 2016春季新款男鞋子 英伦男士轻便休闲真皮豆豆鞋 时尚百搭一..."
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content" />
+              <TextView
+                  android:paddingTop="6dp"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:textSize="16sp"
+                  android:text="￥239.00"
+                  android:textColor="#f7282b"
+                  />
+              <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="销量 0"
+                  android:textColor="#7c7e83"/>
+              <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="库存 1"
+                  android:textColor="#7c7e83"/>
+          </LinearLayout>
+      </LinearLayout>
+      <TextView
+          android:layout_below="@+id/ll_f_downproduct_productdate"
+          android:layout_marginTop="10dp"
+          android:layout_width="match_parent"
+          android:layout_height="1dp"
+          android:background="#e0e0e0"/>
+    <TextView
+        android:id="@+id/tv_f_driver"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#e2dddd"/>
+</LinearLayout>

@@ -10,4 +10,15 @@
     <color name="btn_login_normal">#00acff</color>
     <color name="btn_register_pressed">#FF0007</color>
     <color name="btn_register_normal">#FE4040</color>
+    <color name="tabTextPressColor">#ff4d00</color>
+
+    <!--商家搜索框颜色-->
+    <color name="myred">#eb4f38</color>
+    <color name="darkgray">#cccc</color>
+    <color name="color_white">#ffffff</color>
+    <color name="btn_press_color">#5677fc</color>
+    <color name="btn_pressed_color">#3ca0ec</color>
+
+
+
 </resources>

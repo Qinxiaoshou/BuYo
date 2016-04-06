@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/rl_g_stytle"
+    android:orientation="vertical">
+    <android.support.v7.widget.Toolbar
+        android:layout_weight="1.0"
+        android:id="@+id/toolbar_g_product_appbar"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:background="#c14543">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/tv_g_add_product_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="添加商品"
+                android:textSize="22sp"
+                android:layout_marginLeft="20dp"
+                android:textColor="#ffffff"
+                android:gravity="center"
+                />
+            <Button
+                android:id="@+id/btn_right_text"
+                android:layout_alignParentRight="true"
+                android:paddingRight="10dp"
+                android:background="@null"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ffffff"
+                android:textSize="22sp"
+                android:text="完成"/>
+
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.Toolbar>
+    <!--<android.support.v7.widget.RecyclerView
+        android:layout_weight="1.0"
+        android:layout_below="@+id/toolbar_g_product_appbar"
+        android:id="@+id/rv_g_product_data_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />-->
+    <FrameLayout
+        android:layout_below="@+id/toolbar_g_product_appbar"
+        android:id="@+id/fl_g_framelayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+    </FrameLayout>
+
+
+    <RadioGroup
+        android:visibility="gone"
+        android:background="@drawable/pic_list_item_bg"
+        android:layout_weight="1.0"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:gravity="bottom"
+        android:id="@+id/rg_h_open_permission"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        >
+        <TextView
+            android:paddingTop="10dp"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ff393e"
+            android:textSize="26sp"
+            android:textColor="#ffffff"
+            android:text="开放权限"/>
+    </RadioGroup>
+</RelativeLayout>

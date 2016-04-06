@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/rl_header"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#df3031" >
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/actionbar_back"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:paddingLeft="8.0dp" >
+
+            <Button
+                android:id="@+id/btn_message"
+                android:layout_width="70dip"
+                android:layout_height="30dip"
+                android:background="@drawable/baike_btn_pink_left_f_96"
+                android:gravity="center"
+                android:text="出售中"
+                android:textColor="#df3031"
+                android:textSize="14sp" />
+            <TextView
+                android:gravity="center"
+                android:layout_width="1dp"
+                android:layout_height="30dip"
+                android:textColor="#ffffff"
+                android:background="#ffffff"
+                android:text="|"/>
+            <Button
+                android:id="@+id/btn_down"
+                android:layout_width="70dip"
+                android:layout_height="30dip"
+                android:background="@drawable/baike_btn_trans_center_f_96"
+                android:gravity="center"
+                android:text="已下架"
+                android:textColor="#ffffff"
+                android:textSize="14sp" />
+            <TextView
+                android:gravity="center"
+                android:layout_width="1dp"
+                android:layout_height="30dip"
+                android:textColor="#ffffff"
+                android:background="#ffffff"
+                android:text="|"/>
+            <Button
+                android:id="@+id/btn_call"
+                android:layout_width="70dip"
+                android:layout_height="30dip"
+                android:background="@drawable/baike_btn_trans_right_f_96"
+                android:gravity="center"
+                android:text="分类"
+                android:textColor="#ffffff"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_below="@+id/rl_header"
+        android:id="@+id/fl_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/progressBar"
+            android:layout_gravity="center" />
+    </FrameLayout>
+
+
+</RelativeLayout>
