@@ -12,9 +12,10 @@
         android:orientation="vertical">
 
         <ImageView
+            android:background="#000000"
             android:id="@+id/iv_product"
-            android:layout_width="wrap_content"
-            android:layout_height="270dp"
+            android:layout_width="400dp"
+            android:layout_height="240dp"
             android:layout_centerHorizontal="true"
             android:src="@drawable/cheese_3" />
 

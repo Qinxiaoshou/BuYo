@@ -31,7 +31,7 @@ public class MessageFragment extends Fragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		btn_add = (Button) view.findViewById(R.id.btn_add); //添加商品
-		btn_call_moreproduct_manager = (Button) view.findViewById(R.id.btn_call_moreproduct_manager); //批量管理
+		btn_call_moreproduct_manager = (Button) view.findViewById(R.id.btn_call_moreproduct_manager); //管理商品
 		btn_add.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {

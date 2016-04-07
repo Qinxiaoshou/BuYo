@@ -34,20 +34,6 @@ public class ProductDataRecyclerViewAdapter extends RecyclerView.Adapter<Product
     @Override
     public void onBindViewHolder(final ProductDataRecyclerViewAdapter.ViewHolder holder, int position) {
         final View view = holder.mView;
-      /*  view.setOnClickListener(new View.OnClickListener() {  //监听列表条目信息跳转的控件
-            @Override
-            public void onClick(View v) {
-                ObjectAnimator animator = ObjectAnimator.ofFloat(view, "translationZ", 5, 0); //上下移动
-                animator.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        System.out.println("点击了条目，产生了跳转");
-                        mContext.startActivity(new Intent(mContext, DetailActivity.class));
-                    }
-                });
-                animator.start();
-            }
-        });*/
     }
 
     @Override

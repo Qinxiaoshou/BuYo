@@ -26,7 +26,7 @@ public class ConsumerOrderDetailsRecyclerViewAdapter extends RecyclerView.Adapte
     //列表页面的布局实现
     @Override
     public ConsumerOrderDetailsRecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-       View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.customer_order_details_pager_content, parent, false);
+       View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.business_manage_customer_order_details_pager_content, parent, false);
        return new ViewHolder(view);
     }
 

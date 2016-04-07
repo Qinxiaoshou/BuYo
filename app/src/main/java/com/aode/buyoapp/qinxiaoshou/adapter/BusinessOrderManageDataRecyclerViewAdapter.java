@@ -1,7 +1,11 @@
 package com.aode.buyoapp.qinxiaoshou.adapter;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,6 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.aode.buyoapp.R;
+import com.aode.buyoapp.qinxiaoshou.activity.BusinessManageConsumerOrderDetailActivity;
+import com.aode.buyoapp.qinxiaoshou.activity.BusinessUpdateProductMessagesActivity;
 
 
 /**
@@ -34,7 +40,7 @@ public class BusinessOrderManageDataRecyclerViewAdapter extends RecyclerView.Ada
     @Override
     public void onBindViewHolder(final BusinessOrderManageDataRecyclerViewAdapter.ViewHolder holder, int position) {
 
-     /*   final View view = holder.mView;
+        final View view = holder.mView;
         view.setOnClickListener(new View.OnClickListener() {  //监听列表条目信息跳转的控件
             @Override
             public void onClick(View v) {
@@ -42,13 +48,13 @@ public class BusinessOrderManageDataRecyclerViewAdapter extends RecyclerView.Ada
                 animator.addListener(new AnimatorListenerAdapter() {
                     @Override
                     public void onAnimationEnd(Animator animation) {
-                        System.out.println("点击了条目，产生了跳转");
-                        mContext.startActivity(new Intent(mContext, BusinessUpdateProductMessagesActivity.class));
+                       //跳转到商家查看用户订单详情的界面
+                      mContext.startActivity(new Intent(mContext, BusinessManageConsumerOrderDetailActivity.class));
                     }
                 });
                 animator.start();
             }
-        });*/
+        });
     }
 
     @Override

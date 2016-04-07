@@ -8,17 +8,24 @@
         android:id="@+id/rl_header"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:background="#df3031" >
+        android:background="#df3031"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/actionbar_back"/>
+            android:src="@drawable/left_arrow"
+            android:layout_marginStart="19dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true" />
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_centerVertical="true"
-            android:paddingLeft="8.0dp" >
+            android:paddingLeft="8.0dp"
+            android:id="@+id/linearLayout">
 
             <Button
                 android:id="@+id/btn_message"

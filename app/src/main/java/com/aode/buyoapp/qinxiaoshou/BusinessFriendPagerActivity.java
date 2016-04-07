@@ -39,7 +39,7 @@ public class BusinessFriendPagerActivity extends ActionBarActivity {
 
 
         toolbar = (Toolbar) findViewById(R.id.appbar);
-        toolbar.setNavigationIcon(R.drawable.actionbar_back);//设置导航栏图标
+        toolbar.setNavigationIcon(R.drawable.left_arrow);//设置导航栏图标
         toolbar.setTitle("友好商家");
 
 
