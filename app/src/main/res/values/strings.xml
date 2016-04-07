@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BuYoApp</string>
+    <string name="app_name">布约</string>
 
     <!--自定义字符串-->
     <string name="business">商家</string>
