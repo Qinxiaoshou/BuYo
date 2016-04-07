@@ -5,6 +5,11 @@ import android.os.Bundle;
 
 import com.aode.buyoapp.R;
 
+/**
+ * 登录界面
+ * @// FIXME: 2016/4/7
+ * @author 陈映苗
+ */
 public class LoginActivity extends Activity {
 
     @Override

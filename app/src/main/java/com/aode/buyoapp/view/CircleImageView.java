@@ -21,6 +21,7 @@ import com.aode.buyoapp.R;
 
 
 /**
+ * 自定义圆形图片
  * Created by 陈映苗 on 2016/4/3 15:44.
  */
 public class CircleImageView extends ImageView{

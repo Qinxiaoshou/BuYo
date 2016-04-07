@@ -15,6 +15,8 @@ import com.aode.buyoapp.qinxiaoshou.fragment.ConsumerOrderManagerFragment;
 
 /**
  * 用户订单列表activity
+ * @// FIXME: 2016/4/7
+ * @author 覃培周
  */
 public class ConsumerOrderActivity extends ActionBarActivity {
 

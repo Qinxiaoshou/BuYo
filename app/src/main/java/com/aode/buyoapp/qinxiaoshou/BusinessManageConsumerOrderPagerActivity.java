@@ -15,12 +15,16 @@ import com.aode.buyoapp.qinxiaoshou.fragment.BussinessOrderManageFragment;
 
 /**
  * 商家管理订单页面
+ *
+ * @author 覃培周
+ * @// FIXME: 2016/4/7
  */
 public class BusinessManageConsumerOrderPagerActivity extends FragmentActivity {
     private BussinessOrderManageFragment catalogueBussinessOrderManageFragment;
     private Toolbar toolbar;
     private TextView tv_g_add_product_title;
     private Button button;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +34,7 @@ public class BusinessManageConsumerOrderPagerActivity extends FragmentActivity {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         //步骤二：用add()方法加上Fragment的对象rightFragment
         catalogueBussinessOrderManageFragment = new BussinessOrderManageFragment();
-        toolbar = (Toolbar)findViewById(R.id.toolbar_g_product_appbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar_g_product_appbar);
         tv_g_add_product_title = (TextView) findViewById(R.id.tv_g_add_product_title);
         button = (Button) findViewById(R.id.btn_right_text);
         toolbar.setNavigationIcon(R.drawable.left_arrow);//设置导航栏图标

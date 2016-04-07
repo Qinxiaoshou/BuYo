@@ -25,6 +25,8 @@ import java.util.List;
 
 /**
  * 店家搜索其他店家的界面
+ * @// FIXME: 2016/4/7
+ * @author 覃培周
  */
 public class BusinessSearchOtherBusinessPagerActivity extends Activity implements MySearchView.SearchViewListener {
 
