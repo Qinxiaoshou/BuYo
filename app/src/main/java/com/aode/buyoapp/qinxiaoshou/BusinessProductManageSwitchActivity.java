@@ -19,6 +19,8 @@ import com.aode.buyoapp.qinxiaoshou.fragment.MessageFragment;
 
 /**
  * 店家管理商品界面
+ * @// FIXME: 2016/4/7
+ * @author 覃培周
  */
 public class BusinessProductManageSwitchActivity extends FragmentActivity {
 

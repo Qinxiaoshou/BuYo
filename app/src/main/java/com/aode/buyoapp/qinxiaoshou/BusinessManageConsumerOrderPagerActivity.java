@@ -15,6 +15,8 @@ import com.aode.buyoapp.qinxiaoshou.fragment.BussinessOrderManageFragment;
 
 /**
  * 商家管理订单页面
+ * @// FIXME: 2016/4/7
+ * @author 覃培周
  */
 public class BusinessManageConsumerOrderPagerActivity extends FragmentActivity {
     private BussinessOrderManageFragment catalogueBussinessOrderManageFragment;

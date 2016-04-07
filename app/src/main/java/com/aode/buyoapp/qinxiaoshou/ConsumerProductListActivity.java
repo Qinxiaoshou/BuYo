@@ -15,6 +15,8 @@ import com.aode.buyoapp.qinxiaoshou.fragment.ProductItemListFragment;
 
 /**
  * 用户的商品列表activity
+ * @// FIXME: 2016/4/7
+ * @author 覃培周
  */
 public class ConsumerProductListActivity extends ActionBarActivity {
 
