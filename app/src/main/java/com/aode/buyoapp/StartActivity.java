@@ -15,7 +15,7 @@ import com.aode.buyoapp.business.activity.LoginActivity;
 /**
  * 启动布约app界面
  * @// FIXME: 2016/3/31
- * @author 陈映苗
+ * @author 陈映苗,ll
  */
 public class StartActivity extends Activity {
 
