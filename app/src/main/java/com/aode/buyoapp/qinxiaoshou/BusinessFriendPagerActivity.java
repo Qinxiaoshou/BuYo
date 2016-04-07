@@ -23,8 +23,9 @@ import java.util.List;
 
 /**
  * 友好商家界面
- * @// FIXME: 2016/4/7
+ *
  * @author 覃培周
+ * @// FIXME: 2016/4/7
  */
 public class BusinessFriendPagerActivity extends ActionBarActivity {
     private TabLayout tabLayout;
