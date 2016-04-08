@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 
+import com.aode.buyoapp.LL.Home_person;
 import com.aode.buyoapp.business.activity.LoginActivity;
 
 /**
@@ -55,6 +56,6 @@ public class StartActivity extends Activity {
      *
      */
     public void startCustomer(View v){
-
+        startActivity(new Intent(StartActivity.this,Home_person.class));
     }
 }
