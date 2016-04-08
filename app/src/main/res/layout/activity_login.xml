@@ -2,20 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#eff2f6">
+    android:background="@mipmap/wallpaper"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dip"
-        android:background="#FE4040"
         android:layout_weight="1">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:background="#ffeeeeee"
-            android:layout_alignParentBottom="true"/>
         <ImageButton
             android:layout_width="150dp"
             android:layout_height="150dp"
@@ -55,9 +49,9 @@
                 android:layout_marginLeft="35dp"
                 android:background="@null"
                 android:hint="@string/username"
+                android:textColor="#000000"
                 android:paddingLeft="10dip"
                 android:singleLine="true"
-                android:textColor="#000"
                 android:textSize="18sp" />
         </RelativeLayout>
 
@@ -69,7 +63,7 @@
             android:layout_marginLeft="28dp"
             android:layout_marginRight="28dp"
             android:layout_marginTop="10dp"
-            android:background="#fff">
+            android:background="#ffffff">
 
             <ImageView
                 android:id="@+id/iv_password"
@@ -88,6 +82,7 @@
                 android:layout_marginLeft="35dp"
                 android:background="@null"
                 android:hint="@string/password"
+                android:textColor="#000000"
                 android:inputType="textPassword"
                 android:paddingLeft="10dip"
                 android:singleLine="true"

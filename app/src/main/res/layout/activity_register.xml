@@ -2,14 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#eff2f6"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@mipmap/wallpaper">
+    <!--android:background="#eff2f6"-->
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dip"
-        android:background="#FE4040"
         android:layout_weight="1">
+        <!--android:background="#FE4040"-->
 
         <View
             android:layout_width="match_parent"
