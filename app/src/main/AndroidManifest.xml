@@ -55,7 +55,4 @@
                 android:name=".LL.Personal.Business_Message_update"
                 android:theme="@style/AppTheme.NoActionBar" />
         </application>
-
-    </application>
-
 </manifest>

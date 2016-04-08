@@ -2,20 +2,17 @@ package com.aode.buyoapp;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
 import android.widget.Button;
-import android.widget.ImageView;
 
 import com.aode.buyoapp.business.activity.LoginActivity;
 
 /**
  * 启动布约app界面
  * @// FIXME: 2016/3/31
- * @author 陈映苗,ll
+ * @author 陈映苗
  */
 public class StartActivity extends Activity {
 
