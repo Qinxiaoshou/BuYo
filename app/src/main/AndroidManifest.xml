@@ -3,8 +3,8 @@
     package="com.aode.buyoapp">
 
     <!--网络连接权限-->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
         android:allowBackup="true"
@@ -12,7 +12,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@android:style/Theme.NoTitleBar">
-        <activity android:name=".StartActivity">
+        <activity
+            android:name=".LL.WelcomeActivity"
+            android:theme="@style/AppTheme.NoActionBar">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,37 +24,37 @@
         </activity>
         <activity android:name=".business.activity.LoginActivity" />
         <activity android:name=".business.activity.RegisterActivity"></activity>
-        <activity android:name=".qinxiaoshou.activity.BusinessManageConsumerOrderDetailActivity"/>
-        <activity android:name=".qinxiaoshou.activity.BusinessAddNewProductActivity"/>
-        <activity android:name=".qinxiaoshou.activity.BusinessChooseBusinessAndPermissionActivity"/>
-        <activity android:name=".qinxiaoshou.activity.BusinessMamageProductActivity"/>
-        <activity android:name=".qinxiaoshou.activity.BusinessUpdateProductMessagesActivity"/>
-        <activity android:name=".qinxiaoshou.activity.ConsumerOrderDetailActivity"/>
-        <activity android:name=".qinxiaoshou.activity.ConsumerProductDetailsActivity"/>
-            <!--<activity
-                android:name=".LL.WelcomeActivity"
-                android:theme="@style/AppTheme.NoActionBar">
-                <intent-filter>
-                    <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".qinxiaoshou.activity.BusinessManageConsumerOrderDetailActivity" />
+        <activity android:name=".qinxiaoshou.activity.BusinessAddNewProductActivity" />
+        <activity android:name=".qinxiaoshou.activity.BusinessChooseBusinessAndPermissionActivity" />
+        <activity android:name=".qinxiaoshou.activity.BusinessMamageProductActivity" />
+        <activity android:name=".qinxiaoshou.activity.BusinessUpdateProductMessagesActivity" />
+        <activity android:name=".qinxiaoshou.activity.ConsumerOrderDetailActivity" />
+        <activity android:name=".qinxiaoshou.activity.ConsumerProductDetailsActivity" />
+        <!--<activity
+            android:name=".LL.WelcomeActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-                    <category android:name="android.intent.category.LAUNCHER" />
-                </intent-filter>
-            </activity>-->
-            <activity
-                android:name=".LL.ChooseActivity"
-                android:theme="@style/AppTheme.NoActionBar" />
-            <activity
-                android:name=".LL.Home_person"
-                android:theme="@style/AppTheme.NoActionBar"
-                android:windowSoftInputMode="adjustPan|stateHidden" />
-            <activity
-                android:name=".LL.Home_business"
-                android:theme="@style/AppTheme.NoActionBar" />
-            <activity
-                android:name=".LL.Personal.Business_Message"
-                android:theme="@style/AppTheme.NoActionBar" />
-            <activity
-                android:name=".LL.Personal.Business_Message_update"
-                android:theme="@style/AppTheme.NoActionBar" />
-        </application>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>-->
+        <activity
+            android:name=".LL.ChooseActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".LL.Home_person"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".LL.Home_business"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".LL.Personal.Business_Message"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".LL.Personal.Business_Message_update"
+            android:theme="@style/AppTheme.NoActionBar" />
+    </application>
 </manifest>
