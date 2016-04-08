@@ -3,6 +3,7 @@ package com.aode.buyoapp.LL.Personal;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,11 +11,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.aode.buyoapp.R;
+import com.aode.buyoapp.qinxiaoshou.BusinessFriendPagerActivity;
+import com.aode.buyoapp.qinxiaoshou.BusinessManageConsumerOrderPagerActivity;
+import com.aode.buyoapp.qinxiaoshou.BusinessProductManageSwitchActivity;
+import com.aode.buyoapp.qinxiaoshou.activity.BusinessAddNewProductActivity;
+import com.aode.buyoapp.qinxiaoshou.activity.BusinessManageConsumerOrderDetailActivity;
 
 
 public class Business_Personal extends Fragment implements View.OnClickListener {
     private View view;
-    private ImageView iv_message;
+    private ImageView iv_message,iv_publish,iv_order,iv_amity;
     private TextView tv_business_name;
     public void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
@@ -31,20 +37,35 @@ public class Business_Personal extends Fragment implements View.OnClickListener 
 
     public void init() {
         iv_message = (ImageView) view.findViewById(R.id.iv_message);
+        iv_publish = (ImageView) view.findViewById(R.id.iv_publish);
+        iv_order = (ImageView) view.findViewById(R.id.iv_order);
+        iv_amity = (ImageView) view.findViewById(R.id.iv_amity);
+        iv_publish.setOnClickListener(this);
         iv_message.setOnClickListener(this);
+        iv_order.setOnClickListener(this);
+        iv_amity.setOnClickListener(this);
         tv_business_name = (TextView) view.findViewById(R.id.tv_business_name);
         tv_business_name.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        Intent intent_Message = new Intent(getActivity(),Business_Message.class);
         switch (v.getId()) {
+            case R.id.iv_publish:
+                Log.i("商家个人页面","发布商品按钮被点击");
+                startActivity(new Intent(getActivity(), BusinessProductManageSwitchActivity.class));
+                break;
             case R.id.iv_message:
-                startActivity(intent_Message);
+                startActivity(new Intent(getActivity(),Business_Message.class));
+                break;
+            case R.id.iv_order:
+                startActivity(new Intent(getActivity(), BusinessManageConsumerOrderPagerActivity.class));
                 break;
             case R.id.tv_business_name:
-                startActivity(intent_Message);
+                startActivity(new Intent(getActivity(),Business_Message.class));
+                break;
+            case R.id.iv_amity:
+                startActivity(new Intent(getActivity(),BusinessFriendPagerActivity.class));
                 break;
         }
     }

@@ -1,6 +1,5 @@
 package com.aode.buyoapp.qinxiaoshou;
 
-import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -10,8 +9,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.widget.Spinner;
 
 import com.aode.buyoapp.R;
 import com.aode.buyoapp.qinxiaoshou.fragment.BusinessCheckWhoHaveProductPermissionFragment;
