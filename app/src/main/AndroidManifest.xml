@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/notitle">
         <activity
-            android:name=".StartActivity"
+            android:name=".business.StartActivity"
             android:theme="@style/notitle">
 
             <intent-filter>

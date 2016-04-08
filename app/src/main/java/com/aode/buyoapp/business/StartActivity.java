@@ -1,4 +1,4 @@
-package com.aode.buyoapp;
+package com.aode.buyoapp.business;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,6 +9,7 @@ import android.widget.Button;
 
 import com.aode.buyoapp.LL.Home_person;
 import com.aode.buyoapp.business.activity.LoginActivity;
+import com.aode.buyoapp.R;
 
 /**
  * 启动布约app界面
