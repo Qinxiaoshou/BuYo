@@ -20,8 +20,9 @@ import com.aode.buyoapp.qinxiaoshou.activity.BusinessManageConsumerOrderDetailAc
 
 public class Business_Personal extends Fragment implements View.OnClickListener {
     private View view;
-    private ImageView iv_message,iv_publish,iv_order,iv_amity;
+    private ImageView iv_message, iv_publish, iv_order, iv_amity;
     private TextView tv_business_name;
+
     public void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
@@ -52,20 +53,19 @@ public class Business_Personal extends Fragment implements View.OnClickListener 
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.iv_publish:
-                Log.i("商家个人页面","发布商品按钮被点击");
                 startActivity(new Intent(getActivity(), BusinessProductManageSwitchActivity.class));
                 break;
             case R.id.iv_message:
-                startActivity(new Intent(getActivity(),Business_Message.class));
+                startActivity(new Intent(getActivity(), Business_Message.class));
                 break;
             case R.id.iv_order:
                 startActivity(new Intent(getActivity(), BusinessManageConsumerOrderPagerActivity.class));
                 break;
             case R.id.tv_business_name:
-                startActivity(new Intent(getActivity(),Business_Message.class));
+                startActivity(new Intent(getActivity(), Business_Message.class));
                 break;
             case R.id.iv_amity:
-                startActivity(new Intent(getActivity(),BusinessFriendPagerActivity.class));
+                startActivity(new Intent(getActivity(), BusinessFriendPagerActivity.class));
                 break;
         }
     }
