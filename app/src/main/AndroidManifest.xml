@@ -25,18 +25,22 @@
         <activity android:name=".business.activity.LoginActivity" />
         <activity android:name=".business.activity.RegisterActivity"></activity>
         <activity android:name=".qinxiaoshou.activity.BusinessManageConsumerOrderDetailActivity" />
-        <activity android:name=".qinxiaoshou.activity.BusinessAddNewProductActivity" />
+        <activity
+            android:name=".qinxiaoshou.activity.BusinessAddNewProductActivity"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".qinxiaoshou.activity.BusinessChooseBusinessAndPermissionActivity" />
         <activity android:name=".qinxiaoshou.activity.BusinessMamageProductActivity" />
-        <activity android:name=".qinxiaoshou.activity.BusinessUpdateProductMessagesActivity" />
+        <activity
+            android:name=".qinxiaoshou.activity.BusinessUpdateProductMessagesActivity"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".qinxiaoshou.activity.ConsumerOrderDetailActivity" />
         <activity android:name=".qinxiaoshou.activity.ConsumerProductDetailsActivity" />
-        <activity android:name=".qinxiaoshou.BusinessFriendPagerActivity"/>
-        <activity android:name=".qinxiaoshou.BusinessProductManageSwitchActivity"/>
-        <activity android:name=".qinxiaoshou.BusinessManageConsumerOrderPagerActivity"/>
-        <activity android:name=".qinxiaoshou.BusinessSearchOtherBusinessPagerActivity"/>
-        <activity android:name=".qinxiaoshou.ConsumerOrderActivity"/>
-        <activity android:name=".qinxiaoshou.ConsumerProductListActivity"/>
+        <activity android:name=".qinxiaoshou.BusinessFriendPagerActivity" />
+        <activity android:name=".qinxiaoshou.BusinessProductManageSwitchActivity" />
+        <activity android:name=".qinxiaoshou.BusinessManageConsumerOrderPagerActivity" />
+        <activity android:name=".qinxiaoshou.BusinessSearchOtherBusinessPagerActivity" />
+        <activity android:name=".qinxiaoshou.ConsumerOrderActivity" />
+        <activity android:name=".qinxiaoshou.ConsumerProductListActivity" />
 
         <activity
             android:name=".LL.Home_person"
