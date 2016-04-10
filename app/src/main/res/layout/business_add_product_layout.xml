@@ -53,7 +53,10 @@
         android:layout_below="@+id/toolbar_g_product_appbar"
         android:id="@+id/fl_g_framelayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        >
+
     </FrameLayout>
 
 

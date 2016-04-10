@@ -1,61 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
     <ImageView
-        android:visibility="gone"
-        android:src="@drawable/icon"
         android:id="@+id/item_search_iv_icon"
-        android:layout_marginLeft="20dp"
-        android:layout_centerVertical="true"
         android:layout_width="60dp"
-        android:layout_height="60dp"/>
+        android:layout_height="60dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp"
+        android:src="@drawable/icon"
+        android:visibility="gone" />
+
     <TextView
         android:id="@+id/item_search_tv_title"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@id/item_search_iv_icon"
-        android:text="Title"
-        android:textSize="18sp"
-        android:textColor="#000"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <TextView
-        android:id="@+id/item_search_tv_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginRight="50dp"
-        android:layout_toRightOf="@id/item_search_iv_icon"
-        android:layout_below="@id/item_search_tv_title"
-        android:text="content"
-        android:textSize="16sp"
-        android:textColor="#777"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <TextView
-        android:id="@+id/item_search_tv_comments"
-        android:text="Title"
-        android:singleLine="true"
-        android:textSize="14sp"
-        android:textColor="#ff1232"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/item_search_iv_icon"
+        android:text="商家名称"
+        android:textColor="#000"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/item_search_tv_comments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/item_search_tv_content"
+        android:layout_below="@+id/item_search_tv_title"
         android:layout_marginRight="63dp"
-        android:layout_marginEnd="63dp"
+        android:singleLine="true"
+        android:text="联系方式:9345958"
+        android:textColor="#ff1232"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/item_search_tv_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/item_search_tv_comments"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="50dp"
+        android:layout_toRightOf="@id/item_search_iv_icon"
+        android:text="地址:佛山南海信息大道南"
+        android:textColor="#777"
+        android:textSize="16sp" />
+    <TextView
+        android:layout_below="@+id/item_search_tv_content"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#d8d3d3"/>
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:layout_alignRight="@+id/item_search_tv_content"
-        android:layout_alignEnd="@+id/item_search_tv_content" />
- <TextView
-     android:text="设置权限"
-     android:singleLine="true"
-     android:textSize="14sp"
-     android:background="#ff1232"
-     android:textColor="#ffffff"
-     android:layout_width="wrap_content"
-     android:layout_height="wrap_content"
-     android:layout_centerVertical="true"
-     android:layout_alignParentRight="true"
-     android:layout_alignParentEnd="true"
-     android:layout_marginRight="25dp"
-     android:layout_marginEnd="25dp" />
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        android:background="#ff1232"
+        android:singleLine="true"
+        android:text="设置权限"
+        android:textColor="#ffffff"
+        android:textSize="14sp" />
+
 </RelativeLayout>

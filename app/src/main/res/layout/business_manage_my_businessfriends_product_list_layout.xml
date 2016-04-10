@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <RadioGroup
+    <!--<RadioGroup
         android:background="@drawable/pic_list_item_bg"
         android:layout_weight="1.0"
         android:layout_alignParentBottom="true"
@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         >
-        <TextView
+       &lt;!&ndash; <TextView
             android:paddingTop="10dp"
             android:gravity="center_horizontal"
             android:layout_width="match_parent"
@@ -27,6 +27,6 @@
             android:background="#ff393e"
             android:textSize="20sp"
             android:textColor="#ffffff"
-            android:text="开放权限"/>
-    </RadioGroup>
+            android:text="开放权限"/>&ndash;&gt;
+    </RadioGroup>-->
 </RelativeLayout>
