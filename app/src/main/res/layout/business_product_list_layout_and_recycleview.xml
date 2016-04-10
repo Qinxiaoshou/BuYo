@@ -24,7 +24,7 @@
         >
         <Button
             android:id="@+id/btn_add"
-            android:background="@drawable/shape_button_ordercheck"
+            android:background="@drawable/shape_d_image"
             android:textColor="#000000"
             android:textSize="14sp"
             android:text="添加新产品"
@@ -32,7 +32,7 @@
             android:layout_weight="0.35" />
         <Button
             android:id="@+id/btn_call_moreproduct_manager"
-            android:background="@drawable/shape_button_ordercheck"
+            android:background="@drawable/shape_d_image"
             android:textColor="#000000"
             android:textSize="14sp"
             android:text="管理商品"

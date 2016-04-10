@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.aode.buyoapp.R;
 import com.aode.buyoapp.qinxiaoshou.fragment.BusinessDownProductFragment;
@@ -25,7 +26,7 @@ import com.aode.buyoapp.qinxiaoshou.fragment.MessageFragment;
 public class BusinessProductManageSwitchActivity extends FragmentActivity {
 
     private Button btn_message, btn_call,btn_dowm;
-
+    private ImageView iv_back; //返回键
     private BusinessSortProductFragment callFragment;
     private MessageFragment messageFragment;
     private BusinessDownProductFragment downProductFragment;
@@ -47,7 +48,13 @@ public class BusinessProductManageSwitchActivity extends FragmentActivity {
         btn_message.setOnClickListener(onClicker);
         btn_call.setOnClickListener(onClicker);
         btn_dowm .setOnClickListener(onClicker);
-
+        iv_back = (ImageView) findViewById(R.id.iv_back);
+        iv_back.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         if (savedInstanceState != null) {
