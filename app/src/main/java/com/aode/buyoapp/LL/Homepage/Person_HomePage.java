@@ -1,6 +1,7 @@
 package com.aode.buyoapp.LL.Homepage;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -14,12 +15,11 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aode.buyoapp.R;
+import com.aode.buyoapp.qinxiaoshou.activity.ConsumerProductDetailsActivity;
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
 
@@ -122,9 +122,17 @@ public class Person_HomePage extends Fragment {
         //设置布局管理器,重写使之自适应
         recyclerView.setLayoutManager(mlManager = new MLManager(getActivity(), 2));
         //设置adapter
-        recyclerView.setAdapter(myAdapter = new MyAdapter());
+        recyclerView.setAdapter(myAdapter = new MyAdapter(getContext(),commoditys));
+        myAdapter.setOnItemClickLitener(new MyAdapter.OnItemClickLitener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                //点击进入商品详情
+                Intent intent = new Intent(getActivity(),ConsumerProductDetailsActivity.class);
+                intent.putExtra("p",position);
+                startActivity(intent);
+            }
+        });
     }
-
     protected void recyclerViewData() {
         commoditys = new ArrayList<commodity>();
         commodity commodity = new commodity();
@@ -221,43 +229,6 @@ public class Person_HomePage extends Fragment {
             }
         }
 
-    }
-
-    class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
-
-        @Override
-        public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            MyViewHolder holder = new MyViewHolder(LayoutInflater.from(
-                    getActivity()).inflate(R.layout.homepage_item, parent,
-                    false));
-            return holder;
-        }
-
-        @Override
-        public void onBindViewHolder(MyViewHolder holder, int position) {
-            holder.iv_itemIv.setImageResource(commoditys.get(position).getPhoto());
-            holder.id_item_abstruct.setText(commoditys.get(position).getAbstruct());
-            holder.id_item_price.setText(commoditys.get(position).getPrice());
-        }
-
-        @Override
-        public int getItemCount() {
-            return commoditys.size();
-        }
-
-
-        class MyViewHolder extends RecyclerView.ViewHolder {
-            ImageView iv_itemIv;
-            TextView id_item_abstruct;
-            TextView id_item_price;
-
-            public MyViewHolder(View view) {
-                super(view);
-                iv_itemIv = (ImageView) view.findViewById(R.id.iv_itemIv);
-                id_item_abstruct = (TextView) view.findViewById(R.id.id_item_abstruct);
-                id_item_price = (TextView) view.findViewById(R.id.id_item_price);
-            }
-        }
     }
 
 

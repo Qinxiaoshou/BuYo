@@ -1,9 +1,10 @@
 package com.aode.buyoapp.qinxiaoshou.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
@@ -16,7 +17,7 @@ import com.aode.buyoapp.qinxiaoshou.fragment.ProductItemDetailsFragment;
 /**
  * 用户商品详情activity
  */
-public class ConsumerProductDetailsActivity extends ActionBarActivity {
+public class ConsumerProductDetailsActivity extends AppCompatActivity {
 
     private ProductItemDetailsFragment productItemDetailsFragment;
     private TextView tv_g_add_product_title;
@@ -27,13 +28,17 @@ public class ConsumerProductDetailsActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        Intent intent = getIntent();
+        System.out.println(intent.getIntExtra("p",-1));
+
+
         setContentView(R.layout.business_add_product_layout);
         //步骤一：添加一个FragmentTransaction的实例
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         //步骤二：用add()方法加上Fragment的对象rightFragment
         productItemDetailsFragment = new ProductItemDetailsFragment();
-        toolbar = (Toolbar)findViewById(R.id.toolbar_g_product_appbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar_g_product_appbar);
         tv_g_add_product_title = (TextView) findViewById(R.id.tv_g_add_product_title);
         button = (Button) findViewById(R.id.btn_right_text);
         toolbar.setNavigationIcon(R.drawable.left_arrow);//设置导航栏图标

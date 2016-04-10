@@ -54,7 +54,7 @@ public class Home_person extends AppCompatActivity {
                     case R.id.rb_Recruits:
                         break;
                     case R.id.rb_Personal:
-                        if (result) {
+                        if (!result) {
                             if (personal == null)
                                 personal = new Person_Personal();
                             if (personal != fragment) {
