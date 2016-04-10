@@ -16,6 +16,8 @@ import com.aode.buyoapp.qinxiaoshou.fragment.ConsumerOrderDetailsFragment;
 
 /**
  *商家查看用户订单详情
+ * @author 覃培周
+ * @// FIXME: 2016/4/7
  */
 public class BusinessManageConsumerOrderDetailActivity extends FragmentActivity {
 

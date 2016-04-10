@@ -14,6 +14,8 @@ import com.aode.buyoapp.qinxiaoshou.fragment.BusinessUpdateProductDataFragment;
 
 /**
  * 修改商品信息
+ * @author 覃培周
+ * @// FIXME: 2016/4/7
  */
 public class BusinessUpdateProductMessagesActivity extends FragmentActivity {
 

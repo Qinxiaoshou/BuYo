@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
@@ -15,8 +16,10 @@ import com.aode.buyoapp.qinxiaoshou.fragment.ProductItemDetailsFragment;
 
 /**
  * 用户商品详情activity
+ * @author 覃培周
+ * @// FIXME: 2016/4/7
  */
-public class ConsumerProductDetailsActivity extends ActionBarActivity {
+public class ConsumerProductDetailsActivity extends AppCompatActivity {
 
     private ProductItemDetailsFragment productItemDetailsFragment;
     private TextView tv_g_add_product_title;

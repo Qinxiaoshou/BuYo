@@ -9,9 +9,10 @@ import com.aode.buyoapp.qinxiaoshou.util.ViewHolder;
 
 import java.util.List;
 
-
 /**
- * Created by huizhou on 2016/4/4.
+ * 商家搜索商家适配器
+ * @author 覃培周
+ * @// FIXME: 2016/4/7
  */
 public class MySearchAdapter extends CommonAdapter<SearcherBean> {
     public MySearchAdapter(Context context, List<SearcherBean> data, int layoutId) {

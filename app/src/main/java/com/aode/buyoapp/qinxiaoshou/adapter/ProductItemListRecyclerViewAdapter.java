@@ -18,7 +18,9 @@ import com.aode.buyoapp.qinxiaoshou.activity.ConsumerProductDetailsActivity;
 
 
 /**
- * 列表条目信息的适配器
+ * 用户查看商品列表适配器
+ * @author 覃培周
+ * @// FIXME: 2016/4/7
  */
 public class ProductItemListRecyclerViewAdapter extends RecyclerView.Adapter<ProductItemListRecyclerViewAdapter.ViewHolder> {
 

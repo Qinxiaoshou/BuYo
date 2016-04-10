@@ -15,7 +15,9 @@ import com.aode.buyoapp.qinxiaoshou.adapter.ProductDataRecyclerViewAdapter;
 
 
 /**
- * 商品详情
+ * 用户查看商品详情fragment
+ * @author 覃培周
+ * @// FIXME: 2016/4/7
  */
 public class ProductItemDetailsFragment extends Fragment {
     private View mParentView;

@@ -13,7 +13,9 @@ import com.aode.buyoapp.qinxiaoshou.adapter.BusinessDeleteProductDataRecyclerVie
 
 
 /**
- * Created by huizhou    on 2015/12/17.
+ * 商家删除商品条目fragment
+ * @author 覃培周
+ * @// FIXME: 2016/4/7
  */
 public class BusinessDeleteProductDataFragment extends Fragment {
     private RecyclerView recyclerView;

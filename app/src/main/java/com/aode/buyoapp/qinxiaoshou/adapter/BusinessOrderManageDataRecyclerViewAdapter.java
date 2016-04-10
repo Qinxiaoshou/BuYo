@@ -18,7 +18,9 @@ import com.aode.buyoapp.qinxiaoshou.activity.BusinessUpdateProductMessagesActivi
 
 
 /**
- * 列表条目信息的适配器
+ * 商家管理用户订单适配器
+ * @author 覃培周
+ * @// FIXME: 2016/4/7
  */
 public class BusinessOrderManageDataRecyclerViewAdapter extends RecyclerView.Adapter<BusinessOrderManageDataRecyclerViewAdapter.ViewHolder> {
 

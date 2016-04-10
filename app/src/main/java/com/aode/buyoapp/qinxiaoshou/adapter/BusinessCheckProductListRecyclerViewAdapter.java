@@ -17,7 +17,9 @@ import com.aode.buyoapp.qinxiaoshou.activity.BusinessUpdateProductMessagesActivi
 
 
 /**
- * 列表条目信息的适配器
+ * 商家查看商品列表适配器
+ * @author 覃培周
+ * @// FIXME: 2016/4/7
  */
 public class BusinessCheckProductListRecyclerViewAdapter extends RecyclerView.Adapter<BusinessCheckProductListRecyclerViewAdapter.ViewHolder> {
 

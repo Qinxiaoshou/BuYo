@@ -16,7 +16,10 @@ import com.aode.buyoapp.qinxiaoshou.fragment.BusinessSettingBusinessPerssionFrag
 
 /**
  * 商家选择商品对于某个商家的权限开放
+ * @author 覃培周
+ * @// FIXME: 2016/4/7
  */
+
 public class BusinessChooseBusinessAndPermissionActivity extends FragmentActivity {
 
     private BusinessSettingBusinessPerssionFragment catalogue8SettingBusinessPerssionFragment;

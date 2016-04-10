@@ -1,5 +1,10 @@
 package com.aode.buyoapp.qinxiaoshou.model;
 
+/**
+ * 搜索结果bean
+ * @author 覃培周
+ * @// FIXME: 2016/4/7
+ */
 public class SearcherBean  {
 
     private int iconId;

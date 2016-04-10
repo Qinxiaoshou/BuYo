@@ -13,7 +13,9 @@ import com.aode.buyoapp.qinxiaoshou.adapter.BusinessSettingBusinessFriendRecycle
 
 
 /**
- * Created by huizhou    on 2015/12/17.
+ * 商家设置友好商家fragment
+ * @author 覃培周
+ * @// FIXME: 2016/4/7
  */
 public class BusinessSettingBusinessFriendFragment extends Fragment {
     private View view;

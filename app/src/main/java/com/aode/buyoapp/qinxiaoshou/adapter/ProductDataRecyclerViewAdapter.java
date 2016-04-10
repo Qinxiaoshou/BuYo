@@ -10,9 +10,10 @@ import android.view.ViewGroup;
 
 import com.aode.buyoapp.R;
 
-
 /**
- * 列表条目信息的适配器
+ * 用户商品详情适配器
+ * @author 覃培周
+ * @// FIXME: 2016/4/7
  */
 public class ProductDataRecyclerViewAdapter extends RecyclerView.Adapter<ProductDataRecyclerViewAdapter.ViewHolder> {
 

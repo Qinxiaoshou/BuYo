@@ -12,7 +12,10 @@ import com.aode.buyoapp.qinxiaoshou.fragment.BusinessAddProductFragment;
 
 
 /**
- * 商家添加商品
+ * 友好商家界面
+ *
+ * @author 覃培周
+ * @// FIXME: 2016/4/7
  */
 public class BusinessAddNewProductActivity extends FragmentActivity {
 

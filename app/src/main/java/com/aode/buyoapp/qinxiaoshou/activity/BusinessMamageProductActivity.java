@@ -14,6 +14,8 @@ import com.aode.buyoapp.qinxiaoshou.fragment.BusinessDeleteProductDataFragment;
 
 /**
  *商家管理商品界面
+ * @author 覃培周
+ * @// FIXME: 2016/4/7
  */
 public class BusinessMamageProductActivity extends FragmentActivity {
 
