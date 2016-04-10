@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.aode.buyoapp.R;
 import com.aode.buyoapp.qinxiaoshou.fragment.BusinessManageConsumerOrderDetailsFragment;
-import com.aode.buyoapp.qinxiaoshou.fragment.ConsumerOrderDetailsFragment;
 
 
 /**
