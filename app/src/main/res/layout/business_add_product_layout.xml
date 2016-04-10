@@ -11,7 +11,7 @@
         android:minHeight="?attr/actionBarSize"
         android:layout_gravity="center_horizontal"
         android:layout_width="match_parent"
-        android:background="#c14543">
+        android:background="#ff3300">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -35,7 +35,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#ffffff"
-                android:textSize="22sp"
+                android:textSize="18sp"
                 android:text="完成"/>
 
 
