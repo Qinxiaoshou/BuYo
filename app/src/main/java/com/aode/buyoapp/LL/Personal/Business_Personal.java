@@ -14,13 +14,14 @@ import com.aode.buyoapp.R;
 import com.aode.buyoapp.qinxiaoshou.BusinessFriendPagerActivity;
 import com.aode.buyoapp.qinxiaoshou.BusinessManageConsumerOrderPagerActivity;
 import com.aode.buyoapp.qinxiaoshou.BusinessProductManageSwitchActivity;
+import com.aode.buyoapp.qinxiaoshou.BusinessSearchOtherBusinessPagerActivity;
 import com.aode.buyoapp.qinxiaoshou.activity.BusinessAddNewProductActivity;
 import com.aode.buyoapp.qinxiaoshou.activity.BusinessManageConsumerOrderDetailActivity;
 
 
 public class Business_Personal extends Fragment implements View.OnClickListener {
     private View view;
-    private ImageView iv_message, iv_publish, iv_order, iv_amity;
+    private ImageView iv_message, iv_publish, iv_order, iv_amity,iv_permission;
     private TextView tv_business_name;
 
     public void onCreate(Bundle savedInstanceState) {
@@ -41,10 +42,12 @@ public class Business_Personal extends Fragment implements View.OnClickListener 
         iv_publish = (ImageView) view.findViewById(R.id.iv_publish);
         iv_order = (ImageView) view.findViewById(R.id.iv_order);
         iv_amity = (ImageView) view.findViewById(R.id.iv_amity);
+        iv_permission = (ImageView) view.findViewById(R.id.iv_permission);
         iv_publish.setOnClickListener(this);
         iv_message.setOnClickListener(this);
         iv_order.setOnClickListener(this);
         iv_amity.setOnClickListener(this);
+        iv_permission.setOnClickListener(this);
         tv_business_name = (TextView) view.findViewById(R.id.tv_business_name);
         tv_business_name.setOnClickListener(this);
     }
@@ -66,6 +69,9 @@ public class Business_Personal extends Fragment implements View.OnClickListener 
                 break;
             case R.id.iv_amity:
                 startActivity(new Intent(getActivity(), BusinessFriendPagerActivity.class));
+                break;
+            case  R.id.iv_permission:
+                startActivity(new Intent(getActivity(), BusinessSearchOtherBusinessPagerActivity.class));
                 break;
         }
     }

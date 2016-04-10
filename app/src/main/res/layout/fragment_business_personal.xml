@@ -224,7 +224,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/iv_permission"
                 android:layout_centerHorizontal="true"
-                android:text="设置"
+                android:text="设置权限"
                 android:textColor="#FFFFFF" />
         </RelativeLayout>
     </LinearLayout>
