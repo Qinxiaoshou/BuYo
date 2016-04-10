@@ -11,6 +11,8 @@ import com.aode.buyoapp.R;
 
 /**
  * 商品下架fragment
+ * @author 覃培周
+ * @// FIXME: 2016/4/7
  */
 public class BusinessDownProductFragment extends Fragment {
     @Override

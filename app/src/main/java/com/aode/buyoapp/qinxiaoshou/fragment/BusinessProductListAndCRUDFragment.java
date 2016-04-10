@@ -11,7 +11,8 @@ import com.aode.buyoapp.qinxiaoshou.BusinessProductManageSwitchActivity;
 
 
 /**
- *商家商品的增删查改
+ *商家商品的管理fragment
+ * @// FIXME: 2016/4/7
  */
 public class BusinessProductListAndCRUDFragment extends Fragment {
     @Override

@@ -16,7 +16,10 @@ import com.aode.buyoapp.qinxiaoshou.fragment.BusinessSettingBusinessPerssionFrag
 
 /**
  * 商家选择商品对于某个商家的权限开放
+ * @author 覃培周
+ * @// FIXME: 2016/4/7
  */
+
 public class BusinessChooseBusinessAndPermissionActivity extends FragmentActivity {
 
     private BusinessSettingBusinessPerssionFragment catalogue8SettingBusinessPerssionFragment;
@@ -38,6 +41,12 @@ public class BusinessChooseBusinessAndPermissionActivity extends FragmentActivit
         catalogue8SettingBusinessPerssionFragment = new BusinessSettingBusinessPerssionFragment();
         toolbar = (Toolbar)findViewById(R.id.toolbar_g_product_appbar);
         toolbar.setNavigationIcon(R.drawable.left_arrow);//设置导航栏图标
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         toolbarTitle.setText("选择开放权限的商品");
         toolbarTitle.setTextSize(20);
         toolbarRigntButton.setText("全选");

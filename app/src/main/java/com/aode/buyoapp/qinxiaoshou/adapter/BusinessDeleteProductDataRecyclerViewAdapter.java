@@ -12,7 +12,9 @@ import com.aode.buyoapp.R;
 
 
 /**
- * 列表条目信息的适配器
+ * 商家删除商品条目适配器
+ * @author 覃培周
+ * @// FIXME: 2016/4/7
  */
 public class BusinessDeleteProductDataRecyclerViewAdapter extends RecyclerView.Adapter<BusinessDeleteProductDataRecyclerViewAdapter.ViewHolder> {
 

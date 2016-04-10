@@ -39,6 +39,12 @@ public class ConsumerProductListActivity extends ActionBarActivity {
         tv_g_add_product_title = (TextView) findViewById(R.id.tv_g_add_product_title);
         button = (Button) findViewById(R.id.btn_right_text);
         toolbar.setNavigationIcon(R.drawable.left_arrow);//设置导航栏图标
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         tv_g_add_product_title.setText("商品列表");
         button.setVisibility(View.GONE);
         transaction.add(R.id.fl_g_framelayout, productItemListFragment).commit();

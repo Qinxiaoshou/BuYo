@@ -15,6 +15,8 @@ import com.aode.buyoapp.qinxiaoshou.fragment.ConsumerOrderDetailsFragment;
 
 /**
  * 用户订单详情
+ * @author 覃培周
+ * @// FIXME: 2016/4/7
  */
 public class ConsumerOrderDetailActivity extends FragmentActivity {
 
@@ -38,6 +40,12 @@ public class ConsumerOrderDetailActivity extends FragmentActivity {
         button = (Button) findViewById(R.id.btn_right_text);
         toolbar.setNavigationIcon(R.drawable.left_arrow);//设置导航栏图标
         tv_g_add_product_title.setText("订单详情");
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         button.setVisibility(View.GONE);
         transaction.add(R.id.fl_g_framelayout, consumerOrderDetailsFragment).commit();
     }

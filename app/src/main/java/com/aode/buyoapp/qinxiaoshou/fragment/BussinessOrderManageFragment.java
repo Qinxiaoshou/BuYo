@@ -13,7 +13,9 @@ import com.aode.buyoapp.qinxiaoshou.adapter.BusinessOrderManageDataRecyclerViewA
 
 
 /**
- * Created by huizhou    on 2015/12/17.
+ * 商家管理用户订单fragment
+ * @author 覃培周
+ * @// FIXME: 2016/4/7
  */
 public class BussinessOrderManageFragment extends Fragment {
     private RecyclerView recyclerView;

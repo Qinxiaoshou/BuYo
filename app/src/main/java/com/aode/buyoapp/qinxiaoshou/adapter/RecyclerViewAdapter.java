@@ -14,7 +14,9 @@ import com.aode.buyoapp.qinxiaoshou.activity.ConsumerOrderDetailActivity;
 
 
 /**
- * 列表条目信息的适配器
+ * 用户订单详情适配器
+ * @author 覃培周
+ * @// FIXME: 2016/4/7
  */
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 

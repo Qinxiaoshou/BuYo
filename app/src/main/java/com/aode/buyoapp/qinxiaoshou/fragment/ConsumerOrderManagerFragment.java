@@ -13,7 +13,9 @@ import com.aode.buyoapp.qinxiaoshou.adapter.RecyclerViewAdapter;
 
 
 /**
- * 顾客订单管理
+ * 顾客订单管理fragment
+ * @author 覃培周
+ * @// FIXME: 2016/4/7
  */
 public class ConsumerOrderManagerFragment extends Fragment {
     private RecyclerView mRecyclerView;

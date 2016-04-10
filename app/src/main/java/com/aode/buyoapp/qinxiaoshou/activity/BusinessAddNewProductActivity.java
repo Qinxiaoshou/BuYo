@@ -5,13 +5,17 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import com.aode.buyoapp.R;
 import com.aode.buyoapp.qinxiaoshou.fragment.BusinessAddProductFragment;
 
 
 /**
- * 商家添加商品
+ * 友好商家界面
+ *
+ * @author 覃培周
+ * @// FIXME: 2016/4/7
  */
 public class BusinessAddNewProductActivity extends FragmentActivity {
 
@@ -27,6 +31,12 @@ public class BusinessAddNewProductActivity extends FragmentActivity {
         //步骤二：用add()方法加上Fragment的对象rightFragment
         businessAddProductFragment = new BusinessAddProductFragment();
         toolbar = (Toolbar)findViewById(R.id.toolbar_g_product_appbar);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         toolbar.setNavigationIcon(R.drawable.left_arrow);//设置导航栏图标
         transaction.add(R.id.fl_g_framelayout, businessAddProductFragment).commit();
 

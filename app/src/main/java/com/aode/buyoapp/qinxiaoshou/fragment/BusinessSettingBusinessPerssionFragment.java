@@ -13,7 +13,9 @@ import com.aode.buyoapp.qinxiaoshou.adapter.BusinessSettingBusinessPerssionDataR
 
 
 /**
- * Created by huizhou    on 2015/12/17.
+ * 商家设置其他商家拥有本店商品的权限fragment
+ * @author 覃培周
+ * @// FIXME: 2016/4/7
  */
 public class BusinessSettingBusinessPerssionFragment extends Fragment {
     private RecyclerView recyclerView;

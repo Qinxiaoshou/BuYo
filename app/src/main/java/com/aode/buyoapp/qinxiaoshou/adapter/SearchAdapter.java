@@ -11,7 +11,9 @@ import java.util.List;
 
 
 /**
- * Created by yetwish on 2015-05-11
+ * 搜索条目详情适配器
+ * @author 覃培周
+ * @// FIXME: 2016/4/7
  */
 
 public class SearchAdapter extends CommonAdapter<Bean> {

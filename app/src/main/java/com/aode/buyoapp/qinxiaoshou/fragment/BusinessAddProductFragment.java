@@ -13,7 +13,9 @@ import com.aode.buyoapp.qinxiaoshou.adapter.BusinessAddProductDataRecyclerViewAd
 
 
 /**
- * Created by huizhou    on 2015/12/17.
+ * 商家添加商品fragment
+ * @author 覃培周
+ * @// FIXME: 2016/4/7
  */
 public class BusinessAddProductFragment extends Fragment {
     private RecyclerView recyclerView;

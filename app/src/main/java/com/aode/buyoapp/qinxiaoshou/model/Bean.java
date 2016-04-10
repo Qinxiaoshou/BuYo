@@ -1,5 +1,9 @@
 package com.aode.buyoapp.qinxiaoshou.model;
-
+/**
+ * 商家搜索商家bean
+ * @author 覃培周
+ * @// FIXME: 2016/4/7
+ */
 public class Bean {
 
     private int iconId;

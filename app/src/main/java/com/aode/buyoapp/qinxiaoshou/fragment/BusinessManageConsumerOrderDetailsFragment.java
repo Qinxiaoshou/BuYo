@@ -13,7 +13,9 @@ import com.aode.buyoapp.qinxiaoshou.adapter.ConsumerOrderDetailsRecyclerViewAdap
 
 
 /**
- * 店家管理顾客的订单的订单详情
+ * 店家管理顾客的订单的订单详情fragment
+ * @author 覃培周
+ * @// FIXME: 2016/4/7
  */
 public class BusinessManageConsumerOrderDetailsFragment extends Fragment {
     private View myParentView;

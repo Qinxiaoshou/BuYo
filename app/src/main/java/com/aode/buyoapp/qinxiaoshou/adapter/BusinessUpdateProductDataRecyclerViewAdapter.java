@@ -12,7 +12,9 @@ import com.aode.buyoapp.R;
 
 
 /**
- * 列表条目信息的适配器
+ * 商家更新商品信息适配器
+ * @author 覃培周
+ * @// FIXME: 2016/4/7
  */
 public class BusinessUpdateProductDataRecyclerViewAdapter extends RecyclerView.Adapter<BusinessUpdateProductDataRecyclerViewAdapter.ViewHolder> {
 

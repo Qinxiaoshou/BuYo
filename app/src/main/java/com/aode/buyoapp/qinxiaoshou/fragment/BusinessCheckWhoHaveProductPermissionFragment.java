@@ -13,7 +13,9 @@ import com.aode.buyoapp.qinxiaoshou.adapter.BusinessHavePermissonProductRecycler
 
 
 /**
- * Created by huizhou    on 2015/12/17.
+ * 商家查看那个商家拥有本店权限的fragment
+ * @author 覃培周
+ * @// FIXME: 2016/4/7
  */
 public class BusinessCheckWhoHaveProductPermissionFragment extends Fragment {
     private RecyclerView mRecyclerView;

@@ -9,6 +9,11 @@ import android.view.ViewGroup;
 import com.aode.buyoapp.R;
 
 
+/**
+ * 商品分类fragment
+ * @author 覃培周
+ * @// FIXME: 2016/4/7
+ */
 public class BusinessSortProductFragment extends Fragment {
 
 	@Override

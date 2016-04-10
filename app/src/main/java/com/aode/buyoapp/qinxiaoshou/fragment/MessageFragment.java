@@ -16,7 +16,11 @@ import com.aode.buyoapp.qinxiaoshou.activity.BusinessAddNewProductActivity;
 import com.aode.buyoapp.qinxiaoshou.activity.BusinessMamageProductActivity;
 import com.aode.buyoapp.qinxiaoshou.adapter.BusinessCheckProductListRecyclerViewAdapter;
 
-
+/**
+ * 出售中的商品界面fragment
+ * @author 覃培周
+ * @// FIXME: 2016/4/7
+ */
 public class MessageFragment extends Fragment {
 	private View view;
 	private Button btn_add;
