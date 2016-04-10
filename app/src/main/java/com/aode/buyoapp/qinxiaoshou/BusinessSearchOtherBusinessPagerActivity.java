@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -25,8 +26,9 @@ import java.util.List;
 
 /**
  * 店家搜索其他店家的界面
- * @// FIXME: 2016/4/7
+ *
  * @author 覃培周
+ * @// FIXME: 2016/4/7
  */
 public class BusinessSearchOtherBusinessPagerActivity extends Activity implements MySearchView.SearchViewListener {
 
@@ -82,7 +84,10 @@ public class BusinessSearchOtherBusinessPagerActivity extends Activity implement
      * 提示框显示项的个数
      */
     private static int hintSize = DEFAULT_HINT_SIZE;
-
+    /**
+     * 返回键
+     */
+    private ImageView iv_back;
     /**
      * 设置提示框显示项的个数
      *
@@ -98,6 +103,13 @@ public class BusinessSearchOtherBusinessPagerActivity extends Activity implement
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.business_search_otherbusiness_search_layout);
+        iv_back = (ImageView) findViewById(R.id.search_btn_back);
+        iv_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         initData();
         initViews();
     }
@@ -117,19 +129,11 @@ public class BusinessSearchOtherBusinessPagerActivity extends Activity implement
         lvResults.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, final View view, final int position, long l) {
-               // Toast.makeText(BusinessSearchOtherBusinessPagerActivity.this, position + "", Toast.LENGTH_SHORT).show();
                 view.setOnClickListener(new View.OnClickListener() {  //监听列表条目信息跳转的控件
                     @Override
                     public void onClick(View v) {
-                        ObjectAnimator animator = ObjectAnimator.ofFloat(view, "translationZ", 5 , 0); //上下移动
-                        animator.addListener(new AnimatorListenerAdapter() {
-                            @Override
-                            public void onAnimationEnd(Animator animation) {
-                                Toast.makeText(BusinessSearchOtherBusinessPagerActivity.this,"点击了条目"+position+"，产生了跳转",Toast.LENGTH_SHORT).show();
-                                startActivity( new Intent(BusinessSearchOtherBusinessPagerActivity.this,BusinessChooseBusinessAndPermissionActivity.class));
-                            }
-                        });
-                        animator.start();
+                        Toast.makeText(BusinessSearchOtherBusinessPagerActivity.this, "点击了条目" + position + "，产生了跳转", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(BusinessSearchOtherBusinessPagerActivity.this, BusinessChooseBusinessAndPermissionActivity.class));
                     }
                 });
 
@@ -158,7 +162,7 @@ public class BusinessSearchOtherBusinessPagerActivity extends Activity implement
         int size = 100;
         dbData = new ArrayList<>(size);
         for (int i = 0; i < size; i++) {
-            dbData.add(new Bean(R.drawable.icon, "商家名称" + (i + 1), "地址信息", "tel:1873488076"+i));
+            dbData.add(new Bean(R.drawable.icon, "商家名称" + (i + 1), "地址信息", "tel:1873488076" + i));
         }
     }
 
@@ -222,6 +226,7 @@ public class BusinessSearchOtherBusinessPagerActivity extends Activity implement
 
     /**
      * 当搜索框 文本改变时 触发的回调 ,更新自动补全数据
+     *
      * @param text
      */
     @Override
@@ -249,9 +254,6 @@ public class BusinessSearchOtherBusinessPagerActivity extends Activity implement
             resultAdapter.notifyDataSetChanged();
         }
         Toast.makeText(this, "完成搜索", Toast.LENGTH_SHORT).show();
-
-
-
 
 
     }

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
@@ -18,7 +19,7 @@ import com.aode.buyoapp.qinxiaoshou.fragment.ConsumerOrderManagerFragment;
  * @// FIXME: 2016/4/7
  * @author 覃培周
  */
-public class ConsumerOrderActivity extends ActionBarActivity {
+public class ConsumerOrderActivity extends AppCompatActivity {
 
     private ConsumerOrderManagerFragment consumerOrderManagerFragment;
     private TextView tv_g_add_product_title;
