@@ -1,6 +1,7 @@
 package com.aode.buyoapp.LL.biz;
 
 import com.aode.buyoapp.LL.bean.User;
+import com.aode.buyoapp.LL.url;
 import com.google.gson.Gson;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.Callback;
@@ -15,6 +16,7 @@ import okhttp3.Response;
  * 个人业务接口实现类
  */
 public class UserBiz implements IUserBiz {
+    private url url = new url();
 
     //登录功能
     @Override
@@ -30,7 +32,7 @@ public class UserBiz implements IUserBiz {
         }
         OkHttpUtils
                 .post()
-                .url("http://192.168.43.242:8080/tb/admin/user/login")
+                .url(url.getUrl() + "/tb/admin/user/login")
                 .addParams("loginName", name)
                 .addParams("password", password)
                 .build()
@@ -63,7 +65,7 @@ public class UserBiz implements IUserBiz {
     public void register(String name, String password, final RegisterListener registerListener) {
         OkHttpUtils
                 .post()
-                .url("http://192.168.43.242:8080/tb/admin/user/add")
+                .url(url.getUrl() + "/tb/admin/user/add")
                 .addParams("loginName", name)
                 .addParams("password", password)
                 .build()

@@ -1,6 +1,7 @@
 package com.aode.buyoapp.LL.biz;
 
 import com.aode.buyoapp.LL.bean.Business;
+import com.aode.buyoapp.LL.url;
 import com.google.gson.Gson;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.Callback;
@@ -15,10 +16,10 @@ import okhttp3.Response;
  * 商家业务接口实现类
  */
 public class BusinessBiz implements IBusinessBiz {
-
+    private url url = new url();
     //登录功能
     @Override
-    public void login(final String name, final String password, final BLoginListener bLoginListener) {
+    public void login(final String loginName, final String password, final BLoginListener bLoginListener) {
 
         abstract class BusinessCallback extends Callback<Business> {
             @Override
@@ -30,8 +31,8 @@ public class BusinessBiz implements IBusinessBiz {
         }
         OkHttpUtils
                 .post()
-                .url("http://192.168.43.242:8080/tb/admin/business/login")
-                .addParams("name", name)
+                .url(url.getUrl() + "/tb/admin/business/login")
+                .addParams("loginName", loginName)
                 .addParams("password", password)
                 .build()
                 .execute(new BusinessCallback() {
@@ -60,11 +61,12 @@ public class BusinessBiz implements IBusinessBiz {
 
     //注册功能
     @Override
-    public void register(String name, String password, final BRegisterListener bRegisterListener) {
+    public  void register(String loginName,String name, String password, final BRegisterListener bRegisterListener) {
         OkHttpUtils
                 .post()
-                .url("http://192.168.43.242:8080/tb/admin/business/add")
-                .addParams("loginName", name)
+                .url(url.getUrl() + "/tb/admin/business/add")
+                .addParams("name",name)
+                .addParams("loginName", loginName)
                 .addParams("password", password)
                 .build()
                 .execute(new Callback() {

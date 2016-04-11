@@ -6,7 +6,7 @@ package com.aode.buyoapp.LL.biz;
  */
 public interface IBusinessBiz {
     //登录接口
-    void login(String name, String password, BLoginListener bLoginListener);
+    void login(String loginName, String password, BLoginListener bLoginListener);
     //注册接口
-    void register(String name, String password, BRegisterListener bRegisterListener);
+    void register(String loginName,String  name,String password, BRegisterListener bRegisterListener);
 }

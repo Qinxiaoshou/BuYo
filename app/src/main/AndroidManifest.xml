@@ -46,7 +46,8 @@
             android:name=".LL.Login_business" />
         <activity
             android:name=".LL.Register_person" />
-
+        <activity
+            android:name=".LL.Register_business" />
         <activity
             android:name=".LL.Home_person"
             android:theme="@style/AppTheme.NoActionBar"

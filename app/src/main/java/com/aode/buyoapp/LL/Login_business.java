@@ -74,11 +74,11 @@ public class Login_business extends AppCompatActivity implements IBusinessLoginV
     @Override
     public void toMainActivity(Business business) {
         System.out.println(business);
-        /*//进入主页
+        //进入主页
         finish();
         Intent intent = new Intent(this,Home_business.class);
         Home_business.loginName = business.getLoginName();
-        startActivity(intent);*/
+        startActivity(intent);
     }
 
     @Override

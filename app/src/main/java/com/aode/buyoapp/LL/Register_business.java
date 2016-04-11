@@ -7,8 +7,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.aode.buyoapp.LL.Presenter.UserRegisterPresenter;
-import com.aode.buyoapp.LL.view.IUserRegisterView;
+import com.aode.buyoapp.LL.Presenter.BusinessRegisterPresenter;
+import com.aode.buyoapp.LL.view.IBusinessRegisterView;
 import com.aode.buyoapp.R;
 
 /**
@@ -17,15 +17,16 @@ import com.aode.buyoapp.R;
  * @author 陈映苗
  * @// FIXME: 2016/4/7
  */
-public class Register_person extends AppCompatActivity implements IUserRegisterView {
+public class Register_business extends AppCompatActivity implements IBusinessRegisterView {
     private Button btn_register_register;
-    private String username, password, confirm_password;
+    private String username, name, password, confirm_password;
 
     /**
      * 这里是view层.其中 IUserRegisterView 注册页面接口
      * Presenter层,实现Model和View之间交互
      */
-    private UserRegisterPresenter mUserRegisterPresenter = new UserRegisterPresenter(this);
+    private BusinessRegisterPresenter businessRegisterPresenter = new BusinessRegisterPresenter(this);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,15 +41,16 @@ public class Register_person extends AppCompatActivity implements IUserRegisterV
             @Override
             public void onClick(View v) {
                 username = ((EditText) findViewById(R.id.et_register_username)).getText().toString();
+                name = ((EditText) findViewById(R.id.et_register_name)).getText().toString();
                 password = ((EditText) findViewById(R.id.et_register_password)).getText().toString();
                 confirm_password = ((EditText) findViewById(R.id.et_register_confirm_password)).getText().toString();
-                if ("" .equals(username) || "" .equals(password) || "" .equals(confirm_password)) {
+                if ("" .equals(username) || "" .equals(name) || "" .equals(password) || "" .equals(confirm_password)) {
                     Toast.makeText(getApplication(), "不能有空，请认真输入!", Toast.LENGTH_SHORT).show();
                 } else {
                     if (!password.equals(confirm_password)) {
                         Toast.makeText(getApplication(), "密码不一致，请重新输入!", Toast.LENGTH_SHORT).show();
                     } else {
-                        mUserRegisterPresenter.Register();
+                        businessRegisterPresenter.Register();
                     }
                 }
             }
@@ -59,6 +61,9 @@ public class Register_person extends AppCompatActivity implements IUserRegisterV
     public String getUserName() {
         return username;
     }
+
+    @Override
+    public String getName() {return name;}
 
     @Override
     public String getPassword() {
