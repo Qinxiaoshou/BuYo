@@ -1,4 +1,4 @@
-package com.aode.buyoapp.LL.model;
+package com.aode.buyoapp.LL.bean;
 
 /*@Table(name="tb_user")*/
 public class User {

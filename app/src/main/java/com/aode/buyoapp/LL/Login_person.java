@@ -1,5 +1,7 @@
 package com.aode.buyoapp.LL;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -7,25 +9,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
-import com.aode.buyoapp.LL.model.User;
+import com.aode.buyoapp.LL.Presenter.UserLoginPresenter;
+import com.aode.buyoapp.LL.bean.User;
+import com.aode.buyoapp.LL.view.IUserLoginView;
 import com.aode.buyoapp.R;
-import com.google.gson.Gson;
-import com.zhy.http.okhttp.OkHttpUtils;
-import com.zhy.http.okhttp.callback.Callback;
-import com.zhy.http.okhttp.callback.StringCallback;
 
-import java.io.IOException;
-
-import okhttp3.Call;
-import okhttp3.Response;
-
-public class Login_person extends Fragment {
-    private View view, view2;
+public class Login_person extends Fragment implements IUserLoginView {
+    private View view;
     private String name, password;
-    private Button btn_login_login, btn_login_logout;
+    private Button btn_login_login,btn_register;
 
-    private User user;
+    private onNameListener listener;
+
+    /**
+     * 这里是view层.其中 IUserLoginView 登录页面接口
+     * Presenter层,实现Model和View之间交互
+     */
+    private UserLoginPresenter mUserLoginPresenter = new UserLoginPresenter(this);
 
     public void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
@@ -36,13 +38,14 @@ public class Login_person extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_person_login, container, false);
-        view2 = inflater.inflate(R.layout.fragment_person_personal, container, false);
-        init();
+        Login();
+        register();
         return view;
 
     }
 
-    public void init() {
+    //个人登录功能
+    public void Login() {
 
         btn_login_login = (Button) view.findViewById(R.id.btn_login_login);
         btn_login_login.setOnClickListener(new View.OnClickListener() {
@@ -50,58 +53,63 @@ public class Login_person extends Fragment {
             public void onClick(View v) {
                 name = ((EditText) view.findViewById(R.id.et_loginName)).getText().toString();
                 password = ((EditText) view.findViewById(R.id.et_password)).getText().toString();
-                OkHttpUtils
-                        .post()
-                        .url("http://192.168.155.6:8080/tb/admin/user/login")
-                        .addParams("loginName", name)
-                        .addParams("password", password)
-                        .build()
-                        .execute(new UserCallback() {
-                            @Override
-                            public void onError(Call call, Exception e) {
-                                System.out.println("错误:" + e);
-                            }
-
-                            @Override
-                            public void onResponse(User response) {
-                                user = response;
-
-                                System.out.println(response);
-                            }
-
-                            @Override
-                            public User parseNetworkResponse(Response response) throws IOException {
-                                return super.parseNetworkResponse(response);
-
-                            }
-                        });
-            }
-
-            abstract class UserCallback extends Callback<User> {
-                @Override
-                public User parseNetworkResponse(Response response) throws IOException {
-                    String string = response.body().string();
-                    User user = new Gson().fromJson(string, User.class);
-                    return user;
-                }
+               /* UserBiz userBiz = new UserBiz();
+                userBiz.login(name, password, );*/
+                //交互接口-登录操作
+                mUserLoginPresenter.Login();
             }
         });
-        btn_login_logout = (Button) view.findViewById(R.id.btn_login_logout);
-        btn_login_logout.setOnClickListener(new View.OnClickListener() {
+    }
+
+    public void register(){
+        btn_register = (Button) view.findViewById(R.id.btn_register);
+        btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                OkHttpUtils.post().url("http://192.168.155.6:8080/tb/admin/user/logout").build().execute(new StringCallback() {
-                    @Override
-                    public void onError(Call call, Exception e) {
-                        System.out.println("错误:" + e);
-                    }
-
-                    @Override
-                    public void onResponse(String response) {
-                        System.out.println(response);
-                    }
-                });
+                Intent intent = new Intent(getActivity(),Register_person.class);
+                startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public String getUserName() {
+        return name;
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    @Override
+    public void toMainActivity(User user) {
+        System.out.println(user);
+        //保存登录状态
+        Home_person.result = true;
+        //更新个人页面并进入
+        listener.onTest(user.getLoginName());
+    }
+
+    @Override
+    public void showFailedError() {
+        Toast.makeText(getActivity(), "登录失败,请检查网络密码账号!", Toast.LENGTH_LONG).show();
+    }
+
+
+    //fragment和activity交互接口
+    public interface onNameListener {
+        public void onTest(String name);
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try {
+            listener = (onNameListener) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString()
+                    + " must implement OnHeadlineSelectedListener");
+        }
     }
 }

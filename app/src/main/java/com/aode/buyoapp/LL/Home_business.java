@@ -12,10 +12,10 @@ import com.aode.buyoapp.R;
 public class Home_business extends AppCompatActivity {
     private Business_HomePage homePage;
     private Business_Personal personal;
-
-    private static Fragment fragment;
-
     private RadioGroup tabs;
+
+    public static Fragment fragment;
+    public static String loginName = "商家用户名";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -8,7 +8,7 @@ import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 
 import com.aode.buyoapp.LL.Home_person;
-import com.aode.buyoapp.business.activity.LoginActivity;
+import com.aode.buyoapp.LL.Login_business;
 import com.aode.buyoapp.R;
 
 /**
@@ -49,7 +49,7 @@ public class StartActivity extends Activity {
      *
      */
     public void startBusiness(View v){
-        startActivity(new Intent(StartActivity.this,LoginActivity.class));
+        startActivity(new Intent(StartActivity.this,Login_business.class));
     }
 
     /**

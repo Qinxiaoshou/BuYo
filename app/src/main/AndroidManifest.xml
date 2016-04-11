@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".business.activity.LoginActivity" />
-        <activity android:name=".business.activity.RegisterActivity"></activity>
+        <activity android:name=".business.activity.RegisterActivity" />
         <activity android:name=".qinxiaoshou.activity.BusinessManageConsumerOrderDetailActivity" />
         <activity
             android:name=".qinxiaoshou.activity.BusinessAddNewProductActivity"
@@ -41,6 +41,11 @@
         <activity android:name=".qinxiaoshou.BusinessSearchOtherBusinessPagerActivity" />
         <activity android:name=".qinxiaoshou.ConsumerOrderActivity" />
         <activity android:name=".qinxiaoshou.ConsumerProductListActivity" />
+
+        <activity
+            android:name=".LL.Login_business" />
+        <activity
+            android:name=".LL.Register_person" />
 
         <activity
             android:name=".LL.Home_person"
