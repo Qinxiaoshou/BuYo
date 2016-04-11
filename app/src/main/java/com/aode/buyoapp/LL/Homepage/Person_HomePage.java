@@ -18,21 +18,34 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.aode.buyoapp.LL.bean.Cloth;
+import com.aode.buyoapp.LL.bean.ConsumerQueryProductBean;
+import com.aode.buyoapp.LL.url;
 import com.aode.buyoapp.R;
 import com.aode.buyoapp.qinxiaoshou.activity.ConsumerProductDetailsActivity;
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
 import com.bigkoo.convenientbanner.listener.OnItemClickListener;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.Callback;
 
+import java.io.IOException;
 import java.lang.reflect.Field;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+
+import okhttp3.Call;
+import okhttp3.Response;
 
 public class Person_HomePage extends Fragment {
 
     private View view;
     private RecyclerView recyclerView;
-
+    private LinkedList<Cloth> cloths;
     //recyclerView
     private MyAdapter myAdapter;
     private MLManager mlManager;
@@ -50,11 +63,14 @@ public class Person_HomePage extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
+        queryAllProducts();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        //加载服务器数据
+        queryAllProducts();
         view = inflater.inflate(R.layout.fragment_person_homepage, container, false);
         //加载广告栏
         convenientBanner();
@@ -128,19 +144,19 @@ public class Person_HomePage extends Fragment {
             @Override
             public void onItemClick(View view, int position) {
                 //点击进入商品详情
-                Intent intent = new Intent(getActivity(),ConsumerProductDetailsActivity.class);
-                intent.putExtra("p",position);
+                Intent intent = new Intent(getActivity(), ConsumerProductDetailsActivity.class);
+                intent.putExtra("p", position);
                 startActivity(intent);
             }
         });
     }
     protected void recyclerViewData() {
         commoditys = new ArrayList<commodity>();
-        commodity commodity = new commodity();
-        commodity.setPhoto(R.drawable.buliao1);
-        commodity.setAbstruct("一号商品韩版日版流行帅气男生女生");
-        commodity.setPrice("$1000");
-        for (int i = 0; i < 10; i++) {
+        for (Cloth cloth: cloths){
+            commodity commodity = new commodity();
+            commodity.setPhoto(R.drawable.buliao1);
+            commodity.setPrice("$" + cloth.getWidth());
+            commodity.setAbstruct(cloth.getTitle());
             commoditys.add(commodity);
         }
     }
@@ -288,7 +304,53 @@ public class Person_HomePage extends Fragment {
         super.onPause();
         convenientBanner.stopTurning();
     }
+    /**
+     * 用户查询所有的商品
+     */
+    private ConsumerQueryProductBean consumerQueryProductBean;
 
+    public List<Cloth> queryAllProducts(){
+        abstract class ClothCallback extends Callback<ConsumerQueryProductBean> {
+            @Override
+            public ConsumerQueryProductBean parseNetworkResponse(Response response) throws IOException {
+                String string = response.body().string();
+                Type listType = new TypeToken<LinkedList<Cloth>>(){}.getType();
+                Gson gson = new Gson();
+                cloths = gson.fromJson(string, listType);
+               /* for (Iterator iterator = cloths.iterator(); iterator.hasNext();) {
+                    Cloth cloth = (Cloth) iterator.next();
+                    cloths.add(cloth);
+                }
+                for (cloths){
+
+                }*/
+                System.out.println("cloths!!!!-->:"+cloths);
+                return consumerQueryProductBean;
+            }
+        }
+        OkHttpUtils
+                .post()
+                .url(new url().getUrl()+"/tb")
+                .build()
+                .execute(new ClothCallback() {
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        System.out.println("错误:" + e);
+                    }
+
+                    @Override
+                    public void onResponse(ConsumerQueryProductBean response) {
+                    }
+
+
+                    @Override
+                    public ConsumerQueryProductBean parseNetworkResponse(Response response) throws IOException {
+                        return super.parseNetworkResponse(response);
+
+                    }
+                });
+        return  cloths;
+    }
     /*private void initImageLoader(){
         //网络图片例子,结合常用的图片缓存库UIL,你可以根据自己需求自己换其他网络图片库
         DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder().
