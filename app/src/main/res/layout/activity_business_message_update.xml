@@ -37,6 +37,7 @@
             android:textSize="20dp" />
 
         <EditText
+            android:id="@+id/change_bLoginName"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@null"
@@ -60,6 +61,7 @@
             android:textSize="20dp" />
 
         <EditText
+            android:id="@+id/change_bPhone"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@null"
@@ -84,6 +86,7 @@
             android:textSize="20dp" />
 
         <EditText
+            android:id="@+id/change_bAddress"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@null"
@@ -107,6 +110,7 @@
             android:textSize="20dp" />
 
         <EditText
+            android:id="@+id/change_bIntroduce"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@null"

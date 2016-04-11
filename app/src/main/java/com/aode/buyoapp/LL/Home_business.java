@@ -7,6 +7,7 @@ import android.widget.RadioGroup;
 
 import com.aode.buyoapp.LL.Homepage.Business_HomePage;
 import com.aode.buyoapp.LL.Personal.Business_Personal;
+import com.aode.buyoapp.LL.bean.Business;
 import com.aode.buyoapp.R;
 
 public class Home_business extends AppCompatActivity {
@@ -15,8 +16,7 @@ public class Home_business extends AppCompatActivity {
     private RadioGroup tabs;
 
     public static Fragment fragment;
-    public static String loginName = "商家用户名";
-
+    public static Business business ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

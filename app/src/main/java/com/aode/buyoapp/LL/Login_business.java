@@ -77,7 +77,7 @@ public class Login_business extends AppCompatActivity implements IBusinessLoginV
         //进入主页
         finish();
         Intent intent = new Intent(this,Home_business.class);
-        Home_business.loginName = business.getLoginName();
+        Home_business.business = business;
         startActivity(intent);
     }
 
