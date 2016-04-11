@@ -60,6 +60,15 @@
         <activity
             android:name=".LL.Personal.Business_Message_update"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".LL.Personal.Person_Message"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".LL.Personal.Person_Message_update"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".LL.Personal.Person_password_update"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

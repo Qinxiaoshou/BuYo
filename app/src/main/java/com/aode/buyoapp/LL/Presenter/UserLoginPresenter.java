@@ -4,7 +4,7 @@ import android.os.Handler;
 
 import com.aode.buyoapp.LL.bean.User;
 import com.aode.buyoapp.LL.biz.IUserBiz;
-import com.aode.buyoapp.LL.biz.LoginListener;
+import com.aode.buyoapp.LL.Listener.LoginListener;
 import com.aode.buyoapp.LL.biz.UserBiz;
 import com.aode.buyoapp.LL.view.IUserLoginView;
 

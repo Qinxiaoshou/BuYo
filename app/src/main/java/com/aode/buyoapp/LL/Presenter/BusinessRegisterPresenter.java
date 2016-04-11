@@ -2,7 +2,7 @@ package com.aode.buyoapp.LL.Presenter;
 
 import android.os.Handler;
 
-import com.aode.buyoapp.LL.biz.BRegisterListener;
+import com.aode.buyoapp.LL.Listener.BRegisterListener;
 import com.aode.buyoapp.LL.biz.BusinessBiz;
 import com.aode.buyoapp.LL.biz.IBusinessBiz;
 import com.aode.buyoapp.LL.view.IBusinessRegisterView;

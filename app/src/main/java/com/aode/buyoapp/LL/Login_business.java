@@ -55,7 +55,7 @@ public class Login_business extends AppCompatActivity implements IBusinessLoginV
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplication(), Register_person.class);
+                Intent intent = new Intent(getApplication(), Register_business.class);
                 startActivity(intent);
             }
         });

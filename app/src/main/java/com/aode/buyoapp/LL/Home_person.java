@@ -19,6 +19,7 @@ public class Home_person extends AppCompatActivity implements Login_person.onNam
     public static Fragment fragment;
     public static boolean result = false;
     public static String loginName = "个人用户名";
+    public static String id = "";
     private TextView tv_person_name;
 
     @Override

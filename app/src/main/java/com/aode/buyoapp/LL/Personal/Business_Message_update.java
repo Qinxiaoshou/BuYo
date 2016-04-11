@@ -36,7 +36,7 @@ public class Business_Message_update extends AppCompatActivity implements IBusin
         update();
     }
     public void update(){
-        button = (Button) findViewById(R.id.btn_update_personMessage_confirm);
+        button = (Button) findViewById(R.id.btn_update_businessMessage_confirm);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

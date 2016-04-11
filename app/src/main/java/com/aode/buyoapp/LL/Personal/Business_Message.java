@@ -32,7 +32,7 @@ public class Business_Message extends AppCompatActivity implements IBusinessMess
         update();
     }
     public void update(){
-       button = (Button) findViewById(R.id.btn_update_personMessage);
+       button = (Button) findViewById(R.id.btn_update_BusinessMessage);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

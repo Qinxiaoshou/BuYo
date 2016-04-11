@@ -131,7 +131,7 @@
             android:background="#fe9901">
 
             <ImageView
-                android:id="@+id/iv_permission"
+                android:id="@+id/iv_changePassword"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_centerInParent="true"
@@ -140,7 +140,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/iv_permission"
+                android:layout_below="@+id/iv_changePassword"
                 android:layout_centerHorizontal="true"
                 android:text="修改密码"
                 android:textColor="#FFFFFF" />

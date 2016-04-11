@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="商家信息"
+            android:text="个人信息"
             android:textColor="#FFFFFF"
             android:textSize="23dp" />
     </android.support.v7.widget.Toolbar>
@@ -33,11 +33,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="商家名字:"
+            android:text="个人名字:"
             android:textSize="20dp" />
 
         <EditText
-            android:id="@+id/change_bLoginName"
+            android:id="@+id/change_LoginName"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@null"
@@ -57,11 +57,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="商家电话:"
+            android:text="个人电话:"
             android:textSize="20dp" />
 
         <EditText
-            android:id="@+id/change_bPhone"
+            android:id="@+id/change_Phone"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@null"
@@ -82,23 +82,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="商家地址:"
+            android:text="个人邮箱:"
             android:textSize="20dp" />
 
         <EditText
-            android:id="@+id/change_bAddress"
+            android:id="@+id/change_Email"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@null"
-            android:hint="请修改地址!"
+            android:hint="请修改邮箱!"
             android:inputType="textMultiLine"
-            android:maxLength="30" />
+            android:maxLength="20" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3"
+        android:layout_weight="2"
         android:background="@android:drawable/editbox_background"
         android:orientation="horizontal">
 
@@ -106,17 +106,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="商家介绍:"
+            android:text="个人性别:"
             android:textSize="20dp" />
 
-        <EditText
-            android:id="@+id/change_bIntroduce"
+        <RadioGroup
+            android:id="@+id/change_gender"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@null"
-            android:hint="请修改介绍!"
-            android:inputType="textMultiLine"
-            android:maxLength="50" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_person_gender_boy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="男"
+                android:textSize="20dp" />
+
+            <RadioButton
+                android:id="@+id/rb_person_gender_girl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="女"
+                android:textSize="20dp" />
+        </RadioGroup>
     </LinearLayout>
 
     <RelativeLayout
@@ -125,15 +139,16 @@
         android:layout_weight="2">
 
         <Button
-            android:id="@+id/btn_update_businessMessage_confirm"
+            android:id="@+id/btn_update_personMessage_confirm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="确认修改" />
     </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"/>
+        android:layout_weight="2" />
 </LinearLayout>
 
