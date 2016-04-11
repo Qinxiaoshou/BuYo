@@ -3,56 +3,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <android.support.v7.widget.RecyclerView
-        android:paddingTop="10dp"
-        android:layout_weight="1.0"
-        android:layout_below="@+id/product_appbar"
         android:id="@+id/product_data_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        />
-    <RadioGroup
-        android:background="@drawable/pic_list_item_bg"
+        android:layout_below="@+id/product_appbar"
         android:layout_weight="1.0"
-        android:paddingBottom="4dp"
-        android:layout_alignParentBottom="true"
-        android:id="@+id/rg_buy_manu"
+        android:paddingTop="10dp" />
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_gravity="bottom"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:gravity="bottom"
-        android:orientation="horizontal"
-        >
-        <Button
-            android:id="@+id/btn_call_phone"
-            android:layout_weight="1.0"
-            android:background="#ffffff"
-            android:textColor="#ff7e00"
-            android:layout_height="40dp"
-            android:drawableLeft="@drawable/phone"
-            android:textSize="18sp"
-            android:text="电话咨询" />
-        <Button
-            android:layout_width="80dp"
-            android:background="@drawable/shape_button_ordercheck"
-            android:id="@+id/rbtn_order_checkproduct"
-            android:layout_weight="1.0"
-            android:textSize="16sp"
-            android:layout_height="38dp"
-            android:textColor="#ff393e"
-            android:text="预约看货" />
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="#FFFFFF">
 
         <Button
-            android:layout_marginLeft="10dp"
-            android:id="@+id/rbtn_buynow"
-            android:layout_weight="1.0"
+            android:id="@+id/btn_buy_now"
+            android:layout_width="100dp"
             android:layout_height="38dp"
-            android:textSize="16sp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
             android:background="@drawable/shape_button_buynow"
+            android:text="立即购买"
             android:textColor="#ffffff"
-            android:text="立即购买" />
-
-    </RadioGroup>
+            android:textSize="16sp" />
+    </RelativeLayout>
 </RelativeLayout>

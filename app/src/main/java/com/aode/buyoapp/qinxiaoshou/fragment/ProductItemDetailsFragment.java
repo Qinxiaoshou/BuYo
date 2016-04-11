@@ -9,6 +9,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.aode.buyoapp.R;
 import com.aode.buyoapp.qinxiaoshou.adapter.ProductDataRecyclerViewAdapter;
@@ -23,13 +25,49 @@ public class ProductItemDetailsFragment extends Fragment {
     private View mParentView;
     private Toolbar toolbar2;
     private RecyclerView mRecyclerView;
+
+    //判断是否点击立即购买按钮
+    boolean isClickBuy = false;
+
+    //设置背景暗淡
+    private LinearLayout bg_dim = null;
+
+
+
+    //用户查看商品详情界面立即购买按钮
+    private Button btn_buy_now;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mParentView = inflater.inflate(R.layout.customer_product_details_pager_layout, container, false);
+
+        btn_buy_now = (Button) mParentView.findViewById(R.id.btn_buy_now);
+        btn_buy_now.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                isClickBuy = true;
+                setBackgroundDim(bg_dim,1);
+            }
+        });
         return  mParentView;
     }
 
+    /**
+     * 控制背景变暗，1表示暗，2表示变亮
+     * @author 陈映苗
+     * @param v
+     * @param id
+     */
+    public void setBackgroundDim(View v, int id){
+        switch (id){
+            case 1:
+                v.setVisibility(View.GONE);
+                break;
+            case 2:
+                v.setVisibility(View.VISIBLE);
+                break;
+        }
+    }
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);

@@ -22,6 +22,7 @@ import com.aode.buyoapp.R;
 import com.aode.buyoapp.qinxiaoshou.activity.ConsumerProductDetailsActivity;
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
+import com.bigkoo.convenientbanner.listener.OnItemClickListener;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -248,8 +249,13 @@ public class Person_HomePage extends Fragment {
                 .setPageIndicator(new int[]{R.drawable.login_point, R.drawable.login_point_selected})
                         //设置指示器的方向
                 .setPageIndicatorAlign(ConvenientBanner.PageIndicatorAlign.ALIGN_PARENT_RIGHT);
-                /*      //设置点击监听事件
-                .setOnItemClickListener((OnItemClickListener) this);*/
+                      //设置点击监听事件
+                /*.setOnItemClickListener(new OnItemClickListener() {
+                    @Override
+                    public void onItemClick(int position) {
+                        
+                    }
+                });*/
     }
 
     public static int getResId(String variableName, Class<?> c) {
