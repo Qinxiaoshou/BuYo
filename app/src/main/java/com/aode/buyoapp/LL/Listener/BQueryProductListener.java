@@ -11,7 +11,7 @@ import java.util.List;
  */
 public interface BQueryProductListener {
     //商品获得成功回调接口
-    void loginSuccess(List<Cloth> cloths);
+    void getSuccess(List<Cloth> cloths);
     //商品获得回调接口
-    void loginFailed();
+    void getFailed();
 }

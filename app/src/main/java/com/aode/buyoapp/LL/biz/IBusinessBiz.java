@@ -1,11 +1,15 @@
 package com.aode.buyoapp.LL.biz;
 
+import com.aode.buyoapp.LL.Listener.BAddProductListener;
+import com.aode.buyoapp.LL.Listener.BDeleteProductListener;
 import com.aode.buyoapp.LL.Listener.BLoginListener;
+import com.aode.buyoapp.LL.Listener.BProductChangeListener;
 import com.aode.buyoapp.LL.Listener.BQueryProductListener;
 import com.aode.buyoapp.LL.Listener.BRegisterListener;
 import com.aode.buyoapp.LL.Listener.BShowChangeListener;
 import com.aode.buyoapp.LL.Listener.BShowListener;
 import com.aode.buyoapp.LL.bean.Business;
+import com.aode.buyoapp.LL.bean.Cloth;
 
 /**
  * Created by LiLei on 2016/4/9.Go.
@@ -20,6 +24,12 @@ public interface IBusinessBiz {
     void show(String id,BShowListener BShowListener);
     //修改资料接口
     void change(Business business,BShowChangeListener bShowChangeListener);
+    //增加我商家的商品
+    void addProduct(Cloth cloth,BAddProductListener bAddProductListener);
+    //删除我商家的商品
+    void deleteProduct(Cloth cloth,BDeleteProductListener bDeleteProductListener);
     //获取我商家的商品
     void getProduct(BQueryProductListener bQueryProductListener);
+    //修改商品资料
+    void ProductChange(Cloth cloth,BProductChangeListener bProductChangeListener);
 }

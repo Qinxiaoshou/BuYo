@@ -9,10 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.aode.buyoapp.LL.Presenter.BusinessProductChangePresenter;
 import com.aode.buyoapp.LL.bean.Cloth;
+import com.aode.buyoapp.LL.view.IBusinessProductChangeView;
 import com.aode.buyoapp.R;
 
 
@@ -22,17 +23,18 @@ import com.aode.buyoapp.R;
  * @author 覃培周
  * @// FIXME: 2016/4/7
  */
-public class BusinessUpdateProductDataRecyclerViewAdapter extends RecyclerView.Adapter<BusinessUpdateProductDataRecyclerViewAdapter.ViewHolder> {
+public class BusinessUpdateProductDataRecyclerViewAdapter extends RecyclerView.Adapter<BusinessUpdateProductDataRecyclerViewAdapter.ViewHolder> implements IBusinessProductChangeView {
 
     private Context mContext;
     private Cloth cloth;
     private Button button;
+
     public BusinessUpdateProductDataRecyclerViewAdapter(Context mContext, Cloth cloth, Button button) {
         this.mContext = mContext;
         this.cloth = cloth;
         this.button = button;
     }
-
+    BusinessProductChangePresenter businessProductChangePresenter = new BusinessProductChangePresenter(this);
 
     //列表页面的布局实现
     @Override
@@ -46,25 +48,26 @@ public class BusinessUpdateProductDataRecyclerViewAdapter extends RecyclerView.A
     public void onBindViewHolder(final BusinessUpdateProductDataRecyclerViewAdapter.ViewHolder holder, int position) {
         holder.et_title.setText(cloth.getTitle());
         holder.et_size.setText(cloth.getSize());
-        holder.et_price.setText(cloth.getPrice()+"");
-        holder.et_stock.setText(cloth.getStock()+"");
+        holder.et_price.setText(cloth.getPrice() + "");
+        holder.et_stock.setText(cloth.getStock() + "");
         holder.et_color.setText(cloth.getColor());
         holder.et_parttern.setText(cloth.getPattern());
         //完成按钮
-       button.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-              Cloth cloth = new Cloth();
-               cloth.setTitle(holder.et_title.getText().toString().trim());
-               cloth.setSize(holder.et_size.getText().toString().trim());
-               cloth.setPrice(Double.valueOf(holder.et_price.getText().toString().trim()));
-               cloth.setStock(Long.valueOf(holder.et_stock.getText().toString().trim()));
-               cloth.setColor(holder.et_color.getText().toString().trim());
-               cloth.setPattern(holder.et_parttern.getText().toString().trim());
-               Toast.makeText(mContext,"完成"+cloth,Toast.LENGTH_SHORT).show();
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Cloth cloth = new Cloth();
+                cloth.setTitle(holder.et_title.getText().toString().trim());
+                cloth.setSize(holder.et_size.getText().toString().trim());
+                cloth.setPrice(Double.valueOf(holder.et_price.getText().toString().trim()));
+                cloth.setStock(Long.valueOf(holder.et_stock.getText().toString().trim()));
+                cloth.setColor(holder.et_color.getText().toString().trim());
+                cloth.setPattern(holder.et_parttern.getText().toString().trim());
+                Toast.makeText(mContext, "完成" + cloth, Toast.LENGTH_SHORT).show();
 
-           }
-       });
+                businessProductChangePresenter.ProductChange();
+            }
+        });
     }
 
     @Override
@@ -72,14 +75,29 @@ public class BusinessUpdateProductDataRecyclerViewAdapter extends RecyclerView.A
         return 1;
     }
 
+    @Override
+    public Cloth getProduct() {
+        return cloth;
+    }
+
+    @Override
+    public void toMainActivity() {
+        Toast.makeText(mContext,"修改成功",Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showFailedError() {
+        Toast.makeText(mContext,"修改失败",Toast.LENGTH_SHORT).show();
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
-         final EditText et_title;
-         final EditText et_size;
-         final EditText et_price;
-         final EditText et_stock;
-         final EditText et_color;
-         final EditText et_parttern;
+        final EditText et_title;
+        final EditText et_size;
+        final EditText et_price;
+        final EditText et_stock;
+        final EditText et_color;
+        final EditText et_parttern;
 
         public ViewHolder(View view) {
             super(view);

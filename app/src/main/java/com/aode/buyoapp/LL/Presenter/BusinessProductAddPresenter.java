@@ -2,57 +2,50 @@ package com.aode.buyoapp.LL.Presenter;
 
 import android.os.Handler;
 
-import com.aode.buyoapp.LL.Listener.BQueryProductListener;
-import com.aode.buyoapp.LL.bean.Cloth;
+import com.aode.buyoapp.LL.Listener.BAddProductListener;
 import com.aode.buyoapp.LL.biz.BusinessBiz;
 import com.aode.buyoapp.LL.biz.IBusinessBiz;
-import com.aode.buyoapp.LL.view.IBusinessProductView;
-
-import java.util.List;
+import com.aode.buyoapp.LL.view.IBusinessProductAddView;
 
 
 /**
  * Created by LiLei on 2016/4/9.Go.
- * 个人业务回调接口,通知获取商品情况的状态
+ * 个人业务回调接口,通知增加商品情况的状态
  */
-public class BusinessQueryAllProductsPresenter {
+public class BusinessProductAddPresenter {
     private IBusinessBiz businessBiz;
-    private IBusinessProductView businessProductView;
+    private IBusinessProductAddView businessProductAddView;
     private Handler mHandler = new Handler();
 
-    public BusinessQueryAllProductsPresenter(IBusinessProductView businessProductView) {
+    public BusinessProductAddPresenter(IBusinessProductAddView businessProductAddView) {
         //设置view和业务层，在此调用业务层
-        this.businessProductView = businessProductView;
+        this.businessProductAddView = businessProductAddView;
         this.businessBiz = new BusinessBiz();
     }
 
-    public void QueryAllProduct() {
-
-        businessBiz.getProduct(new BQueryProductListener() {
+    public void ProductAdd() {
+        businessBiz.addProduct(businessProductAddView.getProduct(), new BAddProductListener() {
             @Override
-            public void getSuccess(final List<Cloth> cloths) {
-                //需要在UI线程执行
+            public void addSuccess() {
                 mHandler.post(new Runnable() {
                     @Override
                     public void run() {
                         //真正实现view层IUserLoginView接口方法
-                        businessProductView.toMainActivity(cloths);
+                        businessProductAddView.toMainActivity();
                     }
                 });
-
             }
 
             @Override
-            public void getFailed() {
+            public void addFailed() {
                 //需要在UI线程执行
                 mHandler.post(new Runnable() {
                     @Override
                     public void run() {
-                        businessProductView.showFailedError();
+                        businessProductAddView.showFailedError();
                     }
                 });
             }
         });
-
     }
 }

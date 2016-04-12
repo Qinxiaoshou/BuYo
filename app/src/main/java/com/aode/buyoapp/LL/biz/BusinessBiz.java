@@ -1,7 +1,10 @@
 package com.aode.buyoapp.LL.biz;
 
 import com.aode.buyoapp.LL.Home_business;
+import com.aode.buyoapp.LL.Listener.BAddProductListener;
+import com.aode.buyoapp.LL.Listener.BDeleteProductListener;
 import com.aode.buyoapp.LL.Listener.BLoginListener;
+import com.aode.buyoapp.LL.Listener.BProductChangeListener;
 import com.aode.buyoapp.LL.Listener.BQueryProductListener;
 import com.aode.buyoapp.LL.Listener.BRegisterListener;
 import com.aode.buyoapp.LL.Listener.BShowChangeListener;
@@ -168,12 +171,67 @@ public class BusinessBiz implements IBusinessBiz {
     }
 
     @Override
+    public void addProduct(Cloth cloth, final BAddProductListener bAddProductListener) {
+        String json = new Gson().toJson(cloth);
+        System.out.println(json);
+        OkHttpUtils
+                .post()
+                .url(url.getUrl() + "/tb/admin/business/save")
+                .addParams("cloth", json)
+                .build()
+                .execute(new Callback() {
+                    @Override
+                    public Object parseNetworkResponse(Response response) throws Exception {
+                        return null;
+                    }
+
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        bAddProductListener.addFailed();
+                    }
+
+                    @Override
+                    public void onResponse(Object response) {
+                        bAddProductListener.addSuccess();
+                    }
+                });
+    }
+
+    @Override
+    public void deleteProduct(Cloth cloth, final BDeleteProductListener bDeleteProductListener) {
+        String json = new Gson().toJson(cloth);
+        System.out.println(json);
+        OkHttpUtils
+                .post()
+                .url(url.getUrl() + "/tb/admin/business/delete")
+                .addParams("cloth", json)
+                .build()
+                .execute(new Callback() {
+                    @Override
+                    public Object parseNetworkResponse(Response response) throws Exception {
+                        return null;
+                    }
+
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        bDeleteProductListener.deleteFailed();
+                    }
+
+                    @Override
+                    public void onResponse(Object response) {
+                        bDeleteProductListener.deleteSuccess();
+                    }
+                });
+    }
+
+    @Override
     public void getProduct(final BQueryProductListener bQueryProductListener) {
         abstract class ClothCallback extends Callback<List<Cloth>> {
             @Override
             public List<Cloth> parseNetworkResponse(Response response) throws IOException {
                 String string = response.body().string();
-                Type listType = new TypeToken<LinkedList<Cloth>>(){}.getType();
+                Type listType = new TypeToken<LinkedList<Cloth>>() {
+                }.getType();
                 List<Cloth> cloths = new Gson().fromJson(string, listType);
                 return cloths;
             }
@@ -186,17 +244,45 @@ public class BusinessBiz implements IBusinessBiz {
                 .execute(new ClothCallback() {
                     @Override
                     public void onError(Call call, Exception e) {
-                        bQueryProductListener.loginFailed();
+                        bQueryProductListener.getFailed();
                     }
 
                     @Override
                     public void onResponse(List<Cloth> response) {
-                        bQueryProductListener.loginSuccess(response);
+                        bQueryProductListener.getSuccess(response);
                     }
 
                     @Override
                     public List<Cloth> parseNetworkResponse(Response response) throws IOException {
                         return super.parseNetworkResponse(response);
+                    }
+                });
+    }
+
+    @Override
+    public void ProductChange(Cloth cloth, final BProductChangeListener bProductChangeListener) {
+        String json = new Gson().toJson(cloth);
+        System.out.println(json);
+        OkHttpUtils
+                .post()
+                .url(url.getUrl() + "/tb/admin/cloth/update")
+                .addParams("cloth", json)
+                .build()
+                .execute(new Callback() {
+                    @Override
+                    public Object parseNetworkResponse(Response response) throws Exception {
+                        return null;
+                    }
+
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        System.out.println("失败:" + e);
+                        bProductChangeListener.changeFailed();
+                    }
+
+                    @Override
+                    public void onResponse(Object response) {
+                        bProductChangeListener.changeSuccess();
                     }
                 });
     }

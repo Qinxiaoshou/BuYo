@@ -12,7 +12,6 @@ import android.widget.Button;
 
 import com.aode.buyoapp.LL.bean.Cloth;
 import com.aode.buyoapp.R;
-import com.aode.buyoapp.qinxiaoshou.adapter.BusinessAddProductDataRecyclerViewAdapter;
 import com.aode.buyoapp.qinxiaoshou.adapter.BusinessUpdateProductDataRecyclerViewAdapter;
 
 
@@ -27,6 +26,7 @@ public class BusinessUpdateProductDataFragment extends Fragment {
     private View view;
     private Cloth cloth;
     private Button button;
+
 
     public BusinessUpdateProductDataFragment(Cloth cloth, Button button) {
         this.cloth = cloth;

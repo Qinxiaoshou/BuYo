@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * Created by LiLei on 2016/4/9.Go.
- * 个人查询所有商品接口
+ * 商家查询所有商品接口
  */
 public interface IBusinessProductView {
 
