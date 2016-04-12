@@ -1,6 +1,7 @@
 package com.aode.buyoapp.LL.biz;
 
 import com.aode.buyoapp.LL.Listener.BLoginListener;
+import com.aode.buyoapp.LL.Listener.BQueryProductListener;
 import com.aode.buyoapp.LL.Listener.BRegisterListener;
 import com.aode.buyoapp.LL.Listener.BShowChangeListener;
 import com.aode.buyoapp.LL.Listener.BShowListener;
@@ -19,4 +20,6 @@ public interface IBusinessBiz {
     void show(String id,BShowListener BShowListener);
     //修改资料接口
     void change(Business business,BShowChangeListener bShowChangeListener);
+    //获取我商家的商品
+    void getProduct(BQueryProductListener bQueryProductListener);
 }

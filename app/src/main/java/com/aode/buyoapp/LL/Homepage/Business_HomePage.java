@@ -1,6 +1,7 @@
 package com.aode.buyoapp.LL.Homepage;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -14,12 +15,14 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.aode.buyoapp.LL.Presenter.BusinessQueryAllProductsPresenter;
+import com.aode.buyoapp.LL.bean.Cloth;
+import com.aode.buyoapp.LL.view.IBusinessProductView;
 import com.aode.buyoapp.R;
+import com.aode.buyoapp.qinxiaoshou.activity.ConsumerProductDetailsActivity;
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
 
@@ -27,7 +30,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Business_HomePage extends Fragment {
+public class Business_HomePage extends Fragment implements IBusinessProductView {
 
     private View view;
     private RecyclerView recyclerView;
@@ -46,6 +49,10 @@ public class Business_HomePage extends Fragment {
     private ArrayList<Integer> localImages = new ArrayList<Integer>();
     private ConvenientBanner convenientBanner;
 
+    //交互层
+    BusinessQueryAllProductsPresenter businessQueryAllProductsPresenter = new BusinessQueryAllProductsPresenter(this);
+
+
     public void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
@@ -57,7 +64,7 @@ public class Business_HomePage extends Fragment {
         view = inflater.inflate(R.layout.fragment_business_homepage, container, false);
         //加载广告栏
         convenientBanner();
-        //加载主页商品
+        //加载商品
         recyclerView();
         //scrollview的操作
         scroll();
@@ -94,6 +101,33 @@ public class Business_HomePage extends Fragment {
         });
     }
 
+    @Override
+    public void toMainActivity(final List<Cloth> clothlist) {
+        System.out.println("加载商品" + clothlist);
+        recyclerView = (RecyclerView) view.findViewById(R.id.homepage_recyclerView);
+        //设置布局管理器,重写使之自适应
+        recyclerView.setLayoutManager(mlManager = new MLManager(getActivity(), 2));
+        //设置adapter
+        recyclerView.setAdapter(myAdapter = new MyAdapter(getContext(), clothlist));
+        myAdapter.setOnItemClickLitener(new MyAdapter.OnItemClickLitener() {
+            @Override
+            public void onItemClick(View view, int position) {
+
+                //点击进入商品详情
+                Intent intent = new Intent(getActivity(), ConsumerProductDetailsActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("cloth", clothlist.get(position));
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
+    }
+
+    @Override
+    public void showFailedError() {
+        Toast.makeText(getActivity(), "加载失败，请检查网络", Toast.LENGTH_SHORT).show();
+    }
+
     //下拉框选择事件
     private class OnISListenerImpl implements OnItemSelectedListener {
         @Override
@@ -116,24 +150,13 @@ public class Business_HomePage extends Fragment {
 
     }
 
-    public void recyclerView() {
-        recyclerViewData();
-        recyclerView = (RecyclerView) view.findViewById(R.id.homepage_recyclerView);
-        //设置布局管理器,重写使之自适应
-        recyclerView.setLayoutManager(mlManager = new MLManager(getActivity(), 2));
-        //设置adapter
-        recyclerView.setAdapter(myAdapter = new MyAdapter());
-    }
 
-    protected void recyclerViewData() {
-        commoditys = new ArrayList<commodity>();
-        commodity commodity = new commodity();
-        commodity.setPhoto(R.drawable.buliao1);
-        commodity.setAbstruct("一号商品韩版日版流行帅气男生女生");
-        commodity.setPrice("$1000");
-        for (int i = 0; i < 10; i++) {
-            commoditys.add(commodity);
-        }
+    /**
+     * 加载商家商品
+     */
+    public void recyclerView() {
+        //获取商品信息
+        businessQueryAllProductsPresenter.QueryAllProduct();
     }
 
     class MLManager extends GridLayoutManager {
@@ -223,44 +246,9 @@ public class Business_HomePage extends Fragment {
 
     }
 
-    class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
-
-        @Override
-        public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            MyViewHolder holder = new MyViewHolder(LayoutInflater.from(
-                    getActivity()).inflate(R.layout.homepage_item, parent,
-                    false));
-            return holder;
-        }
-
-        @Override
-        public void onBindViewHolder(MyViewHolder holder, int position) {
-            holder.iv_itemIv.setImageResource(commoditys.get(position).getPhoto());
-            holder.id_item_abstruct.setText(commoditys.get(position).getAbstruct());
-            holder.id_item_price.setText(commoditys.get(position).getPrice());
-        }
-
-        @Override
-        public int getItemCount() {
-            return commoditys.size();
-        }
-
-
-        class MyViewHolder extends RecyclerView.ViewHolder {
-            ImageView iv_itemIv;
-            TextView id_item_abstruct;
-            TextView id_item_price;
-
-            public MyViewHolder(View view) {
-                super(view);
-                iv_itemIv = (ImageView) view.findViewById(R.id.iv_itemIv);
-                id_item_abstruct = (TextView) view.findViewById(R.id.id_item_abstruct);
-                id_item_price = (TextView) view.findViewById(R.id.id_item_price);
-            }
-        }
-    }
-
-
+    /**
+     * 广告栏
+     */
     public void convenientBanner() {
         loadTestDatas();
         convenientBanner = (ConvenientBanner) view.findViewById(R.id.cb_convenientBanner);
@@ -312,18 +300,4 @@ public class Business_HomePage extends Fragment {
         convenientBanner.stopTurning();
     }
 
-    /*private void initImageLoader(){
-        //网络图片例子,结合常用的图片缓存库UIL,你可以根据自己需求自己换其他网络图片库
-        DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder().
-                showImageForEmptyUri(R.drawable.ic_default_adimage)
-                .cacheInMemory(true).cacheOnDisk(true).build();
-
-        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(
-                getApplicationContext()).defaultDisplayImageOptions(defaultOptions)
-                .threadPriority(Thread.NORM_PRIORITY - 2)
-                .denyCacheImageMultipleSizesInMemory()
-                .diskCacheFileNameGenerator(new Md5FileNameGenerator())
-                .tasksProcessingOrder(QueueProcessingType.LIFO).build();
-        ImageLoader.getInstance().init(config);
-    }*/
 }

@@ -1,16 +1,23 @@
 package com.aode.buyoapp.LL.biz;
 
+import com.aode.buyoapp.LL.Home_business;
 import com.aode.buyoapp.LL.Listener.BLoginListener;
+import com.aode.buyoapp.LL.Listener.BQueryProductListener;
 import com.aode.buyoapp.LL.Listener.BRegisterListener;
 import com.aode.buyoapp.LL.Listener.BShowChangeListener;
 import com.aode.buyoapp.LL.Listener.BShowListener;
 import com.aode.buyoapp.LL.bean.Business;
+import com.aode.buyoapp.LL.bean.Cloth;
 import com.aode.buyoapp.LL.url;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.Callback;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.LinkedList;
+import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Response;
@@ -132,15 +139,15 @@ public class BusinessBiz implements IBusinessBiz {
     }
 
     @Override
-    public void change(Business business,final BShowChangeListener bShowChangeListener) {
+    public void change(Business business, final BShowChangeListener bShowChangeListener) {
         OkHttpUtils
                 .post()
                 .url(url.getUrl() + "/tb/admin/business/update")
                 .addParams("id", business.getId())
-                .addParams("LoginName",business.getLoginName())
-                .addParams("phoneNumber",business.getPhoneNumber())
-                .addParams("address",business.getAddress())
-                .addParams("description",business.getDescription())
+                .addParams("LoginName", business.getLoginName())
+                .addParams("phoneNumber", business.getPhoneNumber())
+                .addParams("address", business.getAddress())
+                .addParams("description", business.getDescription())
                 .build()
                 .execute(new Callback() {
                     @Override
@@ -156,6 +163,40 @@ public class BusinessBiz implements IBusinessBiz {
                     @Override
                     public void onResponse(Object response) {
                         bShowChangeListener.changeSuccess();
+                    }
+                });
+    }
+
+    @Override
+    public void getProduct(final BQueryProductListener bQueryProductListener) {
+        abstract class ClothCallback extends Callback<List<Cloth>> {
+            @Override
+            public List<Cloth> parseNetworkResponse(Response response) throws IOException {
+                String string = response.body().string();
+                Type listType = new TypeToken<LinkedList<Cloth>>(){}.getType();
+                List<Cloth> cloths = new Gson().fromJson(string, listType);
+                return cloths;
+            }
+        }
+        OkHttpUtils
+                .post()
+                .url(url.getUrl() + "/tb/admin/cloth/listByBus")
+                .addParams("id", Home_business.business.getId())
+                .build()
+                .execute(new ClothCallback() {
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        bQueryProductListener.loginFailed();
+                    }
+
+                    @Override
+                    public void onResponse(List<Cloth> response) {
+                        bQueryProductListener.loginSuccess(response);
+                    }
+
+                    @Override
+                    public List<Cloth> parseNetworkResponse(Response response) throws IOException {
+                        return super.parseNetworkResponse(response);
                     }
                 });
     }
