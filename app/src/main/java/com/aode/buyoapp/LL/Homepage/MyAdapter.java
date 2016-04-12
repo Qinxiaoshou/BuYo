@@ -50,7 +50,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         holder.iv_itemIv.setImageResource(R.drawable.buliao2);
         holder.id_item_abstruct.setText(cloths.get(position).getTitle());
-        holder.id_item_price.setText(cloths.get(position).getPrice()+"");
+        holder.id_item_price.setText("$"+cloths.get(position).getPrice());
 
         // 如果设置了回调，则设置点击事件
         if (mOnItemClickLitener != null) {

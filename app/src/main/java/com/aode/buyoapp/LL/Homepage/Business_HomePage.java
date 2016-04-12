@@ -22,6 +22,7 @@ import com.aode.buyoapp.LL.Presenter.BusinessQueryAllProductsPresenter;
 import com.aode.buyoapp.LL.bean.Cloth;
 import com.aode.buyoapp.LL.view.IBusinessProductView;
 import com.aode.buyoapp.R;
+import com.aode.buyoapp.qinxiaoshou.activity.BusinessProductDetailsActivity;
 import com.aode.buyoapp.qinxiaoshou.activity.ConsumerProductDetailsActivity;
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
@@ -114,7 +115,7 @@ public class Business_HomePage extends Fragment implements IBusinessProductView 
             public void onItemClick(View view, int position) {
 
                 //点击进入商品详情
-                Intent intent = new Intent(getActivity(), ConsumerProductDetailsActivity.class);
+                Intent intent = new Intent(getActivity(), BusinessProductDetailsActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("cloth", clothlist.get(position));
                 intent.putExtras(bundle);

@@ -43,7 +43,7 @@
         <activity android:name=".qinxiaoshou.activity.ConsumerAddOrderDetailsActivity"
             android:windowSoftInputMode="adjustPan"
             />
-
+        <activity android:name=".qinxiaoshou.activity.BusinessProductDetailsActivity"/>
         <activity
             android:name=".LL.Login_business" />
         <activity
