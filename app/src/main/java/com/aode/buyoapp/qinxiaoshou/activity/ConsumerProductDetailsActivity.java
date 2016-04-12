@@ -31,7 +31,7 @@ public class ConsumerProductDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         Intent intent = getIntent();
-        System.out.println(intent.getIntExtra("p",-1));
+        System.out.println(intent.getLongExtra("id",-1));
 
 
         setContentView(R.layout.business_add_product_layout);

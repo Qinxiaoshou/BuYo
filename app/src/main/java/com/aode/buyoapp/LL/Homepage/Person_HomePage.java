@@ -113,7 +113,13 @@ public class Person_HomePage extends Fragment implements IUserQueryAllProductVie
 
                 //点击进入商品详情
                 Intent intent = new Intent(getActivity(), ConsumerProductDetailsActivity.class);
-                intent.putExtra("id", clothlist.get(position).getbId());
+                intent.putExtra("id", clothlist.get(position).getId());
+                intent.putExtra("bId", clothlist.get(position).getbId());
+                intent.putExtra("title",clothlist.get(position).getTitle());
+                intent.putExtra("price", clothlist.get(position).getPrice());
+                intent.putExtra("width", clothlist.get(position).getWidth());
+                intent.putExtra("size", clothlist.get(position).getSize());
+                intent.putExtra("color", clothlist.get(position).getColor());
                 startActivity(intent);
             }
         });
