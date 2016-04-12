@@ -23,7 +23,7 @@ public class BusinessSettingBusinessPerssionFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view =inflater.inflate(R.layout.info_details_layout, container, false);
+        view =inflater.inflate(R.layout.info_details_layout_2, container, false);
         return view;
     }
 
