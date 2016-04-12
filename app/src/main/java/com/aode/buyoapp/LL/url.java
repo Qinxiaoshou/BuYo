@@ -5,6 +5,7 @@ package com.aode.buyoapp.LL;
  */
 public class url {
     private String url = "http://192.168.0.156:8080";
+
                             /*"http://192.168.155.1:8080";*/
 
     public String getUrl() {

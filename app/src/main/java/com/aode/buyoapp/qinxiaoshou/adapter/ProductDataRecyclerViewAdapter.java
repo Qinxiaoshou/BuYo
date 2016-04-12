@@ -51,6 +51,7 @@ public class ProductDataRecyclerViewAdapter extends RecyclerView.Adapter<Product
         view = holder.mView;
             //商品图片
             imageView = (ImageView) view.findViewById(R.id.iv_product);
+
             //商品标题
             tv_product_data_title = (TextView) view.findViewById(R.id.tv_product_data_title);
             //商品价格
