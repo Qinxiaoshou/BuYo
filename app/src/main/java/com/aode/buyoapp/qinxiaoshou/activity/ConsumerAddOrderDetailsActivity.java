@@ -10,26 +10,29 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.aode.buyoapp.LL.bean.Cloth;
 import com.aode.buyoapp.R;
+import com.aode.buyoapp.qinxiaoshou.fragment.ConsumerAddOrderDetailsFragment;
 import com.aode.buyoapp.qinxiaoshou.fragment.ProductItemDetailsFragment;
+
+import org.w3c.dom.Text;
 
 
 /**
- * 用户商品详情activity
+ * 用户添加详情activity
  * @author 覃培周
  * @// FIXME: 2016/4/7
  */
-public class ConsumerProductDetailsActivity extends AppCompatActivity {
+public class ConsumerAddOrderDetailsActivity extends AppCompatActivity {
 
-    private ProductItemDetailsFragment productItemDetailsFragment;
+    private ConsumerAddOrderDetailsFragment productItemDetailsFragment;
     private TextView tv_g_add_product_title;
     private Button button;
     private Toolbar toolbar;
     private RadioGroup rg_h_open_permission;
     private TextView tv_rg_name;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,12 +45,12 @@ public class ConsumerProductDetailsActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         //步骤二：用add()方法加上Fragment的对象rightFragment
-        productItemDetailsFragment = new ProductItemDetailsFragment(cloth);
+        productItemDetailsFragment = new ConsumerAddOrderDetailsFragment();
         toolbar = (Toolbar) findViewById(R.id.toolbar_g_product_appbar);
         tv_rg_name = (TextView) findViewById(R.id.tv_rg_name);
         tv_g_add_product_title = (TextView) findViewById(R.id.tv_g_add_product_title);
-        rg_h_open_permission = (RadioGroup) findViewById(R.id.rg_h_open_permission);
         button = (Button) findViewById(R.id.btn_right_text);
+        rg_h_open_permission = (RadioGroup) findViewById(R.id.rg_h_open_permission);
         toolbar.setNavigationIcon(R.drawable.left_arrow);//设置导航栏图标
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,20 +58,19 @@ public class ConsumerProductDetailsActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
-
-        tv_g_add_product_title.setText("商品详情");
+        tv_g_add_product_title.setText("添加订单");
         rg_h_open_permission.setVisibility(View.VISIBLE);
-        tv_rg_name.setText("立即购买");
+        tv_rg_name.setText("提交订单");
         button.setVisibility(View.GONE);
         transaction.add(R.id.fl_g_framelayout, productItemDetailsFragment).commit();
 
-       //跳转到添加订单页面
+         //提交订单
         rg_h_open_permission.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ConsumerProductDetailsActivity.this,ConsumerAddOrderDetailsActivity.class);
-                startActivity(intent);
+                Toast.makeText(getApplicationContext(),"提交订单",Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 }

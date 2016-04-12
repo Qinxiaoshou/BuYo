@@ -26,6 +26,7 @@ import com.aode.buyoapp.qinxiaoshou.activity.ConsumerProductDetailsActivity;
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
 
+import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
@@ -113,13 +114,9 @@ public class Person_HomePage extends Fragment implements IUserQueryAllProductVie
 
                 //点击进入商品详情
                 Intent intent = new Intent(getActivity(), ConsumerProductDetailsActivity.class);
-                intent.putExtra("id", clothlist.get(position).getId());
-                intent.putExtra("bId", clothlist.get(position).getbId());
-                intent.putExtra("title",clothlist.get(position).getTitle());
-                intent.putExtra("price", clothlist.get(position).getPrice());
-                intent.putExtra("width", clothlist.get(position).getWidth());
-                intent.putExtra("size", clothlist.get(position).getSize());
-                intent.putExtra("color", clothlist.get(position).getColor());
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("cloth",clothlist.get(position));
+                intent.putExtras(bundle);
                 startActivity(intent);
             }
         });

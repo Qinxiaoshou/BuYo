@@ -3,30 +3,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/product_data_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/product_appbar"
         android:layout_weight="1.0"
-        android:paddingTop="10dp" />
-
-    <RelativeLayout
+        android:paddingTop="10dp"
+       />
+    <!--<RadioGroup
+        android:background="@drawable/pic_list_item_bg"
+        android:layout_weight="1.0"
+        android:id="@+id/rg_buy_manu"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:layout_alignParentBottom="true"
-        android:background="#FFFFFF">
-
+        >
         <Button
+            android:layout_gravity="right"
             android:id="@+id/btn_buy_now"
-            android:layout_width="100dp"
-            android:layout_height="38dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:background="@drawable/shape_button_buynow"
             android:text="立即购买"
             android:textColor="#ffffff"
             android:textSize="16sp" />
-    </RelativeLayout>
+    </RadioGroup>-->
 </RelativeLayout>

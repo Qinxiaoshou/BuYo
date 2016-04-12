@@ -40,6 +40,9 @@
         <activity android:name=".qinxiaoshou.BusinessSearchOtherBusinessPagerActivity" />
         <activity android:name=".qinxiaoshou.ConsumerOrderActivity" />
         <activity android:name=".qinxiaoshou.ConsumerProductListActivity" />
+        <activity android:name=".qinxiaoshou.activity.ConsumerAddOrderDetailsActivity"
+            android:windowSoftInputMode="adjustPan"
+            />
 
         <activity
             android:name=".LL.Login_business" />
