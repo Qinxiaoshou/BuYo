@@ -8,9 +8,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import com.aode.buyoapp.LL.bean.Cloth;
 import com.aode.buyoapp.R;
 import com.aode.buyoapp.qinxiaoshou.adapter.BusinessAddProductDataRecyclerViewAdapter;
+import com.aode.buyoapp.qinxiaoshou.adapter.BusinessUpdateProductDataRecyclerViewAdapter;
 
 
 /**
@@ -22,6 +25,13 @@ public class BusinessUpdateProductDataFragment extends Fragment {
     private RecyclerView recyclerView;
     private Toolbar toolbar;
     private View view;
+    private Cloth cloth;
+    private Button button;
+
+    public BusinessUpdateProductDataFragment(Cloth cloth, Button button) {
+        this.cloth = cloth;
+        this.button = button;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -34,6 +44,6 @@ public class BusinessUpdateProductDataFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view2);
          recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        recyclerView.setAdapter(new BusinessAddProductDataRecyclerViewAdapter(getActivity()));
+        recyclerView.setAdapter(new BusinessUpdateProductDataRecyclerViewAdapter(getActivity(),cloth,button));
     }
 }

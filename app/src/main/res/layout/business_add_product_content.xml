@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_marginLeft="10dp"
     android:orientation="vertical" >
     <LinearLayout
@@ -17,7 +17,7 @@
             android:text="标题"/>
         <EditText
             android:paddingLeft="10dp"
-            android:id="@+id/add_pattern"
+            android:id="@+id/et_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="请输入商品标题"
@@ -65,28 +65,6 @@
 </LinearLayout>
 
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        android:text="商品描述"/>
-    <EditText
-        android:layout_marginRight="10dp"
-        android:id="@+id/add_content"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:hint="请输入商品描述"
-        android:textSize="12dp"
-        android:enabled="true"
-        android:gravity="top"
-        android:inputType="textMultiLine"
-        android:minLines="6"
-        android:maxLines="10"
-        android:scrollbars="vertical"
-        android:background="@android:drawable/edit_text"
-        >
-    </EditText>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -104,31 +82,10 @@
                 android:text="尺寸"/>
             <EditText
                 android:paddingLeft="10dp"
-                android:id="@+id/add_size_long"
+                android:id="@+id/et_size"
                 android:layout_width="80dp"
                 android:layout_height="35dp"
-                android:hint="长"
-                android:textSize="12dp"
-                android:enabled="true"
-                android:gravity="top"
-                android:inputType="textMultiLine"
-                android:minLines="1"
-                android:maxLines="1"
-                android:background="@android:drawable/edit_text"
-                android:scrollbars="vertical"
-                >
-            </EditText>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:text="x"/>
-            <EditText
-                android:paddingLeft="10dp"
-                android:id="@+id/add_size_heigh"
-                android:layout_width="80dp"
-                android:layout_height="35dp"
-                android:hint="宽"
+                android:hint="单位/m"
                 android:textSize="12dp"
                 android:enabled="true"
                 android:gravity="top"
@@ -153,7 +110,7 @@
                 android:text="价格"/>
             <EditText
                 android:paddingLeft="10dp"
-                android:id="@+id/add_price"
+                android:id="@+id/et_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="请输入价格"
@@ -180,7 +137,7 @@
                 android:text="库存"/>
             <EditText
                 android:paddingLeft="10dp"
-                android:id="@+id/add_gooscount"
+                android:id="@+id/et_stock"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="请输入库存"
@@ -207,10 +164,37 @@
                 android:text="颜色"/>
             <EditText
                 android:paddingLeft="10dp"
-                android:id="@+id/add_color"
+                android:id="@+id/et_color"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="请输入颜色"
+                android:textSize="12dp"
+                android:enabled="true"
+                android:gravity="top"
+                android:inputType="textMultiLine"
+                android:minLines="1"
+                android:maxLines="1"
+                android:background="@null"
+                android:scrollbars="vertical"
+                >
+            </EditText>
+        </LinearLayout>
+        <LinearLayout
+            android:background="@android:drawable/edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:text="图案"/>
+            <EditText
+                android:paddingLeft="10dp"
+                android:id="@+id/et_parttern"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="请输入图案种类"
                 android:textSize="12dp"
                 android:enabled="true"
                 android:gravity="top"
