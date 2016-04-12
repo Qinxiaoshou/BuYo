@@ -51,7 +51,6 @@ public class Person_HomePage extends Fragment implements IUserQueryAllProductVie
     UserQueryAllProductsPresenter userQueryAllProductsPresenter = new UserQueryAllProductsPresenter(this);
 
 
-
     public void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
@@ -102,7 +101,7 @@ public class Person_HomePage extends Fragment implements IUserQueryAllProductVie
 
     @Override
     public void toMainActivity(final List<Cloth> clothlist) {
-        System.out.println("加载商品"+clothlist);
+        System.out.println("加载商品" + clothlist);
         recyclerView = (RecyclerView) view.findViewById(R.id.homepage_recyclerView);
         //设置布局管理器,重写使之自适应
         recyclerView.setLayoutManager(mlManager = new MLManager(getActivity(), 2));
@@ -122,7 +121,7 @@ public class Person_HomePage extends Fragment implements IUserQueryAllProductVie
 
     @Override
     public void showFailedError() {
-
+        Toast.makeText(getActivity(), "加载失败，请检查网络", Toast.LENGTH_SHORT).show();
     }
 
     //下拉框选择事件
