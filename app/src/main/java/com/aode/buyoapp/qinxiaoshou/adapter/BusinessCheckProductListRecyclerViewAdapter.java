@@ -12,8 +12,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.aode.buyoapp.LL.bean.Cloth;
 import com.aode.buyoapp.R;
 import com.aode.buyoapp.qinxiaoshou.activity.BusinessUpdateProductMessagesActivity;
+
+import java.util.List;
 
 
 /**
@@ -24,12 +27,15 @@ import com.aode.buyoapp.qinxiaoshou.activity.BusinessUpdateProductMessagesActivi
 public class BusinessCheckProductListRecyclerViewAdapter extends RecyclerView.Adapter<BusinessCheckProductListRecyclerViewAdapter.ViewHolder> {
 
     private Context mContext;
-
+    private List<Cloth> cloths;
     public BusinessCheckProductListRecyclerViewAdapter(Context mContext) {
         this.mContext = mContext;
     }
 
-
+    public BusinessCheckProductListRecyclerViewAdapter(Context mContext,List<Cloth> cloths) {
+        this.mContext = mContext;
+        this.cloths = cloths;
+    }
     //列表页面的布局实现
     @Override
     public BusinessCheckProductListRecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -59,7 +65,7 @@ public class BusinessCheckProductListRecyclerViewAdapter extends RecyclerView.Ad
 
     @Override
     public int getItemCount() {
-        return 5;
+        return cloths.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
