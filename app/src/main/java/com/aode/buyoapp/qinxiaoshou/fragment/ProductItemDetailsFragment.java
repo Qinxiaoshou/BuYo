@@ -1,6 +1,5 @@
 package com.aode.buyoapp.qinxiaoshou.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,11 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-import com.aode.buyoapp.LL.bean.Cloth;
 import com.aode.buyoapp.R;
-import com.aode.buyoapp.qinxiaoshou.activity.ConsumerAddOrderDetailsActivity;
-import com.aode.buyoapp.qinxiaoshou.adapter.BusinessHavePermissonProductRecyclerViewAdapter;
-import com.aode.buyoapp.qinxiaoshou.adapter.BusinessOrderManageDataRecyclerViewAdapter;
 import com.aode.buyoapp.qinxiaoshou.adapter.ProductDataRecyclerViewAdapter;
 
 
@@ -30,7 +25,7 @@ public class ProductItemDetailsFragment extends Fragment {
     private View mParentView;
     private Toolbar toolbar2;
     private RecyclerView mRecyclerView;
-    private Cloth cloth;
+
     //判断是否点击立即购买按钮
     boolean isClickBuy = false;
 
@@ -41,26 +36,19 @@ public class ProductItemDetailsFragment extends Fragment {
 
     //用户查看商品详情界面立即购买按钮
     private Button btn_buy_now;
-
-    public ProductItemDetailsFragment(Cloth cloth) {
-        this.cloth = cloth;
-    }
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mParentView = inflater.inflate(R.layout.info_details_layout, container, false);
+        mParentView = inflater.inflate(R.layout.customer_product_details_pager_layout, container, false);
 
-      //  btn_buy_now = (Button) mParentView.findViewById(R.id.btn_buy_now);
-       /* btn_buy_now.setOnClickListener(new View.OnClickListener() {
+        btn_buy_now = (Button) mParentView.findViewById(R.id.btn_buy_now);
+        btn_buy_now.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                *//*isClickBuy = true;
-                setBackgroundDim(bg_dim,1);*//*
-                Intent intent = new Intent(getContext(),ConsumerAddOrderDetailsActivity.class);
-                startActivity(intent);
+                isClickBuy = true;
+                setBackgroundDim(bg_dim,1);
             }
-        });*/
+        });
         return  mParentView;
     }
 
@@ -83,8 +71,12 @@ public class ProductItemDetailsFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mRecyclerView = (RecyclerView) mParentView.findViewById(R.id.recycler_view2);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(mParentView.getContext()));
-        mRecyclerView.setAdapter(new ProductDataRecyclerViewAdapter(cloth,getActivity()));
+        //类listview布局
+        mRecyclerView = (RecyclerView) mParentView.findViewById(R.id.product_data_recycler_view);
+
+        LinearLayoutManager manager = new LinearLayoutManager(mRecyclerView.getContext());
+        manager.setOrientation(LinearLayoutManager.VERTICAL);
+        mRecyclerView.setLayoutManager(manager);
+        mRecyclerView.setAdapter(new ProductDataRecyclerViewAdapter(getActivity()));
     }
 }
