@@ -103,6 +103,11 @@ public class BusinessBiz implements IBusinessBiz {
                 });
     }
 
+    /**
+     * 展示商家资料
+     * @param id
+     * @param BShowListener
+     */
     @Override
     public void show(String id, final BShowListener BShowListener) {
 
@@ -141,6 +146,11 @@ public class BusinessBiz implements IBusinessBiz {
                 });
     }
 
+    /**
+     * 修改商家资料
+     * @param business
+     * @param bShowChangeListener
+     */
     @Override
     public void change(Business business, final BShowChangeListener bShowChangeListener) {
         OkHttpUtils
@@ -170,6 +180,11 @@ public class BusinessBiz implements IBusinessBiz {
                 });
     }
 
+    /**
+     * 增加商品
+     * @param cloth
+     * @param bAddProductListener
+     */
     @Override
     public void addProduct(Cloth cloth, final BAddProductListener bAddProductListener) {
         String json = new Gson().toJson(cloth);
@@ -196,7 +211,11 @@ public class BusinessBiz implements IBusinessBiz {
                     }
                 });
     }
-
+    /**
+     * 删除商品
+     * @param cloth
+     * @param bDeleteProductListener
+     */
     @Override
     public void deleteProduct(Cloth cloth, final BDeleteProductListener bDeleteProductListener) {
         String json = new Gson().toJson(cloth);
@@ -224,6 +243,10 @@ public class BusinessBiz implements IBusinessBiz {
                 });
     }
 
+    /**
+     * 获取商品
+     * @param bQueryProductListener
+     */
     @Override
     public void getProduct(final BQueryProductListener bQueryProductListener) {
         abstract class ClothCallback extends Callback<List<Cloth>> {
@@ -259,6 +282,11 @@ public class BusinessBiz implements IBusinessBiz {
                 });
     }
 
+    /**
+     * 修改商品
+     * @param cloth
+     * @param bProductChangeListener
+     */
     @Override
     public void ProductChange(Cloth cloth, final BProductChangeListener bProductChangeListener) {
         String json = new Gson().toJson(cloth);
