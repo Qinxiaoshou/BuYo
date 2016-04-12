@@ -18,39 +18,26 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.aode.buyoapp.LL.Presenter.UserQueryAllProductsPresenter;
 import com.aode.buyoapp.LL.bean.Cloth;
-import com.aode.buyoapp.LL.bean.ConsumerQueryProductBean;
-import com.aode.buyoapp.LL.url;
+import com.aode.buyoapp.LL.view.IUserQueryAllProductView;
 import com.aode.buyoapp.R;
 import com.aode.buyoapp.qinxiaoshou.activity.ConsumerProductDetailsActivity;
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
-import com.bigkoo.convenientbanner.listener.OnItemClickListener;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import com.zhy.http.okhttp.OkHttpUtils;
-import com.zhy.http.okhttp.callback.Callback;
 
-import java.io.IOException;
 import java.lang.reflect.Field;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
-import okhttp3.Call;
-import okhttp3.Response;
-
-public class Person_HomePage extends Fragment {
+public class Person_HomePage extends Fragment implements IUserQueryAllProductView {
 
     private View view;
     private RecyclerView recyclerView;
-    private LinkedList<Cloth> cloths;
     //recyclerView
     private MyAdapter myAdapter;
     private MLManager mlManager;
-    private List<commodity> commoditys;
-
+    //下拉框
     private String choose;
     private EditText editText;
     private String etsearch;
@@ -60,17 +47,19 @@ public class Person_HomePage extends Fragment {
     private ArrayList<Integer> localImages = new ArrayList<Integer>();
     private ConvenientBanner convenientBanner;
 
+    //交互层
+    UserQueryAllProductsPresenter userQueryAllProductsPresenter = new UserQueryAllProductsPresenter(this);
+
+
+
     public void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
-        queryAllProducts();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        //加载服务器数据
-        queryAllProducts();
         view = inflater.inflate(R.layout.fragment_person_homepage, container, false);
         //加载广告栏
         convenientBanner();
@@ -111,6 +100,31 @@ public class Person_HomePage extends Fragment {
         });
     }
 
+    @Override
+    public void toMainActivity(final List<Cloth> clothlist) {
+        System.out.println("加载商品"+clothlist);
+        recyclerView = (RecyclerView) view.findViewById(R.id.homepage_recyclerView);
+        //设置布局管理器,重写使之自适应
+        recyclerView.setLayoutManager(mlManager = new MLManager(getActivity(), 2));
+        //设置adapter
+        recyclerView.setAdapter(myAdapter = new MyAdapter(getContext(), clothlist));
+        myAdapter.setOnItemClickLitener(new MyAdapter.OnItemClickLitener() {
+            @Override
+            public void onItemClick(View view, int position) {
+
+                //点击进入商品详情
+                Intent intent = new Intent(getActivity(), ConsumerProductDetailsActivity.class);
+                intent.putExtra("id", clothlist.get(position).getbId());
+                startActivity(intent);
+            }
+        });
+    }
+
+    @Override
+    public void showFailedError() {
+
+    }
+
     //下拉框选择事件
     private class OnISListenerImpl implements OnItemSelectedListener {
         @Override
@@ -134,31 +148,8 @@ public class Person_HomePage extends Fragment {
     }
 
     public void recyclerView() {
-        recyclerViewData();
-        recyclerView = (RecyclerView) view.findViewById(R.id.homepage_recyclerView);
-        //设置布局管理器,重写使之自适应
-        recyclerView.setLayoutManager(mlManager = new MLManager(getActivity(), 2));
-        //设置adapter
-        recyclerView.setAdapter(myAdapter = new MyAdapter(getContext(),commoditys));
-        myAdapter.setOnItemClickLitener(new MyAdapter.OnItemClickLitener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                //点击进入商品详情
-                Intent intent = new Intent(getActivity(), ConsumerProductDetailsActivity.class);
-                intent.putExtra("p", position);
-                startActivity(intent);
-            }
-        });
-    }
-    protected void recyclerViewData() {
-        commoditys = new ArrayList<commodity>();
-        for (Cloth cloth: cloths){
-            commodity commodity = new commodity();
-            commodity.setPhoto(R.drawable.buliao1);
-            commodity.setPrice("$" + cloth.getWidth());
-            commodity.setAbstruct(cloth.getTitle());
-            commoditys.add(commodity);
-        }
+        //获取商品信息
+        userQueryAllProductsPresenter.QueryAllProduct();
     }
 
     class MLManager extends GridLayoutManager {
@@ -265,7 +256,7 @@ public class Person_HomePage extends Fragment {
                 .setPageIndicator(new int[]{R.drawable.login_point, R.drawable.login_point_selected})
                         //设置指示器的方向
                 .setPageIndicatorAlign(ConvenientBanner.PageIndicatorAlign.ALIGN_PARENT_RIGHT);
-                      //设置点击监听事件
+        //设置点击监听事件
                 /*.setOnItemClickListener(new OnItemClickListener() {
                     @Override
                     public void onItemClick(int position) {
@@ -304,65 +295,5 @@ public class Person_HomePage extends Fragment {
         super.onPause();
         convenientBanner.stopTurning();
     }
-    /**
-     * 用户查询所有的商品
-     */
-    private ConsumerQueryProductBean consumerQueryProductBean;
 
-    public List<Cloth> queryAllProducts(){
-        abstract class ClothCallback extends Callback<ConsumerQueryProductBean> {
-            @Override
-            public ConsumerQueryProductBean parseNetworkResponse(Response response) throws IOException {
-                String string = response.body().string();
-                Type listType = new TypeToken<LinkedList<Cloth>>(){}.getType();
-                Gson gson = new Gson();
-                cloths = gson.fromJson(string, listType);
-               /* for (Iterator iterator = cloths.iterator(); iterator.hasNext();) {
-                    Cloth cloth = (Cloth) iterator.next();
-                    cloths.add(cloth);
-                }
-                for (cloths){
-
-                }*/
-                System.out.println("cloths!!!!-->:"+cloths);
-                return consumerQueryProductBean;
-            }
-        }
-        OkHttpUtils
-                .post()
-                .url(new url().getUrl()+"/tb")
-                .build()
-                .execute(new ClothCallback() {
-                    @Override
-                    public void onError(Call call, Exception e) {
-                        System.out.println("错误:" + e);
-                    }
-
-                    @Override
-                    public void onResponse(ConsumerQueryProductBean response) {
-                    }
-
-
-                    @Override
-                    public ConsumerQueryProductBean parseNetworkResponse(Response response) throws IOException {
-                        return super.parseNetworkResponse(response);
-
-                    }
-                });
-        return  cloths;
-    }
-    /*private void initImageLoader(){
-        //网络图片例子,结合常用的图片缓存库UIL,你可以根据自己需求自己换其他网络图片库
-        DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder().
-                showImageForEmptyUri(R.drawable.ic_default_adimage)
-                .cacheInMemory(true).cacheOnDisk(true).build();
-
-        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(
-                getApplicationContext()).defaultDisplayImageOptions(defaultOptions)
-                .threadPriority(Thread.NORM_PRIORITY - 2)
-                .denyCacheImageMultipleSizesInMemory()
-                .diskCacheFileNameGenerator(new Md5FileNameGenerator())
-                .tasksProcessingOrder(QueueProcessingType.LIFO).build();
-        ImageLoader.getInstance().init(config);
-    }*/
 }

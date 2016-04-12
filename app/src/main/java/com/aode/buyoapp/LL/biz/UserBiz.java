@@ -2,16 +2,22 @@ package com.aode.buyoapp.LL.biz;
 
 import com.aode.buyoapp.LL.Listener.ChangePasswordListener;
 import com.aode.buyoapp.LL.Listener.LoginListener;
+import com.aode.buyoapp.LL.Listener.QueryProductListener;
 import com.aode.buyoapp.LL.Listener.RegisterListener;
 import com.aode.buyoapp.LL.Listener.ShowChangeListener;
 import com.aode.buyoapp.LL.Listener.ShowListener;
+import com.aode.buyoapp.LL.bean.Cloth;
 import com.aode.buyoapp.LL.bean.User;
 import com.aode.buyoapp.LL.url;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.Callback;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.LinkedList;
+import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Response;
@@ -198,4 +204,36 @@ public class UserBiz implements IUserBiz {
 
 
                 }
+
+    @Override
+    public void queryAllProduct(final QueryProductListener queryProductListener) {
+        abstract class ClothCallback extends Callback<List<Cloth>> {
+            @Override
+            public List<Cloth> parseNetworkResponse(Response response) throws IOException {
+                String string = response.body().string();
+                Type listType = new TypeToken<LinkedList<Cloth>>(){}.getType();
+                List<Cloth> cloths = new Gson().fromJson(string,listType);
+                return cloths;
+            }
+        }
+        OkHttpUtils
+                .post()
+                .url(url.getUrl() + "/tb/")
+                .build()
+                .execute(new ClothCallback() {
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        queryProductListener.loginFailed();
+                    }
+
+                    @Override
+                    public void onResponse(List<Cloth> response) {
+                        queryProductListener.loginSuccess(response);
+                    }
+                    @Override
+                    public List<Cloth> parseNetworkResponse(Response response) throws IOException {
+                        return super.parseNetworkResponse(response);
+                    }
+                });
     }
+}

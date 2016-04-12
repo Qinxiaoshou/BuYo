@@ -2,6 +2,7 @@ package com.aode.buyoapp.LL.biz;
 
 import com.aode.buyoapp.LL.Listener.ChangePasswordListener;
 import com.aode.buyoapp.LL.Listener.LoginListener;
+import com.aode.buyoapp.LL.Listener.QueryProductListener;
 import com.aode.buyoapp.LL.Listener.RegisterListener;
 import com.aode.buyoapp.LL.Listener.ShowChangeListener;
 import com.aode.buyoapp.LL.Listener.ShowListener;
@@ -26,4 +27,7 @@ public interface IUserBiz {
 
     //修改密码接口
     void changePassword(String id, String oldPassword, String newPassword, ChangePasswordListener changePasswordListener);
+
+    //获取个人的商品
+    void queryAllProduct(QueryProductListener queryProductListener);
 }

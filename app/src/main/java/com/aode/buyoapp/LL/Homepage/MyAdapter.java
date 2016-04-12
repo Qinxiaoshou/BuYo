@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.aode.buyoapp.LL.bean.Cloth;
 import com.aode.buyoapp.R;
 
 import java.util.List;
@@ -18,11 +19,11 @@ import java.util.List;
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     private Context context;
-    private List<commodity> commoditys;
+    private List<Cloth> cloths;
 
-    public MyAdapter(Context context, List<commodity> commoditys) {
+    public MyAdapter(Context context, List<Cloth> cloths) {
         this.context = context;
-        this.commoditys = commoditys;
+        this.cloths = cloths;
     }
 
 
@@ -47,9 +48,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
-        holder.iv_itemIv.setImageResource(commoditys.get(position).getPhoto());
-        holder.id_item_abstruct.setText(commoditys.get(position).getAbstruct());
-        holder.id_item_price.setText(commoditys.get(position).getPrice());
+        holder.iv_itemIv.setImageResource(R.drawable.buliao2);
+        holder.id_item_abstruct.setText(cloths.get(position).getTitle());
+        holder.id_item_price.setText(cloths.get(position).getPrice()+"");
 
         // 如果设置了回调，则设置点击事件
         if (mOnItemClickLitener != null) {
@@ -65,7 +66,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @Override
     public int getItemCount() {
-        return commoditys.size();
+        return cloths.size();
     }
 
 
