@@ -28,6 +28,7 @@ public class BusinessUpdateProductDataRecyclerViewAdapter extends RecyclerView.A
     private Context mContext;
     private Cloth cloth;
     private Button button;
+    private Cloth cloth2;
 
     public BusinessUpdateProductDataRecyclerViewAdapter(Context mContext, Cloth cloth, Button button) {
         this.mContext = mContext;
@@ -56,13 +57,14 @@ public class BusinessUpdateProductDataRecyclerViewAdapter extends RecyclerView.A
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Cloth cloth = new Cloth();
-                cloth.setTitle(holder.et_title.getText().toString().trim());
-                cloth.setSize(holder.et_size.getText().toString().trim());
-                cloth.setPrice(Double.valueOf(holder.et_price.getText().toString().trim()));
-                cloth.setStock(Long.valueOf(holder.et_stock.getText().toString().trim()));
-                cloth.setColor(holder.et_color.getText().toString().trim());
-                cloth.setPattern(holder.et_parttern.getText().toString().trim());
+                cloth2 = new Cloth();
+                cloth2.setId(cloth.getId());
+                cloth2.setTitle(holder.et_title.getText().toString().trim());
+                cloth2.setSize(holder.et_size.getText().toString().trim());
+                cloth2.setPrice(Double.valueOf(holder.et_price.getText().toString().trim()));
+                cloth2.setStock(Long.valueOf(holder.et_stock.getText().toString().trim()));
+                cloth2.setColor(holder.et_color.getText().toString().trim());
+                cloth2.setPattern(holder.et_parttern.getText().toString().trim());
                 Toast.makeText(mContext, "完成" + cloth, Toast.LENGTH_SHORT).show();
 
                 businessProductChangePresenter.ProductChange();
@@ -77,7 +79,7 @@ public class BusinessUpdateProductDataRecyclerViewAdapter extends RecyclerView.A
 
     @Override
     public Cloth getProduct() {
-        return cloth;
+        return cloth2;
     }
 
     @Override

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_marginLeft="10dp"
     android:orientation="vertical" >
     <LinearLayout
@@ -25,23 +25,27 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <TextView
+                android:id="@+id/tv_title"
                 android:textColor="#242424"
                 android:textSize="12sp"
                 android:text="鹏威 2016春季新款男鞋子 英伦男士轻便休闲真皮豆豆鞋 时尚百搭一..."
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
+                android:id="@+id/tv_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="销量 0"
+                android:text="100￥"
                 android:textColor="#7c7e83"/>
             <TextView
+                android:id="@+id/tv_stock"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="库存 1"
                 android:textColor="#7c7e83"/>
         </LinearLayout>
-        <TextView
+        <Button
+            android:id="@+id/btn_delete"
             android:layout_marginTop="10dp"
             android:gravity="center"
             android:background="#e16464"
