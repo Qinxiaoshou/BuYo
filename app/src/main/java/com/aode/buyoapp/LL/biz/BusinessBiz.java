@@ -192,7 +192,7 @@ public class BusinessBiz implements IBusinessBiz {
         OkHttpUtils
                 .post()
                 .url(url.getUrl() + "/tb/admin/cloth/save")
-                .addParams("cloth", json)
+                .addParams("clothStr", json)
                 .build()
                 .execute(new Callback() {
                     @Override
@@ -223,7 +223,7 @@ public class BusinessBiz implements IBusinessBiz {
         OkHttpUtils
                 .post()
                 .url(url.getUrl() + "/tb/admin/cloth/delete")
-                .addParams("cloth", json)
+                .addParams("clothStr", json)
                 .build()
                 .execute(new Callback() {
                     @Override
@@ -294,7 +294,7 @@ public class BusinessBiz implements IBusinessBiz {
         OkHttpUtils
                 .post()
                 .url(url.getUrl() + "/tb/admin/cloth/update")
-                .addParams("cloth", json)
+                .addParams("clothStr", json)
                 .build()
                 .execute(new Callback() {
                     @Override
