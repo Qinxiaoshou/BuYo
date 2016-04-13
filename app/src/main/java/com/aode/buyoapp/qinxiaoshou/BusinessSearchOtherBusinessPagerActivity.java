@@ -14,6 +14,10 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.aode.buyoapp.LL.Listener.BSearchListener;
+import com.aode.buyoapp.LL.Presenter.BusinessSearchPresenter;
+import com.aode.buyoapp.LL.bean.Business;
+import com.aode.buyoapp.LL.view.IBusinessSearchView;
 import com.aode.buyoapp.R;
 import com.aode.buyoapp.qinxiaoshou.activity.BusinessChooseBusinessAndPermissionActivity;
 import com.aode.buyoapp.qinxiaoshou.adapter.SearchAdapter;
@@ -30,18 +34,19 @@ import java.util.List;
  * @author 覃培周
  * @// FIXME: 2016/4/7
  */
-public class BusinessSearchOtherBusinessPagerActivity extends Activity implements MySearchView.SearchViewListener {
-
+public class BusinessSearchOtherBusinessPagerActivity extends Activity implements MySearchView.SearchViewListener ,IBusinessSearchView{
+    BusinessSearchPresenter businessSearchPresenter = new BusinessSearchPresenter(this);
     /**
      * 搜索结果列表view
      */
     private ListView lvResults;
-
+    private String name;
+    private List<Business> businessList ;
+    private List<Business> businessList2;
     /**
      * 搜索view
      */
     private MySearchView searchView;
-
 
     /**
      * 热搜框列表adapter
@@ -58,7 +63,6 @@ public class BusinessSearchOtherBusinessPagerActivity extends Activity implement
      */
     private SearchAdapter resultAdapter;
 
-    private List<Bean> dbData;
 
     /**
      * 热搜版数据
@@ -70,10 +74,6 @@ public class BusinessSearchOtherBusinessPagerActivity extends Activity implement
      */
     private List<String> autoCompleteData;
 
-    /**
-     * 搜索结果的数据
-     */
-    private List<Bean> resultData;
 
     /**
      * 默认提示框显示项的个数
@@ -110,7 +110,6 @@ public class BusinessSearchOtherBusinessPagerActivity extends Activity implement
                 onBackPressed();
             }
         });
-        initData();
         initViews();
     }
 
@@ -129,39 +128,16 @@ public class BusinessSearchOtherBusinessPagerActivity extends Activity implement
                 view.setOnClickListener(new View.OnClickListener() {  //监听列表条目信息跳转的控件
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(BusinessSearchOtherBusinessPagerActivity.this, "点击了条目" + position + "，产生了跳转", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(BusinessSearchOtherBusinessPagerActivity.this, BusinessChooseBusinessAndPermissionActivity.class));
+                        Intent intent =new Intent(BusinessSearchOtherBusinessPagerActivity.this, BusinessChooseBusinessAndPermissionActivity.class);
+                        intent.putExtra("bId",businessList.get(position).getId());  //传递商家id
+                        startActivity(intent);
+
                     }
                 });
-
             }
         });
     }
 
-    /**
-     * 初始化数据
-     */
-    private void initData() {
-        //从数据库获取数据
-        getDbData();
-        //初始化热搜版数据
-     /*   getHintData();*/
-        //初始化自动补全数据
-        getAutoCompleteData(null);
-        //初始化搜索结果数据
-        getResultData(null);
-    }
-
-    /**
-     * 获取db 数据
-     */
-    private void getDbData() {
-        int size = 100;
-        dbData = new ArrayList<>(size);
-        for (int i = 0; i < size; i++) {
-            dbData.add(new Bean(R.drawable.icon, "商家名称" + (i + 1), "地址信息", "tel:1873488076" + i));
-        }
-    }
 
     /**
      * 获取自动补全data 和adapter
@@ -171,15 +147,9 @@ public class BusinessSearchOtherBusinessPagerActivity extends Activity implement
             //初始化
             autoCompleteData = new ArrayList<>(hintSize);
         } else {
-            // 根据text 获取auto data
+            // 根据text 获取目标商家信息
             autoCompleteData.clear();
-            for (int i = 0, count = 0; i < dbData.size()
-                    && count < hintSize; i++) {
-                if (dbData.get(i).getTitle().contains(text.trim())) {
-                    autoCompleteData.add(dbData.get(i).getTitle());
-                    count++;
-                }
-            }
+
         }
         if (autoCompleteAdapter == null) {
             autoCompleteAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, autoCompleteData);
@@ -192,19 +162,18 @@ public class BusinessSearchOtherBusinessPagerActivity extends Activity implement
      * 获取搜索结果data和adapter
      */
     private void getResultData(String text) {
-        if (resultData == null) {
-            // 初始化
-            resultData = new ArrayList<>();
+        if (businessList2 == null) {
+            businessList2 = businessList;
         } else {
-            resultData.clear();
-            for (int i = 0; i < dbData.size(); i++) {
-                if (dbData.get(i).getTitle().contains(text.trim())) {
-                    resultData.add(dbData.get(i));
+            businessList2.clear();
+            for (int i = 0; i < businessList.size(); i++) {
+                if (businessList.get(i).getName().contains(text.trim())) {
+                    businessList2.add(businessList.get(i));
                 }
             }
         }
         if (resultAdapter == null) {
-            resultAdapter = new SearchAdapter(this, resultData, R.layout.business_search_otherbusiness__item_bean_list_content);
+            resultAdapter = new SearchAdapter(this, businessList2, R.layout.business_search_otherbusiness__item_bean_list_content);
         } else {
             resultAdapter.notifyDataSetChanged();
         }
@@ -228,8 +197,23 @@ public class BusinessSearchOtherBusinessPagerActivity extends Activity implement
      */
     @Override
     public void onSearch(String text) {
+        name = text;
         //更新result数据
-        getResultData(text);
+        businessSearchPresenter.Search();
+
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public void toMainActivity(List<Business> businessList) {
+        System.out.println("我联网了");
+        this.businessList = businessList;
+
+        getResultData(name);
         lvResults.setVisibility(View.VISIBLE);
         //第一次获取结果 还未配置适配器
         if (lvResults.getAdapter() == null) {
@@ -239,9 +223,15 @@ public class BusinessSearchOtherBusinessPagerActivity extends Activity implement
             //更新搜索数据
             resultAdapter.notifyDataSetChanged();
         }
-        Toast.makeText(this, "完成搜索", Toast.LENGTH_SHORT).show();
-
-
     }
 
+    @Override
+    public void showFailedError() {
+        Toast.makeText(getApplication(),"搜索失败",Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showNo() {
+        Toast.makeText(getApplication(),"搜索不到",Toast.LENGTH_SHORT).show();
+    }
 }

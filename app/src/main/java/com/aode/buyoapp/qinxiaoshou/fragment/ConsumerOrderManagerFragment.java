@@ -22,7 +22,7 @@ public class ConsumerOrderManagerFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mRecyclerView = (RecyclerView) inflater.inflate(R.layout.info_details_layout, container, false);
+        mRecyclerView = (RecyclerView) inflater.inflate(R.layout.info_details_layout_2, container, false);
         return mRecyclerView;
     }
 

@@ -24,7 +24,7 @@ public class BusinessPermissionPresenter {
     }
 
     public void Permission() {
-        iBusinessBiz.queryBusinessPermission(businessPermissionView.getMeName(), businessPermissionView.getBusinessName(), businessPermissionView.getCLOTHS(), new BQueryBusinessPermissionListener() {
+        iBusinessBiz.queryBusinessPermission(businessPermissionView.getMeId(), businessPermissionView.getBusinessId(), businessPermissionView.getCLOTHS(), new BQueryBusinessPermissionListener() {
 
             @Override
             public void bQueryPermissionSuccess() {

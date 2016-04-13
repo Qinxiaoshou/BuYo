@@ -336,7 +336,7 @@ public class BusinessBiz implements IBusinessBiz {
     }
 
     /**
-     * s
+     * 搜索商家
      *
      * @param name
      * @param bSearchListener
@@ -373,9 +373,10 @@ public class BusinessBiz implements IBusinessBiz {
                     @Override
                     public void onResponse(List<Business> response) {
                         if (response != null && !response.isEmpty()) {
-                            bSearchListener.bSearchNo();
+                            bSearchListener.bSearchSuccess(response);
                         } else {
-                            bSearchListener.bSearchSuccess();
+                            bSearchListener.bSearchNo();
+
                         }
                     }
                 });
@@ -391,13 +392,14 @@ public class BusinessBiz implements IBusinessBiz {
      */
     @Override
     public void queryBusinessPermission(String bId, String fId, List<Cloth> cloths, final BQueryBusinessPermissionListener bQueryBusinessPermissionListener) {
+        System.out.println(fId);
         String json = new Gson().toJson(cloths);
         System.out.println(json);
         OkHttpUtils
                 .post()
                 .url(url.getUrl() + "/tb/admin/business/insertAuthorities")
                 .addParams("bId", bId)
-                .addParams("fid", fId)
+                .addParams("fId", fId)
                 .addParams("clothStr", json)
                 .build()
                 .execute(new Callback() {

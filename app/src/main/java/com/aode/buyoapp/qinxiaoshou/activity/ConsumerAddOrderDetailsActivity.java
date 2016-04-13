@@ -14,10 +14,8 @@ import android.widget.Toast;
 
 import com.aode.buyoapp.LL.bean.Cloth;
 import com.aode.buyoapp.R;
+import com.aode.buyoapp.qinxiaoshou.ConsumerOrderListActivity;
 import com.aode.buyoapp.qinxiaoshou.fragment.ConsumerAddOrderDetailsFragment;
-import com.aode.buyoapp.qinxiaoshou.fragment.ProductItemDetailsFragment;
-
-import org.w3c.dom.Text;
 
 
 /**
@@ -37,7 +35,7 @@ public class ConsumerAddOrderDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //获取商品信息
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
         Cloth cloth = (Cloth) intent.getSerializableExtra("cloth");
 
         setContentView(R.layout.business_add_product_layout);
@@ -69,6 +67,9 @@ public class ConsumerAddOrderDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(),"提交订单",Toast.LENGTH_SHORT).show();
+                Intent intent1 = new Intent(getApplicationContext(), ConsumerOrderListActivity.class);
+                startActivity(intent1);
+                finish();
             }
         });
 

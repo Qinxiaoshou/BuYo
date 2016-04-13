@@ -10,9 +10,9 @@ import java.util.List;
  * 商家业务View-设置权限接口，需要属性，我的id，对方id，我的商品的id
  */
 public interface IBusinessPermissionView {
-    String getMeName();
+    String getMeId();
 
-    String getBusinessName();
+    String getBusinessId();
 
     List<Cloth> getCLOTHS();
 

@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aode.buyoapp.R;
+import com.aode.buyoapp.qinxiaoshou.BusinessSearchOtherBusinessPagerActivity;
 
 
 /**
@@ -92,7 +93,6 @@ public class MySearchView extends LinearLayout implements View.OnClickListener  
 
 
         ivDelete.setOnClickListener(this);
-        //btnBack.setOnClickListener(this);
 
         etInput.addTextChangedListener(new EditChangedListener());
         etInput.setOnClickListener(this);
@@ -100,17 +100,17 @@ public class MySearchView extends LinearLayout implements View.OnClickListener  
             @Override
             public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                    notifyStartSearching(etInput.getText().toString());
+                    /*notifyStartSearching(etInput.getText().toString());*/
                 }
                 return true;
             }
         });
-
+        //搜索按钮
         btn_search.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 notifyStartSearching(etInput.getText().toString());
-                Toast.makeText(getContext(),"搜索的商家是："+etInput.getText().toString(),Toast.LENGTH_SHORT).show();
+
             }
         });
     }
@@ -128,19 +128,6 @@ public class MySearchView extends LinearLayout implements View.OnClickListener  
         imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
     }
 
-    /**
-     * 设置热搜版提示 adapter
-     */
-    public void setTipsHintAdapter(ArrayAdapter<String> adapter) {
-        this.mHintAdapter = adapter;
-    }
-
-    /**
-     * 设置自动补全adapter
-     */
-    public void setAutoCompleteAdapter(ArrayAdapter<String> adapter) {
-        this.mAutoCompleteAdapter = adapter;
-    }
 
     private class EditChangedListener implements TextWatcher {
         @Override

@@ -19,7 +19,7 @@ import com.aode.buyoapp.qinxiaoshou.fragment.ConsumerOrderManagerFragment;
  * @// FIXME: 2016/4/7
  * @author 覃培周
  */
-public class ConsumerOrderActivity extends AppCompatActivity {
+public class ConsumerOrderListActivity extends AppCompatActivity {
 
     private ConsumerOrderManagerFragment consumerOrderManagerFragment;
     private TextView tv_g_add_product_title;
