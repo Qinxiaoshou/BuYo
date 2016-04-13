@@ -424,7 +424,7 @@ public class BusinessBiz implements IBusinessBiz {
     }
 
     @Override
-    public void queryFriendBusiness(String id, final BBusinessFriendListener bBusinessFriendListener) {
+    public void getFriendBusiness(String id, final BBusinessFriendListener bBusinessFriendListener) {
 
         abstract class BusinessCallback extends Callback<List<Business>> {
             @Override
@@ -465,6 +465,13 @@ public class BusinessBiz implements IBusinessBiz {
                 });
     }
 
+    /**
+     * 修改友好商家
+     * @param bId
+     * @param fId
+     * @param cloths
+     * @param bFriendBusinessChangeListener
+     */
     @Override
     public void changeFriendBusiness(String bId, String fId, List<Cloth> cloths, final BFriendBusinessChangeListener bFriendBusinessChangeListener) {
         String json = new Gson().toJson(cloths);

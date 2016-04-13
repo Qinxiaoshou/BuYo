@@ -53,7 +53,7 @@ public interface IBusinessBiz {
     void queryBusinessPermission(String bId, String fId, List<Cloth> cloths, BQueryBusinessPermissionListener bQueryBusinessPermissionListener);
 
     //查看友好商家
-    void  queryFriendBusiness(String id,BBusinessFriendListener bBusinessFriendListener);
+    void  getFriendBusiness(String id,BBusinessFriendListener bBusinessFriendListener);
 
     //修改友好商家和哪些商品
     void changeFriendBusiness(String bId, String fId, List<Cloth> cloths, BFriendBusinessChangeListener bFriendBusinessChangeListener);

@@ -10,7 +10,7 @@ import com.aode.buyoapp.LL.view.IBusinessFriendUpdateView;
 
 /**
  * Created by LiLei on 2016/4/13.Go.
- * 商家业务回调接口,通知设置权限的状态
+ * 商家业务回调接口,通知友好商家修改的状态
  */
 public class BusinessFriendChangePresenter {
     private IBusinessBiz iBusinessBiz;

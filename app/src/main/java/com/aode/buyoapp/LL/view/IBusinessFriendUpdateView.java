@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * Created by LiLei on 2016/4/13.Go.
- * 商家业务View-设置友好商家显示
+ * 商家业务View-设置友好商家修改
  */
 public interface IBusinessFriendUpdateView {
     String getMeId();

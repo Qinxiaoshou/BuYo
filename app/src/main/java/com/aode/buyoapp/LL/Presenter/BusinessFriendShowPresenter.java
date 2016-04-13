@@ -13,21 +13,21 @@ import java.util.List;
 
 /**
  * Created by LiLei on 2016/4/13.Go.
- * 商家业务回调接口,通知设置权限的状态
+ * 商家业务回调接口,通知设获取友好商家的状态
  */
-public class BusinessFriendQueryPresenter {
+public class BusinessFriendShowPresenter {
     private IBusinessBiz iBusinessBiz;
     private IBusinessFriendView businessFriendView;
     private Handler mHandler = new Handler();
 
-    public BusinessFriendQueryPresenter(IBusinessFriendView businessFriendView) {
+    public BusinessFriendShowPresenter(IBusinessFriendView businessFriendView) {
         //设置view和业务层，在此调用业务层
         this.businessFriendView = businessFriendView;
         this.iBusinessBiz = new BusinessBiz();
     }
 
-    public void Permission() {
-        iBusinessBiz.queryFriendBusiness(businessFriendView.getId(), new BBusinessFriendListener() {
+    public void getFriend() {
+        iBusinessBiz.getFriendBusiness(businessFriendView.getId(), new BBusinessFriendListener() {
             @Override
             public void bFriendBusinessSuccess(final List<Business> businesses) {
                 mHandler.post(new Runnable() {
