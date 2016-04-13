@@ -13,8 +13,9 @@ import com.aode.buyoapp.R;
 
 /**
  * 启动布约app界面
- * @// FIXME: 2016/3/31
+ *
  * @author 陈映苗
+ * @// FIXME: 2016/3/31
  */
 public class StartActivity extends Activity {
 
@@ -46,17 +47,15 @@ public class StartActivity extends Activity {
 
     /**
      * 点击商家按钮进入商家端登录界面
-     *
      */
-    public void startBusiness(View v){
-        startActivity(new Intent(StartActivity.this,Login_business.class));
+    public void startBusiness(View v) {
+        startActivity(new Intent(StartActivity.this, Login_business.class));
     }
 
     /**
      * 点击用户按钮进入用户端首页界面
-     *
      */
-    public void startCustomer(View v){
-        startActivity(new Intent(StartActivity.this,Home_person.class));
+    public void startCustomer(View v) {
+        startActivity(new Intent(StartActivity.this, Home_person.class));
     }
 }

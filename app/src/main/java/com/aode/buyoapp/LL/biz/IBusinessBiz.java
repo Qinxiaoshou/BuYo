@@ -2,6 +2,8 @@ package com.aode.buyoapp.LL.biz;
 
 import com.aode.buyoapp.LL.Listener.BAddProductListener;
 import com.aode.buyoapp.LL.Listener.BDeleteProductListener;
+import com.aode.buyoapp.LL.Listener.BBusinessFriendListener;
+import com.aode.buyoapp.LL.Listener.BFriendBusinessChangeListener;
 import com.aode.buyoapp.LL.Listener.BLoginListener;
 import com.aode.buyoapp.LL.Listener.BProductChangeListener;
 import com.aode.buyoapp.LL.Listener.BQueryBusinessPermissionListener;
@@ -48,5 +50,11 @@ public interface IBusinessBiz {
     void SearchBusiness(String name, BSearchListener bSearchListener);
 
     //设置友好商家
-    void queryBusinessPermission(String bId, String fId, List<Cloth> longs, BQueryBusinessPermissionListener bQueryBusinessPermissionListener);
+    void queryBusinessPermission(String bId, String fId, List<Cloth> cloths, BQueryBusinessPermissionListener bQueryBusinessPermissionListener);
+
+    //查看友好商家
+    void  queryFriendBusiness(String id,BBusinessFriendListener bBusinessFriendListener);
+
+    //修改友好商家和哪些商品
+    void changeFriendBusiness(String bId, String fId, List<Cloth> cloths, BFriendBusinessChangeListener bFriendBusinessChangeListener);
 }

@@ -3,6 +3,8 @@ package com.aode.buyoapp.LL.biz;
 import com.aode.buyoapp.LL.Home_business;
 import com.aode.buyoapp.LL.Listener.BAddProductListener;
 import com.aode.buyoapp.LL.Listener.BDeleteProductListener;
+import com.aode.buyoapp.LL.Listener.BBusinessFriendListener;
+import com.aode.buyoapp.LL.Listener.BFriendBusinessChangeListener;
 import com.aode.buyoapp.LL.Listener.BLoginListener;
 import com.aode.buyoapp.LL.Listener.BProductChangeListener;
 import com.aode.buyoapp.LL.Listener.BQueryBusinessPermissionListener;
@@ -36,6 +38,7 @@ public class BusinessBiz implements IBusinessBiz {
 
     /**
      * 登录功能
+     *
      * @param loginName
      * @param password
      * @param bLoginListener
@@ -83,6 +86,7 @@ public class BusinessBiz implements IBusinessBiz {
 
     /**
      * 注册功能
+     *
      * @param loginName
      * @param name
      * @param password
@@ -392,9 +396,7 @@ public class BusinessBiz implements IBusinessBiz {
      */
     @Override
     public void queryBusinessPermission(String bId, String fId, List<Cloth> cloths, final BQueryBusinessPermissionListener bQueryBusinessPermissionListener) {
-        System.out.println(fId);
         String json = new Gson().toJson(cloths);
-        System.out.println(json);
         OkHttpUtils
                 .post()
                 .url(url.getUrl() + "/tb/admin/business/insertAuthorities")
@@ -417,6 +419,77 @@ public class BusinessBiz implements IBusinessBiz {
                     @Override
                     public void onResponse(Object response) {
                         bQueryBusinessPermissionListener.bQueryPermissionSuccess();
+                    }
+                });
+    }
+
+    @Override
+    public void queryFriendBusiness(String id, final BBusinessFriendListener bBusinessFriendListener) {
+
+        abstract class BusinessCallback extends Callback<List<Business>> {
+            @Override
+            public List<Business> parseNetworkResponse(Response response) throws IOException {
+                String string = response.body().string();
+                Type listType = new TypeToken<LinkedList<Business>>() {
+                }.getType();
+                List<Business> businesses = new Gson().fromJson(string, listType);
+                return businesses;
+            }
+        }
+        OkHttpUtils
+                .post()
+                .url(url.getUrl() + "/tb/admin/business/showAuthority")
+                .addParams("id", id)
+                .build()
+                .execute(new BusinessCallback() {
+                    @Override
+                    public List<Business> parseNetworkResponse(Response response) throws IOException {
+                        return super.parseNetworkResponse(response);
+                    }
+
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        System.out.println("失败:" + e);
+                        bBusinessFriendListener.bFriendBusinessFailed();
+                    }
+
+                    @Override
+                    public void onResponse(List<Business> response) {
+                        if (response != null && !response.isEmpty()) {
+                            bBusinessFriendListener.bFriendBusinessSuccess(response);
+                        } else {
+                            bBusinessFriendListener.bFriendBusinessNo();
+
+                        }
+                    }
+                });
+    }
+
+    @Override
+    public void changeFriendBusiness(String bId, String fId, List<Cloth> cloths, final BFriendBusinessChangeListener bFriendBusinessChangeListener) {
+        String json = new Gson().toJson(cloths);
+        OkHttpUtils
+                .post()
+                .url(url.getUrl() + "/tb/admin/business/updateAuthorities")
+                .addParams("bId", bId)
+                .addParams("fId", fId)
+                .addParams("clothStr", json)
+                .build()
+                .execute(new Callback() {
+                    @Override
+                    public Object parseNetworkResponse(Response response) throws Exception {
+                        return null;
+                    }
+
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        System.out.println("失败:" + e);
+                        bFriendBusinessChangeListener.bFriendBusinessChangeFailed();
+                    }
+
+                    @Override
+                    public void onResponse(Object response) {
+                        bFriendBusinessChangeListener.bFriendBusinessChangeSuccess();
                     }
                 });
     }
