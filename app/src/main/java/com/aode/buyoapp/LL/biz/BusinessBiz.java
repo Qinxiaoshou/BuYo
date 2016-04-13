@@ -81,7 +81,13 @@ public class BusinessBiz implements IBusinessBiz {
 
     }
 
-    //注册功能
+    /**
+     * 注册功能
+     * @param loginName
+     * @param name
+     * @param password
+     * @param bRegisterListener
+     */
     @Override
     public void register(String loginName, String name, String password, final BRegisterListener bRegisterListener) {
         OkHttpUtils
