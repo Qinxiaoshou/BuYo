@@ -191,7 +191,7 @@ public class BusinessBiz implements IBusinessBiz {
         System.out.println(json);
         OkHttpUtils
                 .post()
-                .url(url.getUrl() + "/tb/admin/business/save")
+                .url(url.getUrl() + "/tb/admin/cloth/save")
                 .addParams("cloth", json)
                 .build()
                 .execute(new Callback() {
@@ -222,7 +222,7 @@ public class BusinessBiz implements IBusinessBiz {
         System.out.println(json);
         OkHttpUtils
                 .post()
-                .url(url.getUrl() + "/tb/admin/business/delete")
+                .url(url.getUrl() + "/tb/admin/cloth/delete")
                 .addParams("cloth", json)
                 .build()
                 .execute(new Callback() {
