@@ -5,8 +5,10 @@ import com.aode.buyoapp.LL.Listener.BAddProductListener;
 import com.aode.buyoapp.LL.Listener.BDeleteProductListener;
 import com.aode.buyoapp.LL.Listener.BLoginListener;
 import com.aode.buyoapp.LL.Listener.BProductChangeListener;
+import com.aode.buyoapp.LL.Listener.BQueryBusinessPermissionListener;
 import com.aode.buyoapp.LL.Listener.BQueryProductListener;
 import com.aode.buyoapp.LL.Listener.BRegisterListener;
+import com.aode.buyoapp.LL.Listener.BSearchListener;
 import com.aode.buyoapp.LL.Listener.BShowChangeListener;
 import com.aode.buyoapp.LL.Listener.BShowListener;
 import com.aode.buyoapp.LL.bean.Business;
@@ -105,6 +107,7 @@ public class BusinessBiz implements IBusinessBiz {
 
     /**
      * 展示商家资料
+     *
      * @param id
      * @param BShowListener
      */
@@ -148,6 +151,7 @@ public class BusinessBiz implements IBusinessBiz {
 
     /**
      * 修改商家资料
+     *
      * @param business
      * @param bShowChangeListener
      */
@@ -182,6 +186,7 @@ public class BusinessBiz implements IBusinessBiz {
 
     /**
      * 增加商品
+     *
      * @param cloth
      * @param bAddProductListener
      */
@@ -211,8 +216,10 @@ public class BusinessBiz implements IBusinessBiz {
                     }
                 });
     }
+
     /**
      * 删除商品
+     *
      * @param cloth
      * @param bDeleteProductListener
      */
@@ -245,6 +252,7 @@ public class BusinessBiz implements IBusinessBiz {
 
     /**
      * 获取商品
+     *
      * @param bQueryProductListener
      */
     @Override
@@ -284,6 +292,7 @@ public class BusinessBiz implements IBusinessBiz {
 
     /**
      * 修改商品
+     *
      * @param cloth
      * @param bProductChangeListener
      */
@@ -311,6 +320,79 @@ public class BusinessBiz implements IBusinessBiz {
                     @Override
                     public void onResponse(Object response) {
                         bProductChangeListener.changeSuccess();
+                    }
+                });
+    }
+
+    /**
+     * 搜索商家
+     * @param name
+     * @param bSearchListener
+     */
+    @Override
+    public void SearchBusiness(String name, final BSearchListener bSearchListener) {
+        OkHttpUtils
+                .post()
+                .url(url.getUrl() + "/tb/admin/business/search")
+                .addParams("name", name)
+                .build()
+                .execute(new Callback() {
+                    @Override
+                    public Object parseNetworkResponse(Response response) throws Exception {
+                        return null;
+                    }
+
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        System.out.println("失败:" + e);
+                        bSearchListener.bSearchFailed();
+                    }
+
+                    @Override
+                    public void onResponse(Object response) {
+                        if (response == null) {
+                            bSearchListener.bSearchNo();
+                        } else {
+                            bSearchListener.bSearchSuccess();
+                        }
+                    }
+                });
+    }
+
+    /**
+     * 设置商家权限
+     *
+     * @param bId
+     * @param fId
+     * @param cloths
+     * @param bQueryBusinessPermissionListener
+     */
+    @Override
+    public void queryBusinessPermission(String bId, String fId, List<Cloth> cloths, final BQueryBusinessPermissionListener bQueryBusinessPermissionListener) {
+        String json = new Gson().toJson(cloths);
+        System.out.println(json);
+        OkHttpUtils
+                .post()
+                .url(url.getUrl() + "/tb/admin/business/insertAuthorities")
+                .addParams("bId", bId)
+                .addParams("fid", fId)
+                .addParams("cloths", json)
+                .build()
+                .execute(new Callback() {
+                    @Override
+                    public Object parseNetworkResponse(Response response) throws Exception {
+                        return null;
+                    }
+
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        System.out.println("失败:" + e);
+                        bQueryBusinessPermissionListener.bQueryPermissionFailed();
+                    }
+
+                    @Override
+                    public void onResponse(Object response) {
+                        bQueryBusinessPermissionListener.bQueryPermissionSuccess();
                     }
                 });
     }

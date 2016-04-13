@@ -30,4 +30,5 @@ public interface IUserBiz {
 
     //获取个人的商品
     void queryAllProduct(QueryProductListener queryProductListener);
+
 }

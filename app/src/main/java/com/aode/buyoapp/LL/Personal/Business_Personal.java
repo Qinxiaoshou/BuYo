@@ -3,20 +3,18 @@ package com.aode.buyoapp.LL.Personal;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.aode.buyoapp.R;
 import com.aode.buyoapp.qinxiaoshou.BusinessFriendPagerActivity;
 import com.aode.buyoapp.qinxiaoshou.BusinessManageConsumerOrderPagerActivity;
 import com.aode.buyoapp.qinxiaoshou.BusinessProductManageSwitchActivity;
 import com.aode.buyoapp.qinxiaoshou.BusinessSearchOtherBusinessPagerActivity;
-import com.aode.buyoapp.qinxiaoshou.activity.BusinessAddNewProductActivity;
-import com.aode.buyoapp.qinxiaoshou.activity.BusinessManageConsumerOrderDetailActivity;
 
 
 public class Business_Personal extends Fragment implements View.OnClickListener {
@@ -56,22 +54,31 @@ public class Business_Personal extends Fragment implements View.OnClickListener 
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.iv_publish:
+                //商品操作
                 startActivity(new Intent(getActivity(), BusinessProductManageSwitchActivity.class));
                 break;
             case R.id.iv_message:
+                //商家信息
                 startActivity(new Intent(getActivity(), Business_Message.class));
                 break;
             case R.id.iv_order:
+                //订单
                 startActivity(new Intent(getActivity(), BusinessManageConsumerOrderPagerActivity.class));
                 break;
             case R.id.tv_business_name:
+                //商家信息
                 startActivity(new Intent(getActivity(), Business_Message.class));
                 break;
             case R.id.iv_amity:
+                //合作商家展示
                 startActivity(new Intent(getActivity(), BusinessFriendPagerActivity.class));
                 break;
             case  R.id.iv_permission:
+                //设置合作商家
                 startActivity(new Intent(getActivity(), BusinessSearchOtherBusinessPagerActivity.class));
+                break;
+            case R.id.iv_inventory:
+                Toast.makeText(getActivity(),"此处还在施工",Toast.LENGTH_SHORT).show();
                 break;
         }
     }
