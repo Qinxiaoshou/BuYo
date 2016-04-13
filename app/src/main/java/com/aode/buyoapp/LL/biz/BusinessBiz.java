@@ -336,7 +336,7 @@ public class BusinessBiz implements IBusinessBiz {
     }
 
     /**
-     * 搜索商家
+     * s
      *
      * @param name
      * @param bSearchListener
@@ -398,7 +398,7 @@ public class BusinessBiz implements IBusinessBiz {
                 .url(url.getUrl() + "/tb/admin/business/insertAuthorities")
                 .addParams("bId", bId)
                 .addParams("fid", fId)
-                .addParams("cloths", json)
+                .addParams("clothStr", json)
                 .build()
                 .execute(new Callback() {
                     @Override

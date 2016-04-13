@@ -18,12 +18,11 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.aode.buyoapp.LL.Presenter.BusinessQueryAllProductsPresenter;
+import com.aode.buyoapp.LL.Presenter.UserQueryAllProductsPresenter;
 import com.aode.buyoapp.LL.bean.Cloth;
-import com.aode.buyoapp.LL.view.IBusinessProductView;
+import com.aode.buyoapp.LL.view.IUserQueryAllProductView;
 import com.aode.buyoapp.R;
 import com.aode.buyoapp.qinxiaoshou.activity.BusinessProductDetailsActivity;
-import com.aode.buyoapp.qinxiaoshou.activity.ConsumerProductDetailsActivity;
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
 
@@ -31,7 +30,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Business_HomePage extends Fragment implements IBusinessProductView {
+public class Business_HomePage extends Fragment implements IUserQueryAllProductView {
 
     private View view;
     private RecyclerView recyclerView;
@@ -51,7 +50,7 @@ public class Business_HomePage extends Fragment implements IBusinessProductView 
     private ConvenientBanner convenientBanner;
 
     //交互层
-    BusinessQueryAllProductsPresenter businessQueryAllProductsPresenter = new BusinessQueryAllProductsPresenter(this);
+    UserQueryAllProductsPresenter userQueryAllProductsPresenter = new UserQueryAllProductsPresenter(this);
 
 
     public void onCreate(Bundle savedInstanceState) {
@@ -157,7 +156,7 @@ public class Business_HomePage extends Fragment implements IBusinessProductView 
      */
     public void recyclerView() {
         //获取商品信息
-        businessQueryAllProductsPresenter.QueryAllProduct();
+        userQueryAllProductsPresenter.QueryAllProduct();
     }
 
     class MLManager extends GridLayoutManager {
