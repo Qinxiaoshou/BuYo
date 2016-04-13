@@ -326,20 +326,31 @@ public class BusinessBiz implements IBusinessBiz {
 
     /**
      * 搜索商家
+     *
      * @param name
      * @param bSearchListener
      */
     @Override
     public void SearchBusiness(String name, final BSearchListener bSearchListener) {
+        abstract class BusinessCallback extends Callback<List<Business>> {
+            @Override
+            public List<Business> parseNetworkResponse(Response response) throws IOException {
+                String string = response.body().string();
+                Type listType = new TypeToken<LinkedList<Business>>() {
+                }.getType();
+                List<Business> businesses = new Gson().fromJson(string, listType);
+                return businesses;
+            }
+        }
         OkHttpUtils
                 .post()
                 .url(url.getUrl() + "/tb/admin/business/search")
                 .addParams("name", name)
                 .build()
-                .execute(new Callback() {
+                .execute(new BusinessCallback() {
                     @Override
-                    public Object parseNetworkResponse(Response response) throws Exception {
-                        return null;
+                    public List<Business> parseNetworkResponse(Response response) throws IOException {
+                        return super.parseNetworkResponse(response);
                     }
 
                     @Override
@@ -349,8 +360,8 @@ public class BusinessBiz implements IBusinessBiz {
                     }
 
                     @Override
-                    public void onResponse(Object response) {
-                        if (response == null) {
+                    public void onResponse(List<Business> response) {
+                        if (response != null && !response.isEmpty()) {
                             bSearchListener.bSearchNo();
                         } else {
                             bSearchListener.bSearchSuccess();
