@@ -34,7 +34,12 @@ import okhttp3.Response;
 public class BusinessBiz implements IBusinessBiz {
     private url url = new url();
 
-    //登录功能
+    /**
+     * 登录功能
+     * @param loginName
+     * @param password
+     * @param bLoginListener
+     */
     @Override
     public void login(final String loginName, final String password, final BLoginListener bLoginListener) {
 
