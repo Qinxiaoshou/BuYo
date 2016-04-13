@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.aode.buyoapp.R;
 import com.aode.buyoapp.qinxiaoshou.adapter.BusinessAddProductDataRecyclerViewAdapter;
@@ -18,8 +19,13 @@ import com.aode.buyoapp.qinxiaoshou.adapter.BusinessAddProductDataRecyclerViewAd
  * @// FIXME: 2016/4/7
  */
 public class BusinessAddProductFragment extends Fragment {
+    private  Button button;
     private RecyclerView recyclerView;
     private View view;
+
+    public BusinessAddProductFragment(Button button) {
+        this.button = button;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -32,6 +38,6 @@ public class BusinessAddProductFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view2);
          recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        recyclerView.setAdapter(new BusinessAddProductDataRecyclerViewAdapter(getActivity()));
+        recyclerView.setAdapter(new BusinessAddProductDataRecyclerViewAdapter(getActivity(),button));
     }
 }

@@ -8,7 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.aode.buyoapp.LL.bean.Cloth;
+import com.aode.buyoapp.LL.view.IBusinessProductView;
 import com.aode.buyoapp.R;
+
+import java.util.List;
 
 
 /**
@@ -19,7 +23,6 @@ import com.aode.buyoapp.R;
 public class BusinessSettingBusinessPerssionDataRecyclerViewAdapter extends RecyclerView.Adapter<BusinessSettingBusinessPerssionDataRecyclerViewAdapter.ViewHolder> {
 
     private Context mContext;
-
     public BusinessSettingBusinessPerssionDataRecyclerViewAdapter(Context mContext) {
         this.mContext = mContext;
     }
@@ -35,28 +38,13 @@ public class BusinessSettingBusinessPerssionDataRecyclerViewAdapter extends Recy
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onBindViewHolder(final BusinessSettingBusinessPerssionDataRecyclerViewAdapter.ViewHolder holder, int position) {
-
-     /*   final View view = holder.mView;
-        view.setOnClickListener(new View.OnClickListener() {  //监听列表条目信息跳转的控件
-            @Override
-            public void onClick(View v) {
-                ObjectAnimator animator = ObjectAnimator.ofFloat(view, "translationZ", 5, 0); //上下移动
-                animator.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        System.out.println("点击了条目，产生了跳转");
-                        mContext.startActivity(new Intent(mContext, BusinessUpdateProductMessagesActivity.class));
-                    }
-                });
-                animator.start();
-            }
-        });*/
     }
 
     @Override
     public int getItemCount() {
         return 10;
     }
+
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;

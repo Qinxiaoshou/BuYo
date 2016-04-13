@@ -46,7 +46,7 @@ public class BusinessSearchOtherBusinessPagerActivity extends Activity implement
     /**
      * 热搜框列表adapter
      */
-    private ArrayAdapter<String> hintAdapter;
+   /* private ArrayAdapter<String> hintAdapter;*/
 
     /**
      * 自动补全列表adapter
@@ -122,9 +122,6 @@ public class BusinessSearchOtherBusinessPagerActivity extends Activity implement
         searchView = (MySearchView) findViewById(R.id.main_search_layout);
         //设置监听
         searchView.setSearchViewListener((MySearchView.SearchViewListener) this);
-        //设置adapter
-        searchView.setTipsHintAdapter(hintAdapter);
-        searchView.setAutoCompleteAdapter(autoCompleteAdapter);
 
         lvResults.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -148,7 +145,7 @@ public class BusinessSearchOtherBusinessPagerActivity extends Activity implement
         //从数据库获取数据
         getDbData();
         //初始化热搜版数据
-        getHintData();
+     /*   getHintData();*/
         //初始化自动补全数据
         getAutoCompleteData(null);
         //初始化搜索结果数据
@@ -164,17 +161,6 @@ public class BusinessSearchOtherBusinessPagerActivity extends Activity implement
         for (int i = 0; i < size; i++) {
             dbData.add(new Bean(R.drawable.icon, "商家名称" + (i + 1), "地址信息", "tel:1873488076" + i));
         }
-    }
-
-    /**
-     * 获取热搜版data 和adapter
-     */
-    private void getHintData() {
-        hintData = new ArrayList<>(hintSize);
-        for (int i = 1; i <= hintSize; i++) {
-            hintData.add("王隔壁" + i + "：电话18677495600");
-        }
-        hintAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, hintData);
     }
 
     /**

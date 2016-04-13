@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.aode.buyoapp.R;
 
@@ -33,6 +34,10 @@ public class MySearchView extends LinearLayout implements View.OnClickListener  
     private EditText etInput;
 
     /**
+     * 确定搜索
+     */
+    Button btn_search;
+    /**
      * 删除键
      */
     private ImageView ivDelete;
@@ -47,10 +52,6 @@ public class MySearchView extends LinearLayout implements View.OnClickListener  
      */
     private Context mContext;
 
-    /**
-     * 弹出列表
-     */
-    private ListView lvTips;
 
     /**
      * 提示adapter （推荐adapter）
@@ -87,20 +88,8 @@ public class MySearchView extends LinearLayout implements View.OnClickListener  
         etInput = (EditText) findViewById(R.id.search_et_input);
         ivDelete = (ImageView) findViewById(R.id.search_iv_delete);
         iv_back = (ImageView) findViewById(R.id.search_btn_back);
-        lvTips = (ListView) findViewById(R.id.search_lv_tips);
+        btn_search = (Button) findViewById(R.id.btn_search);
 
-        lvTips.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                //set edit text
-                String text = lvTips.getAdapter().getItem(i).toString();
-                etInput.setText(text);
-                etInput.setSelection(text.length());
-                //hint list view gone and result list view show
-                lvTips.setVisibility(View.GONE);
-                notifyStartSearching(text);
-            }
-        });
 
         ivDelete.setOnClickListener(this);
         //btnBack.setOnClickListener(this);
@@ -111,10 +100,17 @@ public class MySearchView extends LinearLayout implements View.OnClickListener  
             @Override
             public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                    lvTips.setVisibility(GONE);
                     notifyStartSearching(etInput.getText().toString());
                 }
                 return true;
+            }
+        });
+
+        btn_search.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                notifyStartSearching(etInput.getText().toString());
+                Toast.makeText(getContext(),"搜索的商家是："+etInput.getText().toString(),Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -137,9 +133,6 @@ public class MySearchView extends LinearLayout implements View.OnClickListener  
      */
     public void setTipsHintAdapter(ArrayAdapter<String> adapter) {
         this.mHintAdapter = adapter;
-        if (lvTips.getAdapter() == null) {
-            lvTips.setAdapter(mHintAdapter);
-        }
     }
 
     /**
@@ -157,23 +150,6 @@ public class MySearchView extends LinearLayout implements View.OnClickListener  
 
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-            if (!"".equals(charSequence.toString())) {
-                ivDelete.setVisibility(VISIBLE);
-                lvTips.setVisibility(VISIBLE);
-                if (mAutoCompleteAdapter != null && lvTips.getAdapter() != mAutoCompleteAdapter) {
-                    lvTips.setAdapter(mAutoCompleteAdapter);
-                }
-                //更新autoComplete数据
-                if (mListener != null) {
-                    mListener.onRefreshAutoComplete(charSequence + "");
-                }
-            } else {
-                ivDelete.setVisibility(GONE);
-                if (mHintAdapter != null) {
-                    lvTips.setAdapter(mHintAdapter);
-                }
-                lvTips.setVisibility(GONE);
-            }
 
         }
 
@@ -186,7 +162,7 @@ public class MySearchView extends LinearLayout implements View.OnClickListener  
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.search_et_input:
-                lvTips.setVisibility(VISIBLE);
+                ivDelete.setVisibility(VISIBLE);
                 break;
             case R.id.search_iv_delete:
                 etInput.setText("");

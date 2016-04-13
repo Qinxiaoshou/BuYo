@@ -36,8 +36,7 @@ public class MessageFragment extends Fragment implements IBusinessProductView {
     BusinessQueryAllProductsPresenter businessQueryAllProductsPresenter = new BusinessQueryAllProductsPresenter(this);
 
     @Override
-    public View onCreateView(LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.business_product_list_layout_and_recycleview, container, false);
         businessQueryAllProductsPresenter.QueryAllProduct();
         return view;
