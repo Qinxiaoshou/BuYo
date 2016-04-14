@@ -2,6 +2,7 @@ package com.aode.buyoapp.LL.biz;
 
 import com.aode.buyoapp.LL.Home_business;
 import com.aode.buyoapp.LL.Listener.BAddProductListener;
+import com.aode.buyoapp.LL.Listener.BBusinessFriendToMeListener;
 import com.aode.buyoapp.LL.Listener.BDeleteProductListener;
 import com.aode.buyoapp.LL.Listener.BBusinessFriendListener;
 import com.aode.buyoapp.LL.Listener.BFriendBusinessChangeListener;
@@ -467,6 +468,7 @@ public class BusinessBiz implements IBusinessBiz {
 
     /**
      * 修改友好商家
+     *
      * @param bId
      * @param fId
      * @param cloths
@@ -497,6 +499,47 @@ public class BusinessBiz implements IBusinessBiz {
                     @Override
                     public void onResponse(Object response) {
                         bFriendBusinessChangeListener.bFriendBusinessChangeSuccess();
+                    }
+                });
+    }
+
+    @Override
+    public void getFriendBusinessToMe(String id, final BBusinessFriendToMeListener bBusinessFriendToMeListener) {
+        abstract class BusinessCallback extends Callback<List<Business>> {
+            @Override
+            public List<Business> parseNetworkResponse(Response response) throws IOException {
+                String string = response.body().string();
+                Type listType = new TypeToken<LinkedList<Business>>() {
+                }.getType();
+                List<Business> businesses = new Gson().fromJson(string, listType);
+                return businesses;
+            }
+        }
+        OkHttpUtils
+                .post()
+                .url(url.getUrl() + "/tb/admin/business/friendBusiness")
+                .addParams("id", id)
+                .build()
+                .execute(new BusinessCallback() {
+                    @Override
+                    public List<Business> parseNetworkResponse(Response response) throws IOException {
+                        return super.parseNetworkResponse(response);
+                    }
+
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        System.out.println("失败:" + e);
+                        bBusinessFriendToMeListener.bFriendBusinessToMeFailed();
+                    }
+
+                    @Override
+                    public void onResponse(List<Business> response) {
+                        if (response != null && !response.isEmpty()) {
+                            bBusinessFriendToMeListener.bFriendBusinessToMeSuccess(response);
+                        } else {
+                            bBusinessFriendToMeListener.bFriendBusinessToMeNo();
+
+                        }
                     }
                 });
     }
