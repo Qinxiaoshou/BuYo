@@ -19,7 +19,7 @@ import com.aode.buyoapp.qinxiaoshou.fragment.ConsumerAddOrderDetailsFragment;
 
 
 /**
- * 用户添加详情activity
+ * 用户添加订单详情activity
  * @author 覃培周
  * @// FIXME: 2016/4/7
  */
@@ -34,11 +34,12 @@ public class ConsumerAddOrderDetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.business_add_product_layout);
+
         //获取商品信息
         final Intent intent = getIntent();
         Cloth cloth = (Cloth) intent.getSerializableExtra("cloth");
 
-        setContentView(R.layout.business_add_product_layout);
         //步骤一：添加一个FragmentTransaction的实例
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
