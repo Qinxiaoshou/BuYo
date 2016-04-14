@@ -41,8 +41,8 @@ public class BusinessUpdateBusinessAndPermissionActivity extends FragmentActivit
     private RadioGroup radioGroup;
     private FragmentTransaction transaction;
     private RadioGroup rg_h_open_permission;
-    private String bId;
-    private  List<Business> cloths;
+    private  List<Cloth> cloths;
+    private String bId; //被修改权限的商家id
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +50,8 @@ public class BusinessUpdateBusinessAndPermissionActivity extends FragmentActivit
         setContentView(R.layout.business_add_product_layout);
         //或得需要设置权限商家的id
         Intent intent  = getIntent();
-        cloths = (List<Business>) intent.getSerializableExtra("businesses");
+        bId = intent.getStringExtra("bId");
+        cloths = (List<Cloth>) intent.getSerializableExtra("BUSINESSES");
         System.out.println("所点击的该商家拥有本店权限查看本店的商品-->"+cloths);
 
         rg_h_open_permission = (RadioGroup) findViewById(R.id.rg_h_open_permission);
@@ -83,7 +84,7 @@ public class BusinessUpdateBusinessAndPermissionActivity extends FragmentActivit
 
     @Override
     public void toMainActivity(List<Cloth> clothlist) {
-        businessUpdateBusinessPerssionFragment  = new BusinessUpdateBusinessPerssionFragment(clothlist,bId,rg_h_open_permission);
+        businessUpdateBusinessPerssionFragment  = new BusinessUpdateBusinessPerssionFragment(clothlist,cloths,rg_h_open_permission,bId);
         transaction.add(R.id.fl_g_framelayout, businessUpdateBusinessPerssionFragment).commit();
     }
 

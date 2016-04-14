@@ -124,7 +124,6 @@ public class BusinessFriendPagerActivity extends AppCompatActivity implements IB
     @Override
     public void toMainActivity(List<Business> businesses) { //我设置过权限的商家集合
         this.bList = businesses;
-        System.out.println("1111111111111--》"+businesses);
         adapter.addFragment(new BusinessSettingBusinessFriendFragment(bList), "我的友好商家");
         this.page2 = true;
         init();

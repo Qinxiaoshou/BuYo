@@ -30,10 +30,12 @@ import java.util.List;
  * @author 覃培周
  * @// FIXME: 2016/4/7
  */
-public class BusinessSettingBusinessFriendRecyclerViewAdapter extends RecyclerView.Adapter<BusinessSettingBusinessFriendRecyclerViewAdapter.ViewHolder> {
+public class BusinessSettingBusinessFriendRecyclerViewAdapter extends RecyclerView.Adapter<BusinessSettingBusinessFriendRecyclerViewAdapter.ViewHolder> implements  IBusinessFriendView{
 
     private Context mContext;
     private List<Business> businesses;
+    private List<Business> businessesNew;
+    private int position ;
 
     public BusinessSettingBusinessFriendRecyclerViewAdapter(Context mContext, List<Business> businesses) {
         this.mContext = mContext;
@@ -48,26 +50,19 @@ public class BusinessSettingBusinessFriendRecyclerViewAdapter extends RecyclerVi
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.business_search_otherbusiness__item_bean_list_content, parent, false);
         return new ViewHolder(view);
     }
-
+    BusinessFriendShowPresenter  businessFriendShowPresenter = new BusinessFriendShowPresenter(this);
     @Override
     public void onBindViewHolder(final BusinessSettingBusinessFriendRecyclerViewAdapter.ViewHolder holder, final int position) {
         holder.tv_name.setText(businesses.get(position).getName());
         holder.tv_phone.setText("联系方式:" + businesses.get(position).getPhoneNumber());
         holder.tv_address.setText("地址：" + businesses.get(position).getAddress());
 
-
+        this.position = position;
         holder.mView.setOnClickListener(new View.OnClickListener() {  //监听列表条目信息跳转的控件
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(mContext, BusinessUpdateBusinessAndPermissionActivity.class);
-                //传该商家拥有本店商品权限的集合
-                Bundle bundle = new Bundle();
-                System.out.println("%%%%%-->"+businesses);
-                bundle.putSerializable("MSPANSCOMMIT", (Serializable) businesses.get(position).getCloths());
-                intent.putExtras(bundle);
-                mContext.startActivity(intent);
-
+                businessFriendShowPresenter.getFriend();
             }
         });
     }
@@ -79,6 +74,34 @@ public class BusinessSettingBusinessFriendRecyclerViewAdapter extends RecyclerVi
         } else {
             return businesses.size();
         }
+    }
+
+    @Override
+    public String getId() {
+        return Home_business.business.getId();
+    }
+
+    @Override
+    public void toMainActivity(List<Business> businesses) {
+        this.businessesNew = businesses;
+        Intent intent = new Intent(mContext, BusinessUpdateBusinessAndPermissionActivity.class);
+        //传该商家拥有本店商品权限的集合
+        Bundle bundle = new Bundle();
+        System.out.println("跳转的时候要带过去的数据："+businessesNew.get(position).getCloths());
+        intent.putExtra("bId", businessesNew.get(position).getId());
+        bundle.putSerializable("BUSINESSES", (Serializable) businessesNew.get(position).getCloths());
+        intent.putExtras(bundle);
+        mContext.startActivity(intent);
+    }
+
+    @Override
+    public void showFailedError() {
+
+    }
+
+    @Override
+    public void showNo() {
+
     }
 
 

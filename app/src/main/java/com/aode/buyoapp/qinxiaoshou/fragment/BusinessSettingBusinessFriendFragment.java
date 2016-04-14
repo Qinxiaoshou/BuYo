@@ -28,7 +28,6 @@ public class BusinessSettingBusinessFriendFragment extends Fragment {
 
     public BusinessSettingBusinessFriendFragment(List<Business> businesses) {
          this.businesses = businesses;
-        System.out.println(businesses);
     }
 
     @Override

@@ -86,7 +86,7 @@ public class BusinessSettingBusinessPerssionDataRecyclerViewAdapter extends Recy
         rg_h_open_permission.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("本商家："+Home_business.business.getId()+"##目标商家:"+bId+"##id集合："+productIds);
+                System.out.println("本商家："+Home_business.business.getId()+"##目标商家:"+bId+"##id集合："+productIds+"选择个数："+productIds.size());
                 businessPermissionPresenter.Permission();
 
             }
