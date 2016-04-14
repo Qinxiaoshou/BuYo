@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  * Created by LiLei on 2016/4/9.Go.
- * 个人业务回调接口,通知登录的状态
+ * 商家业务回调接口,通知查询商家的状态
  */
 public class BusinessSearchPresenter {
     private IBusinessBiz iBusinessBiz;

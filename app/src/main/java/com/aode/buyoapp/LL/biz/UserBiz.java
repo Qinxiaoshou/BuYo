@@ -2,11 +2,15 @@ package com.aode.buyoapp.LL.biz;
 
 import com.aode.buyoapp.LL.Listener.ChangePasswordListener;
 import com.aode.buyoapp.LL.Listener.LoginListener;
+import com.aode.buyoapp.LL.Listener.OrdersAddListener;
+import com.aode.buyoapp.LL.Listener.OrdersShowListener;
+import com.aode.buyoapp.LL.Listener.OrdersUpDateListener;
 import com.aode.buyoapp.LL.Listener.QueryProductListener;
 import com.aode.buyoapp.LL.Listener.RegisterListener;
 import com.aode.buyoapp.LL.Listener.ShowChangeListener;
 import com.aode.buyoapp.LL.Listener.ShowListener;
 import com.aode.buyoapp.LL.bean.Cloth;
+import com.aode.buyoapp.LL.bean.Orders;
 import com.aode.buyoapp.LL.bean.User;
 import com.aode.buyoapp.LL.url;
 import com.google.gson.Gson;
@@ -190,12 +194,13 @@ public class UserBiz implements IUserBiz {
 
                     @Override
                     public void onResponse(Integer response) {
-                        if(response.intValue() == 0){
+                        if (response.intValue() == 0) {
                             changePasswordListener.changeSuccess();
-                        }else{
+                        } else {
                             changePasswordListener.changeFailed();
                         }
                     }
+
                     @Override
                     public Integer parseNetworkResponse(Response response) throws IOException {
                         return super.parseNetworkResponse(response);
@@ -203,7 +208,7 @@ public class UserBiz implements IUserBiz {
                 });
 
 
-                }
+    }
 
     @Override
     public void queryAllProduct(final QueryProductListener queryProductListener) {
@@ -211,8 +216,9 @@ public class UserBiz implements IUserBiz {
             @Override
             public List<Cloth> parseNetworkResponse(Response response) throws IOException {
                 String string = response.body().string();
-                Type listType = new TypeToken<LinkedList<Cloth>>(){}.getType();
-                List<Cloth> cloths = new Gson().fromJson(string,listType);
+                Type listType = new TypeToken<LinkedList<Cloth>>() {
+                }.getType();
+                List<Cloth> cloths = new Gson().fromJson(string, listType);
                 return cloths;
             }
         }
@@ -230,9 +236,117 @@ public class UserBiz implements IUserBiz {
                     public void onResponse(List<Cloth> response) {
                         queryProductListener.loginSuccess(response);
                     }
+
                     @Override
                     public List<Cloth> parseNetworkResponse(Response response) throws IOException {
                         return super.parseNetworkResponse(response);
+                    }
+                });
+    }
+
+    /**
+     * 个人添加订单
+     *
+     * @param orders
+     * @param ordersAddListener
+     */
+    @Override
+    public void OrdersAdd(Orders orders, final OrdersAddListener ordersAddListener) {
+        String json = new Gson().toJson(orders);
+        OkHttpUtils
+                .post()
+                .url(url.getUrl() + "/tb/admin/user/orders/add")
+                .addParams("orders", json)
+                .build()
+                .execute(new Callback() {
+                    @Override
+                    public Object parseNetworkResponse(Response response) throws Exception {
+                        return null;
+                    }
+
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        ordersAddListener.OrdersAddFailed();
+                    }
+
+                    @Override
+                    public void onResponse(Object response) {
+                        ordersAddListener.OrdersAddSuccess();
+                    }
+                });
+    }
+
+    /**
+     * 个人订单展示
+     *
+     * @param id
+     * @param ordersShowListener
+     */
+    @Override
+    public void OrdersShow(String id, final OrdersShowListener ordersShowListener) {
+        abstract class OrdersCallback extends Callback<List<Orders>> {
+            @Override
+            public List<Orders> parseNetworkResponse(Response response) throws IOException {
+                String string = response.body().string();
+                Type listType = new TypeToken<List<Orders>>() {
+                }.getType();
+                List<Orders> orderses = new Gson().fromJson(string, listType);
+                return orderses;
+            }
+        }
+
+        OkHttpUtils
+                .post()
+                .url(url.getUrl() + "/tb/admin/user/orders/list")
+                .addParams("id", id)
+                .build()
+                .execute(new OrdersCallback() {
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        ordersShowListener.OrdersShowFailed();
+                    }
+
+                    @Override
+                    public void onResponse(List<Orders> response) {
+                        ordersShowListener.OrdersShowSuccess(response);
+                    }
+
+                    @Override
+                    public List<Orders> parseNetworkResponse(Response response) throws IOException {
+                        return super.parseNetworkResponse(response);
+                    }
+
+                });
+    }
+
+    /**
+     * 个人修改订单(订单来更改订单状态)
+     *
+     * @param orders
+     * @param ordersUpDateListener
+     */
+    @Override
+    public void OrdersUpDate(Orders orders, final OrdersUpDateListener ordersUpDateListener) {
+        String json = new Gson().toJson(orders);
+        OkHttpUtils
+                .post()
+                .url(url.getUrl() + "/tb/admin/user/orders/updateState")
+                .addParams("orders", json)
+                .build()
+                .execute(new Callback() {
+                    @Override
+                    public Object parseNetworkResponse(Response response) throws Exception {
+                        return null;
+                    }
+
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        ordersUpDateListener.OrdersUpDateFailed();
+                    }
+
+                    @Override
+                    public void onResponse(Object response) {
+                        ordersUpDateListener.OrdersUpDateSuccess();
                     }
                 });
     }

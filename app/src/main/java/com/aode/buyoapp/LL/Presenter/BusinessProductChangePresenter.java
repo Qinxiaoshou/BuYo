@@ -10,7 +10,7 @@ import com.aode.buyoapp.LL.view.IBusinessProductChangeView;
 
 /**
  * Created by LiLei on 2016/4/9.Go.
- * 个人业务回调接口,通知获取商品情况的状态
+ * 商家业务回调接口,通知获取商品情况的状态
  */
 public class BusinessProductChangePresenter {
     private IBusinessBiz businessBiz;

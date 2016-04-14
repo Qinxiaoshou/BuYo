@@ -11,7 +11,7 @@ import com.aode.buyoapp.LL.view.IBusinessLoginView;
 
 /**
  * Created by LiLei on 2016/4/9.Go.
- * 个人业务回调接口,通知登录的状态
+ * 商家业务回调接口,通知登录的状态
  */
 public class BusinessLoginPresenter {
     private IBusinessBiz iBusinessBiz;

@@ -4,6 +4,7 @@ import com.aode.buyoapp.LL.bean.User;
 
 /**
  * Created by LiLei on 2016/4/11.Go.
+ * 获取个人自己的信息的view接口
  */
 public interface IUserMessageView {
     String getId();

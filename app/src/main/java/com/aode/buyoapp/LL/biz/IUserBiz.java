@@ -2,10 +2,14 @@ package com.aode.buyoapp.LL.biz;
 
 import com.aode.buyoapp.LL.Listener.ChangePasswordListener;
 import com.aode.buyoapp.LL.Listener.LoginListener;
+import com.aode.buyoapp.LL.Listener.OrdersAddListener;
+import com.aode.buyoapp.LL.Listener.OrdersShowListener;
+import com.aode.buyoapp.LL.Listener.OrdersUpDateListener;
 import com.aode.buyoapp.LL.Listener.QueryProductListener;
 import com.aode.buyoapp.LL.Listener.RegisterListener;
 import com.aode.buyoapp.LL.Listener.ShowChangeListener;
 import com.aode.buyoapp.LL.Listener.ShowListener;
+import com.aode.buyoapp.LL.bean.Orders;
 import com.aode.buyoapp.LL.bean.User;
 
 /**
@@ -31,4 +35,15 @@ public interface IUserBiz {
     //获取个人的商品
     void queryAllProduct(QueryProductListener queryProductListener);
 
+    /**
+     * 订单
+     */
+    //个人下单
+    void OrdersAdd(Orders orders, OrdersAddListener ordersAddListener);
+
+    //个人获取自己的订单
+    void OrdersShow(String id, OrdersShowListener ordersShowListener);
+
+    //个人修改自己的订单
+    void OrdersUpDate(Orders orders, OrdersUpDateListener ordersUpDateListener);
 }

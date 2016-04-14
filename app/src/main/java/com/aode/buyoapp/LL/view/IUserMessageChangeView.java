@@ -4,6 +4,7 @@ import com.aode.buyoapp.LL.bean.User;
 
 /**
  * Created by LiLei on 2016/4/11.Go.
+ * 个人信息修改view接口
  */
 public interface IUserMessageChangeView {
     User getUser();

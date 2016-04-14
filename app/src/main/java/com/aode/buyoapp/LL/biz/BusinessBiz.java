@@ -2,11 +2,14 @@ package com.aode.buyoapp.LL.biz;
 
 import com.aode.buyoapp.LL.Home_business;
 import com.aode.buyoapp.LL.Listener.BAddProductListener;
+import com.aode.buyoapp.LL.Listener.BBusinessFriendListener;
 import com.aode.buyoapp.LL.Listener.BBusinessFriendToMeListener;
 import com.aode.buyoapp.LL.Listener.BDeleteProductListener;
-import com.aode.buyoapp.LL.Listener.BBusinessFriendListener;
 import com.aode.buyoapp.LL.Listener.BFriendBusinessChangeListener;
 import com.aode.buyoapp.LL.Listener.BLoginListener;
+import com.aode.buyoapp.LL.Listener.BOrdersAddListener;
+import com.aode.buyoapp.LL.Listener.BOrdersShowListener;
+import com.aode.buyoapp.LL.Listener.BOrdersUpDateListener;
 import com.aode.buyoapp.LL.Listener.BProductChangeListener;
 import com.aode.buyoapp.LL.Listener.BQueryBusinessPermissionListener;
 import com.aode.buyoapp.LL.Listener.BQueryProductListener;
@@ -16,6 +19,7 @@ import com.aode.buyoapp.LL.Listener.BShowChangeListener;
 import com.aode.buyoapp.LL.Listener.BShowListener;
 import com.aode.buyoapp.LL.bean.Business;
 import com.aode.buyoapp.LL.bean.Cloth;
+import com.aode.buyoapp.LL.bean.Orders;
 import com.aode.buyoapp.LL.url;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -424,6 +428,12 @@ public class BusinessBiz implements IBusinessBiz {
                 });
     }
 
+    /**
+     * 获取友好商家
+     *
+     * @param id
+     * @param bBusinessFriendListener
+     */
     @Override
     public void getFriendBusiness(String id, final BBusinessFriendListener bBusinessFriendListener) {
 
@@ -457,7 +467,7 @@ public class BusinessBiz implements IBusinessBiz {
                     @Override
                     public void onResponse(List<Business> response) {
                         if (response != null && !response.isEmpty()) {
-                            System.out.println("后台："+response);
+                            System.out.println("后台：" + response);
                             bBusinessFriendListener.bFriendBusinessSuccess(response);
                         } else {
                             bBusinessFriendListener.bFriendBusinessNo();
@@ -504,6 +514,12 @@ public class BusinessBiz implements IBusinessBiz {
                 });
     }
 
+    /**
+     * 他人为我设置的商家权限
+     *
+     * @param id
+     * @param bBusinessFriendToMeListener
+     */
     @Override
     public void getFriendBusinessToMe(String id, final BBusinessFriendToMeListener bBusinessFriendToMeListener) {
         abstract class BusinessCallback extends Callback<List<Business>> {
@@ -541,6 +557,113 @@ public class BusinessBiz implements IBusinessBiz {
                             bBusinessFriendToMeListener.bFriendBusinessToMeNo();
 
                         }
+                    }
+                });
+    }
+
+    /**
+     * 商家添加订单
+     *
+     * @param orders
+     * @param bOrdersAddListener
+     */
+    @Override
+    public void OrdersAdd(Orders orders, final BOrdersAddListener bOrdersAddListener) {
+        String json = new Gson().toJson(orders);
+        OkHttpUtils
+                .post()
+                .url(url.getUrl() + "/tb/admin/business/orders/add")
+                .addParams("orders", json)
+                .build()
+                .execute(new Callback() {
+                    @Override
+                    public Object parseNetworkResponse(Response response) throws Exception {
+                        return null;
+                    }
+
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        bOrdersAddListener.BOrdersAddFailed();
+                    }
+
+                    @Override
+                    public void onResponse(Object response) {
+                        bOrdersAddListener.BOrdersAddSuccess();
+                    }
+                });
+    }
+
+    /**
+     * 商家查看订单
+     *
+     * @param id
+     * @param bOrdersShowListener
+     */
+    @Override
+    public void OrdersShow(String id, final BOrdersShowListener bOrdersShowListener) {
+        abstract class OrdersCallback extends Callback<List<Orders>> {
+            @Override
+            public List<Orders> parseNetworkResponse(Response response) throws IOException {
+                String string = response.body().string();
+                Type listType = new TypeToken<List<Orders>>() {
+                }.getType();
+                List<Orders> orderses = new Gson().fromJson(string, listType);
+                return orderses;
+            }
+        }
+
+        OkHttpUtils
+                .post()
+                .url(url.getUrl() + "/tb/admin/business/orders/list")
+                .addParams("id", id)
+                .build()
+                .execute(new OrdersCallback() {
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        bOrdersShowListener.BOrdersShowFailed();
+                    }
+
+                    @Override
+                    public void onResponse(List<Orders> response) {
+                        bOrdersShowListener.BOrdersShowSuccess(response);
+                    }
+
+                    @Override
+                    public List<Orders> parseNetworkResponse(Response response) throws IOException {
+                        return super.parseNetworkResponse(response);
+                    }
+
+                });
+    }
+
+    /**
+     * 商家修改订单(发货、取消发货)
+     *
+     * @param orders
+     * @param bOrdersUpDateListener
+     */
+    @Override
+    public void OrdersUpDate(Orders orders, final BOrdersUpDateListener bOrdersUpDateListener) {
+        String json = new Gson().toJson(orders);
+        OkHttpUtils
+                .post()
+                .url(url.getUrl() + "/tb/admin/business/orders/updateState")
+                .addParams("orders", json)
+                .build()
+                .execute(new Callback() {
+                    @Override
+                    public Object parseNetworkResponse(Response response) throws Exception {
+                        return null;
+                    }
+
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        bOrdersUpDateListener.BOrdersUpDateFailed();
+                    }
+
+                    @Override
+                    public void onResponse(Object response) {
+                        bOrdersUpDateListener.BOrdersUpDateSuccess();
                     }
                 });
     }

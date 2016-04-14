@@ -5,7 +5,7 @@ import com.aode.buyoapp.LL.bean.Business;
 
 /**
  * Created by LiLei on 2016/4/9.Go.
- * 通知登录的状态
+ * 通知获取商家个人资料的状态
  */
 public interface BShowListener {
     //获取资料成功

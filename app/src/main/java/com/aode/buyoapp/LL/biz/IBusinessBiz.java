@@ -1,11 +1,14 @@
 package com.aode.buyoapp.LL.biz;
 
 import com.aode.buyoapp.LL.Listener.BAddProductListener;
+import com.aode.buyoapp.LL.Listener.BBusinessFriendListener;
 import com.aode.buyoapp.LL.Listener.BBusinessFriendToMeListener;
 import com.aode.buyoapp.LL.Listener.BDeleteProductListener;
-import com.aode.buyoapp.LL.Listener.BBusinessFriendListener;
 import com.aode.buyoapp.LL.Listener.BFriendBusinessChangeListener;
 import com.aode.buyoapp.LL.Listener.BLoginListener;
+import com.aode.buyoapp.LL.Listener.BOrdersAddListener;
+import com.aode.buyoapp.LL.Listener.BOrdersShowListener;
+import com.aode.buyoapp.LL.Listener.BOrdersUpDateListener;
 import com.aode.buyoapp.LL.Listener.BProductChangeListener;
 import com.aode.buyoapp.LL.Listener.BQueryBusinessPermissionListener;
 import com.aode.buyoapp.LL.Listener.BQueryProductListener;
@@ -15,6 +18,7 @@ import com.aode.buyoapp.LL.Listener.BShowChangeListener;
 import com.aode.buyoapp.LL.Listener.BShowListener;
 import com.aode.buyoapp.LL.bean.Business;
 import com.aode.buyoapp.LL.bean.Cloth;
+import com.aode.buyoapp.LL.bean.Orders;
 
 import java.util.List;
 
@@ -23,6 +27,9 @@ import java.util.List;
  * 商家业务类接口
  */
 public interface IBusinessBiz {
+    /**
+     * 基础操作
+     */
     //登录接口
     void login(String loginName, String password, BLoginListener bLoginListener);
 
@@ -35,6 +42,9 @@ public interface IBusinessBiz {
     //修改资料接口
     void change(Business business, BShowChangeListener bShowChangeListener);
 
+    /**
+     * 商品
+     */
     //增加我商家的商品
     void addProduct(Cloth cloth, BAddProductListener bAddProductListener);
 
@@ -47,6 +57,9 @@ public interface IBusinessBiz {
     //修改商品资料
     void ProductChange(Cloth cloth, BProductChangeListener bProductChangeListener);
 
+    /**
+     * 商家关系
+     */
     //搜索商家
     void SearchBusiness(String name, BSearchListener bSearchListener);
 
@@ -54,11 +67,23 @@ public interface IBusinessBiz {
     void queryBusinessPermission(String bId, String fId, List<Cloth> cloths, BQueryBusinessPermissionListener bQueryBusinessPermissionListener);
 
     //查看友好商家
-    void  getFriendBusiness(String id,BBusinessFriendListener bBusinessFriendListener);
+    void getFriendBusiness(String id, BBusinessFriendListener bBusinessFriendListener);
 
     //修改友好商家和哪些商品
     void changeFriendBusiness(String bId, String fId, List<Cloth> cloths, BFriendBusinessChangeListener bFriendBusinessChangeListener);
 
     //查看他人商家为本商家设置的友好商家以及商品
-    void  getFriendBusinessToMe(String id,BBusinessFriendToMeListener bBusinessFriendToMeListener);
+    void getFriendBusinessToMe(String id, BBusinessFriendToMeListener bBusinessFriendToMeListener);
+
+    /**
+     * 订单
+     */
+    //个人下单
+    void OrdersAdd(Orders orders, BOrdersAddListener bOrdersAddListener);
+
+    //个人获取自己的订单
+    void OrdersShow(String id, BOrdersShowListener bOrdersShowListener);
+
+    //个人修改自己的订单
+    void OrdersUpDate(Orders orders, BOrdersUpDateListener bOrdersUpDateListener);
 }

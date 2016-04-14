@@ -11,7 +11,7 @@ import com.aode.buyoapp.LL.view.IUserMessageView;
 
 /**
  * Created by LiLei on 2016/4/9.Go.
- * 个人业务回调接口,通知登录的状态
+ * 个人业务回调接口,通知获取自己信息的状态
  */
 public class UserMessagePresenter {
     private IUserBiz iUserBiz;

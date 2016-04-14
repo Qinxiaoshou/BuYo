@@ -4,6 +4,7 @@ import com.aode.buyoapp.LL.bean.Business;
 
 /**
  * Created by LiLei on 2016/4/11.Go.
+ * 商家修改信息View接口
  */
 public interface IBusinessMessageChangeView {
     Business getBusiness();

@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * Created by LiLei on 2016/4/9.Go.
- * 通知登录的状态
+ * 通知商家获取商品的状态
  */
 public interface BQueryProductListener {
     //商品获得成功回调接口

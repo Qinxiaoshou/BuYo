@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  * Created by LiLei on 2016/4/13.Go.
- * 商家业务回调接口,通知设获取友好商家的状态
+ * 商家业务回调接口,通知设获取我设置的友好商家的状态
  */
 public class BusinessFriendShowPresenter {
     private IBusinessBiz iBusinessBiz;

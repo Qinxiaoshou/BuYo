@@ -2,50 +2,53 @@ package com.aode.buyoapp.LL.Presenter;
 
 import android.os.Handler;
 
-import com.aode.buyoapp.LL.Listener.BAddProductListener;
+import com.aode.buyoapp.LL.Listener.BOrdersAddListener;
 import com.aode.buyoapp.LL.biz.BusinessBiz;
 import com.aode.buyoapp.LL.biz.IBusinessBiz;
-import com.aode.buyoapp.LL.view.IBusinessProductAddView;
+import com.aode.buyoapp.LL.view.IBusinessOrdersAddView;
 
 
 /**
  * Created by LiLei on 2016/4/9.Go.
- * 商家业务回调接口,通知增加商品情况的状态
+ * 商家业务回调接口,通知下单的状态
  */
-public class BusinessProductAddPresenter {
+public class BusinessOrdersAddPresenter {
     private IBusinessBiz businessBiz;
-    private IBusinessProductAddView businessProductAddView;
+    private IBusinessOrdersAddView businessOrdersAddView;
     private Handler mHandler = new Handler();
 
-    public BusinessProductAddPresenter(IBusinessProductAddView businessProductAddView) {
+    public BusinessOrdersAddPresenter(IBusinessOrdersAddView businessOrdersAddView) {
         //设置view和业务层，在此调用业务层
-        this.businessProductAddView = businessProductAddView;
+        this.businessOrdersAddView = businessOrdersAddView;
         this.businessBiz = new BusinessBiz();
     }
 
-    public void ProductAdd() {
-        businessBiz.addProduct(businessProductAddView.getProduct(), new BAddProductListener() {
+    public void ordersAdd() {
+        businessBiz.OrdersAdd(businessOrdersAddView.PutOrders(), new BOrdersAddListener() {
             @Override
-            public void addSuccess() {
-                mHandler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        //真正实现view层IUserLoginView接口方法
-                        businessProductAddView.toMainActivity();
-                    }
-                });
-            }
-
-            @Override
-            public void addFailed() {
+            public void BOrdersAddSuccess() {
                 //需要在UI线程执行
                 mHandler.post(new Runnable() {
                     @Override
                     public void run() {
-                        businessProductAddView.showFailedError();
+                        businessOrdersAddView.toMainActivity();
+                    }
+                });
+
+            }
+
+            @Override
+            public void BOrdersAddFailed() {
+                //需要在UI线程执行
+                mHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        businessOrdersAddView.showFailedError();
                     }
                 });
             }
         });
     }
+
+
 }
