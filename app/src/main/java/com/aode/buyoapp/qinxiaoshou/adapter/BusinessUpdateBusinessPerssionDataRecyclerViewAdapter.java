@@ -64,56 +64,31 @@ public class BusinessUpdateBusinessPerssionDataRecyclerViewAdapter extends Recyc
         holder.tv_stock.setText("库存:" + cloths.get(position).getStock());
         holder.setIsRecyclable(false); //recyclerviewd的positon不能复用
         //如果该商品已设权限就回显
-      /*  if(clothsEd.size()<=position){
-            if(clothsEd.get(position).equals(cloths.get(position))) {
-                holder.cb_permission.setChecked(true);
-            }
-        }*/
         for(Cloth cloth : clothsEd) {
             if ((cloths.get(position).getTitle()).equals(cloth.getTitle())) {
                 holder.cb_permission.setChecked(true);
-                productIds.add(cloth);
+                Cloth cloth1 = new Cloth();
+                cloth1.setId(cloth.getId());
+                productIds.add(cloth1);
             }
         }
-
-
-
-
-
-
-        //给CheckBox设置事件监听
-     /*   holder.cb_permission.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView,
-                                         boolean isChecked) {
-                if (isChecked) {
-                    Cloth cloth = new Cloth();
-                    cloth.setId(cloths.get(position).getId());
-                    productIds.add(cloth);
-                } else {
-
-                }
-            }
-        });*/
-
+        //取消打勾
         View.OnClickListener ocl=new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
                 if(!((CheckBox) v).isChecked()){
-                    Toast.makeText(mContext, cloths.get(position)+"被取消", Toast.LENGTH_SHORT).show();
-                   //productIds.remove(cloths.get(position).getbId());
+                   productIds.remove(cloths.get(position));
+                    holder.cb_permission.setChecked(false);
                 }
             }
         };
-
+        //打勾
         CompoundButton.OnCheckedChangeListener occl=new CompoundButton.OnCheckedChangeListener() {
 
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
-                    Toast.makeText(mContext,cloths.get(position)+"被选中", Toast.LENGTH_SHORT).show();
                     Cloth cloth = new Cloth();
                     cloth.setId(cloths.get(position).getId());
                     productIds.add(cloth);

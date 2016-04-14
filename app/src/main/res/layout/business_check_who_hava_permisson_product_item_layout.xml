@@ -21,8 +21,9 @@
             android:orientation="horizontal">
 
             <ImageView
+                android:visibility="invisible"
                 android:id="@+id/iv_store_logo"
-                android:layout_width="24dp"
+                android:layout_width="8dp"
                 android:layout_height="24dp"
                 android:src="@drawable/store" />
 
@@ -34,14 +35,6 @@
                 android:layout_toRightOf="@id/iv_store_logo"
                 android:text="河源绿色特产" />
 
-            <ImageView
-                android:id="@+id/iv_right"
-                android:layout_width="19dp"
-                android:layout_height="19dp"
-                android:layout_toRightOf="@id/tv_store_name"
-                android:src="@drawable/right"
-
-                />
 
 
         </RelativeLayout>

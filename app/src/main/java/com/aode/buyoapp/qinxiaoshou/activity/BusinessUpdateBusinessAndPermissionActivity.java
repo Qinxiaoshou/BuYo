@@ -52,7 +52,6 @@ public class BusinessUpdateBusinessAndPermissionActivity extends FragmentActivit
         Intent intent  = getIntent();
         bId = intent.getStringExtra("bId");
         cloths = (List<Cloth>) intent.getSerializableExtra("BUSINESSES");
-        System.out.println("所点击的该商家拥有本店权限查看本店的商品-->"+cloths);
 
         rg_h_open_permission = (RadioGroup) findViewById(R.id.rg_h_open_permission);
 

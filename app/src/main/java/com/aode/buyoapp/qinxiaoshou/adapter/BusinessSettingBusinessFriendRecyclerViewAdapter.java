@@ -87,7 +87,6 @@ public class BusinessSettingBusinessFriendRecyclerViewAdapter extends RecyclerVi
         Intent intent = new Intent(mContext, BusinessUpdateBusinessAndPermissionActivity.class);
         //传该商家拥有本店商品权限的集合
         Bundle bundle = new Bundle();
-        System.out.println("跳转的时候要带过去的数据："+businessesNew.get(position).getCloths());
         intent.putExtra("bId", businessesNew.get(position).getId());
         bundle.putSerializable("BUSINESSES", (Serializable) businessesNew.get(position).getCloths());
         intent.putExtras(bundle);
