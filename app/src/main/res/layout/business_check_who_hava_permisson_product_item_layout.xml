@@ -57,7 +57,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <include layout="@layout/business_check_who_hava_permisson_product_item_content" />
-                <include layout="@layout/business_check_who_hava_permisson_product_item_content" />
 
             </LinearLayout>
 

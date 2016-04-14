@@ -16,7 +16,7 @@ import java.util.List;
 
 
 /**
- * 商家查看那个商家拥有本店权限的fragment
+ * 商家查看本店已设置权限的商家fragment
  * @author 覃培周
  * @// FIXME: 2016/4/7
  */

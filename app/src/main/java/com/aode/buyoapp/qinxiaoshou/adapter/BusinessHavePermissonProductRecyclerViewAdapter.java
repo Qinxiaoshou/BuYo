@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.aode.buyoapp.LL.Listener.BBusinessFriendListener;
 import com.aode.buyoapp.LL.bean.Business;
+import com.aode.buyoapp.LL.bean.Cloth;
 import com.aode.buyoapp.LL.view.IBusinessFriendView;
 import com.aode.buyoapp.LL.view.IBusinessSearchView;
 import com.aode.buyoapp.R;
@@ -31,6 +32,10 @@ public class BusinessHavePermissonProductRecyclerViewAdapter extends RecyclerVie
 
     private Context mContext;
     List<Business> toBList;
+    public ImageView iv_pictue;
+    public TextView tv_title;
+    public TextView tv_price;
+    public TextView tv_stock;
 
     public BusinessHavePermissonProductRecyclerViewAdapter(Context mContext, List<Business> toBList) {
         this.mContext = mContext;
@@ -44,10 +49,30 @@ public class BusinessHavePermissonProductRecyclerViewAdapter extends RecyclerVie
         return new ViewHolder(view);
     }
 
+
     @Override
     public void onBindViewHolder(final BusinessHavePermissonProductRecyclerViewAdapter.ViewHolder holder, int position) {
-        System.out.println("测试："+toBList);
-            holder.tv_store_name.setText("店铺:"+toBList.get(position).getName());
+        System.out.println("店家数量测试：" + toBList.size() + "Cloths-->:" + toBList.get(position).getCloths());
+        //取出所有商品
+        holder.ll_i_product_list.removeView(holder.ll_product_content);//移除默认view
+        holder.tv_store_name.setText("店铺:" + toBList.get(position).getName());
+
+        for (Cloth cloth : toBList.get(position).getCloths()) {
+            //添加子view
+            LinearLayout childLayout = (LinearLayout) LayoutInflater.from(mContext).inflate(R.layout.business_check_who_hava_permisson_product_item_content, null);
+            //设置显示商品的商品条目详情
+            iv_pictue = (ImageView) childLayout.findViewById(R.id.iv_pictue);
+            tv_title = (TextView) childLayout.findViewById(R.id.tv_title);
+            tv_price = (TextView) childLayout.findViewById(R.id.tv_price);
+            tv_stock = (TextView) childLayout.findViewById(R.id.tv_stock);
+            iv_pictue.setImageResource(R.drawable.cheese_3);  //默认图片
+            tv_title.setText(cloth.getTitle());
+            tv_price.setText("￥" + cloth.getPrice());
+            tv_stock.setText("库存:" + cloth.getStock());
+            //在商铺条目中添加子商品条目
+            holder.ll_i_product_list.addView(childLayout);
+        }
+
 
     }
 
@@ -61,22 +86,17 @@ public class BusinessHavePermissonProductRecyclerViewAdapter extends RecyclerVie
         public final View mView;
         public LinearLayout ll_i_product_list;
         public TextView tv_store_name;
-        public ImageView iv_pictue;
-        public TextView tv_title;
-        public TextView tv_price;
-        public TextView tv_stock;
+
+        public LinearLayout ll_product_content;
 
         public ViewHolder(View view) {
             super(view);
-            //动态添加条目的布局
+            //商铺动态添加条目的布局
             ll_i_product_list = (LinearLayout) view.findViewById(R.id.ll_i_product_list);
             //商铺名称
             tv_store_name = (TextView) view.findViewById(R.id.tv_store_name);
-            iv_pictue = (ImageView) view.findViewById(R.id.iv_pictue);
-            tv_title = (TextView) view.findViewById(R.id.tv_title);
-            tv_price = (TextView) view.findViewById(R.id.tv_price);
-            tv_stock = (TextView) view.findViewById(R.id.tv_stock);
-
+            //商铺动态添加的商品默认条目内容
+            ll_product_content = (LinearLayout) view.findViewById(R.id.ll_product_content);
             mView = view;
         }
     }

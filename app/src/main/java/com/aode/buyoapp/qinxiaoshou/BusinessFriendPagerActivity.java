@@ -115,6 +115,7 @@ public class BusinessFriendPagerActivity extends AppCompatActivity implements IB
     @Override
     public void toFriendToMeMainActivity(List<Business> businesses) {
         this.toBList = businesses;
+        System.out.println("拥有权限的商品的店铺数："+businesses.size());
         adapter.addFragment(new BusinessCheckWhoHaveProductPermissionFragment(toBList), "拥有权限的商品");
         this.page1 = true;
     }
