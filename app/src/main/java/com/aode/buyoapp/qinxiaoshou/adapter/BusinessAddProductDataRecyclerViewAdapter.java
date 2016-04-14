@@ -57,8 +57,6 @@ public class BusinessAddProductDataRecyclerViewAdapter extends RecyclerView.Adap
                 cloth.setColor(holder.et_color.getText().toString().trim());
                 cloth.setPattern(holder.et_parttern.getText().toString().trim());
                 cloth.setbId(Home_business.business.getId());
-                Toast.makeText(mContext, "添加完成" + cloth, Toast.LENGTH_SHORT).show();
-
                 businessProductAddPresenter.ProductAdd();
             }
         });

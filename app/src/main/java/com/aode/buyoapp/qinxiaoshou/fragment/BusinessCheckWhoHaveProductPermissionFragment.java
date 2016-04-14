@@ -8,8 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.aode.buyoapp.LL.bean.Business;
 import com.aode.buyoapp.R;
 import com.aode.buyoapp.qinxiaoshou.adapter.BusinessHavePermissonProductRecyclerViewAdapter;
+
+import java.util.List;
 
 
 /**
@@ -19,6 +22,10 @@ import com.aode.buyoapp.qinxiaoshou.adapter.BusinessHavePermissonProductRecycler
  */
 public class BusinessCheckWhoHaveProductPermissionFragment extends Fragment {
     private RecyclerView mRecyclerView;
+    List<Business> toBList;
+    public BusinessCheckWhoHaveProductPermissionFragment(List<Business> toBList) {
+         this.toBList = toBList;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -30,6 +37,6 @@ public class BusinessCheckWhoHaveProductPermissionFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mRecyclerView.getContext()));
-        mRecyclerView.setAdapter(new BusinessHavePermissonProductRecyclerViewAdapter(getActivity()));
+        mRecyclerView.setAdapter(new BusinessHavePermissonProductRecyclerViewAdapter(getActivity(),toBList));
     }
 }

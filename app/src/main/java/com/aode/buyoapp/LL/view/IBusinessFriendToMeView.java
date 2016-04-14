@@ -10,11 +10,11 @@ import java.util.List;
  * 商家业务View-别人为我们开放的友好商家权限
  */
 public interface IBusinessFriendToMeView {
-    String getId();
+    String ToMegetId();
 
-    void toMainActivity(List<Business> businesses);//成功跳转Activity
+    void toFriendToMeMainActivity(List<Business> businesses);//成功跳转Activity
 
-    void showFailedError();//失败提示
+    void ToMeshowFailedError();//失败提示
 
-    void showNo();//未查找到
+    void ToMeshowNo();//未查找到
 }

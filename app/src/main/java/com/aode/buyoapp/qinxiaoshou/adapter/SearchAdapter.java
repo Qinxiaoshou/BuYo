@@ -4,7 +4,6 @@ import android.content.Context;
 
 import com.aode.buyoapp.LL.bean.Business;
 import com.aode.buyoapp.R;
-import com.aode.buyoapp.qinxiaoshou.model.Bean;
 import com.aode.buyoapp.qinxiaoshou.util.CommonAdapter;
 import com.aode.buyoapp.qinxiaoshou.util.ViewHolder;
 
@@ -26,8 +25,8 @@ public class SearchAdapter extends CommonAdapter<Business> {
     @Override
     public void convert(ViewHolder holder, int position) {
         holder.setImageResource(R.id.item_search_iv_icon,0)
-                .setText(R.id.item_search_tv_title,mData.get(position).getName())
-                .setText(R.id.item_search_tv_content,mData.get(position).getPhoneNumber())
-                .setText(R.id.item_search_tv_comments,mData.get(position).getAddress());
+                .setText(R.id.tv_name,mData.get(position).getName())
+                .setText(R.id.tv_address,mData.get(position).getPhoneNumber())
+                .setText(R.id.tv_phone,mData.get(position).getAddress());
     }
 }

@@ -13,7 +13,7 @@
         android:visibility="gone" />
 
     <TextView
-        android:id="@+id/item_search_tv_title"
+        android:id="@+id/tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
@@ -24,11 +24,11 @@
         android:textSize="18sp" />
 
     <TextView
-        android:id="@+id/item_search_tv_comments"
+        android:id="@+id/tv_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/item_search_tv_content"
-        android:layout_below="@+id/item_search_tv_title"
+        android:layout_alignStart="@+id/tv_address"
+        android:layout_below="@+id/tv_name"
         android:layout_marginRight="63dp"
         android:singleLine="true"
         android:text="联系方式:9345958"
@@ -36,10 +36,10 @@
         android:textSize="14sp" />
 
     <TextView
-        android:id="@+id/item_search_tv_content"
+        android:id="@+id/tv_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/item_search_tv_comments"
+        android:layout_below="@id/tv_phone"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="50dp"
@@ -48,7 +48,7 @@
         android:textColor="#777"
         android:textSize="16sp" />
     <TextView
-        android:layout_below="@+id/item_search_tv_content"
+        android:layout_below="@+id/tv_address"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#d8d3d3"/>

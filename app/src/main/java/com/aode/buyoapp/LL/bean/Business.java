@@ -1,5 +1,7 @@
 package com.aode.buyoapp.LL.bean;
 
+import java.util.List;
+
 /*@Table(name="tb_business")*/
 public class Business {
     /**
@@ -70,13 +72,13 @@ public class Business {
      *
      * @mbggenerated
      */
-    /*@Transient
+   /* @Transient*/
     private List<Cloth> cloths ;
 
-    @Transient
-    private List<Orders> orderses ;*/
+   /* @Transient*/
+    private List<Orders> orderses ;
 
-    public Business(String id, String loginName, String name, String password, String phoneNumber, String license, String address, Long sales, String description) {
+    public Business(String id, String loginName, String name, String password, String phoneNumber, String license, String address, Long sales, String description, List<Cloth> cloths, List<Orders> orderses) {
         this.id = id;
         this.loginName = loginName;
         this.name = name;
@@ -86,6 +88,8 @@ public class Business {
         this.address = address;
         this.sales = sales;
         this.description = description;
+        this.cloths = cloths;
+        this.orderses = orderses;
     }
 
     /**
@@ -273,6 +277,21 @@ public class Business {
     public void setSales(Long sales) {
         this.sales = sales;
     }
+    public List<Cloth> getCloths() {
+        return cloths;
+    }
+
+    public void setCloths(List<Cloth> cloths) {
+        this.cloths = cloths;
+    }
+
+    public List<Orders> getOrderses() {
+        return orderses;
+    }
+
+    public void setOrderses(List<Orders> orderses) {
+        this.orderses = orderses;
+    }
 
     public String getDescription() {
         return description;
@@ -293,6 +312,9 @@ public class Business {
                 ", license='" + license + '\'' +
                 ", address='" + address + '\'' +
                 ", sales=" + sales +
-                ", description='" + description + '\'' + '}';
+                ", description='" + description + '\'' +
+                ", cloths=" + cloths +
+                ", orderses=" + orderses +
+                '}';
     }
 }

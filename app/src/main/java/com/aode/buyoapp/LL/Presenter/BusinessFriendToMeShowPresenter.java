@@ -28,7 +28,7 @@ public class BusinessFriendToMeShowPresenter {
 
     public void getFriendToMe() {
 
-        iBusinessBiz.getFriendBusinessToMe(businessFriendToMeView.getId(), new BBusinessFriendToMeListener() {
+        iBusinessBiz.getFriendBusinessToMe(businessFriendToMeView.ToMegetId(), new BBusinessFriendToMeListener() {
 
 
             @Override
@@ -36,7 +36,7 @@ public class BusinessFriendToMeShowPresenter {
                 mHandler.post(new Runnable() {
                     @Override
                     public void run() {
-                        businessFriendToMeView.toMainActivity(businesses);
+                        businessFriendToMeView.toFriendToMeMainActivity(businesses);
                     }
                 });
             }
@@ -46,7 +46,7 @@ public class BusinessFriendToMeShowPresenter {
                 mHandler.post(new Runnable() {
                     @Override
                     public void run() {
-                        businessFriendToMeView.showFailedError();
+                        businessFriendToMeView.ToMeshowFailedError();
                     }
                 });
             }
@@ -56,7 +56,7 @@ public class BusinessFriendToMeShowPresenter {
                 mHandler.post(new Runnable() {
                     @Override
                     public void run() {
-                        businessFriendToMeView.showNo();
+                        businessFriendToMeView.ToMeshowNo();
                     }
                 });
             }

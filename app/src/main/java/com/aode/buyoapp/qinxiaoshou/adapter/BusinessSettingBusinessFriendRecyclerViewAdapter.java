@@ -1,73 +1,102 @@
 package com.aode.buyoapp.qinxiaoshou.adapter;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ObjectAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.aode.buyoapp.LL.Home_business;
+import com.aode.buyoapp.LL.Presenter.BusinessFriendShowPresenter;
+import com.aode.buyoapp.LL.bean.Business;
+import com.aode.buyoapp.LL.view.IBusinessFriendView;
 import com.aode.buyoapp.R;
 import com.aode.buyoapp.qinxiaoshou.activity.BusinessChooseBusinessAndPermissionActivity;
+import com.aode.buyoapp.qinxiaoshou.activity.BusinessUpdateBusinessAndPermissionActivity;
+
+import java.io.Serializable;
+import java.util.List;
 
 
 /**
  * 商家设置友好商家适配器
+ *
  * @author 覃培周
  * @// FIXME: 2016/4/7
  */
 public class BusinessSettingBusinessFriendRecyclerViewAdapter extends RecyclerView.Adapter<BusinessSettingBusinessFriendRecyclerViewAdapter.ViewHolder> {
 
     private Context mContext;
+    private List<Business> businesses;
 
-    public BusinessSettingBusinessFriendRecyclerViewAdapter(Context mContext) {
+    public BusinessSettingBusinessFriendRecyclerViewAdapter(Context mContext, List<Business> businesses) {
         this.mContext = mContext;
+        this.businesses = businesses;
+
     }
 
 
     //列表页面的布局实现
     @Override
     public BusinessSettingBusinessFriendRecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-       View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.business_search_otherbusiness__item_bean_list_content, parent, false);
-       return new ViewHolder(view);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.business_search_otherbusiness__item_bean_list_content, parent, false);
+        return new ViewHolder(view);
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
-    public void onBindViewHolder(final BusinessSettingBusinessFriendRecyclerViewAdapter.ViewHolder holder, int position) {
-        final View view = holder.mView;
-        view.setOnClickListener(new View.OnClickListener() {  //监听列表条目信息跳转的控件
+    public void onBindViewHolder(final BusinessSettingBusinessFriendRecyclerViewAdapter.ViewHolder holder, final int position) {
+        holder.tv_name.setText(businesses.get(position).getName());
+        holder.tv_phone.setText("联系方式:" + businesses.get(position).getPhoneNumber());
+        holder.tv_address.setText("地址：" + businesses.get(position).getAddress());
+
+
+        holder.mView.setOnClickListener(new View.OnClickListener() {  //监听列表条目信息跳转的控件
             @Override
             public void onClick(View v) {
-                ObjectAnimator animator = ObjectAnimator.ofFloat(view, "translationZ", 5, 0); //上下移动
-                animator.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        //跳到该条目的商家进行的我对他开放本人商品权限管理
-                        mContext.startActivity(new Intent(mContext,BusinessChooseBusinessAndPermissionActivity.class));
-                    }
-                });
-                animator.start();
+
+                Intent intent = new Intent(mContext, BusinessUpdateBusinessAndPermissionActivity.class);
+                //传该商家拥有本店商品权限的集合
+                Bundle bundle = new Bundle();
+                System.out.println("%%%%%-->"+businesses);
+                bundle.putSerializable("MSPANSCOMMIT", (Serializable) businesses.get(position).getCloths());
+                intent.putExtras(bundle);
+                mContext.startActivity(intent);
+
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return 5;
+        if (businesses == null) {
+            return 0;
+        } else {
+            return businesses.size();
+        }
     }
+
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
+        TextView tv_name;
+        TextView tv_phone;
+        TextView tv_address;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
+            //商家名
+            tv_name = (TextView) view.findViewById(R.id.tv_name);
+            //商家电话号码
+            tv_phone = (TextView) view.findViewById(R.id.tv_phone);
+            //商家地址
+            tv_address = (TextView) view.findViewById(R.id.tv_address);
         }
     }
 }

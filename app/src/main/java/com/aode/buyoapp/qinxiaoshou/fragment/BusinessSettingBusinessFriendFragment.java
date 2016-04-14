@@ -8,8 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.aode.buyoapp.LL.bean.Business;
+import com.aode.buyoapp.LL.view.IBusinessFriendView;
 import com.aode.buyoapp.R;
 import com.aode.buyoapp.qinxiaoshou.adapter.BusinessSettingBusinessFriendRecyclerViewAdapter;
+
+import java.util.List;
 
 
 /**
@@ -20,6 +24,12 @@ import com.aode.buyoapp.qinxiaoshou.adapter.BusinessSettingBusinessFriendRecycle
 public class BusinessSettingBusinessFriendFragment extends Fragment {
     private View view;
     private RecyclerView mRecyclerView;
+    private List<Business> businesses;
+
+    public BusinessSettingBusinessFriendFragment(List<Business> businesses) {
+         this.businesses = businesses;
+        System.out.println(businesses);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -32,6 +42,7 @@ public class BusinessSettingBusinessFriendFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_view2);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mRecyclerView.getContext()));
-        mRecyclerView.setAdapter(new BusinessSettingBusinessFriendRecyclerViewAdapter(getActivity()));
+        mRecyclerView.setAdapter(new BusinessSettingBusinessFriendRecyclerViewAdapter(getActivity(),businesses));
     }
+
 }

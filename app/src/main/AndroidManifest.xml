@@ -45,6 +45,7 @@
             android:windowSoftInputMode="adjustPan"
             />
         <activity android:name=".qinxiaoshou.activity.BusinessProductDetailsActivity"/>
+        <activity android:name=".qinxiaoshou.activity.BusinessUpdateBusinessAndPermissionActivity"/>
         <activity
             android:name=".LL.Login_business" />
         <activity

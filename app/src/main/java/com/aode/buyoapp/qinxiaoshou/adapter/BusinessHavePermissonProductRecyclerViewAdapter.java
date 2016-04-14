@@ -2,13 +2,22 @@ package com.aode.buyoapp.qinxiaoshou.adapter;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.aode.buyoapp.LL.Listener.BBusinessFriendListener;
+import com.aode.buyoapp.LL.bean.Business;
+import com.aode.buyoapp.LL.view.IBusinessFriendView;
+import com.aode.buyoapp.LL.view.IBusinessSearchView;
 import com.aode.buyoapp.R;
+
+import java.util.List;
 
 
 /**
@@ -16,15 +25,15 @@ import com.aode.buyoapp.R;
  * @author 覃培周
  * @// FIXME: 2016/4/7
  */
-public class BusinessHavePermissonProductRecyclerViewAdapter extends RecyclerView.Adapter<BusinessHavePermissonProductRecyclerViewAdapter.ViewHolder> {
+public class BusinessHavePermissonProductRecyclerViewAdapter extends RecyclerView.Adapter<BusinessHavePermissonProductRecyclerViewAdapter.ViewHolder>{
 
     private Context mContext;
+    List<Business> toBList;
 
-    public BusinessHavePermissonProductRecyclerViewAdapter(Context mContext) {
+    public BusinessHavePermissonProductRecyclerViewAdapter(Context mContext, List<Business> toBList) {
         this.mContext = mContext;
+        this.toBList = toBList;
     }
-
-
     //列表页面的布局实现
     @Override
     public BusinessHavePermissonProductRecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -32,30 +41,19 @@ public class BusinessHavePermissonProductRecyclerViewAdapter extends RecyclerVie
        return new ViewHolder(view);
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onBindViewHolder(final BusinessHavePermissonProductRecyclerViewAdapter.ViewHolder holder, int position) {
-       /* final View view = holder.mView;
-        view.setOnClickListener(new View.OnClickListener() {  //监听列表条目信息跳转的控件
-            @Override
-            public void onClick(View v) {
-                ObjectAnimator animator = ObjectAnimator.ofFloat(view, "translationZ", 5, 0); //上下移动
-                animator.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        System.out.println("点击了条目，产生了跳转");
-                        mContext.startActivity(new Intent(mContext, DetailActivity.class));
-                    }
-                });
-                animator.start();
-            }
-        });*/
+      /*  holder.iv_pictue.setImageResource(R.drawable.cheese_3);
+        holder.tv_title.setText(toBList.get(position).getCloths().get(position).getTitle());
+        holder.tv_price.setText("￥" + toBList.get(position).getCloths().get(position).getPrice());
+        holder.tv_stock.setText("库存:" + toBList.get(position).getCloths().get(position).getStock());*/
     }
 
     @Override
     public int getItemCount() {
-        return 2;
+        return 3;
     }
+
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
