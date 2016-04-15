@@ -3,7 +3,9 @@ package com.aode.buyoapp.LL;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.aode.buyoapp.LL.Homepage.Business_HomePage;
 import com.aode.buyoapp.LL.Personal.Business_Personal;
@@ -14,6 +16,7 @@ public class Home_business extends AppCompatActivity {
     private Business_HomePage homePage;
     private Business_Personal personal;
     private RadioGroup tabs;
+    private long exitTime = 0;
 
     public static Fragment fragment;
     public static Business business ;
@@ -76,5 +79,20 @@ public class Home_business extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN){
+            if((System.currentTimeMillis()-exitTime) > 2000){
+                Toast.makeText(getApplicationContext(), "再按一次退出程序", Toast.LENGTH_SHORT).show();
+                exitTime = System.currentTimeMillis();
+            } else {
+                finish();
+                System.exit(0);
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

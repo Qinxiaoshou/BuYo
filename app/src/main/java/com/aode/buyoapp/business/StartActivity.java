@@ -39,9 +39,10 @@ public class StartActivity extends Activity {
         btn_start_business = (Button) findViewById(R.id.btn_start_business);
         btn_start_customer = (Button) findViewById(R.id.btn_start_customer);
         AlphaAnimation animation = new AlphaAnimation(0.0f, 1.0f);
-        animation.setDuration(3000);
+        animation.setDuration(5000);
         btn_start_business.startAnimation(animation);
         btn_start_customer.startAnimation(animation);
+
 
     }
 
@@ -50,6 +51,7 @@ public class StartActivity extends Activity {
      */
     public void startBusiness(View v) {
         startActivity(new Intent(StartActivity.this, Login_business.class));
+        StartActivity.this.finish();
     }
 
     /**
@@ -57,5 +59,6 @@ public class StartActivity extends Activity {
      */
     public void startCustomer(View v) {
         startActivity(new Intent(StartActivity.this, Home_person.class));
+        StartActivity.this.finish();
     }
 }
