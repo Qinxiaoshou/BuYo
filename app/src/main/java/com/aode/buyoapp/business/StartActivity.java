@@ -40,17 +40,24 @@ public class StartActivity extends Activity {
         btn_start_business = (Button) findViewById(R.id.btn_start_business);
         btn_start_customer = (Button) findViewById(R.id.btn_start_customer);
         AlphaAnimation animation = new AlphaAnimation(0.0f, 1.0f);
-        animation.setDuration(5000);
+        animation.setDuration(3000);
         btn_start_business.startAnimation(animation);
         btn_start_customer.startAnimation(animation);
         animation.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
+                //按钮不可点击状态
+                btn_start_business.setClickable(false);
+                btn_start_customer.setClickable(false);
 
             }
 
             @Override
             public void onAnimationEnd(Animation animation) {
+                //按钮可点击状态
+                btn_start_business.setClickable(true);
+                btn_start_customer.setClickable(true);
+
                 //点击用户按钮进入用户端首页界面
                 btn_start_customer.setOnClickListener(new View.OnClickListener() {
                     @Override
