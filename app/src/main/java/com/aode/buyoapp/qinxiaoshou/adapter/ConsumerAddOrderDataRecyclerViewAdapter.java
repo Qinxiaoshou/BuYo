@@ -54,6 +54,7 @@ public class ConsumerAddOrderDataRecyclerViewAdapter extends RecyclerView.Adapte
                     tv_d_allPrice_text.setText("￥" + cloth.getPrice() * Long.valueOf(length));
                     tv_d_realpay_text.setText("￥" + cloth.getPrice() * Long.valueOf(length));
                     orders.setPrice(length * cloth.getPrice());
+                    orders.setLength(length);
                     break;
                 default:
                     break;
@@ -104,6 +105,7 @@ public class ConsumerAddOrderDataRecyclerViewAdapter extends RecyclerView.Adapte
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {//在输入数据时监听
             }
+
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count,//输入数据之前的监听
                                           int after) {
@@ -160,8 +162,6 @@ public class ConsumerAddOrderDataRecyclerViewAdapter extends RecyclerView.Adapte
             }
         });
 
-        Date date = new Date(System.currentTimeMillis());
-        orders.setDate(date);
         orders.setbId(cloth.getbId() + "");
         orders.setuId(Home_person.id);
         orders.setBuyer(Home_person.loginName);

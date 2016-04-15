@@ -60,7 +60,6 @@
             android:orientation="vertical">
             <!--在这里添加商品信息条目-->
             <include layout="@layout/business_check_who_hava_permisson_product_item_content"/>
-            <include layout="@layout/business_check_who_hava_permisson_product_item_content"/>
         </LinearLayout>
         <TextView
             android:id="@+id/tv_result"

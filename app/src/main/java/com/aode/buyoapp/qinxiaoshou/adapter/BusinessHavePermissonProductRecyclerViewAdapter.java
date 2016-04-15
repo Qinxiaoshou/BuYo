@@ -46,33 +46,37 @@ public class BusinessHavePermissonProductRecyclerViewAdapter extends RecyclerVie
 
     @Override
     public void onBindViewHolder(final BusinessHavePermissonProductRecyclerViewAdapter.ViewHolder holder, int position) {
-        //取出所有商品
-        holder.ll_i_product_list.removeView(holder.ll_product_content);//移除默认view
-        System.out.println(toBList);
-        holder.tv_store_name.setText("店铺:" + toBList.get(position).getName());
+        if (toBList.equals("")) {
+            //取出所有商品
+            holder.ll_i_product_list.removeView(holder.ll_product_content);//移除默认view
+            System.out.println(toBList);
+            holder.tv_store_name.setText("店铺:" + toBList.get(position).getName());
 
-        for (Cloth cloth : toBList.get(position).getCloths()) {
-            //添加子view
-            LinearLayout childLayout = (LinearLayout) LayoutInflater.from(mContext).inflate(R.layout.business_check_who_hava_permisson_product_item_content, null);
-            //设置显示商品的商品条目详情
-            iv_pictue = (ImageView) childLayout.findViewById(R.id.iv_pictue);
-            tv_title = (TextView) childLayout.findViewById(R.id.tv_title);
-            tv_price = (TextView) childLayout.findViewById(R.id.tv_price);
-            tv_stock = (TextView) childLayout.findViewById(R.id.tv_stock);
-            iv_pictue.setImageResource(R.drawable.cheese_3);  //默认图片
-            tv_title.setText(cloth.getTitle());
-            tv_price.setText("￥" + cloth.getPrice());
-            tv_stock.setText("库存:" + cloth.getStock());
-            //在商铺条目中添加子商品条目
-            holder.ll_i_product_list.addView(childLayout);
+            for (Cloth cloth : toBList.get(position).getCloths()) {
+                //添加子view
+                LinearLayout childLayout = (LinearLayout) LayoutInflater.from(mContext).inflate(R.layout.business_check_who_hava_permisson_product_item_content, null);
+                //设置显示商品的商品条目详情
+                iv_pictue = (ImageView) childLayout.findViewById(R.id.iv_pictue);
+                tv_title = (TextView) childLayout.findViewById(R.id.tv_title);
+                tv_price = (TextView) childLayout.findViewById(R.id.tv_price);
+                tv_stock = (TextView) childLayout.findViewById(R.id.tv_stock);
+                iv_pictue.setImageResource(R.drawable.cheese_3);  //默认图片
+                tv_title.setText(cloth.getTitle());
+                tv_price.setText("￥" + cloth.getPrice());
+                tv_stock.setText("库存:" + cloth.getStock());
+                //在商铺条目中添加子商品条目
+                holder.ll_i_product_list.addView(childLayout);
+            }
         }
-
-
     }
 
     @Override
     public int getItemCount() {
-        return toBList.size();
+        if(toBList!=null){
+            return  toBList.size();
+        }else{
+            return 0;
+        }
     }
 
 

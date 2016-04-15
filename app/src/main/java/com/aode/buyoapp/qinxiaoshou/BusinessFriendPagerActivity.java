@@ -141,12 +141,15 @@ public class BusinessFriendPagerActivity extends AppCompatActivity implements IB
 
     @Override
     public void ToMeshowFailedError() {
+        adapter.addFragment(new BusinessSettingBusinessFriendFragment(bList), "我的友好商家");
         Toast.makeText(getApplicationContext(), "查找拥有权限的商品失败", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void ToMeshowNo() {
+        adapter.addFragment(new BusinessCheckWhoHaveProductPermissionFragment(toBList), "拥有权限的商品");
         Toast.makeText(getApplicationContext(), "查找不到拥有权限的商家", Toast.LENGTH_SHORT).show();
+        this.page1 = true;
     }
 
 

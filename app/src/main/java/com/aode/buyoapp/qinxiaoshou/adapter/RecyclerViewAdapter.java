@@ -9,8 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.aode.buyoapp.LL.bean.Orders;
 import com.aode.buyoapp.R;
 import com.aode.buyoapp.qinxiaoshou.activity.ConsumerOrderDetailActivity;
+
+import java.util.List;
 
 
 /**
@@ -21,9 +24,11 @@ import com.aode.buyoapp.qinxiaoshou.activity.ConsumerOrderDetailActivity;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
     private Context mContext;
+    private List<Orders> orderses;
 
-    public RecyclerViewAdapter(Context mContext) {
+    public RecyclerViewAdapter(Context mContext, List<Orders> orderses) {
         this.mContext = mContext;
+        this.orderses = orderses;
     }
 
 
@@ -37,6 +42,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onBindViewHolder(final RecyclerViewAdapter.ViewHolder holder, int position) {
+
+
+
+
+
         final View view = holder.mView;
         view.setOnClickListener(new View.OnClickListener() {  //监听列表条目信息跳转的控件
             @Override

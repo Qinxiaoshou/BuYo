@@ -8,8 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.aode.buyoapp.LL.bean.Orders;
 import com.aode.buyoapp.R;
 import com.aode.buyoapp.qinxiaoshou.adapter.RecyclerViewAdapter;
+
+import java.util.List;
 
 
 /**
@@ -19,6 +22,11 @@ import com.aode.buyoapp.qinxiaoshou.adapter.RecyclerViewAdapter;
  */
 public class ConsumerOrderManagerFragment extends Fragment {
     private RecyclerView mRecyclerView;
+    private List<Orders> orderses;
+
+    public ConsumerOrderManagerFragment(List<Orders> orderses) {
+      this.orderses = orderses;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -30,6 +38,6 @@ public class ConsumerOrderManagerFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mRecyclerView.getContext()));
-        mRecyclerView.setAdapter(new RecyclerViewAdapter(getActivity()));
+        mRecyclerView.setAdapter(new RecyclerViewAdapter(getActivity(),orderses));
     }
 }

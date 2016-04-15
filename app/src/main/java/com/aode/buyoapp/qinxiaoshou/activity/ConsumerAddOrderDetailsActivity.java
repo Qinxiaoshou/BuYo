@@ -89,7 +89,6 @@ public class ConsumerAddOrderDetailsActivity extends AppCompatActivity implement
 
     @Override
     public Orders PutOrders() {
-        System.out.println("%%%%--》"+orders);
         return orders;
     }
 
