@@ -52,6 +52,7 @@ public class Person_Personal extends Fragment implements View.OnClickListener {
                 startActivity(new Intent(getActivity(), ConsumerOrderListActivity.class));
                 break;
             case R.id.iv_limit:
+                //个人可看到的库存量商品
                 Toast.makeText(getActivity(), "个人权限", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.iv_changePassword:
