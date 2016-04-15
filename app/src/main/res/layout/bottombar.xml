@@ -30,7 +30,8 @@
             android:gravity="center_horizontal|bottom"
             android:text="主页"
             android:textSize="10sp"
-            android:textColor="#978b8b" />
+            android:textColor="@drawable/button_radio_color" />
+          />
 
         <RadioButton
             android:id="@+id/rb_Logistics"
@@ -43,7 +44,7 @@
             android:gravity="center_horizontal|bottom"
             android:text="物流"
             android:textSize="10sp"
-            android:textColor="#978b8b" />
+            android:textColor="@drawable/button_radio_color" />
 
         <RadioButton
             android:id="@+id/rb_Recruits"
@@ -56,7 +57,7 @@
             android:gravity="center_horizontal|bottom"
             android:text="招聘"
             android:textSize="10sp"
-            android:textColor="#978b8b" />
+            android:textColor="@drawable/button_radio_color" />
 
         <RadioButton
             android:id="@+id/rb_Personal"
@@ -69,6 +70,6 @@
             android:gravity="center_horizontal|bottom"
             android:text="个人"
             android:textSize="10sp"
-            android:textColor="#978b8b" />
+            android:textColor="@drawable/button_radio_color" /> />
     </RadioGroup>
 </LinearLayout>
