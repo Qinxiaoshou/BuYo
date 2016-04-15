@@ -11,13 +11,13 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="5dp">
 
-        <TextView
+        <!--<TextView
             android:id="@+id/tv_d_buynum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="订单号: 11101711380"
             android:textColor="#000000"
-            android:textSize="15sp" />
+            android:textSize="15sp" />-->
 
     </RelativeLayout>
 
@@ -78,7 +78,7 @@
             android:src="@drawable/bil" />
 
         <EditText
-            android:id="@+id/tv_address"
+            android:id="@+id/et_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -108,7 +108,9 @@
                 android:textColor="#000000"
                 android:text="米数"/>
             <EditText
+                android:id="@+id/et_length"
                 android:paddingLeft="10dp"
+                android:maxLength="4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="请输入米数"
@@ -116,7 +118,6 @@
                 android:enabled="true"
                 android:gravity="top"
                 android:inputType="number"
-                android:minLines="1"
                 android:maxLines="1"
                 android:background="@null"
                 android:scrollbars="vertical"
@@ -131,7 +132,7 @@
             android:text="订单描述描述"/>
         <EditText
             android:layout_marginRight="10dp"
-            android:id="@+id/add_content"
+            android:id="@+id/et_order_description"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:hint="请输入用户描述"
@@ -161,18 +162,20 @@
         android:orientation="horizontal">
 
         <ImageView
+            android:visibility="invisible"
             android:id="@+id/iv_store_logo2"
-            android:layout_width="30dp"
+            android:layout_width="0dp"
             android:layout_height="30dp"
             android:src="@drawable/store" />
 
         <TextView
+            android:id="@+id/tv_sotre_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/iv_store_logo2"
-            android:text="鱼蛋档"
+            android:text="商品信息"
             android:textColor="#000000"
             android:textSize="15sp" />
     </RelativeLayout>
@@ -216,27 +219,19 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/vt_d_producttitle"
+                    android:id="@+id/vt_d_product_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="手机特惠只换不修1年（1001-2000）元"
                     android:textColor="#000000"
                     android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/tv_d_product_count"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/vt_d_producttitle"
-                    android:layout_marginTop="30dp"
-                    android:paddingRight="10dp"
-                    android:text="x1"
-                    android:textSize="16sp" />
             </RelativeLayout>
 
             <TextView
+                android:id="@+id/tv_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:maxLength="12"
                 android:text="￥79.00"
                 android:textColor="#000000" />
 
@@ -265,7 +260,6 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/tv_d_allPrice_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -273,10 +267,12 @@
             android:text="商品总额" />
 
         <TextView
+            android:id="@+id/tv_d_allPrice_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:paddingRight="10dp"
+            android:maxLength="12"
             android:text="￥59.90"
             android:textColor="#d24040" />
     </RelativeLayout>
@@ -320,8 +316,9 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginRight="10dp"
                 android:text="￥64.90"
+                android:maxLength="12"
                 android:textColor="#d24040"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
         </RelativeLayout>
     </RelativeLayout>
 
@@ -331,6 +328,7 @@
         android:orientation="vertical">
 
         <RelativeLayout
+            android:visibility="invisible"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -346,13 +344,13 @@
                 android:text="下单时间:" />
 
             <TextView
-                android:id="@+id/tv_d_buytime"
+                android:id="@+id/tv_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
-                android:paddingBottom="30dp"
+                android:paddingBottom="60dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginRight="10dp"
                 android:text="2015-11-28 22:23:45" />

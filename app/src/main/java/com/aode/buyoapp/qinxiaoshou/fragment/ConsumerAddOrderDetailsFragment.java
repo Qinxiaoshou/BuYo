@@ -26,6 +26,11 @@ import com.aode.buyoapp.qinxiaoshou.adapter.ProductDataRecyclerViewAdapter;
 public class ConsumerAddOrderDetailsFragment extends Fragment {
     private View mParentView;
     private RecyclerView mRecyclerView;
+    private Cloth cloth;
+    public ConsumerAddOrderDetailsFragment(Cloth cloth) {
+        this.cloth = cloth;
+    }
+    public ConsumerAddOrderDataRecyclerViewAdapter  ConsumerAddOrderDataRecyclerViewAdapter  = null ;
 
 
     @Nullable
@@ -40,6 +45,6 @@ public class ConsumerAddOrderDetailsFragment extends Fragment {
         //类listview布局
         mRecyclerView = (RecyclerView) mParentView.findViewById(R.id.recycler_view2);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mParentView.getContext()));
-        mRecyclerView.setAdapter(new ConsumerAddOrderDataRecyclerViewAdapter(getActivity()));
+        mRecyclerView.setAdapter(ConsumerAddOrderDataRecyclerViewAdapter = new ConsumerAddOrderDataRecyclerViewAdapter(getActivity(),cloth));
     }
 }

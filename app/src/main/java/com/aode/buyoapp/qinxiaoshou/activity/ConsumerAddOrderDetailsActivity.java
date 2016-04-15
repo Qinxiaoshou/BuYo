@@ -12,10 +12,16 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.aode.buyoapp.LL.Presenter.UserOrdersAddPresenter;
 import com.aode.buyoapp.LL.bean.Cloth;
+import com.aode.buyoapp.LL.bean.Orders;
+import com.aode.buyoapp.LL.view.IUserOrdersAddView;
 import com.aode.buyoapp.R;
 import com.aode.buyoapp.qinxiaoshou.ConsumerOrderListActivity;
+import com.aode.buyoapp.qinxiaoshou.adapter.ConsumerAddOrderDataRecyclerViewAdapter;
 import com.aode.buyoapp.qinxiaoshou.fragment.ConsumerAddOrderDetailsFragment;
+
+import java.util.logging.Handler;
 
 
 /**
@@ -23,7 +29,7 @@ import com.aode.buyoapp.qinxiaoshou.fragment.ConsumerAddOrderDetailsFragment;
  * @author 覃培周
  * @// FIXME: 2016/4/7
  */
-public class ConsumerAddOrderDetailsActivity extends AppCompatActivity {
+public class ConsumerAddOrderDetailsActivity extends AppCompatActivity implements IUserOrdersAddView{
 
     private ConsumerAddOrderDetailsFragment productItemDetailsFragment;
     private TextView tv_g_add_product_title;
@@ -31,20 +37,26 @@ public class ConsumerAddOrderDetailsActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private RadioGroup rg_h_open_permission;
     private TextView tv_rg_name;
+    private Cloth cloth;
+    private Orders orders;
+
+    UserOrdersAddPresenter userOrdersAddPresenter = new UserOrdersAddPresenter(this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.business_add_product_layout);
 
         //获取商品信息
-        final Intent intent = getIntent();
-        Cloth cloth = (Cloth) intent.getSerializableExtra("cloth");
+        Intent intent = getIntent();
+        cloth = (Cloth) intent.getSerializableExtra("cloth");
+
 
         //步骤一：添加一个FragmentTransaction的实例
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         //步骤二：用add()方法加上Fragment的对象rightFragment
-        productItemDetailsFragment = new ConsumerAddOrderDetailsFragment();
+        productItemDetailsFragment = new ConsumerAddOrderDetailsFragment(cloth);
         toolbar = (Toolbar) findViewById(R.id.toolbar_g_product_appbar);
         tv_rg_name = (TextView) findViewById(R.id.tv_rg_name);
         tv_g_add_product_title = (TextView) findViewById(R.id.tv_g_add_product_title);
@@ -67,12 +79,29 @@ public class ConsumerAddOrderDetailsActivity extends AppCompatActivity {
         rg_h_open_permission.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"提交订单",Toast.LENGTH_SHORT).show();
-                Intent intent1 = new Intent(getApplicationContext(), ConsumerOrderListActivity.class);
-                startActivity(intent1);
-                finish();
+                orders =  productItemDetailsFragment.ConsumerAddOrderDataRecyclerViewAdapter.getOrders();
+                System.out.println("跳转提交订单信息：" + orders);
+                userOrdersAddPresenter.ordersAdd();
             }
         });
 
+    }
+
+    @Override
+    public Orders PutOrders() {
+        System.out.println("%%%%--》"+orders);
+        return orders;
+    }
+
+    @Override
+    public void toMainActivity() {
+        Intent intent1 = new Intent(getApplicationContext(), ConsumerOrderListActivity.class);
+        startActivity(intent1);
+        finish();
+    }
+
+    @Override
+    public void showFailedError() {
+       Toast.makeText(this,"提交订单失败",Toast.LENGTH_SHORT).show();
     }
 }

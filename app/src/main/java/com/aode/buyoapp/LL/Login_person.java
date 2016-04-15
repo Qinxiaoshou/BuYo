@@ -88,6 +88,7 @@ public class Login_person extends Fragment implements IUserLoginView {
         //保存登录状态
         Home_person.result = true;
         Home_person.id = user.getId();
+        Home_person.phone = user.getPhoneNumber();
         //更新个人页面并进入
         listener.onTest(user.getLoginName());
     }

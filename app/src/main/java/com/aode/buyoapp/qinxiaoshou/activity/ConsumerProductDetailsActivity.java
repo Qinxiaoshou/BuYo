@@ -10,7 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.aode.buyoapp.LL.Home_person;
 import com.aode.buyoapp.LL.bean.Cloth;
 import com.aode.buyoapp.R;
 import com.aode.buyoapp.qinxiaoshou.fragment.ProductItemDetailsFragment;
@@ -29,13 +31,14 @@ public class ConsumerProductDetailsActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private RadioGroup rg_h_open_permission;
     private TextView tv_rg_name;
+    private Cloth cloth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //获取商品信息
         Intent intent = getIntent();
-        Cloth cloth = (Cloth) intent.getSerializableExtra("cloth");
+        cloth = (Cloth) intent.getSerializableExtra("cloth");
 
         setContentView(R.layout.business_add_product_layout);
         //步骤一：添加一个FragmentTransaction的实例
@@ -63,12 +66,20 @@ public class ConsumerProductDetailsActivity extends AppCompatActivity {
         transaction.add(R.id.fl_g_framelayout, productItemDetailsFragment).commit();
 
        //跳转到添加订单页面
-        rg_h_open_permission.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ConsumerProductDetailsActivity.this,ConsumerAddOrderDetailsActivity.class);
-                startActivity(intent);
-            }
-        });
+
+            rg_h_open_permission.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if ("".equals(Home_person.id) || Home_person.id == null) {
+                        Toast.makeText(getApplicationContext(), "请登录，再购买", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Intent intent = new Intent(ConsumerProductDetailsActivity.this, ConsumerAddOrderDetailsActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("cloth", cloth);
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                    }
+                }
+            });
     }
 }

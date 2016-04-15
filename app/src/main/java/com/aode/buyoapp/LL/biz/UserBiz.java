@@ -253,6 +253,7 @@ public class UserBiz implements IUserBiz {
     @Override
     public void OrdersAdd(Orders orders, final OrdersAddListener ordersAddListener) {
         String json = new Gson().toJson(orders);
+        System.out.println("用户订单json："+json);
         OkHttpUtils
                 .post()
                 .url(url.getUrl() + "/tb/admin/user/orders/add")

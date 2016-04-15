@@ -22,6 +22,7 @@ public class Home_person extends AppCompatActivity implements Login_person.onNam
     public static boolean result = false;
     public static String loginName = "个人用户名";
     public static String id = "";
+    public static String phone = "";
     private TextView tv_person_name;
     private long exitTime = 0;
 
@@ -101,20 +102,22 @@ public class Home_person extends AppCompatActivity implements Login_person.onNam
         getSupportFragmentManager().beginTransaction().hide(fragment).show(personal).commit();
         fragment = personal;
     }
-      @Override
-        public boolean onKeyDown(int keyCode, KeyEvent event) {
-            if(keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN){
-                if((System.currentTimeMillis()-exitTime) > 2000){
-                    Toast.makeText(getApplicationContext(), "再按一次退出程序", Toast.LENGTH_SHORT).show();
-                    exitTime = System.currentTimeMillis();
-                } else {
-                    finish();
-                    System.exit(0);
-                }
-                return true;
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
+            if ((System.currentTimeMillis() - exitTime) > 2000) {
+                Toast.makeText(getApplicationContext(), "再按一次退出程序", Toast.LENGTH_SHORT).show();
+                exitTime = System.currentTimeMillis();
+            } else {
+                finish();
+                System.exit(0);
             }
-            return super.onKeyDown(keyCode, event);
+            return true;
         }
+        return super.onKeyDown(keyCode, event);
+    }
+
     @Override
     protected void onDestroy() {
         result = false;

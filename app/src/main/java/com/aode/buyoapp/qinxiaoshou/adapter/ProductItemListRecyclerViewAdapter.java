@@ -46,16 +46,8 @@ public class ProductItemListRecyclerViewAdapter extends RecyclerView.Adapter<Pro
         view.setOnClickListener(new View.OnClickListener() {  //监听列表条目信息跳转的控件
             @Override
             public void onClick(View v) {
-                ObjectAnimator animator = ObjectAnimator.ofFloat(view, "translationZ", 5, 0); //上下移动
-                animator.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
                         //跳转到商品详情页
                         mContext.startActivity(new Intent(mContext, ConsumerProductDetailsActivity.class));
-                    }
-                });
-                animator.start();
-
             }
         });
     }

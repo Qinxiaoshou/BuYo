@@ -55,7 +55,7 @@
             android:layout_below="@+id/tv_horizontal_drive1"
             android:paddingLeft="10dp"
             android:paddingTop="15dp"
-            android:text="北京宏伟-方贸有限公司"
+            android:text="北京-有限公司"
             android:textColor="#000000"
             android:textSize="18sp" />
 
