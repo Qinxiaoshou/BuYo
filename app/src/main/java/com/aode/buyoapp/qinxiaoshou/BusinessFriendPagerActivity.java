@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -22,6 +21,7 @@ import com.aode.buyoapp.LL.view.IBusinessFriendView;
 import com.aode.buyoapp.R;
 import com.aode.buyoapp.qinxiaoshou.fragment.BusinessCheckWhoHaveProductPermissionFragment;
 import com.aode.buyoapp.qinxiaoshou.fragment.BusinessSettingBusinessFriendFragment;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -115,7 +115,6 @@ public class BusinessFriendPagerActivity extends AppCompatActivity implements IB
     @Override
     public void toFriendToMeMainActivity(List<Business> businesses) {
         this.toBList = businesses;
-        System.out.println("拥有权限的商品的店铺数："+businesses.size());
         adapter.addFragment(new BusinessCheckWhoHaveProductPermissionFragment(toBList), "拥有权限的商品");
         this.page1 = true;
     }

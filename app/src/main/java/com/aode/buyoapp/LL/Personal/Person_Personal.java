@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.aode.buyoapp.R;
+import com.aode.buyoapp.qinxiaoshou.ConsumerOrderListActivity;
 
 
 public class Person_Personal extends Fragment implements View.OnClickListener {
@@ -47,10 +48,11 @@ public class Person_Personal extends Fragment implements View.OnClickListener {
                 startActivity(new Intent(getActivity(), Person_Message.class));
                 break;
             case R.id.iv_order:
-                Toast.makeText(getActivity(), "店家信息", Toast.LENGTH_SHORT).show();
+                //个人订单页面
+                startActivity(new Intent(getActivity(), ConsumerOrderListActivity.class));
                 break;
             case R.id.iv_limit:
-
+                Toast.makeText(getActivity(), "个人权限", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.iv_changePassword:
                 startActivity(new Intent(getActivity(), Person_password_update.class));

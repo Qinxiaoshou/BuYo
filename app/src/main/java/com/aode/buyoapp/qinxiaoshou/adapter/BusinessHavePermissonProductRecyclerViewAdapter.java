@@ -1,9 +1,6 @@
 package com.aode.buyoapp.qinxiaoshou.adapter;
 
-import android.annotation.TargetApi;
 import android.content.Context;
-import android.content.Intent;
-import android.os.Build;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,11 +9,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.aode.buyoapp.LL.Listener.BBusinessFriendListener;
 import com.aode.buyoapp.LL.bean.Business;
 import com.aode.buyoapp.LL.bean.Cloth;
-import com.aode.buyoapp.LL.view.IBusinessFriendView;
-import com.aode.buyoapp.LL.view.IBusinessSearchView;
 import com.aode.buyoapp.R;
 
 import java.util.List;
@@ -52,9 +46,9 @@ public class BusinessHavePermissonProductRecyclerViewAdapter extends RecyclerVie
 
     @Override
     public void onBindViewHolder(final BusinessHavePermissonProductRecyclerViewAdapter.ViewHolder holder, int position) {
-        System.out.println("店家数量测试：" + toBList.size() + "Cloths-->:" + toBList.get(position).getCloths());
         //取出所有商品
         holder.ll_i_product_list.removeView(holder.ll_product_content);//移除默认view
+        System.out.println(toBList);
         holder.tv_store_name.setText("店铺:" + toBList.get(position).getName());
 
         for (Cloth cloth : toBList.get(position).getCloths()) {

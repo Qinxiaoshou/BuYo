@@ -552,6 +552,7 @@ public class BusinessBiz implements IBusinessBiz {
                     @Override
                     public void onResponse(List<Business> response) {
                         if (response != null && !response.isEmpty()) {
+                            System.out.println(response);
                             bBusinessFriendToMeListener.bFriendBusinessToMeSuccess(response);
                         } else {
                             bBusinessFriendToMeListener.bFriendBusinessToMeNo();
