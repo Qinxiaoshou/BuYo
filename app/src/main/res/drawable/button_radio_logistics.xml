@@ -1,5 +1,5 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:state_checked="false" android:drawable="@drawable/logistics_before" />
-    <item android:state_checked="true" android:drawable="@drawable/logistics_after" />
+    <item android:state_checked="false" android:drawable="@mipmap/wuliu" />
+    <item android:state_checked="true" android:drawable="@mipmap/wuliu_pressed" />
 </selector>

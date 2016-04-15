@@ -1,5 +1,5 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:state_checked="false" android:drawable="@drawable/person_before" />
-    <item android:state_checked="true" android:drawable="@drawable/person_after" />
+    <item android:state_checked="false" android:drawable="@mipmap/ren" />
+    <item android:state_checked="true" android:drawable="@mipmap/geren_pressed" />
 </selector>

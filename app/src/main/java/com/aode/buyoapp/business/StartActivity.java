@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.Button;
 
 import com.aode.buyoapp.LL.Home_person;
@@ -42,23 +43,40 @@ public class StartActivity extends Activity {
         animation.setDuration(5000);
         btn_start_business.startAnimation(animation);
         btn_start_customer.startAnimation(animation);
+        animation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                //点击用户按钮进入用户端首页界面
+                btn_start_customer.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        startActivity(new Intent(StartActivity.this, Home_person.class));
+                        StartActivity.this.finish();
+
+                    }
+                });
+                //点击商家按钮进入商家端登录界面
+                btn_start_business.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        startActivity(new Intent(StartActivity.this, Login_business.class));
+                        StartActivity.this.finish();
+                    }
+                });
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
 
 
-    }
-
-    /**
-     * 点击商家按钮进入商家端登录界面
-     */
-    public void startBusiness(View v) {
-        startActivity(new Intent(StartActivity.this, Login_business.class));
-        StartActivity.this.finish();
-    }
-
-    /**
-     * 点击用户按钮进入用户端首页界面
-     */
-    public void startCustomer(View v) {
-        startActivity(new Intent(StartActivity.this, Home_person.class));
-        StartActivity.this.finish();
     }
 }
