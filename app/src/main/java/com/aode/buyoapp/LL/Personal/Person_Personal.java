@@ -56,6 +56,7 @@ public class Person_Personal extends Fragment implements View.OnClickListener {
                 Toast.makeText(getActivity(), "个人权限", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.iv_changePassword:
+                //个人修改密码
                 startActivity(new Intent(getActivity(), Person_password_update.class));
                 break;
         }
