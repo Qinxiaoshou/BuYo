@@ -78,17 +78,24 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             holder.btn_left.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(mContext,"已经收货",).show();
+                    //  更改订单状态
 
-                    holder.btn_left.setBackgroundColor(R.color.btn_login_pressed);
+                    Toast.makeText(mContext,"已经收货",Toast.LENGTH_SHORT).show();
+                    holder.btn_left.setBackgroundColor(R.color.gray);
                     holder.btn_left.setEnabled(false);
 
                 }
             });
         } else if ("未发货".equals(orderses.get(position).getState())) {
-            holder.btn_right.setBackgroundColor(R.color.btn_login_pressed);
+            holder.btn_right.setBackgroundColor(R.color.gray);
             holder.btn_left.setText("待发货");
             holder.btn_left.setEnabled(false); //不可点击
+        }else if("已收货".equals(orderses.get(position).getState())){
+            holder.btn_right.setBackgroundColor(R.color.gray);
+            holder.btn_left.setBackgroundColor(R.color.gray);
+            holder.btn_left.setEnabled(false);
+            holder.btn_right.setEnabled(false);
+            holder.btn_left.setText("已收货");
         }
        /* holder.btn_right.setOnClickListener(new View.OnClickListener() {
             @Override

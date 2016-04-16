@@ -64,17 +64,9 @@
             <!--在这里添加商品信息条目-->
             <include layout="@layout/business_check_who_hava_permisson_product_item_content"/>
         </LinearLayout>
-        <TextView
-            android:id="@+id/tv_result"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/ll_1"
-            android:gravity="right"
-            android:text="共1件商品 合计:￥44.00(含邮费￥11.00)"
-            android:textSize="13sp" />
 
         <RelativeLayout
-            android:layout_below="@+id/tv_result"
+            android:layout_below="@+id/ll_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
