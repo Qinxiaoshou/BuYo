@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.aode.buyoapp.LL.bean.Cloth;
 import com.aode.buyoapp.LL.bean.Orders;
@@ -67,26 +68,34 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         iv_pictue.setImageResource(R.drawable.cheese_3);  //默认图片
         tv_title.setText(cloth.getTitle());
         tv_price.setText("￥" + cloth.getPrice());
-        tv_stock.setText("库存:" + cloth.getStock());
+        tv_stock.setText("购买长度:" + orderses.get(position).getLength() + "米");
         //在商铺条目中添加子商品条目
         holder.ll_i_product_list.addView(childLayout);
-        holder.btn_left.setVisibility(View.VISIBLE);
-        holder.btn_left.setEnabled(false); //不可点击
+
+        holder.btn_right.setEnabled(false); //不可点击
         if ("已发货".equals(orderses.get(position).getState())) {
-            holder.btn_right.setText("确认收货");
             holder.btn_left.setEnabled(true);
+            holder.btn_left.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(mContext,"已经收货",).show();
+
+                    holder.btn_left.setBackgroundColor(R.color.btn_login_pressed);
+                    holder.btn_left.setEnabled(false);
+
+                }
+            });
         } else if ("未发货".equals(orderses.get(position).getState())) {
-            holder.btn_right.setText("已付款");
-            holder.btn_right.setBackgroundColor(R.color.gray);
-            holder.btn_right.setEnabled(false); //不可点击
+            holder.btn_right.setBackgroundColor(R.color.btn_login_pressed);
+            holder.btn_left.setText("待发货");
+            holder.btn_left.setEnabled(false); //不可点击
         }
-        holder.btn_right.setOnClickListener(new View.OnClickListener() {
+       /* holder.btn_right.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
-        });
-        holder.btn_left.setVisibility(View.INVISIBLE);
+        });*/
         final View view = holder.mView;
         view.setOnClickListener(new View.OnClickListener() {  //监听列表条目信息跳转的控件
             @Override

@@ -1,10 +1,8 @@
 package com.aode.buyoapp.qinxiaoshou;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -14,7 +12,6 @@ import android.widget.Toast;
 
 import com.aode.buyoapp.LL.Home_person;
 import com.aode.buyoapp.LL.Presenter.UserOrdersShowPresenter;
-import com.aode.buyoapp.LL.bean.Cloth;
 import com.aode.buyoapp.LL.bean.Orders;
 import com.aode.buyoapp.LL.view.IUserOrdersShowView;
 import com.aode.buyoapp.R;
@@ -70,7 +67,6 @@ public class ConsumerOrderListActivity extends AppCompatActivity  implements IUs
 
     @Override
     public void toMainActivity(List<Orders> orderses) {
-        System.out.println("HHHH"+orderses);
         consumerOrderManagerFragment = new ConsumerOrderManagerFragment(orderses);
         transaction.add(R.id.fl_g_framelayout, consumerOrderManagerFragment).commit();
     }

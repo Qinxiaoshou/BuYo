@@ -35,6 +35,7 @@
                 android:text="河源绿色特产" />
 
             <ImageView
+                android:visibility="invisible"
                 android:id="@+id/iv_right"
                 android:layout_width="19dp"
                 android:layout_height="19dp"
@@ -88,6 +89,7 @@
                 android:layout_alignTop="@+id/textView"
                 android:layout_marginEnd="15dp"
                 android:layout_marginRight="15dp"
+                android:background="@null"
                 android:padding="5dp"
                 android:text="确认收货" />
 
@@ -95,8 +97,9 @@
             <Button
                 android:id="@+id/btn_right"
                 style="@style/common_button_style"
+                android:background="@null"
                 android:padding="5dp"
-                android:text="查看物流"
+                android:text="已付款"
                 android:layout_marginRight="19dp"
                 android:layout_marginEnd="32dp"
                 android:layout_alignParentTop="true"
