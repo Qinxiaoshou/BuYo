@@ -14,6 +14,7 @@ import com.aode.buyoapp.LL.bean.Orders;
 import com.aode.buyoapp.LL.bean.User;
 import com.aode.buyoapp.LL.url;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.Callback;
@@ -253,11 +254,11 @@ public class UserBiz implements IUserBiz {
     @Override
     public void OrdersAdd(Orders orders, final OrdersAddListener ordersAddListener) {
         String json = new Gson().toJson(orders);
-        System.out.println("用户订单json："+json);
+        System.out.println("用户订单json：" + json);
         OkHttpUtils
                 .post()
                 .url(url.getUrl() + "/tb/admin/user/orders/add")
-                .addParams("ordersStr", json)
+                .addParams("orders", json)
                 .build()
                 .execute(new Callback() {
                     @Override
@@ -287,11 +288,15 @@ public class UserBiz implements IUserBiz {
     public void OrdersShow(String id, final OrdersShowListener ordersShowListener) {
         abstract class OrdersCallback extends Callback<List<Orders>> {
             @Override
-            public List<Orders> parseNetworkResponse(Response response) throws IOException {
+                public List<Orders> parseNetworkResponse(Response response) throws IOException {
                 String string = response.body().string();
                 Type listType = new TypeToken<List<Orders>>() {
                 }.getType();
-                List<Orders> orderses = new Gson().fromJson(string, listType);
+                System.out.println(string+listType);
+                Gson gson = new GsonBuilder()
+                        .setDateFormat("yyyy-MM-dd HH:mm:ss")
+                        .create();
+                List<Orders> orderses = gson.fromJson(string, listType);
                 return orderses;
             }
         }
@@ -304,6 +309,7 @@ public class UserBiz implements IUserBiz {
                 .execute(new OrdersCallback() {
                     @Override
                     public void onError(Call call, Exception e) {
+                        System.out.println("错误"+e);
                         ordersShowListener.OrdersShowFailed();
                     }
 

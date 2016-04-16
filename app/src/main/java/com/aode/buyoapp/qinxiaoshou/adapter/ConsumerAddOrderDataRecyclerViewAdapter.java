@@ -104,6 +104,7 @@ public class ConsumerAddOrderDataRecyclerViewAdapter extends RecyclerView.Adapte
         holder.et_length.addTextChangedListener(new TextWatcher() {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {//在输入数据时监听
+
             }
 
             @Override
@@ -113,13 +114,17 @@ public class ConsumerAddOrderDataRecyclerViewAdapter extends RecyclerView.Adapte
 
             @Override
             public void afterTextChanged(Editable s) {//输入数据之后监听
-                Integer length = Integer.valueOf(holder.et_length.getText().toString().trim());
-                Message msg = new Message();
-                Bundle data = new Bundle();
-                data.putInt("length", length);
-                msg.what = UPDATE;
-                msg.setData(data);
-                handler.sendMessage(msg);
+                if (s.toString() == null) {
+                    holder.et_length.setHint("请输入米数");
+                } else {
+                    Integer length = Integer.parseInt(holder.et_length.getText().toString().replaceAll("\\D+","").replaceAll("\r", "").replaceAll("\n", "").trim(),10);
+                    Message msg = new Message();
+                    Bundle data = new Bundle();
+                    data.putInt("length", length);
+                    msg.what = UPDATE;
+                    msg.setData(data);
+                    handler.sendMessage(msg);
+                }
             }
         });
 

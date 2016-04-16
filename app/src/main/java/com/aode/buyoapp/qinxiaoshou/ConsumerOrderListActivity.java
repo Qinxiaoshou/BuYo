@@ -34,6 +34,7 @@ public class ConsumerOrderListActivity extends AppCompatActivity  implements IUs
     private Button button;
     private Toolbar toolbar;
      UserOrdersShowPresenter userOrdersShowPresenter = new UserOrdersShowPresenter(this);
+    private FragmentTransaction transaction;
 
 
     @Override
@@ -42,21 +43,12 @@ public class ConsumerOrderListActivity extends AppCompatActivity  implements IUs
         setContentView(R.layout.business_add_product_layout);
         userOrdersShowPresenter.ordersShow();
 
-    }
 
-    @Override
-    public String PutId() {
-        return Home_person.id;
-    }
-
-    @Override
-    public void toMainActivity(List<Orders> orderses) {
 
         //步骤一：添加一个FragmentTransaction的实例
         FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction = fragmentManager.beginTransaction();
         //步骤二：用add()方法加上Fragment的对象rightFragment
-        consumerOrderManagerFragment = new ConsumerOrderManagerFragment(orderses);
         toolbar = (Toolbar)findViewById(R.id.toolbar_g_product_appbar);
         tv_g_add_product_title = (TextView) findViewById(R.id.tv_g_add_product_title);
         button = (Button) findViewById(R.id.btn_right_text);
@@ -67,9 +59,19 @@ public class ConsumerOrderListActivity extends AppCompatActivity  implements IUs
                 onBackPressed();
             }
         });
-
         tv_g_add_product_title.setText("订单列表");
         button.setVisibility(View.GONE);
+    }
+
+    @Override
+    public String PutId() {
+        return Home_person.id;
+    }
+
+    @Override
+    public void toMainActivity(List<Orders> orderses) {
+        System.out.println("HHHH"+orderses);
+        consumerOrderManagerFragment = new ConsumerOrderManagerFragment(orderses);
         transaction.add(R.id.fl_g_framelayout, consumerOrderManagerFragment).commit();
     }
 

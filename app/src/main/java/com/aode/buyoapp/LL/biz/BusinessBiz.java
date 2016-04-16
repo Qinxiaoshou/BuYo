@@ -626,6 +626,7 @@ public class BusinessBiz implements IBusinessBiz {
 
                     @Override
                     public void onResponse(List<Orders> response) {
+                        System.out.println(response);
                         bOrdersShowListener.BOrdersShowSuccess(response);
                     }
 
@@ -668,4 +669,9 @@ public class BusinessBiz implements IBusinessBiz {
                     }
                 });
     }
+
+
+
+
+
 }
