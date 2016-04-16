@@ -15,4 +15,7 @@ public interface BOrdersShowListener {
 
     //查看订单失败回调接口
     void BOrdersShowFailed();
+
+    //查看订单为空
+    void BOrdersShowNo();
 }

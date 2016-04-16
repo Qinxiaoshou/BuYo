@@ -50,6 +50,17 @@ public class UserOrdersShowPresenter {
                 });
             }
 
+            @Override
+            public void OrdersShowNo() {
+                //需要在UI线程执行
+                mHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        userOrdersShowView.showNo();
+                    }
+                });
+            }
+
         });
     }
 

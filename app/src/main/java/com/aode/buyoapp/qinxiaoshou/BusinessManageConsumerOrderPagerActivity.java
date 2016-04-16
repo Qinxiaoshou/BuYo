@@ -14,7 +14,7 @@ import com.aode.buyoapp.qinxiaoshou.fragment.BussinessOrderManageFragment;
 
 
 /**
- * 商家管理订单页面
+ * 商家管理订单页面activity
  *
  * @author 覃培周
  * @// FIXME: 2016/4/7

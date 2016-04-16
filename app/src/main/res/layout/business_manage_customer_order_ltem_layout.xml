@@ -26,7 +26,7 @@
                 android:src="@drawable/store" />
 
             <TextView
-                android:id="@+id/tv_store_name"
+                android:id="@+id/tv_buyer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
@@ -35,6 +35,7 @@
 
 
             <TextView
+                android:id="@+id/tv_state"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
@@ -114,6 +115,7 @@
                     </RelativeLayout>
 
                     <TextView
+                        android:id="@+id/tv_length"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
@@ -131,12 +133,12 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/tv_result"
+            android:id="@+id/tv_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/ll_1"
             android:gravity="right"
-            android:text="共1件商品 合计:￥440.00(包邮)"
+            android:text="日期:2016.06.67"
             android:textSize="13sp" />
 
         <RelativeLayout

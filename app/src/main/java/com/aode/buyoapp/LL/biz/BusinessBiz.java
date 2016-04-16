@@ -22,6 +22,7 @@ import com.aode.buyoapp.LL.bean.Cloth;
 import com.aode.buyoapp.LL.bean.Orders;
 import com.aode.buyoapp.LL.url;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.Callback;
@@ -608,7 +609,11 @@ public class BusinessBiz implements IBusinessBiz {
                 String string = response.body().string();
                 Type listType = new TypeToken<List<Orders>>() {
                 }.getType();
-                List<Orders> orderses = new Gson().fromJson(string, listType);
+                System.out.println(string + listType);
+                Gson gson = new GsonBuilder()
+                        .setDateFormat("yyyy-MM-dd HH:mm:ss")
+                        .create();
+                List<Orders> orderses = gson.fromJson(string, listType);
                 return orderses;
             }
         }
@@ -621,13 +626,19 @@ public class BusinessBiz implements IBusinessBiz {
                 .execute(new OrdersCallback() {
                     @Override
                     public void onError(Call call, Exception e) {
+                        System.out.println("错误:" + e);
                         bOrdersShowListener.BOrdersShowFailed();
                     }
 
                     @Override
                     public void onResponse(List<Orders> response) {
                         System.out.println(response);
-                        bOrdersShowListener.BOrdersShowSuccess(response);
+                        if (response != null && !response.isEmpty()) {
+                            bOrdersShowListener.BOrdersShowSuccess(response);
+                        } else {
+                            bOrdersShowListener.BOrdersShowNo();
+
+                        }
                     }
 
                     @Override
@@ -669,9 +680,6 @@ public class BusinessBiz implements IBusinessBiz {
                     }
                 });
     }
-
-
-
 
 
 }

@@ -50,6 +50,17 @@ public class BusinessOrdersShowPresenter {
                 });
             }
 
+            @Override
+            public void BOrdersShowNo() {
+                //需要在UI线程执行
+                mHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        businessOrdersShowView.showNo();
+                    }
+                });
+            }
+
         });
     }
 

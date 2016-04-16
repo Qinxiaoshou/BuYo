@@ -288,11 +288,11 @@ public class UserBiz implements IUserBiz {
     public void OrdersShow(String id, final OrdersShowListener ordersShowListener) {
         abstract class OrdersCallback extends Callback<List<Orders>> {
             @Override
-                public List<Orders> parseNetworkResponse(Response response) throws IOException {
+            public List<Orders> parseNetworkResponse(Response response) throws IOException {
                 String string = response.body().string();
                 Type listType = new TypeToken<List<Orders>>() {
                 }.getType();
-                System.out.println(string+listType);
+                System.out.println(string + listType);
                 Gson gson = new GsonBuilder()
                         .setDateFormat("yyyy-MM-dd HH:mm:ss")
                         .create();
@@ -309,13 +309,18 @@ public class UserBiz implements IUserBiz {
                 .execute(new OrdersCallback() {
                     @Override
                     public void onError(Call call, Exception e) {
-                        System.out.println("错误"+e);
+                        System.out.println("错误" + e);
                         ordersShowListener.OrdersShowFailed();
                     }
 
                     @Override
                     public void onResponse(List<Orders> response) {
-                        ordersShowListener.OrdersShowSuccess(response);
+                        if (response != null && !response.isEmpty()){
+                            ordersShowListener.OrdersShowSuccess(response);
+                        }else {
+                            ordersShowListener.OrdersShowNo();
+                        }
+
                     }
 
                     @Override

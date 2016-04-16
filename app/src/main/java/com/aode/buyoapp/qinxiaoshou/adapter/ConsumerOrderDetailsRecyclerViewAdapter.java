@@ -1,9 +1,6 @@
 package com.aode.buyoapp.qinxiaoshou.adapter;
 
-import android.annotation.TargetApi;
 import android.content.Context;
-import android.os.Build;
-import android.provider.ContactsContract;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,7 +41,6 @@ public class ConsumerOrderDetailsRecyclerViewAdapter extends RecyclerView.Adapte
         return new ViewHolder(view);
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onBindViewHolder(final ConsumerOrderDetailsRecyclerViewAdapter.ViewHolder holder, int position) {
         System.out.println(orders.getCloth());

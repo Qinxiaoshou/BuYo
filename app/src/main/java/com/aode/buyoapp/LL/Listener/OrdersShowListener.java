@@ -15,4 +15,7 @@ public interface OrdersShowListener {
 
     //查看订单失败回调接口
     void OrdersShowFailed();
+
+    //未找到订单
+    void OrdersShowNo();
 }

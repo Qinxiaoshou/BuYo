@@ -14,4 +14,6 @@ public interface IUserOrdersShowView {
     void toMainActivity(List<Orders> orderses);//成功提示
 
     void showFailedError();//失败提示
+
+    void showNo();//找不到订单
 }

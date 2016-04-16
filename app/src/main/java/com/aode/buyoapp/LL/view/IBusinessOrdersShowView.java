@@ -14,4 +14,6 @@ public interface IBusinessOrdersShowView {
     void toMainActivity(List<Orders> orderses);//成功提示
 
     void showFailedError();//失败提示
+
+    void showNo();//没有订单
 }

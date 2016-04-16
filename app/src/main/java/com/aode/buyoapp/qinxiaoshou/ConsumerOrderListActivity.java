@@ -75,4 +75,11 @@ public class ConsumerOrderListActivity extends AppCompatActivity  implements IUs
     public void showFailedError() {
         Toast.makeText(this,"查询订单列表失败",Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void showNo() {
+        Toast.makeText(this,"购物车空空的,快去买点什么吧~",Toast.LENGTH_SHORT).show();
+    }
+
+
 }

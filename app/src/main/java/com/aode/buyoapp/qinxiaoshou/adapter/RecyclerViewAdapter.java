@@ -1,9 +1,7 @@
 package com.aode.buyoapp.qinxiaoshou.adapter;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -51,7 +49,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return new ViewHolder(view);
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onBindViewHolder(final RecyclerViewAdapter.ViewHolder holder, final int position) {
         //取出所有商品
@@ -73,7 +70,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         //在商铺条目中添加子商品条目
         holder.ll_i_product_list.addView(childLayout);
 
-      //  holder.btn_right.setEnabled(false); //不可点击
+        //  holder.btn_right.setEnabled(false); //不可点击
         if ("已发货".equals(orderses.get(position).getState())) {
             holder.btn_left.setEnabled(true);
             holder.btn_left.setOnClickListener(new View.OnClickListener() {
@@ -81,7 +78,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 public void onClick(View v) {
                     //  更改订单状态
 
-                    Toast.makeText(mContext,"已经收货",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, "已经收货", Toast.LENGTH_SHORT).show();
                     holder.btn_left.setEnabled(false);
 
                 }
@@ -89,9 +86,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         } else if ("未发货".equals(orderses.get(position).getState())) {
             holder.btn_left.setText("待发货");
             holder.btn_left.setEnabled(false); //不可点击
-        }else if("已收货".equals(orderses.get(position).getState())){
+        } else if ("已收货".equals(orderses.get(position).getState())) {
             holder.btn_left.setEnabled(false);
-          //  holder.btn_right.setEnabled(false);
+            //  holder.btn_right.setEnabled(false);
             holder.btn_left.setText("已收货");
         }
        /* holder.btn_right.setOnClickListener(new View.OnClickListener() {
@@ -106,7 +103,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, ConsumerOrderDetailActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("order",orderses.get(position));
+                bundle.putSerializable("order", orderses.get(position));
                 intent.putExtras(bundle);
                 mContext.startActivity(intent);
             }
@@ -132,7 +129,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         public TextView tv_state;
         public TextView tv_result;
         public Button btn_left;
-       // public Button btn_right;
+        // public Button btn_right;
 
         public ViewHolder(View view) {
             super(view);
