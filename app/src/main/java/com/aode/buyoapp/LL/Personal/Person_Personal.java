@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.aode.buyoapp.R;
 import com.aode.buyoapp.qinxiaoshou.ConsumerOrderListActivity;
+import com.aode.buyoapp.qinxiaoshou.activity.ConsumerPermissionPageActivity;
 
 
 public class Person_Personal extends Fragment implements View.OnClickListener {
@@ -53,7 +54,7 @@ public class Person_Personal extends Fragment implements View.OnClickListener {
                 break;
             case R.id.iv_limit:
                 //个人可看到的库存量商品
-                Toast.makeText(getActivity(), "个人权限", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getActivity(), ConsumerPermissionPageActivity.class));
                 break;
             case R.id.iv_changePassword:
                 //个人修改密码

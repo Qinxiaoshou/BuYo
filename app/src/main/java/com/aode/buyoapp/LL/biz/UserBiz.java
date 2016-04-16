@@ -1,5 +1,6 @@
 package com.aode.buyoapp.LL.biz;
 
+import com.aode.buyoapp.LL.Listener.BQueryPermissionListener;
 import com.aode.buyoapp.LL.Listener.ChangePasswordListener;
 import com.aode.buyoapp.LL.Listener.LoginListener;
 import com.aode.buyoapp.LL.Listener.OrdersAddListener;
@@ -21,6 +22,10 @@ import com.zhy.http.okhttp.callback.Callback;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -292,7 +297,7 @@ public class UserBiz implements IUserBiz {
                 String string = response.body().string();
                 Type listType = new TypeToken<List<Orders>>() {
                 }.getType();
-                System.out.println(string + listType);
+                System.out.println("OrdersShow string："+string);
                 Gson gson = new GsonBuilder()
                         .setDateFormat("yyyy-MM-dd HH:mm:ss")
                         .create();
@@ -340,10 +345,11 @@ public class UserBiz implements IUserBiz {
     @Override
     public void OrdersUpDate(Orders orders, final OrdersUpDateListener ordersUpDateListener) {
         String json = new Gson().toJson(orders);
+        System.out.println("后台个人修改订单："+json);
         OkHttpUtils
                 .post()
                 .url(url.getUrl() + "/tb/admin/user/orders/updateState")
-                .addParams("orders", json)
+                .addParams("ordersStr", json)
                 .build()
                 .execute(new Callback() {
                     @Override
@@ -360,6 +366,51 @@ public class UserBiz implements IUserBiz {
                     public void onResponse(Object response) {
                         ordersUpDateListener.OrdersUpDateSuccess();
                     }
+                });
+    }
+    /**
+     * 用户查看个人权限
+     * @param id
+     * @param bQueryPermissionListener
+     */
+    @Override
+    public void QuseryPermission(String id, final BQueryPermissionListener bQueryPermissionListener) {
+        abstract class PermissionCallback extends Callback<List<User>> {
+            @Override
+            public List<User> parseNetworkResponse(Response response) throws IOException {
+                String string = response.body().string();
+                Type listType = new TypeToken<List<User>>() {
+                }.getType();
+                Gson gson = new GsonBuilder()
+                        .setDateFormat("yyyy-MM-dd HH:mm:ss")
+                        .create();
+                List<User> users = gson.fromJson(string, listType);
+                return users;
+            }
+        }
+
+        OkHttpUtils
+                .post()
+                .url(url.getUrl() + "/tb/admin/user/index")
+                .addParams("id", id)
+                .build()
+                .execute(new PermissionCallback() {
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        bQueryPermissionListener.getFailed();
+                    }
+
+                    @Override
+                    public void onResponse(List<User> response) {
+                        bQueryPermissionListener.getSuccess(response);
+                    }
+
+
+                    @Override
+                    public List<User> parseNetworkResponse(Response response) throws IOException {
+                        return super.parseNetworkResponse(response);
+                    }
+
                 });
     }
 }

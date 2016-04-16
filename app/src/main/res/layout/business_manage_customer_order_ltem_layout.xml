@@ -20,8 +20,9 @@
             android:orientation="horizontal">
 
             <ImageView
+                android:visibility="invisible"
                 android:id="@+id/iv_store_logo"
-                android:layout_width="24dp"
+                android:layout_width="8dp"
                 android:layout_height="24dp"
                 android:src="@drawable/store" />
 
@@ -150,7 +151,7 @@
 
 
             <Button
-                android:id="@+id/bt_3"
+                android:id="@+id/bt_2"
                 style="@style/common_button_style"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
@@ -158,19 +159,19 @@
                 android:layout_marginEnd="15dp"
                 android:layout_marginRight="15dp"
                 android:padding="5dp"
-                android:text="地址详情" />
-
+                android:text="发货"
+                 />
             <Button
-                android:id="@+id/bt_2"
+                android:id="@+id/bt_3"
                 style="@style/common_button_style"
                 android:layout_alignParentTop="true"
                 android:layout_marginEnd="23dp"
                 android:layout_marginRight="23dp"
-                android:layout_toLeftOf="@+id/bt_3"
-                android:layout_toStartOf="@+id/bt_3"
+                android:layout_toLeftOf="@+id/bt_2"
+                android:layout_toStartOf="@+id/bt_2"
                 android:padding="5dp"
-                android:text="发货"
-                android:visibility="visible" />
+                android:text="地址详情"
+                android:visibility="invisible" />
 
             <Button
                 android:id="@+id/bt_4"

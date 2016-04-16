@@ -1,5 +1,6 @@
 package com.aode.buyoapp.LL.biz;
 
+import com.aode.buyoapp.LL.Listener.BQueryPermissionListener;
 import com.aode.buyoapp.LL.Listener.ChangePasswordListener;
 import com.aode.buyoapp.LL.Listener.LoginListener;
 import com.aode.buyoapp.LL.Listener.OrdersAddListener;
@@ -46,4 +47,7 @@ public interface IUserBiz {
 
     //个人修改自己的订单
     void OrdersUpDate(Orders orders, OrdersUpDateListener ordersUpDateListener);
+
+    //个人查看个人权限
+    void QuseryPermission(String id,BQueryPermissionListener bQueryPermissionListener);
 }

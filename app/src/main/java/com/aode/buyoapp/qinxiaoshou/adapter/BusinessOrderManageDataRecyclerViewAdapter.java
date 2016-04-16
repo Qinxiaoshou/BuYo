@@ -12,8 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.aode.buyoapp.LL.Presenter.UserOrdersUpDatePresenter;
 import com.aode.buyoapp.LL.bean.Orders;
+import com.aode.buyoapp.LL.view.IUserOrdersUpDateView;
 import com.aode.buyoapp.R;
 import com.aode.buyoapp.qinxiaoshou.activity.BusinessManageConsumerOrderDetailActivity;
 
@@ -27,11 +30,15 @@ import java.util.List;
  * @author 覃培周
  * @// FIXME: 2016/4/7
  */
-public class BusinessOrderManageDataRecyclerViewAdapter extends RecyclerView.Adapter<BusinessOrderManageDataRecyclerViewAdapter.ViewHolder> {
+public class BusinessOrderManageDataRecyclerViewAdapter extends RecyclerView.Adapter<BusinessOrderManageDataRecyclerViewAdapter.ViewHolder> implements IUserOrdersUpDateView {
 
     private Context mContext;
     private List<Orders> orderses;
-    private String state;
+    private Orders orders;
+    private Button btn_check;
+    private TextView tv_state;
+
+    UserOrdersUpDatePresenter userOrdersUpDatePresenter = new UserOrdersUpDatePresenter(this);
 
     public BusinessOrderManageDataRecyclerViewAdapter(Context mContext) {
         this.mContext = mContext;
@@ -50,15 +57,15 @@ public class BusinessOrderManageDataRecyclerViewAdapter extends RecyclerView.Ada
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
         final View view = holder.mView;
         String date = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(orderses.get(position).getDate());
-        holder.tv_buyer.setText("购买者" + orderses.get(position).getBuyer());
+        holder.tv_buyer.setText("买家:" + orderses.get(position).getBuyer());
         holder.tv_state.setText(orderses.get(position).getState());
-        holder.tv_title.setText(orderses.get(position).getDescription());
+        holder.tv_title.setText("订单描述:"+orderses.get(position).getDescription());
         holder.tv_price.setText("初始价钱:" + String.valueOf(orderses.get(position).getPrice()));
         holder.tv_realprice.setText("实际价钱:" + String.valueOf(orderses.get(position).getPrice()));
-        holder.tv_length.setText("布长:" + orderses.get(position).getLength());
+        holder.tv_length.setText("布长:" + orderses.get(position).getLength()+"米");
         holder.tv_date.setText("日期:" + date);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {  //监听列表条目信息跳转的控件
@@ -83,19 +90,52 @@ public class BusinessOrderManageDataRecyclerViewAdapter extends RecyclerView.Ada
         });
         //3个状态,未发货,已发货,已收货
         if ("未发货".equals(orderses.get(position).getState())) {
-            holder.btn_check.setText("已发货");
-            holder.btn_check.setEnabled(false); //不可点击
-            state = "已发货";
+            holder.btn_check.setEnabled(true);
+            holder.btn_check.setText("发货");
+            //监听发货按钮状态改变
+            holder.btn_check.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //提交改变状态信息给服务器
+                    orderses.get(position).setState("已发货");
+                    orders = orderses.get(position);
+                    tv_state = holder.tv_state;
+                    btn_check = holder.btn_check;
+                    userOrdersUpDatePresenter.OrdersUpDat();
+
+                }
+            });
+
         } else if ("已收货".equals(orderses.get(position).getState())) {
             holder.btn_check.setEnabled(false);
             //  holder.btn_right.setEnabled(false);
             holder.btn_check.setText("已收货");
+        }else if("已发货".equals(orderses.get(position).getState())){
+            holder.btn_check.setText("已发货");
         }
     }
 
     @Override
     public int getItemCount() {
         return orderses.size();
+    }
+
+    @Override
+    public Orders PutOrders() {
+        return orders;//传进服务器的Orders的时间类型可能不对应
+    }
+
+    @Override
+    public void toMainActivity() {
+        tv_state.setText("已发货");
+        btn_check.setText("已发货");
+        btn_check.setEnabled(false); //不可点击
+
+    }
+
+    @Override
+    public void showFailedError() {
+        Toast.makeText(mContext,"管理订单失败",Toast.LENGTH_SHORT).show();
     }
 
 

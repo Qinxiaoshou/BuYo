@@ -37,7 +37,7 @@ public class ConsumerOrderDetailsRecyclerViewAdapter extends RecyclerView.Adapte
     //列表页面的布局实现
     @Override
     public ConsumerOrderDetailsRecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.business_manage_customer_order_details_pager_content, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.customer_manage_customer_order_details_pager_content, parent, false);
         return new ViewHolder(view);
     }
 
@@ -53,7 +53,7 @@ public class ConsumerOrderDetailsRecyclerViewAdapter extends RecyclerView.Adapte
         holder.tv_d_username.setText("买家:"+orders.getBuyer());
         holder.tv_d_phone.setText("");  //数据库字段没有存进phone
         holder.tv_address.setText(orders.getAddress());
-        holder.tv_store_name.setText("卖家:"+orders.getCloth().getTitle());
+        holder.tv_store_name.setText("卖家:"+orders.getBusiness().getName());
         holder.iv_d_product.setImageResource(R.drawable.cheese_3);
         holder.vt_d_product_title.setText(orders.getCloth().getTitle());
         holder.tv_price.setText("￥"+orders.getCloth().getPrice()+"/米");

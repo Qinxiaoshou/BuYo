@@ -13,11 +13,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.aode.buyoapp.LL.Presenter.UserOrdersUpDatePresenter;
 import com.aode.buyoapp.LL.bean.Cloth;
 import com.aode.buyoapp.LL.bean.Orders;
+import com.aode.buyoapp.LL.view.IUserOrdersUpDateView;
 import com.aode.buyoapp.R;
 import com.aode.buyoapp.qinxiaoshou.activity.ConsumerOrderDetailActivity;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 
@@ -27,7 +32,7 @@ import java.util.List;
  * @author 覃培周
  * @// FIXME: 2016/4/7
  */
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>  implements IUserOrdersUpDateView{
 
     private Context mContext;
     private List<Orders> orderses;
@@ -35,7 +40,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private TextView tv_title;
     private TextView tv_price;
     private TextView tv_stock;
-
+    private  Button btn_left;
+    public Orders orders; //需要修改的订单对象
+    UserOrdersUpDatePresenter userOrdersUpDatePresenter = new UserOrdersUpDatePresenter(this);
     public RecyclerViewAdapter(Context mContext, List<Orders> orderses) {
         this.mContext = mContext;
         this.orderses = orderses;
@@ -52,6 +59,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(final RecyclerViewAdapter.ViewHolder holder, final int position) {
         //取出所有商品
+
         holder.ll_i_product_list.removeView(holder.ll_product_content);//移除默认view
         holder.tv_store_name.setText("店铺:" + orderses.get(position).getBusiness().getName());
         holder.tv_state.setText(orderses.get(position).getState());
@@ -64,8 +72,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         tv_price = (TextView) childLayout.findViewById(R.id.tv_price);
         tv_stock = (TextView) childLayout.findViewById(R.id.tv_stock);
         iv_pictue.setImageResource(R.drawable.cheese_3);  //默认图片
-        tv_title.setText(cloth.getTitle());
-        tv_price.setText("￥" + cloth.getPrice());
+        tv_title.setText("订单描述:"+orderses.get(position).getDescription());
+        tv_price.setText("￥" + orderses.get(position).getPrice());
         tv_stock.setText("购买长度:" + orderses.get(position).getLength() + "米");
         //在商铺条目中添加子商品条目
         holder.ll_i_product_list.addView(childLayout);
@@ -76,27 +84,29 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             holder.btn_left.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //  更改订单状态
-
-                    Toast.makeText(mContext, "已经收货", Toast.LENGTH_SHORT).show();
-                    holder.btn_left.setEnabled(false);
-
+                    try {
+                        //  更改订单状态
+                        orderses.get(position).setState("已收货");
+                        Date data = orderses.get(position).getDate();
+                        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                        String dateString = formatter.format(data);
+                        Date uDate=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(dateString);
+                        orderses.get(position).setDate(uDate);
+                        orders = orderses.get(position);
+                        userOrdersUpDatePresenter.OrdersUpDat();
+                        btn_left = holder.btn_left;
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
                 }
             });
         } else if ("未发货".equals(orderses.get(position).getState())) {
             holder.btn_left.setText("待发货");
             holder.btn_left.setEnabled(false); //不可点击
         } else if ("已收货".equals(orderses.get(position).getState())) {
-            holder.btn_left.setEnabled(false);
-            //  holder.btn_right.setEnabled(false);
             holder.btn_left.setText("已收货");
+            holder.btn_left.setEnabled(false);
         }
-       /* holder.btn_right.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });*/
         final View view = holder.mView;
         view.setOnClickListener(new View.OnClickListener() {  //监听列表条目信息跳转的控件
             @Override
@@ -118,6 +128,23 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         } else {
             return orderses.size();
         }
+    }
+
+    @Override
+    public Orders PutOrders() {
+        System.out.println("提交用户修改后的订单:"+orders);
+        return orders;
+    }
+
+    @Override
+    public void toMainActivity() {
+        btn_left.setText("已收货");
+        btn_left.setEnabled(false);
+    }
+
+    @Override
+    public void showFailedError() {
+     Toast.makeText(mContext,"修改订单状态失败",Toast.LENGTH_SHORT).show();
     }
 
 

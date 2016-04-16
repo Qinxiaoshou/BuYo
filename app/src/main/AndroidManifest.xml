@@ -46,6 +46,7 @@
             />
         <activity android:name=".qinxiaoshou.activity.BusinessProductDetailsActivity"/>
         <activity android:name=".qinxiaoshou.activity.BusinessUpdateBusinessAndPermissionActivity"/>
+        <activity android:name=".qinxiaoshou.activity.ConsumerPermissionPageActivity"/>
         <activity
             android:name=".LL.Login_business" />
         <activity
