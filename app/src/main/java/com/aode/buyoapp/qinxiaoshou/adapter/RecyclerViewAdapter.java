@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -72,7 +73,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         //在商铺条目中添加子商品条目
         holder.ll_i_product_list.addView(childLayout);
 
-        holder.btn_right.setEnabled(false); //不可点击
+      //  holder.btn_right.setEnabled(false); //不可点击
         if ("已发货".equals(orderses.get(position).getState())) {
             holder.btn_left.setEnabled(true);
             holder.btn_left.setOnClickListener(new View.OnClickListener() {
@@ -81,20 +82,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     //  更改订单状态
 
                     Toast.makeText(mContext,"已经收货",Toast.LENGTH_SHORT).show();
-                    holder.btn_left.setBackgroundColor(R.color.gray);
                     holder.btn_left.setEnabled(false);
 
                 }
             });
         } else if ("未发货".equals(orderses.get(position).getState())) {
-            holder.btn_right.setBackgroundColor(R.color.gray);
             holder.btn_left.setText("待发货");
             holder.btn_left.setEnabled(false); //不可点击
         }else if("已收货".equals(orderses.get(position).getState())){
-            holder.btn_right.setBackgroundColor(R.color.gray);
-            holder.btn_left.setBackgroundColor(R.color.gray);
             holder.btn_left.setEnabled(false);
-            holder.btn_right.setEnabled(false);
+          //  holder.btn_right.setEnabled(false);
             holder.btn_left.setText("已收货");
         }
        /* holder.btn_right.setOnClickListener(new View.OnClickListener() {
@@ -107,7 +104,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         view.setOnClickListener(new View.OnClickListener() {  //监听列表条目信息跳转的控件
             @Override
             public void onClick(View v) {
-                mContext.startActivity(new Intent(mContext, ConsumerOrderDetailActivity.class));
+                Intent intent = new Intent(mContext, ConsumerOrderDetailActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("order",orderses.get(position));
+                intent.putExtras(bundle);
+                mContext.startActivity(intent);
             }
         });
 
@@ -131,7 +132,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         public TextView tv_state;
         public TextView tv_result;
         public Button btn_left;
-        public Button btn_right;
+       // public Button btn_right;
 
         public ViewHolder(View view) {
             super(view);
@@ -147,8 +148,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             tv_result = (TextView) view.findViewById(R.id.tv_result);
             //按钮左
             btn_left = (Button) view.findViewById(R.id.btn_left);
-            //按钮右
-            btn_right = (Button) view.findViewById(R.id.btn_right);
+           /* //按钮右
+            btn_right = (Button) view.findViewById(R.id.btn_right);*/
             mView = view;
         }
     }

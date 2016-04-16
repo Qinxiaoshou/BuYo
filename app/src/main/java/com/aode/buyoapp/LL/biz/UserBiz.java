@@ -258,7 +258,7 @@ public class UserBiz implements IUserBiz {
         OkHttpUtils
                 .post()
                 .url(url.getUrl() + "/tb/admin/user/orders/add")
-                .addParams("orders", json)
+                .addParams("ordersStr", json)
                 .build()
                 .execute(new Callback() {
                     @Override
