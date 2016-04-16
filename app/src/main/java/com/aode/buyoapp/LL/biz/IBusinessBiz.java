@@ -75,6 +75,7 @@ public interface IBusinessBiz {
     //查看他人商家为本商家设置的友好商家以及商品
     void getFriendBusinessToMe(String id, BBusinessFriendToMeListener bBusinessFriendToMeListener);
 
+
     /**
      * 订单
      */
@@ -86,4 +87,6 @@ public interface IBusinessBiz {
 
     //个人修改自己的订单
     void OrdersUpDate(Orders orders, BOrdersUpDateListener bOrdersUpDateListener);
+
+
 }

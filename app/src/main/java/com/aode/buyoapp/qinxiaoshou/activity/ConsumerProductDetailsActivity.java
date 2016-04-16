@@ -78,6 +78,7 @@ public class ConsumerProductDetailsActivity extends AppCompatActivity {
                         bundle.putSerializable("cloth", cloth);
                         intent.putExtras(bundle);
                         startActivity(intent);
+                        finish();
                     }
                 }
             });

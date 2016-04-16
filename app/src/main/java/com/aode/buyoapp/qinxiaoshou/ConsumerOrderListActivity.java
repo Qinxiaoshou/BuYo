@@ -1,10 +1,8 @@
 package com.aode.buyoapp.qinxiaoshou;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -14,7 +12,6 @@ import android.widget.Toast;
 
 import com.aode.buyoapp.LL.Home_person;
 import com.aode.buyoapp.LL.Presenter.UserOrdersShowPresenter;
-import com.aode.buyoapp.LL.bean.Cloth;
 import com.aode.buyoapp.LL.bean.Orders;
 import com.aode.buyoapp.LL.view.IUserOrdersShowView;
 import com.aode.buyoapp.R;
@@ -34,6 +31,7 @@ public class ConsumerOrderListActivity extends AppCompatActivity  implements IUs
     private Button button;
     private Toolbar toolbar;
      UserOrdersShowPresenter userOrdersShowPresenter = new UserOrdersShowPresenter(this);
+    private FragmentTransaction transaction;
 
 
     @Override
@@ -42,21 +40,12 @@ public class ConsumerOrderListActivity extends AppCompatActivity  implements IUs
         setContentView(R.layout.business_add_product_layout);
         userOrdersShowPresenter.ordersShow();
 
-    }
 
-    @Override
-    public String PutId() {
-        return Home_person.id;
-    }
-
-    @Override
-    public void toMainActivity(List<Orders> orderses) {
 
         //步骤一：添加一个FragmentTransaction的实例
         FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction = fragmentManager.beginTransaction();
         //步骤二：用add()方法加上Fragment的对象rightFragment
-        consumerOrderManagerFragment = new ConsumerOrderManagerFragment(orderses);
         toolbar = (Toolbar)findViewById(R.id.toolbar_g_product_appbar);
         tv_g_add_product_title = (TextView) findViewById(R.id.tv_g_add_product_title);
         button = (Button) findViewById(R.id.btn_right_text);
@@ -67,9 +56,18 @@ public class ConsumerOrderListActivity extends AppCompatActivity  implements IUs
                 onBackPressed();
             }
         });
-
         tv_g_add_product_title.setText("订单列表");
         button.setVisibility(View.GONE);
+    }
+
+    @Override
+    public String PutId() {
+        return Home_person.id;
+    }
+
+    @Override
+    public void toMainActivity(List<Orders> orderses) {
+        consumerOrderManagerFragment = new ConsumerOrderManagerFragment(orderses);
         transaction.add(R.id.fl_g_framelayout, consumerOrderManagerFragment).commit();
     }
 

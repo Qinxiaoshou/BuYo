@@ -82,6 +82,7 @@ public class ConsumerAddOrderDetailsActivity extends AppCompatActivity implement
                 orders =  productItemDetailsFragment.ConsumerAddOrderDataRecyclerViewAdapter.getOrders();
                 System.out.println("跳转提交订单信息：" + orders);
                 userOrdersAddPresenter.ordersAdd();
+                finish();
             }
         });
 
