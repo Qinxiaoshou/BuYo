@@ -55,7 +55,7 @@ public class BusinessDeleteProductDataRecyclerViewAdapter extends RecyclerView.A
             @Override
             public void onClick(View v) {
                 cloth = cloths.get(position);
-                Toast.makeText(mContext, "删除了" + cloth, Toast.LENGTH_SHORT).show();
+
                 businessProductDeletePresenter.ProductDelete();
             }
         });

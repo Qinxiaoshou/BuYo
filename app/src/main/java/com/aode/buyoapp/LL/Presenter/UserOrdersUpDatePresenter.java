@@ -23,7 +23,7 @@ public class UserOrdersUpDatePresenter {
         this.userBiz = new UserBiz();
     }
 
-    public void OrdersUpDat() {
+    public void OrdersUpDate() {
         userBiz.OrdersUpDate(userOrdersUpDateView.PutOrders(), new OrdersUpDateListener() {
             @Override
             public void OrdersUpDateSuccess() {

@@ -658,10 +658,11 @@ public class BusinessBiz implements IBusinessBiz {
     @Override
     public void OrdersUpDate(Orders orders, final BOrdersUpDateListener bOrdersUpDateListener) {
         String json = new Gson().toJson(orders);
+        System.out.println("后台"+json);
         OkHttpUtils
                 .post()
                 .url(url.getUrl() + "/tb/admin/business/orders/updateState")
-                .addParams("orders", json)
+                .addParams("ordersStr", json)
                 .build()
                 .execute(new Callback() {
                     @Override

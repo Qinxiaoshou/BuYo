@@ -14,9 +14,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.aode.buyoapp.LL.Presenter.UserOrdersUpDatePresenter;
+import com.aode.buyoapp.LL.Presenter.BusinessOrdersUpDatePresenter;
 import com.aode.buyoapp.LL.bean.Orders;
-import com.aode.buyoapp.LL.view.IUserOrdersUpDateView;
+import com.aode.buyoapp.LL.view.IBusinessOrdersUpDateView;
 import com.aode.buyoapp.R;
 import com.aode.buyoapp.qinxiaoshou.activity.BusinessManageConsumerOrderDetailActivity;
 
@@ -30,7 +30,7 @@ import java.util.List;
  * @author 覃培周
  * @// FIXME: 2016/4/7
  */
-public class BusinessOrderManageDataRecyclerViewAdapter extends RecyclerView.Adapter<BusinessOrderManageDataRecyclerViewAdapter.ViewHolder> implements IUserOrdersUpDateView {
+public class BusinessOrderManageDataRecyclerViewAdapter extends RecyclerView.Adapter<BusinessOrderManageDataRecyclerViewAdapter.ViewHolder> implements IBusinessOrdersUpDateView {
 
     private Context mContext;
     private List<Orders> orderses;
@@ -38,7 +38,7 @@ public class BusinessOrderManageDataRecyclerViewAdapter extends RecyclerView.Ada
     private Button btn_check;
     private TextView tv_state;
 
-    UserOrdersUpDatePresenter userOrdersUpDatePresenter = new UserOrdersUpDatePresenter(this);
+    BusinessOrdersUpDatePresenter businessOrdersUpDatePresenter = new BusinessOrdersUpDatePresenter(this);
 
     public BusinessOrderManageDataRecyclerViewAdapter(Context mContext) {
         this.mContext = mContext;
@@ -62,10 +62,10 @@ public class BusinessOrderManageDataRecyclerViewAdapter extends RecyclerView.Ada
         String date = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(orderses.get(position).getDate());
         holder.tv_buyer.setText("买家:" + orderses.get(position).getBuyer());
         holder.tv_state.setText(orderses.get(position).getState());
-        holder.tv_title.setText("订单描述:"+orderses.get(position).getDescription());
+        holder.tv_title.setText("订单描述:" + orderses.get(position).getDescription());
         holder.tv_price.setText("初始价钱:" + String.valueOf(orderses.get(position).getPrice()));
         holder.tv_realprice.setText("实际价钱:" + String.valueOf(orderses.get(position).getPrice()));
-        holder.tv_length.setText("布长:" + orderses.get(position).getLength()+"米");
+        holder.tv_length.setText("布长:" + orderses.get(position).getLength() + "米");
         holder.tv_date.setText("日期:" + date);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {  //监听列表条目信息跳转的控件
@@ -101,7 +101,7 @@ public class BusinessOrderManageDataRecyclerViewAdapter extends RecyclerView.Ada
                     orders.setState("已发货");
                     tv_state = holder.tv_state;
                     btn_check = holder.btn_check;
-                    userOrdersUpDatePresenter.OrdersUpDat();
+                    businessOrdersUpDatePresenter.OrdersUpDate();
 
                 }
             });
@@ -110,18 +110,21 @@ public class BusinessOrderManageDataRecyclerViewAdapter extends RecyclerView.Ada
             holder.btn_check.setEnabled(false);
             //  holder.btn_right.setEnabled(false);
             holder.btn_check.setText("已收货");
-        }else if("已发货".equals(orderses.get(position).getState())){
+        } else if ("已发货".equals(orderses.get(position).getState())) {
+            holder.btn_check.setEnabled(false);
             holder.btn_check.setText("已发货");
         }
     }
 
     @Override
     public int getItemCount() {
+
         return orderses.size();
     }
 
     @Override
     public Orders PutOrders() {
+        System.out.println("提交商家修改后的订单:" + orders);
         return orders;//传进服务器的Orders的时间类型可能不对应
     }
 
@@ -135,7 +138,7 @@ public class BusinessOrderManageDataRecyclerViewAdapter extends RecyclerView.Ada
 
     @Override
     public void showFailedError() {
-        Toast.makeText(mContext,"管理订单失败",Toast.LENGTH_SHORT).show();
+        Toast.makeText(mContext, "管理订单失败", Toast.LENGTH_SHORT).show();
     }
 
 
@@ -149,6 +152,7 @@ public class BusinessOrderManageDataRecyclerViewAdapter extends RecyclerView.Ada
         TextView tv_length;
         TextView tv_date;
         Button btn_check;
+
         public ViewHolder(View view) {
             super(view);
             mView = view;
