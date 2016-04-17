@@ -3,15 +3,17 @@
     android:id="@+id/homepage_scrollview"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="#EFF3F5"
     android:fillViewport="true"
-    android:scrollbars="none">
+    android:scrollbars="none"
+    android:background="#FFFFFF">
 
+    <!--android:background="#EFF3F5"-->
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="#FFFFFF">
 
         <include
             android:id="@+id/fragment_toolbar"
@@ -33,22 +35,110 @@
         </LinearLayout>
 
         <LinearLayout
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:background="#FFFFFF"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/bulei"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="布类"
+                    android:textColor="#000000"
+                    android:textSize="22sp"/>
+
+                <View
+                    android:layout_width="58dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_above="@+id/bulei"
+                    android:layout_height="2dp"
+                    android:background="#FF3300"
+                    />
+            </LinearLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#CCCCCC"
+                />
+
+            <TextView
+                android:background="#FFFFFF"
+                android:textColor="#000000"
+                android:textSize="22sp"
+                android:gravity="center_horizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="产商"/>
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#CCCCCC"
+                />
+
+            <TextView
+                android:background="#FFFFFF"
+                android:textColor="#000000"
+                android:textSize="22sp"
+                android:gravity="center_horizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="新版"/>
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#CCCCCC"
+                />
+
+            <TextView
+                android:background="#FFFFFF"
+                android:textColor="#000000"
+                android:textSize="22sp"
+                android:gravity="center_horizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="论坛"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:background="#CCCCCC"
+            />
+
+        <LinearLayout
+            android:layout_marginTop="2dp"
+            android:id="@+id/ll"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginBottom="2dp"
-            android:layout_marginTop="2dp"
             android:layout_weight="1"
             android:background="#ffffff"
             android:orientation="horizontal"
-            android:padding="6dp">
+            android:gravity="center_horizontal">
 
             <TextView
+                android:gravity="center_horizontal"
+                android:layout_marginLeft="30dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:text="@string/keyword"
                 android:textColor="#000000"
-
+                android:textSize="20sp"
                 />
 
 
@@ -56,12 +146,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="7dp"
+                android:layout_marginLeft="13dp"
                 >
 
                 <TextView
                     style="@style/TextView_01"
-                    android:text="牛仔" />
+                    android:text="牛仔"
+                    />
 
                 <TextView
                     style="@style/TextView_01"
@@ -73,13 +164,18 @@
 
                 <TextView
                     style="@style/TextView_01"
-                    android:text="棉纶" />
+                    android:text="棉纶"
+                    android:textColor="#FF3300"/>
 
-                <TextView
-                    style="@style/TextView_01"
-                    android:text="更多" />
             </LinearLayout>
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#CCCCCC"
+            android:layout_above="@+id/ll"
+            />
+
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/homepage_recyclerView"
