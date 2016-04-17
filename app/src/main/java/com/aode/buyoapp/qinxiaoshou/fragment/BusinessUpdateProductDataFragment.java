@@ -1,5 +1,6 @@
 package com.aode.buyoapp.qinxiaoshou.fragment;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,6 +21,7 @@ import com.aode.buyoapp.qinxiaoshou.adapter.BusinessUpdateProductDataRecyclerVie
  * @author 覃培周
  * @// FIXME: 2016/4/7
  */
+@SuppressLint("ValidFragment")
 public class BusinessUpdateProductDataFragment extends Fragment {
     private RecyclerView recyclerView;
     private Toolbar toolbar;

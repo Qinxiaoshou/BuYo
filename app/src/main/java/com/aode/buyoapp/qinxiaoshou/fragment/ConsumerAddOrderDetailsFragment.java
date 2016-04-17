@@ -1,5 +1,6 @@
 package com.aode.buyoapp.qinxiaoshou.fragment;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -23,6 +24,7 @@ import com.aode.buyoapp.qinxiaoshou.adapter.ProductDataRecyclerViewAdapter;
  * @author 覃培周
  * @// FIXME: 2016/4/7
  */
+@SuppressLint("ValidFragment")
 public class ConsumerAddOrderDetailsFragment extends Fragment {
     private View mParentView;
     private RecyclerView mRecyclerView;

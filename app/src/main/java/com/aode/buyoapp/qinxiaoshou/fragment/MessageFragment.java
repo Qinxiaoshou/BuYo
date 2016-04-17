@@ -1,5 +1,6 @@
 package com.aode.buyoapp.qinxiaoshou.fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -27,6 +28,7 @@ import java.util.List;
  * @author 覃培周
  * @// FIXME: 2016/4/7
  */
+@SuppressLint("ValidFragment")
 public class MessageFragment extends Fragment implements IBusinessProductView {
     private View view;
     private Button btn_add;

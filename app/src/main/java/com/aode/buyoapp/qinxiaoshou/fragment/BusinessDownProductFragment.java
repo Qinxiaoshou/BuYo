@@ -1,5 +1,6 @@
 package com.aode.buyoapp.qinxiaoshou.fragment;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import com.aode.buyoapp.R;
  * @author 覃培周
  * @// FIXME: 2016/4/7
  */
+@SuppressLint("ValidFragment")
 public class BusinessDownProductFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater,

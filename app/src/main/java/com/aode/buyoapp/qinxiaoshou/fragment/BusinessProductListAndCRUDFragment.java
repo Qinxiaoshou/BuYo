@@ -1,5 +1,6 @@
 package com.aode.buyoapp.qinxiaoshou.fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -14,6 +15,7 @@ import com.aode.buyoapp.qinxiaoshou.BusinessProductManageSwitchActivity;
  *商家商品的管理fragment
  * @// FIXME: 2016/4/7
  */
+@SuppressLint("ValidFragment")
 public class BusinessProductListAndCRUDFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

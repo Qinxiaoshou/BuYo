@@ -42,13 +42,14 @@
         </RelativeLayout>
 
     </android.support.v7.widget.Toolbar>
-    <!--<android.support.v7.widget.RecyclerView
+    <android.support.v7.widget.RecyclerView
+        android:visibility="invisible"
         android:layout_weight="1.0"
         android:layout_below="@+id/toolbar_g_product_appbar"
         android:id="@+id/rv_g_product_data_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        />-->
+        />
     <FrameLayout
         android:layout_below="@+id/toolbar_g_product_appbar"
         android:id="@+id/fl_g_framelayout"
