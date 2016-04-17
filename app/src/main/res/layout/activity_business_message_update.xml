@@ -12,29 +12,31 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:background="#ff1f1c">
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="商家信息"
             android:textColor="#FFFFFF"
-            android:textSize="23dp" />
+            android:textSize="20dp" />
     </android.support.v7.widget.Toolbar>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
-        android:background="@android:drawable/editbox_background"
+        android:layout_weight="1"
+        android:background="#ffffff"
         android:orientation="horizontal">
 
         <TextView
+            android:layout_marginLeft="16dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="商家名字:"
-            android:textSize="20dp" />
+            android:text="商家名字"
+            android:textColor="#000000"
+            android:textSize="18dp" />
+
 
         <EditText
             android:id="@+id/change_bLoginName"
@@ -43,22 +45,35 @@
             android:background="@null"
             android:hint="请修改名字,不超过10个字!"
             android:maxLength="10"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:paddingRight="16dp"
+            android:paddingLeft="16dp"
+            android:textSize="18dp"
+            />
     </LinearLayout>
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="#CCCCCC"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
-        android:background="@android:drawable/editbox_background"
+        android:layout_weight="1"
+        android:background="#ffffff"
         android:orientation="horizontal">
 
         <TextView
+            android:layout_marginLeft="16dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="商家电话:"
-            android:textSize="20dp" />
+            android:text="商家电话"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            />
 
         <EditText
             android:id="@+id/change_bPhone"
@@ -68,22 +83,36 @@
             android:hint="请修改电话!"
             android:inputType="phone"
             android:maxLength="11"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:paddingRight="16dp"
+            android:paddingLeft="16dp"
+            android:textSize="18dp"
+            />
     </LinearLayout>
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="#CCCCCC"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        />
     <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
-        android:background="@android:drawable/editbox_background"
+        android:layout_weight="1"
+        android:background="#ffffff"
         android:orientation="horizontal">
 
         <TextView
+            android:layout_marginLeft="16dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="商家地址:"
-            android:textSize="20dp" />
+            android:text="商家地址"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            />
 
         <EditText
             android:id="@+id/change_bAddress"
@@ -92,33 +121,55 @@
             android:background="@null"
             android:hint="请修改地址!"
             android:inputType="textMultiLine"
-            android:maxLength="30" />
+            android:maxLength="30"
+            android:paddingRight="16dp"
+            android:paddingLeft="16dp"
+            android:textSize="18dp"
+            />
     </LinearLayout>
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="#CCCCCC"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="3"
-        android:background="@android:drawable/editbox_background"
+        android:background="#ffffff"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="商家介绍:"
-            android:textSize="20dp" />
+            android:layout_gravity="start"
+            android:layout_marginLeft="16dp"
+            android:text="商家介绍"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            />
 
         <EditText
+            android:layout_gravity="start"
             android:id="@+id/change_bIntroduce"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@null"
             android:hint="请修改介绍!"
             android:inputType="textMultiLine"
-            android:maxLength="50" />
+            android:maxLength="50"
+            android:paddingRight="16dp"
+            android:paddingLeft="16dp"
+            android:textSize="18dp"
+            />
     </LinearLayout>
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="#CCCCCC"
+        />
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -126,9 +177,13 @@
 
         <Button
             android:id="@+id/btn_update_businessMessage_confirm"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:layout_centerInParent="true"
+            android:background="#ff1f1c"
+            android:textColor="#ffffff"
             android:text="确认修改" />
     </RelativeLayout>
     <LinearLayout
