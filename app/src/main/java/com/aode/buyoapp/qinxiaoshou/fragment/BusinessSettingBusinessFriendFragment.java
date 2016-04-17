@@ -21,12 +21,12 @@ import java.util.List;
  * @author 覃培周
  * @// FIXME: 2016/4/7
  */
-@SuppressLint("ValidFragment")
 public class BusinessSettingBusinessFriendFragment extends Fragment {
     private View view;
     private RecyclerView mRecyclerView;
     private List<Business> businesses;
 
+    @SuppressLint("ValidFragment")
     public BusinessSettingBusinessFriendFragment(List<Business> businesses) {
          this.businesses = businesses;
     }

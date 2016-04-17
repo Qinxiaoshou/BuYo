@@ -173,7 +173,7 @@ public class BusinessSearchOtherBusinessPagerActivity extends Activity implement
             }
         }
         if (resultAdapter == null) {
-            resultAdapter = new SearchAdapter(this, businessList2, R.layout.business_search_otherbusiness__item_bean_list_content);
+            resultAdapter = new SearchAdapter(this, businessList2, R.layout.business_search_otherbusiness__item_bean_list);
         } else {
             resultAdapter.notifyDataSetChanged();
         }

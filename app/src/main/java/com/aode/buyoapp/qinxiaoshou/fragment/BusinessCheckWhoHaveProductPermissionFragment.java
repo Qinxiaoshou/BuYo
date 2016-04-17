@@ -21,10 +21,11 @@ import java.util.List;
  * @author 覃培周
  * @// FIXME: 2016/4/7
  */
-@SuppressLint("ValidFragment")
 public class BusinessCheckWhoHaveProductPermissionFragment extends Fragment {
     private RecyclerView mRecyclerView;
     List<Business> toBList;
+
+    @SuppressLint("ValidFragment")
     public BusinessCheckWhoHaveProductPermissionFragment(List<Business> toBList) {
          this.toBList = toBList;
     }
