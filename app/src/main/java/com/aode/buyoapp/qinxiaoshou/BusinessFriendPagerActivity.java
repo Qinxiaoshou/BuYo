@@ -2,6 +2,8 @@ package com.aode.buyoapp.qinxiaoshou;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -32,16 +34,41 @@ import java.util.List;
  * @author 覃培周
  * @// FIXME: 2016/4/7
  */
-public class BusinessFriendPagerActivity extends AppCompatActivity implements IBusinessFriendView ,IBusinessFriendToMeView{
+public class BusinessFriendPagerActivity extends AppCompatActivity implements IBusinessFriendView, IBusinessFriendToMeView {
     private TabLayout tabLayout;
     private Toolbar toolbar;
     private List<Business> bList;   //本店设置过权限的商家
     private List<Business> toBList;  //别的商家对我设置过权限的集合
-    Boolean page1 = false;
-    Boolean page2 =false;
+    final int PAGE_1 = 3;   //拥有权限的商品界面页面需要默认界面
+    final int PAGE_2 = 4;   //我的友好商家界面需要默认界面
+    int count = 0;  //计算需要默认界面的计数器
+    public Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            Bundle bundle = msg.getData();
+            int count = bundle.getInt("count");
+            if (count == 1) {
+              if(msg.what==PAGE_1){
+                  adapter.addFragment(new BusinessCheckWhoHaveProductPermissionFragment(), "拥有权限的商品");
+                  init();
+              }else if(msg.what ==PAGE_2){
+                  adapter.addFragment(new BusinessSettingBusinessFriendFragment(bList), "我的友好商家");
+                  init();
+              }
+            } else if (count == 2) {
+                adapter.addFragment(new BusinessSettingBusinessFriendFragment(bList), "我的友好商家");
+                init();
+            }
+
+
+        }
+    };
+
+
     Adapter adapter = new Adapter(getSupportFragmentManager());
     BusinessFriendShowPresenter businessFriendShowPresenter = new BusinessFriendShowPresenter(this);
     BusinessFriendToMeShowPresenter businessFriendToMeShowPresenter = new BusinessFriendToMeShowPresenter(this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,9 +83,10 @@ public class BusinessFriendPagerActivity extends AppCompatActivity implements IB
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               finish();
+                finish();
             }
         });
+
     }
 
     /**
@@ -67,7 +95,7 @@ public class BusinessFriendPagerActivity extends AppCompatActivity implements IB
      * @param viewPager
      */
     private void setupViewPager(ViewPager viewPager) {
-            viewPager.setAdapter(adapter);
+        viewPager.setAdapter(adapter);
 
     }
 
@@ -116,47 +144,69 @@ public class BusinessFriendPagerActivity extends AppCompatActivity implements IB
     public void toFriendToMeMainActivity(List<Business> businesses) {
         this.toBList = businesses;
         adapter.addFragment(new BusinessCheckWhoHaveProductPermissionFragment(toBList), "拥有权限的商品");
-        this.page1 = true;
     }
-
 
 
     @Override
     public void toMainActivity(List<Business> businesses) { //我设置过权限的商家集合
         this.bList = businesses;
         adapter.addFragment(new BusinessSettingBusinessFriendFragment(bList), "我的友好商家");
-        this.page2 = true;
         init();
     }
 
     @Override
     public void showFailedError() {
+        Message msg = new Message();
+        count = count + 1;
+        Bundle data = new Bundle();
+        data.putInt("count", count);
+        msg.setData(data);
+        msg.what = PAGE_2;
+        handler.sendMessage(msg);
         Toast.makeText(getApplicationContext(), "查找友好商家失败", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void showNo() {
+        Message msg = new Message();
+        count = count + 1;
+        Bundle data = new Bundle();
+        data.putInt("count", count);
+        msg.setData(data);
+        msg.what = PAGE_2;
+        handler.sendMessage(msg);
         Toast.makeText(getApplicationContext(), "查找不到友好商家", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void ToMeshowFailedError() {
-        adapter.addFragment(new BusinessSettingBusinessFriendFragment(bList), "我的友好商家");
+        Message msg = new Message();
+        count = count + 1;
+        Bundle data = new Bundle();
+        data.putInt("count", count);
+        msg.setData(data);
+        msg.what = PAGE_1;
+        handler.sendMessage(msg);
         Toast.makeText(getApplicationContext(), "查找拥有权限的商品失败", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void ToMeshowNo() {
-        adapter.addFragment(new BusinessCheckWhoHaveProductPermissionFragment(toBList), "拥有权限的商品");
-        Toast.makeText(getApplicationContext(), "查找不到拥有权限的商家", Toast.LENGTH_SHORT).show();
-        this.page1 = true;
+        Message msg = new Message();
+        count = count + 1;
+        Bundle data = new Bundle();
+        data.putInt("count", count);
+        msg.setData(data);
+        msg.what = PAGE_1;
+        handler.sendMessage(msg);
+        Toast.makeText(getApplicationContext(), "查找不到拥有权限的商品", Toast.LENGTH_SHORT).show();
     }
 
 
     /**
      * 获得数据后就启动viewpager
      */
-    public void init(){
+    public void init() {
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
         if (viewPager != null) {
             //获得本店设置权限商家
@@ -167,5 +217,6 @@ public class BusinessFriendPagerActivity extends AppCompatActivity implements IB
         tabLayout.setupWithViewPager(viewPager);
 
     }
+
 
 }

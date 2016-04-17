@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.aode.buyoapp.LL.bean.Business;
@@ -46,10 +47,11 @@ public class BusinessHavePermissonProductRecyclerViewAdapter extends RecyclerVie
 
     @Override
     public void onBindViewHolder(final BusinessHavePermissonProductRecyclerViewAdapter.ViewHolder holder, int position) {
-        if (toBList.equals("")) {
+        System.out.println("toList@@@@@-->" + toBList);
+        if (toBList!=null) {
             //取出所有商品
+            holder.rl_to_friend_product.setVisibility(View.VISIBLE);
             holder.ll_i_product_list.removeView(holder.ll_product_content);//移除默认view
-            System.out.println(toBList);
             holder.tv_store_name.setText("店铺:" + toBList.get(position).getName());
 
             for (Cloth cloth : toBList.get(position).getCloths()) {
@@ -72,10 +74,10 @@ public class BusinessHavePermissonProductRecyclerViewAdapter extends RecyclerVie
 
     @Override
     public int getItemCount() {
-        if(toBList!=null){
-            return  toBList.size();
-        }else{
-            return 0;
+        if (toBList==null) {
+            return 1;
+        } else {
+            return toBList.size();
         }
     }
 
@@ -86,9 +88,12 @@ public class BusinessHavePermissonProductRecyclerViewAdapter extends RecyclerVie
         public TextView tv_store_name;
 
         public LinearLayout ll_product_content;
+        public RelativeLayout rl_to_friend_product;
 
         public ViewHolder(View view) {
             super(view);
+            //整个条目的布局
+            rl_to_friend_product = (RelativeLayout) view.findViewById(R.id.rl_to_friend_product);
             //商铺动态添加条目的布局
             ll_i_product_list = (LinearLayout) view.findViewById(R.id.ll_i_product_list);
             //商铺名称

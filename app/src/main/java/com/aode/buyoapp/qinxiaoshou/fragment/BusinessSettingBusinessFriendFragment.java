@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.aode.buyoapp.LL.bean.Business;
-import com.aode.buyoapp.LL.view.IBusinessFriendView;
 import com.aode.buyoapp.R;
 import com.aode.buyoapp.qinxiaoshou.adapter.BusinessSettingBusinessFriendRecyclerViewAdapter;
 
@@ -29,7 +28,8 @@ public class BusinessSettingBusinessFriendFragment extends Fragment {
     public BusinessSettingBusinessFriendFragment(List<Business> businesses) {
          this.businesses = businesses;
     }
-
+    public BusinessSettingBusinessFriendFragment() {
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.business_manage_my_businessfriends_product_list_layout, container, false);

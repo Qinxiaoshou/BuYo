@@ -20,9 +20,6 @@ import com.aode.buyoapp.LL.view.IUserOrdersUpDateView;
 import com.aode.buyoapp.R;
 import com.aode.buyoapp.qinxiaoshou.activity.ConsumerOrderDetailActivity;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 
@@ -89,7 +86,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     //  更改订单状态
                     orders.setId(orderses.get(position).getId());
                     orders.setState("已收货");
-                    userOrdersUpDatePresenter.OrdersUpDat();
+                    userOrdersUpDatePresenter.OrdersUpDate();
                     btn_left = holder.btn_left;
                     tv_state = holder.tv_state;
                 }

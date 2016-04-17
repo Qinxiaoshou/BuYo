@@ -26,6 +26,8 @@ public class BusinessCheckWhoHaveProductPermissionFragment extends Fragment {
     public BusinessCheckWhoHaveProductPermissionFragment(List<Business> toBList) {
          this.toBList = toBList;
     }
+    public BusinessCheckWhoHaveProductPermissionFragment() {
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
