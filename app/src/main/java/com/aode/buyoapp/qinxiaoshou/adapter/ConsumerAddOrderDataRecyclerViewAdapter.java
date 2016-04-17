@@ -52,7 +52,7 @@ public class ConsumerAddOrderDataRecyclerViewAdapter extends RecyclerView.Adapte
                     Bundle bundle = msg.getData();
                     int length = bundle.getInt("length");
                     tv_d_allPrice_text.setText("￥" + cloth.getPrice() * Long.valueOf(length));
-                    tv_d_realpay_text.setVisibility(View.INVISIBLE);
+                    tv_d_realpay_text.setVisibility(View.VISIBLE);
                     tv_d_realpay_text.setText("￥" + cloth.getPrice() * Long.valueOf(length));
                     orders.setPrice(length * cloth.getPrice());
                     orders.setLength(length);
