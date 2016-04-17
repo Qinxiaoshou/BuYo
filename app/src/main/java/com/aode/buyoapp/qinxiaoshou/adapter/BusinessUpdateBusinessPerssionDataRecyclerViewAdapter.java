@@ -56,15 +56,11 @@ public class BusinessUpdateBusinessPerssionDataRecyclerViewAdapter extends Recyc
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.business_set_product_permisson_content, parent, false);
         return new ViewHolder(view);
     }
+
     @Override
     public void onBindViewHolder(final BusinessUpdateBusinessPerssionDataRecyclerViewAdapter.ViewHolder holder, final int position) {
-        holder.iv_h_perssion_product.setImageResource(R.drawable.cheese_3);
-        holder.title.setText(cloths.get(position).getTitle());
-        holder.tv_price.setText("￥" + cloths.get(position).getPrice());
-        holder.tv_stock.setText("库存:" + cloths.get(position).getStock());
-        holder.setIsRecyclable(false); //recyclerviewd的positon不能复用
         //如果该商品已设权限就回显
-        for(Cloth cloth : clothsEd) {
+        for (Cloth cloth : clothsEd) {
             if ((cloths.get(position).getTitle()).equals(cloth.getTitle())) {
                 holder.cb_permission.setChecked(true);
                 Cloth cloth1 = new Cloth();
@@ -72,38 +68,38 @@ public class BusinessUpdateBusinessPerssionDataRecyclerViewAdapter extends Recyc
                 productIds.add(cloth1);
             }
         }
-        //取消打勾
-        View.OnClickListener ocl=new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                if(!((CheckBox) v).isChecked()){
-                   productIds.remove(cloths.get(position));
-                    holder.cb_permission.setChecked(false);
-                }
-            }
-        };
-        //打勾
-        CompoundButton.OnCheckedChangeListener occl=new CompoundButton.OnCheckedChangeListener() {
+        holder.iv_h_perssion_product.setImageResource(R.drawable.cheese_3);
+        holder.title.setText(cloths.get(position).getTitle());
+        holder.tv_price.setText("￥" + cloths.get(position).getPrice());
+        holder.tv_stock.setText("库存:" + cloths.get(position).getStock());
+        holder.setIsRecyclable(false); //recyclerviewd的positon不能复用
 
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
-                    Cloth cloth = new Cloth();
-                    cloth.setId(cloths.get(position).getId());
-                    productIds.add(cloth);
-                }
-            }
-        };
-        holder.cb_permission.setOnClickListener(ocl);
-        holder.cb_permission.setOnCheckedChangeListener(occl);
+       holder.cb_permission.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               if(!holder.cb_permission.isChecked()){
+                   holder.cb_permission.setChecked(false);
+                   for (Cloth cloth : productIds){
+                        if(cloth.getId()==cloths.get(position).getId()){
+                            productIds.remove(cloth);
+                        }
+                   }
+               }else{
+                   holder.cb_permission.setChecked(true);
+                   Cloth cloth = new Cloth();
+                   cloth.setId(cloths.get(position).getId());
+                   productIds.add(cloth);
+               }
+           }
+       });
 
 
 
         rg_h_open_permission.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("本商家："+Home_business.business.getId()+"##目标商家:"+bId+"##id集合："+productIds+"选择个数："+productIds.size());
+                System.out.println("本商家：" + Home_business.business.getId() + "##目标商家:" + bId + "##id集合：" + productIds + "选择个数：" + productIds.size());
                 businessFriendChangePresenter.FriendChange();
 
             }
