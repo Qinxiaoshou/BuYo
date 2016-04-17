@@ -2,7 +2,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/rl_g_stytle"
     android:orientation="vertical">
     <android.support.v7.widget.Toolbar
         android:layout_weight="1.0"
@@ -35,7 +34,7 @@
     <android.support.v7.widget.RecyclerView
         android:layout_weight="1.0"
         android:layout_below="@+id/toolbar_g_product_appbar"
-        android:id="@+id/rv_recycler_view"
+        android:id="@+id/rv_recycler_user_permission_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />

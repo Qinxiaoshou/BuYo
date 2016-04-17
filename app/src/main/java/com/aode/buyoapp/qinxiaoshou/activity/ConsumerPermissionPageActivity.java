@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +25,7 @@ import java.util.List;
 
 /**
  * 个人权限
+ *
  * @author 覃培周
  * @// FIXME: 2016/4/16
  */
@@ -34,6 +36,7 @@ public class ConsumerPermissionPageActivity extends AppCompatActivity implements
     private RecyclerView recyclerView;
     private List<User> users;
     UserQueryPermissionPresenter userQueryPermissionPresenter = new UserQueryPermissionPresenter(this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,13 +44,10 @@ public class ConsumerPermissionPageActivity extends AppCompatActivity implements
         //调用交互层的方法
         userQueryPermissionPresenter.QueryPermission();
 
-        toolbar = (Toolbar)findViewById(R.id.toolbar_g_product_appbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar_g_product_appbar);
         tv_g_add_product_title = (TextView) findViewById(R.id.tv_g_add_product_title);
         toolbar.setNavigationIcon(R.drawable.left_arrow);//设置导航栏图标
         tv_g_add_product_title.setText("个人权限");
-        recyclerView = (RecyclerView) findViewById(R.id.rv_recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
-        recyclerView.setAdapter(new ConsumerPermissionRecyclerViewAdapter());
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,17 +65,24 @@ public class ConsumerPermissionPageActivity extends AppCompatActivity implements
     @Override
     public void toMainActivity(List<User> userList) {
         this.users = userList;
-        System.out.println("USERPermission:-->"+userList);
+        System.out.println("USERPermission:-->" + users);
+        recyclerView = (RecyclerView) findViewById(R.id.rv_recycler_user_permission_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
+        recyclerView.setAdapter(new ConsumerPermissionRecyclerViewAdapter());
     }
 
     @Override
     public void showFailedError() {
-        Toast.makeText(this,"查询个人权限失败",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "查询个人权限失败", Toast.LENGTH_SHORT).show();
     }
+
     /**
      * 用户权限数据适配器
      */
     public class ConsumerPermissionRecyclerViewAdapter extends RecyclerView.Adapter<ConsumerPermissionRecyclerViewAdapter.ViewHolder> {
+
+        private User user1;
+
         //列表页面的布局实现
         @Override
         public ConsumerPermissionRecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -85,43 +92,54 @@ public class ConsumerPermissionPageActivity extends AppCompatActivity implements
 
         @Override
         public void onBindViewHolder(final ConsumerPermissionRecyclerViewAdapter.ViewHolder holder, int position) {
-         /*   //取出所有商品
-            holder.ll_i_product_list.removeView(holder.ll_product_content);//移除默认view
-            System.out.println(toBList);
-            holder.tv_store_name.setText("店铺:" + toBList.get(position).getName());
-
-            for (Cloth cloth : toBList.get(position).getCloths()) {
-                //添加子view
-                LinearLayout childLayout = (LinearLayout) LayoutInflater.from(mContext).inflate(R.layout.business_check_who_hava_permisson_product_item_content, null);
-                //设置显示商品的商品条目详情
-                iv_pictue = (ImageView) childLayout.findViewById(R.id.iv_pictue);
-                tv_title = (TextView) childLayout.findViewById(R.id.tv_title);
-                tv_price = (TextView) childLayout.findViewById(R.id.tv_price);
-                tv_stock = (TextView) childLayout.findViewById(R.id.tv_stock);
-                iv_pictue.setImageResource(R.drawable.cheese_3);  //默认图片
-                tv_title.setText(cloth.getTitle());
-                tv_price.setText("￥" + cloth.getPrice());
-                tv_stock.setText("库存:" + cloth.getStock());
-                //在商铺条目中添加子商品条目
-                holder.ll_i_product_list.addView(childLayout);
-            }*/
+            //设置显示商品的商品条目详情
+            holder.tv_store_name.setText("店铺:" + user1.getCloths().get(position).getBusiness().getName());
+            holder.iv_pictue.setImageResource(R.drawable.cheese_3);  //默认图片
+            holder.tv_title.setText(user1.getCloths().get(position).getTitle());
+            holder.tv_price.setText("￥" +user1.getCloths().get(position).getPrice());
+            holder.tv_stock.setText("库存:" + user1.getCloths().get(position).getStock());
         }
 
         @Override
         public int getItemCount() {
-            if(users==null){
+            if (users == null) {
                 return 0;
-            }else{
-                return users.size();
+            } else {
+                //商品条目数
+                user1 = null;
+                int count = 0;
+                for(User user : users){
+                    if(count==0){
+                        user1 = user;
+                        break;
+                    }
+                }
+                return user1.getCloths().size();
+
             }
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
             public final View mView;
+            public TextView tv_store_name;
+            public ImageView iv_pictue;
+            public TextView tv_title;
+            public TextView tv_price;
+            public TextView tv_stock;
 
 
             public ViewHolder(View view) {
                 super(view);
+                //店铺名字
+                tv_store_name = (TextView) view.findViewById(R.id.tv_store_name);
+                //商品图片
+                iv_pictue = (ImageView) view.findViewById(R.id.iv_pictue);
+                //商品标题
+                tv_title = (TextView) view.findViewById(R.id.tv_title);
+                //商品单价
+                tv_price = (TextView) view.findViewById(R.id.tv_price);
+                //商品库存
+                tv_stock = (TextView) view.findViewById(R.id.tv_stock);
                 mView = view;
             }
         }

@@ -85,10 +85,10 @@ public class BusinessManageConsumerOrderDetailActivity extends AppCompatActivity
             holder.tv_d_username.setText("买家:" + orders.getBuyer());
             holder.tv_d_phone.setText("");  //数据库字段没有存进phone
             holder.tv_address.setText(orders.getAddress());
-            //    holder.tv_store_name.setText("卖家:"+orders.getCloth().getTitle());     //需要柏在后台传对应的商品cloth对象过来
+            holder.tv_store_name.setText("卖家:"+orders.getCloth().getTitle());
             holder.iv_d_product.setImageResource(R.drawable.cheese_3);
-            //     holder.vt_d_product_title.setText(orders.getCloth().getTitle());
-            //    holder.tv_price.setText("￥"+orders.getCloth().getPrice()+"/米");
+            holder.vt_d_product_title.setText(orders.getCloth().getTitle());
+            holder.tv_price.setText("￥"+orders.getCloth().getPrice()+"/米");
             holder.tv_d_product_length.setText("购买长度:" + orders.getLength() + "米");
             holder.tv_all_price.setText("￥" + orders.getPrice());
             holder.tv_real_price.setText("￥" + orders.getPrice());

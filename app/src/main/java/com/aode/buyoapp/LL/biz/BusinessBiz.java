@@ -609,11 +609,11 @@ public class BusinessBiz implements IBusinessBiz {
                 String string = response.body().string();
                 Type listType = new TypeToken<List<Orders>>() {
                 }.getType();
-                System.out.println(string + listType);
                 Gson gson = new GsonBuilder()
                         .setDateFormat("yyyy-MM-dd HH:mm:ss")
                         .create();
                 List<Orders> orderses = gson.fromJson(string, listType);
+                System.out.println("商家查看订单列表:"+orderses);
                 return orderses;
             }
         }
