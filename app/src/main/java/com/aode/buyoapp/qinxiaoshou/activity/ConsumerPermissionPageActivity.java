@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -93,17 +94,22 @@ public class ConsumerPermissionPageActivity extends AppCompatActivity implements
         @Override
         public void onBindViewHolder(final ConsumerPermissionRecyclerViewAdapter.ViewHolder holder, int position) {
             //设置显示商品的商品条目详情
-            holder.tv_store_name.setText("店铺:" + user1.getCloths().get(position).getBusiness().getName());
-            holder.iv_pictue.setImageResource(R.drawable.cheese_3);  //默认图片
-            holder.tv_title.setText(user1.getCloths().get(position).getTitle());
-            holder.tv_price.setText("￥" +user1.getCloths().get(position).getPrice());
-            holder.tv_stock.setText("库存:" + user1.getCloths().get(position).getStock());
+            if(user1==null){
+
+            }else {
+                holder.rl_consumer_permission_content.setVisibility(View.VISIBLE);
+                holder.tv_store_name.setText("店铺:" + user1.getCloths().get(position).getBusiness().getName());
+                holder.iv_pictue.setImageResource(R.drawable.cheese_3);  //默认图片
+                holder.tv_title.setText(user1.getCloths().get(position).getTitle());
+                holder.tv_price.setText("￥" + user1.getCloths().get(position).getPrice());
+                holder.tv_stock.setText("库存:" + user1.getCloths().get(position).getStock());
+            }
         }
 
         @Override
         public int getItemCount() {
             if (users == null) {
-                return 0;
+                return 1;
             } else {
                 //商品条目数
                 user1 = null;
@@ -111,11 +117,10 @@ public class ConsumerPermissionPageActivity extends AppCompatActivity implements
                 for(User user : users){
                     if(count==0){
                         user1 = user;
-                        break;
+                        return user1.getCloths().size();
                     }
                 }
-                return user1.getCloths().size();
-
+                return 1;
             }
         }
 
@@ -126,6 +131,7 @@ public class ConsumerPermissionPageActivity extends AppCompatActivity implements
             public TextView tv_title;
             public TextView tv_price;
             public TextView tv_stock;
+            public RelativeLayout rl_consumer_permission_content;
 
 
             public ViewHolder(View view) {
@@ -140,6 +146,8 @@ public class ConsumerPermissionPageActivity extends AppCompatActivity implements
                 tv_price = (TextView) view.findViewById(R.id.tv_price);
                 //商品库存
                 tv_stock = (TextView) view.findViewById(R.id.tv_stock);
+                //商品条目布局
+                rl_consumer_permission_content = (RelativeLayout) view.findViewById(R.id.rl_consumer_permission_content);
                 mView = view;
             }
         }
