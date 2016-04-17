@@ -34,7 +34,7 @@ public class BusinessOrderManageDataRecyclerViewAdapter extends RecyclerView.Ada
 
     private Context mContext;
     private List<Orders> orderses;
-    private Orders orders;
+    private Orders orders = new Orders();    //需要修改的订单对象
     private Button btn_check;
     private TextView tv_state;
 
@@ -97,8 +97,8 @@ public class BusinessOrderManageDataRecyclerViewAdapter extends RecyclerView.Ada
                 @Override
                 public void onClick(View v) {
                     //提交改变状态信息给服务器
-                    orderses.get(position).setState("已发货");
-                    orders = orderses.get(position);
+                    orders.setId(orderses.get(position).getId());
+                    orders.setState("已发货");
                     tv_state = holder.tv_state;
                     btn_check = holder.btn_check;
                     userOrdersUpDatePresenter.OrdersUpDat();
