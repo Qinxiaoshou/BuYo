@@ -52,6 +52,7 @@ public class ConsumerAddOrderDataRecyclerViewAdapter extends RecyclerView.Adapte
                     Bundle bundle = msg.getData();
                     int length = bundle.getInt("length");
                     tv_d_allPrice_text.setText("￥" + cloth.getPrice() * Long.valueOf(length));
+                    tv_d_realpay_text.setVisibility(View.INVISIBLE);
                     tv_d_realpay_text.setText("￥" + cloth.getPrice() * Long.valueOf(length));
                     orders.setPrice(length * cloth.getPrice());
                     orders.setLength(length);
@@ -117,13 +118,24 @@ public class ConsumerAddOrderDataRecyclerViewAdapter extends RecyclerView.Adapte
                 if (s.toString() == null) {
                     holder.et_length.setHint("请输入米数");
                 } else {
-                    Integer length = Integer.parseInt(holder.et_length.getText().toString().replaceAll("\\D+","").replaceAll("\r", "").replaceAll("\n", "").trim(),10);
-                    Message msg = new Message();
-                    Bundle data = new Bundle();
-                    data.putInt("length", length);
-                    msg.what = UPDATE;
-                    msg.setData(data);
-                    handler.sendMessage(msg);
+                    try {
+                        int length = Integer.valueOf(holder.et_length.getText().toString());
+                        Message msg = new Message();
+                        Bundle data = new Bundle();
+                        data.putInt("length", length);
+                        msg.what = UPDATE;
+                        msg.setData(data);
+                        handler.sendMessage(msg);
+                    }catch (Exception e){
+                        Message msg = new Message();
+                        Bundle data = new Bundle();
+                        data.putInt("length", 1);
+                        msg.what = UPDATE;
+                        msg.setData(data);
+                        handler.sendMessage(msg);
+                       // e.printStackTrace();
+                    }
+
                 }
             }
         });
