@@ -57,9 +57,10 @@
             android:layout_marginLeft="35dp"
             android:background="@null"
             android:hint="请输入商品名"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
             android:paddingLeft="10dip"
             android:singleLine="true"
-            android:textColor="#ffffff"
             android:textSize="18sp" />
     </RelativeLayout>
 

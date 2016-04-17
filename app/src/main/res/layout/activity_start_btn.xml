@@ -14,7 +14,7 @@
         android:background="@drawable/button_login_bg"
         android:text="@string/business"
         android:textColor="@color/white"
-        android:textStyle="italic"
+        android:textStyle="normal"
         android:typeface="monospace" />
 
     <Button
@@ -29,6 +29,6 @@
         android:background="@drawable/button_register_bg"
         android:text="@string/customer"
         android:textColor="@color/gray"
-        android:textStyle="italic"
+        android:textStyle="normal"
         android:typeface="monospace" />
 </RelativeLayout>

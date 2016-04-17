@@ -6,10 +6,8 @@
     android:background="#FFFFFF">
 
     <View
-        android:id="@+id/menu_line"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_above="@+id/menu_bottom"
         android:background="#CCCCCC"
         />
     <RadioGroup
