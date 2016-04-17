@@ -65,7 +65,8 @@ public class BusinessUpdateProductDataRecyclerViewAdapter extends RecyclerView.A
                 cloth2.setStock(Long.valueOf(holder.et_stock.getText().toString().trim()));
                 cloth2.setColor(holder.et_color.getText().toString().trim());
                 cloth2.setPattern(holder.et_parttern.getText().toString().trim());
-                Toast.makeText(mContext, "完成" + cloth, Toast.LENGTH_SHORT).show();
+                cloth2.setbId(cloth.getbId());
+                //Toast.makeText(mContext, "完成" + cloth, Toast.LENGTH_SHORT).show();
 
                 businessProductChangePresenter.ProductChange();
             }
