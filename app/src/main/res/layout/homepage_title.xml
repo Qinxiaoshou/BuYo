@@ -46,7 +46,7 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dip"
-            android:src="@drawable/a_search" />
+            android:src="@drawable/search" />
 
         <EditText
             android:id="@+id/et_Search"
