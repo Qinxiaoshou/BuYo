@@ -41,7 +41,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private TextView tv_price;
     private TextView tv_stock;
     private  Button btn_left;
-    public Orders orders; //需要修改的订单对象
+    public Orders orders =  new Orders(); //需要修改的订单对象
     UserOrdersUpDatePresenter userOrdersUpDatePresenter = new UserOrdersUpDatePresenter(this);
     public RecyclerViewAdapter(Context mContext, List<Orders> orderses) {
         this.mContext = mContext;
@@ -84,20 +84,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             holder.btn_left.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    try {
                         //  更改订单状态
-                        orderses.get(position).setState("已收货");
-                        Date data = orderses.get(position).getDate();
-                        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                        String dateString = formatter.format(data);
-                        Date uDate=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(dateString);
-                        orderses.get(position).setDate(uDate);
-                        orders = orderses.get(position);
+                        orders.setId(orderses.get(position).getId());
+                        orders.setState("已收货");
                         userOrdersUpDatePresenter.OrdersUpDat();
                         btn_left = holder.btn_left;
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
                 }
             });
         } else if ("未发货".equals(orderses.get(position).getState())) {
