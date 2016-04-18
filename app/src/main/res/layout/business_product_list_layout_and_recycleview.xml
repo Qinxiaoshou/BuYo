@@ -12,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <RadioGroup
-        android:background="@drawable/pic_list_item_bg"
         android:layout_weight="1.0"
         android:layout_alignParentBottom="true"
         android:id="@+id/rg_manager_products"

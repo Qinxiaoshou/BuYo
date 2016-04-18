@@ -2,13 +2,15 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="#e5f0f0f0"
+    android:layout_marginBottom="5dp"
     android:orientation="vertical">
 
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/pic_list_item_bg"
+        android:background="@drawable/textview_border"
         android:orientation="vertical"
         android:paddingTop="8dp">
 
@@ -70,7 +72,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingBottom="5dp">
+            android:padding="5dp">
 
 
             <Button
@@ -99,5 +101,6 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="15dp" />
+        android:layout_height="15dp"
+        />
 </RelativeLayout>

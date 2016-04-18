@@ -8,7 +8,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:background="@drawable/pic_list_item_bg"
+        android:background="@drawable/textview_border"
         android:orientation="vertical"
         android:paddingTop="8dp">
 
