@@ -3,6 +3,7 @@ package com.aode.buyoapp.LL.biz;
 import com.aode.buyoapp.LL.Home_business;
 import com.aode.buyoapp.LL.Listener.BAddProductListener;
 import com.aode.buyoapp.LL.Listener.BBusinessFriendListener;
+import com.aode.buyoapp.LL.Listener.BBusinessFriendSettedPermissionListener;
 import com.aode.buyoapp.LL.Listener.BBusinessFriendToMeListener;
 import com.aode.buyoapp.LL.Listener.BDeleteProductListener;
 import com.aode.buyoapp.LL.Listener.BFriendBusinessChangeListener;
@@ -196,7 +197,7 @@ public class BusinessBiz implements IBusinessBiz {
 
                     @Override
                     public void onError(Call call, Exception e) {
-                        System.out.println("后台错误"+e);
+                        System.out.println("后台错误" + e);
                         bShowChangeListener.changeFailed();
                     }
 
@@ -649,6 +650,58 @@ public class BusinessBiz implements IBusinessBiz {
                     }
 
                 });
+    }
+
+    /**
+     * 友好商家查询单个商家被设置商品权限的商品集合
+     *
+     * @param bId
+     * @param fId
+     * @param bBusinessFriendSettedPermissionListener
+     */
+    @Override
+    public void queryBusinessSettedPermissionCloth(String bId, String fId, final BBusinessFriendSettedPermissionListener bBusinessFriendSettedPermissionListener) {
+        abstract class BusinessSettedPProductCallback extends Callback<List<Cloth>> {
+            @Override
+            public List<Cloth> parseNetworkResponse(Response response) throws IOException {
+                String string = response.body().string();
+                Type listType = new TypeToken<LinkedList<Cloth>>() {
+                }.getType();
+                List<Cloth> cloths = new Gson().fromJson(string, listType);
+                System.out.println("单个商家被设置商品权限的商品集合:" + cloths);
+                return cloths;
+            }
+        }
+        OkHttpUtils
+                .post()
+                .url(url.getUrl() + "/tb/admin/cloth/authorityMsg")
+                .addParams("b_id", bId)
+                .addParams("f_id", fId)
+                .build()
+                .execute(new BusinessSettedPProductCallback() {
+                    @Override
+                    public List<Cloth> parseNetworkResponse(Response response) throws IOException {
+                        return super.parseNetworkResponse(response);
+                    }
+
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        System.out.println("失败:" + e);
+                        bBusinessFriendSettedPermissionListener.bSettedClothsFailed();
+                    }
+
+                    @Override
+                    public void onResponse(List<Cloth> response) {
+                        if (response != null && !response.isEmpty()) {
+                            System.out.println("后台：" + response);
+                            bBusinessFriendSettedPermissionListener.bFriendSettedBusinessPermissionSuccess(response);
+                        } else {
+                            bBusinessFriendSettedPermissionListener.bFriendBusinessToMeNo();
+
+                        }
+                    }
+                });
+
     }
 
     /**

@@ -48,7 +48,7 @@ public class BusinessProductManageSwitchActivity extends FragmentActivity {
         btn_message.setOnClickListener(onClicker);
         btn_call.setOnClickListener(onClicker);
         btn_dowm .setOnClickListener(onClicker);
-        iv_back = (ImageView) findViewById(R.id.iv_back);
+        iv_back = (ImageView) findViewById(R.id.iv_back_bussines);
         iv_back.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {

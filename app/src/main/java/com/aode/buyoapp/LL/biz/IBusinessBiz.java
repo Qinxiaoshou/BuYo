@@ -2,6 +2,7 @@ package com.aode.buyoapp.LL.biz;
 
 import com.aode.buyoapp.LL.Listener.BAddProductListener;
 import com.aode.buyoapp.LL.Listener.BBusinessFriendListener;
+import com.aode.buyoapp.LL.Listener.BBusinessFriendSettedPermissionListener;
 import com.aode.buyoapp.LL.Listener.BBusinessFriendToMeListener;
 import com.aode.buyoapp.LL.Listener.BDeleteProductListener;
 import com.aode.buyoapp.LL.Listener.BFriendBusinessChangeListener;
@@ -75,6 +76,8 @@ public interface IBusinessBiz {
     //查看他人商家为本商家设置的友好商家以及商品
     void getFriendBusinessToMe(String id, BBusinessFriendToMeListener bBusinessFriendToMeListener);
 
+    //查询单个友好商家被设置权限的商品
+    void queryBusinessSettedPermissionCloth(String bId, String fId, BBusinessFriendSettedPermissionListener bBusinessFriendSettedPermissionListener);
 
     /**
      * 订单
