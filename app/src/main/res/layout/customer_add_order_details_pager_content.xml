@@ -36,10 +36,14 @@
         android:background="#eef2f3" />
 
     <RelativeLayout
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:id="@+id/rl_d_0"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
+        android:background="@drawable/textview_border"
+        android:padding="16dp"
         android:orientation="horizontal">
 
         <TextView
@@ -65,14 +69,15 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="10dp"
+        android:background="@drawable/textview_border"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:orientation="horizontal">
-
         <ImageView
             android:id="@+id/iv_d_bil"
             android:layout_width="20dp"
             android:layout_height="20dp"
+            android:layout_marginLeft="16dp"
             android:layout_centerVertical="true"
             android:layout_marginTop="10dp"
             android:src="@drawable/bil" />
@@ -85,6 +90,8 @@
             android:layout_toRightOf="@+id/iv_d_bil"
             android:singleLine="true"
             android:hint="请填写您的收货地址"
+            android:background="@null"
+            android:padding="16dp"
             android:textSize="13sp" />
 
 
@@ -94,11 +101,11 @@
         android:layout_below="@+id/tv_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="10dp"
+        android:padding="16dp"
         android:orientation="vertical">
         <LinearLayout
-            android:background="@android:drawable/edit_text"
+            android:background="@drawable/textview_border"
+            android:padding="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -128,10 +135,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#000000"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
             android:textSize="16sp"
             android:text="订单描述描述"/>
         <EditText
-            android:layout_marginRight="10dp"
+            android:background="@drawable/textview_border"
+            android:padding="16dp"
             android:id="@+id/et_order_description"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -143,7 +153,6 @@
             android:minLines="3"
             android:maxLines="3"
             android:scrollbars="vertical"
-            android:background="@android:drawable/edit_text"
             >
         </EditText>
     </LinearLayout>

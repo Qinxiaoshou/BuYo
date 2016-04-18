@@ -6,7 +6,8 @@
     android:orientation="vertical" >
     <LinearLayout
         android:layout_marginTop="10dp"
-        android:background="@android:drawable/edit_text"
+        android:background="@drawable/textview_border"
+        android:padding="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -72,7 +73,9 @@
         android:textSize="16sp"
         android:text="商品描述"/>
     <EditText
-        android:layout_marginRight="10dp"
+        android:background="@drawable/textview_border"
+        android:padding="16dp"
+
         android:id="@+id/add_content"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -84,7 +87,6 @@
         android:minLines="6"
         android:maxLines="10"
         android:scrollbars="vertical"
-        android:background="@android:drawable/edit_text"
         >
     </EditText>
     <LinearLayout
@@ -92,7 +94,9 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <LinearLayout
-            android:background="@android:drawable/edit_text"
+            android:background="@drawable/textview_border"
+            android:padding="16dp"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -110,11 +114,12 @@
                 android:hint="长"
                 android:textSize="12dp"
                 android:enabled="true"
-                android:gravity="top"
+                android:gravity="center"
                 android:inputType="textMultiLine"
                 android:minLines="1"
                 android:maxLines="1"
-                android:background="@android:drawable/edit_text"
+                android:background="@drawable/textview_border"
+
                 android:scrollbars="vertical"
                 >
             </EditText>
@@ -131,18 +136,20 @@
                 android:hint="宽"
                 android:textSize="12dp"
                 android:enabled="true"
-                android:gravity="top"
+                android:gravity="center"
                 android:inputType="textMultiLine"
                 android:minLines="1"
                 android:maxLines="1"
-                android:background="@android:drawable/edit_text"
+                android:background="@drawable/textview_border"
+
                 android:scrollbars="vertical"
                 >
             </EditText>
         </LinearLayout>
 
         <LinearLayout
-            android:background="@android:drawable/edit_text"
+            android:background="@drawable/textview_border"
+            android:padding="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -159,7 +166,6 @@
                 android:hint="请输入价格"
                 android:textSize="12dp"
                 android:enabled="true"
-                android:gravity="top"
                 android:inputType="textMultiLine"
                 android:minLines="1"
                 android:maxLines="1"
@@ -169,7 +175,8 @@
             </EditText>
         </LinearLayout>
         <LinearLayout
-            android:background="@android:drawable/edit_text"
+            android:background="@drawable/textview_border"
+            android:padding="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -186,7 +193,6 @@
                 android:hint="请输入库存"
                 android:textSize="12dp"
                 android:enabled="true"
-                android:gravity="top"
                 android:inputType="textMultiLine"
                 android:minLines="1"
                 android:maxLines="1"
@@ -196,7 +202,8 @@
             </EditText>
         </LinearLayout>
         <LinearLayout
-            android:background="@android:drawable/edit_text"
+            android:background="@drawable/textview_border"
+            android:padding="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -213,7 +220,6 @@
                 android:hint="请输入颜色"
                 android:textSize="12dp"
                 android:enabled="true"
-                android:gravity="top"
                 android:inputType="textMultiLine"
                 android:minLines="1"
                 android:maxLines="1"

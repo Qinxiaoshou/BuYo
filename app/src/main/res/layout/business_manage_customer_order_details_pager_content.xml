@@ -8,9 +8,9 @@
         android:id="@+id/rl_d_0_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="5dp">
+        android:background="@drawable/textview_border"
+        android:padding="16dp"
+    >
 
         <TextView
             android:id="@+id/tv_d_buynum"
@@ -32,17 +32,12 @@
     </RelativeLayout>
 
 
-    <TextView
-        android:id="@+id/tv_d_horizontal_drive0"
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:background="#eef2f3" />
-
     <RelativeLayout
         android:id="@+id/rl_d_0"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
+        android:background="@drawable/textview_border"
+        android:padding="16dp"
         android:orientation="horizontal">
 
         <TextView
@@ -67,7 +62,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
+        android:background="@drawable/textview_border"
+        android:padding="16dp"
         android:orientation="horizontal">
 
         <TextView
@@ -92,17 +88,14 @@
     </RelativeLayout>
 
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:background="#eef2f3" />
 
     <RelativeLayout
         android:id="@+id/rl_d_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_d_horizontal_drive0"
-        android:layout_marginLeft="23dp"
+        android:background="@drawable/textview_border"
+        android:padding="16dp"
         android:orientation="horizontal">
 
         <ImageView

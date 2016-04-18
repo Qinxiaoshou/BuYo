@@ -6,7 +6,8 @@
     android:orientation="vertical" >
     <LinearLayout
         android:layout_marginTop="10dp"
-        android:background="@android:drawable/edit_text"
+        android:background="@drawable/textview_border"
+        android:padding="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -70,7 +71,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <LinearLayout
-            android:background="@android:drawable/edit_text"
+            android:background="@drawable/textview_border"
+            android:padding="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -81,7 +83,7 @@
                 android:textColor="#000000"
                 android:text="尺寸"/>
             <EditText
-                android:paddingLeft="10dp"
+                android:padding="10dp"
                 android:id="@+id/et_size"
                 android:layout_width="80dp"
                 android:layout_height="35dp"
@@ -92,14 +94,15 @@
                 android:inputType="number"
                 android:minLines="1"
                 android:maxLines="1"
-                android:background="@android:drawable/edit_text"
+                android:background="@drawable/textview_border"
                 android:scrollbars="vertical"
                 >
             </EditText>
         </LinearLayout>
 
         <LinearLayout
-            android:background="@android:drawable/edit_text"
+            android:background="@drawable/textview_border"
+            android:padding="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -128,7 +131,8 @@
             </EditText>
         </LinearLayout>
         <LinearLayout
-            android:background="@android:drawable/edit_text"
+            android:background="@drawable/textview_border"
+            android:padding="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -156,7 +160,8 @@
             </EditText>
         </LinearLayout>
         <LinearLayout
-            android:background="@android:drawable/edit_text"
+            android:background="@drawable/textview_border"
+            android:padding="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -183,7 +188,8 @@
             </EditText>
         </LinearLayout>
         <LinearLayout
-            android:background="@android:drawable/edit_text"
+            android:background="@drawable/textview_border"
+            android:padding="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
