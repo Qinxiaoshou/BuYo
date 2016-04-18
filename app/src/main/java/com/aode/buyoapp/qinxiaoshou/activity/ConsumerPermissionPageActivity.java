@@ -36,6 +36,7 @@ public class ConsumerPermissionPageActivity extends AppCompatActivity implements
     private Toolbar toolbar;
     private RecyclerView recyclerView;
     private List<User> users;
+    User user1;
     UserQueryPermissionPresenter userQueryPermissionPresenter = new UserQueryPermissionPresenter(this);
 
     @Override
@@ -82,7 +83,7 @@ public class ConsumerPermissionPageActivity extends AppCompatActivity implements
      */
     public class ConsumerPermissionRecyclerViewAdapter extends RecyclerView.Adapter<ConsumerPermissionRecyclerViewAdapter.ViewHolder> {
 
-        private User user1;
+
 
         //列表页面的布局实现
         @Override
@@ -97,8 +98,13 @@ public class ConsumerPermissionPageActivity extends AppCompatActivity implements
             if(user1==null){
 
             }else {
+                String bName = null;
+                try{
+                 bName =    user1.getCloths().get(position).getBusiness().getName();
+                }catch (Exception e){
+                }
                 holder.rl_consumer_permission_content.setVisibility(View.VISIBLE);
-                holder.tv_store_name.setText("店铺:" + user1.getCloths().get(position).getBusiness().getName());
+                holder.tv_store_name.setText("店铺:" +bName);
                 holder.iv_pictue.setImageResource(R.drawable.cheese_3);  //默认图片
                 holder.tv_title.setText(user1.getCloths().get(position).getTitle());
                 holder.tv_price.setText("￥" + user1.getCloths().get(position).getPrice());
@@ -109,10 +115,10 @@ public class ConsumerPermissionPageActivity extends AppCompatActivity implements
         @Override
         public int getItemCount() {
             if (users == null) {
+                user1 = null;
                 return 1;
             } else {
                 //商品条目数
-                user1 = null;
                 int count = 0;
                 for(User user : users){
                     if(count==0){
