@@ -89,7 +89,7 @@
                 android:textSize="12dp"
                 android:enabled="true"
                 android:gravity="top"
-                android:inputType="number"
+                android:inputType="text"
                 android:minLines="1"
                 android:maxLines="1"
                 android:background="@android:drawable/edit_text"
