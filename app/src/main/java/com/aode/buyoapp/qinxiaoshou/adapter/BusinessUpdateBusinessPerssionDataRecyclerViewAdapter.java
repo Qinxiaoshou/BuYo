@@ -63,9 +63,9 @@ public class BusinessUpdateBusinessPerssionDataRecyclerViewAdapter extends Recyc
         for (Cloth cloth : clothsEd) {
             if ((cloths.get(position).getTitle()).equals(cloth.getTitle())) {
                 holder.cb_permission.setChecked(true);
-                Cloth cloth1 = new Cloth();
+              /*  Cloth cloth1 = new Cloth();
                 cloth1.setId(cloth.getId());
-                productIds.add(cloth1);
+                productIds.add(cloth1);*/
             }
         }
 
@@ -75,25 +75,26 @@ public class BusinessUpdateBusinessPerssionDataRecyclerViewAdapter extends Recyc
         holder.tv_stock.setText("库存:" + cloths.get(position).getStock());
         holder.setIsRecyclable(false); //recyclerviewd的positon不能复用
 
-       holder.cb_permission.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               if(!holder.cb_permission.isChecked()){
-                   holder.cb_permission.setChecked(false);
-                   for (Cloth cloth : productIds){
-                        if(cloth.getId()==cloths.get(position).getId()){
-                            productIds.remove(cloth);
+        holder.cb_permission.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!holder.cb_permission.isChecked()) {
+                    holder.cb_permission.setChecked(false);
+                    for (int i=0;i<productIds.size();i++) {
+                        if (productIds.get(i).getId() == cloths.get(position).getId()) {
+                            productIds.remove(productIds.get(i));
+                            System.out.println("点击了取消" + productIds);
                         }
-                   }
-               }else{
-                   holder.cb_permission.setChecked(true);
-                   Cloth cloth = new Cloth();
-                   cloth.setId(cloths.get(position).getId());
-                   productIds.add(cloth);
-               }
-           }
-       });
-
+                    }
+                } else {
+                    holder.cb_permission.setChecked(true);
+                    Cloth cloth = new Cloth();
+                    cloth.setId(cloths.get(position).getId());
+                    productIds.add(cloth);
+                    System.out.println("点击了选中" + productIds);
+                }
+            }
+        });
 
 
         rg_h_open_permission.setOnClickListener(new View.OnClickListener() {
