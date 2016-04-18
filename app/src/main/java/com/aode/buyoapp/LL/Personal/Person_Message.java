@@ -17,7 +17,7 @@ import com.aode.buyoapp.R;
 
 public class Person_Message extends AppCompatActivity implements IUserMessageView {
     private Button button;
-    private TextView tv_person_name, tv_person_phone, tv_person_email, tv_person_gender;
+    private TextView tv_person_name, tv_person_realName, tv_person_phone, tv_person_email, tv_person_gender;
 
     private UserMessagePresenter userMessagePresenter = new UserMessagePresenter(this);
 
@@ -54,7 +54,7 @@ public class Person_Message extends AppCompatActivity implements IUserMessageVie
         tv_person_phone = (TextView) findViewById(R.id.tv_person_phone);
         tv_person_email = (TextView) findViewById(R.id.tv_person_email);
         tv_person_gender = (TextView) findViewById(R.id.tv_person_gender);
-
+        tv_person_realName = (TextView) findViewById(R.id.tv_person_realName);
         userMessagePresenter.Show();
 
     }
@@ -68,6 +68,7 @@ public class Person_Message extends AppCompatActivity implements IUserMessageVie
     public void toMainActivity(User user) {
         //显示数据
         tv_person_name.setText(user.getLoginName());
+        tv_person_realName.setText(user.getName());
         tv_person_phone.setText(user.getPhoneNumber());
         tv_person_email.setText(user.getEmail());
         tv_person_gender.setText(user.getGender());

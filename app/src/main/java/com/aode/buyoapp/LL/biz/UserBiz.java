@@ -22,10 +22,6 @@ import com.zhy.http.okhttp.callback.Callback;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -153,6 +149,7 @@ public class UserBiz implements IUserBiz {
                 .url(url.getUrl() + "/tb/admin/user/update")
                 .addParams("id", user.getId())
                 .addParams("LoginName", user.getLoginName())
+                .addParams("name",user.getName())
                 .addParams("phoneNumber", user.getPhoneNumber())
                 .addParams("email", user.getEmail())
                 .addParams("gender", user.getGender())

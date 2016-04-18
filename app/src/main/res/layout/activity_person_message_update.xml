@@ -28,15 +28,15 @@
         android:layout_weight="1"
         android:background="#ffffff"
         android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="个人名字"
-            android:textColor="#000000"
-            android:textSize="18dp"
             android:layout_marginLeft="16dp"
-            />
+            android:text="登录名字"
+            android:textColor="#000000"
+            android:textSize="18dp" />
 
         <EditText
             android:id="@+id/change_LoginName"
@@ -45,19 +45,12 @@
             android:background="@null"
             android:hint="请修改名字,不超过10个字!"
             android:maxLength="10"
-            android:singleLine="true"
-            android:paddingRight="16dp"
             android:paddingLeft="16dp"
-            android:textSize="18dp"/>
+            android:paddingRight="16dp"
+            android:singleLine="true"
+            android:textSize="18dp" />
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.1dp"
-        android:background="#CCCCCC"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -69,10 +62,46 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginLeft="16dp"
+            android:text="个人名字"
+            android:textColor="#000000"
+            android:textSize="18dp" />
+
+        <EditText
+            android:id="@+id/change_RealName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:hint="请修改名字,不超过10个字!"
+            android:maxLength="10"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:singleLine="true"
+            android:textSize="18dp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="#CCCCCC" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#ffffff"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="16dp"
             android:text="个人电话"
             android:textColor="#000000"
-            android:textSize="18dp"
-            android:layout_marginLeft="16dp" />
+            android:textSize="18dp" />
 
         <EditText
             android:id="@+id/change_Phone"
@@ -82,18 +111,19 @@
             android:hint="请修改电话!"
             android:inputType="phone"
             android:maxLength="11"
-            android:singleLine="true"
-            android:paddingRight="16dp"
             android:paddingLeft="16dp"
-            android:textSize="18dp"/>
+            android:paddingRight="16dp"
+            android:singleLine="true"
+            android:textSize="18dp" />
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
-        android:background="#CCCCCC"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        />
+        android:background="#CCCCCC" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -105,10 +135,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginLeft="16dp"
             android:text="个人邮箱"
             android:textColor="#000000"
-            android:textSize="18dp"
-            android:layout_marginLeft="16dp" />
+            android:textSize="18dp" />
 
         <EditText
             android:id="@+id/change_Email"
@@ -118,18 +148,18 @@
             android:hint="请修改邮箱!"
             android:inputType="textMultiLine"
             android:maxLength="20"
-            android:paddingRight="16dp"
             android:paddingLeft="16dp"
-            android:textSize="18dp"/>
+            android:paddingRight="16dp"
+            android:textSize="18dp" />
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
-        android:background="#CCCCCC"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        />
+        android:background="#CCCCCC" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -141,10 +171,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginLeft="16dp"
             android:text="个人性别:"
             android:textColor="#000000"
-            android:textSize="18dp"
-            android:layout_marginLeft="16dp" />
+            android:textSize="18dp" />
 
         <RadioGroup
             android:id="@+id/change_gender"
@@ -152,8 +182,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingRight="16dp"
             android:paddingLeft="16dp"
+            android:paddingRight="16dp"
             android:textSize="18dp">
 
             <RadioButton
@@ -172,11 +202,12 @@
                 android:textSize="18dp" />
         </RadioGroup>
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
-        android:background="#CCCCCC"
-        />
+        android:background="#CCCCCC" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -186,12 +217,12 @@
             android:id="@+id/btn_update_personMessage_confirm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:layout_centerInParent="true"
             android:background="#ff1f1c"
-            android:textColor="#ffffff"
-            android:text="确认修改"  />
+            android:text="确认修改"
+            android:textColor="#ffffff" />
     </RelativeLayout>
 
     <LinearLayout

@@ -33,30 +33,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="商家名字"
-            android:textColor="#000000"
-            android:textSize="18dp"
             android:layout_marginLeft="16dp"
-            />
+            android:text="登录名字"
+            android:textColor="#000000"
+            android:textSize="18dp" />
 
         <TextView
             android:id="@+id/tv_business_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text=""
-            android:paddingRight="16dp"
             android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:text=""
             android:textSize="18dp" />
 
     </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.1dp"
-        android:background="#CCCCCC"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -65,34 +58,68 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_marginLeft="16dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginLeft="16dp"
+            android:text="商家名字"
+            android:textColor="#000000"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/tv_business_readlName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:text=""
+            android:textSize="18dp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="#CCCCCC" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#ffffff"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="16dp"
             android:text="商家电话"
             android:textColor="#000000"
-            android:textSize="18dp"
-           />
+            android:textSize="18dp" />
 
         <TextView
             android:id="@+id/tv_business_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text=""
-            android:paddingRight="16dp"
             android:paddingLeft="16dp"
-            android:textSize="18dp"
-            />
+            android:paddingRight="16dp"
+            android:text=""
+            android:textSize="18dp" />
 
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
-        android:background="#CCCCCC"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        />
+        android:background="#CCCCCC" />
+
     <LinearLayout
 
         android:layout_width="match_parent"
@@ -102,34 +129,33 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_marginLeft="16dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginLeft="16dp"
             android:text="商家地址"
             android:textColor="#000000"
-            android:textSize="18dp"
-            />
+            android:textSize="18dp" />
 
         <TextView
             android:id="@+id/tv_business_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text=""
-            android:paddingRight="16dp"
             android:paddingLeft="16dp"
-            android:textSize="18dp"
-            />
+            android:paddingRight="16dp"
+            android:text=""
+            android:textSize="18dp" />
 
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
-        android:background="#CCCCCC"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        />
+        android:background="#CCCCCC" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -144,25 +170,24 @@
             android:layout_marginLeft="16dp"
             android:text="商家介绍"
             android:textColor="#000000"
-            android:textSize="18dp"
-            />
+            android:textSize="18dp" />
 
         <TextView
             android:id="@+id/tv_business_introduce"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text=""
-            android:paddingRight="16dp"
             android:paddingLeft="16dp"
-            android:textSize="18dp"
-            />
+            android:paddingRight="16dp"
+            android:text=""
+            android:textSize="18dp" />
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
-        android:background="#CCCCCC"
-        />
+        android:background="#CCCCCC" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -172,16 +197,17 @@
             android:id="@+id/btn_update_BusinessMessage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:layout_centerInParent="true"
             android:background="#ff1f1c"
-            android:textColor="#ffffff"
-            android:text="修改信息" />
+            android:text="修改信息"
+            android:textColor="#ffffff" />
     </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"/>
+        android:layout_weight="2" />
 </LinearLayout>
 

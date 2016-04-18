@@ -17,7 +17,7 @@ import com.aode.buyoapp.R;
 
 public class Business_Message extends AppCompatActivity implements IBusinessMessageView {
     private Button button;
-    private TextView tv_business_name,tv_business_phone,tv_business_address,tv_business_introduce;
+    private TextView tv_business_name, tv_business_readlName, tv_business_phone, tv_business_address, tv_business_introduce;
 
     private BusinessMessagePresenter businessMessagePresenter = new BusinessMessagePresenter(this);
 
@@ -31,12 +31,13 @@ public class Business_Message extends AppCompatActivity implements IBusinessMess
         msg();
         update();
     }
-    public void update(){
-       button = (Button) findViewById(R.id.btn_update_BusinessMessage);
+
+    public void update() {
+        button = (Button) findViewById(R.id.btn_update_BusinessMessage);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if ("" .equals(Home_business.business.getId())) {
+                if ("".equals(Home_business.business.getId())) {
                     Toast.makeText(getApplication(), "错误，请登录后进行修改", Toast.LENGTH_SHORT).show();
                 } else {
                     Intent intent = new Intent(getApplication(), Business_Message_update.class);
@@ -45,12 +46,13 @@ public class Business_Message extends AppCompatActivity implements IBusinessMess
             }
         });
     }
-    public void msg(){
+
+    public void msg() {
         tv_business_name = (TextView) findViewById(R.id.tv_business_name);
         tv_business_phone = (TextView) findViewById(R.id.tv_business_phone);
         tv_business_address = (TextView) findViewById(R.id.tv_business_address);
         tv_business_introduce = (TextView) findViewById(R.id.tv_business_introduce);
-
+        tv_business_readlName = (TextView) findViewById(R.id.tv_business_readlName);
         businessMessagePresenter.Show();
 
     }
@@ -64,6 +66,7 @@ public class Business_Message extends AppCompatActivity implements IBusinessMess
     public void toMainActivity(Business business) {
         //显示数据
         tv_business_name.setText(business.getLoginName());
+        tv_business_readlName.setText(business.getName());
         tv_business_phone.setText(business.getPhoneNumber());
         tv_business_address.setText(business.getAddress());
         tv_business_introduce.setText(business.getDescription());
@@ -71,6 +74,6 @@ public class Business_Message extends AppCompatActivity implements IBusinessMess
 
     @Override
     public void showFailedError() {
-        Toast.makeText(getApplication(),"资料加载失败",Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplication(), "资料加载失败", Toast.LENGTH_SHORT).show();
     }
 }

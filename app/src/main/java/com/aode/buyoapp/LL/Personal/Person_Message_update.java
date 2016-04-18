@@ -19,7 +19,7 @@ import com.aode.buyoapp.R;
 public class Person_Message_update extends AppCompatActivity implements IUserMessageChangeView {
     private Button button;
     private RadioGroup radioGroup;
-    private String change_LoginName, change_Phone, change_Email;
+    private String change_LoginName, change_realName, change_Phone, change_Email;
     private String change_gender = "男";
     private User user;
 
@@ -47,6 +47,7 @@ public class Person_Message_update extends AppCompatActivity implements IUserMes
                     public void onClick(View v) {
                         //获得view的值存入一个对象返回过去
                         change_LoginName = ((EditText) findViewById(R.id.change_LoginName)).getText().toString();
+                        change_realName = ((EditText) findViewById(R.id.change_RealName)).getText().toString();
                         change_Phone = ((EditText) findViewById(R.id.change_Phone)).getText().toString();
                         change_Email = ((EditText) findViewById(R.id.change_Email)).getText().toString();
 
@@ -69,12 +70,17 @@ public class Person_Message_update extends AppCompatActivity implements IUserMes
                         user = new User();
                         user.setId(Home_person.id);
                         user.setLoginName(change_LoginName);
+                        user.setName(change_realName);
                         user.setPhoneNumber(change_Phone);
                         user.setEmail(change_Email);
                         user.setGender(change_gender);
-
+                        if (!"".equals(user.getLoginName()) && user.getLoginName() != null) {
+                            userMessageChangePresenter.change();
+                        } else {
+                            Toast.makeText(getApplication(), "名字不能为空!", Toast.LENGTH_SHORT).show();
+                        }
                         //进行修改数据
-                        userMessageChangePresenter.change();
+
                     }
                 }
 

@@ -183,6 +183,7 @@ public class BusinessBiz implements IBusinessBiz {
                 .url(url.getUrl() + "/tb/admin/business/update")
                 .addParams("id", business.getId())
                 .addParams("LoginName", business.getLoginName())
+                .addParams("name", business.getName())
                 .addParams("phoneNumber", business.getPhoneNumber())
                 .addParams("address", business.getAddress())
                 .addParams("description", business.getDescription())
@@ -195,6 +196,7 @@ public class BusinessBiz implements IBusinessBiz {
 
                     @Override
                     public void onError(Call call, Exception e) {
+                        System.out.println("后台错误"+e);
                         bShowChangeListener.changeFailed();
                     }
 
@@ -613,7 +615,7 @@ public class BusinessBiz implements IBusinessBiz {
                         .setDateFormat("yyyy-MM-dd HH:mm:ss")
                         .create();
                 List<Orders> orderses = gson.fromJson(string, listType);
-                System.out.println("商家查看订单列表:"+orderses);
+                System.out.println("商家查看订单列表:" + orderses);
                 return orderses;
             }
         }
@@ -658,7 +660,7 @@ public class BusinessBiz implements IBusinessBiz {
     @Override
     public void OrdersUpDate(Orders orders, final BOrdersUpDateListener bOrdersUpDateListener) {
         String json = new Gson().toJson(orders);
-        System.out.println("后台"+json);
+        System.out.println("后台" + json);
         OkHttpUtils
                 .post()
                 .url(url.getUrl() + "/tb/admin/business/orders/updateState")
