@@ -14,6 +14,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.aode.buyoapp.LL.Home_business;
+import com.aode.buyoapp.LL.Home_person;
 import com.aode.buyoapp.LL.Listener.BSearchListener;
 import com.aode.buyoapp.LL.Presenter.BusinessSearchPresenter;
 import com.aode.buyoapp.LL.bean.Business;
@@ -34,15 +36,15 @@ import java.util.List;
  * @author 覃培周
  * @// FIXME: 2016/4/7
  */
-public class BusinessSearchOtherBusinessPagerActivity extends Activity implements MySearchView.SearchViewListener ,IBusinessSearchView{
+public class BusinessSearchOtherBusinessPagerActivity extends Activity implements MySearchView.SearchViewListener, IBusinessSearchView {
     BusinessSearchPresenter businessSearchPresenter = new BusinessSearchPresenter(this);
     /**
      * 搜索结果列表view
      */
     private ListView lvResults;
     private String name;
-    private List<Business> businessList ;
-    private List<Business> businessList2;
+    private List<Business> businessList;  //最新的数据
+    private List<Business> businessList2;  //搜索条目列出来的数据
     /**
      * 搜索view
      */
@@ -88,6 +90,7 @@ public class BusinessSearchOtherBusinessPagerActivity extends Activity implement
      * 返回键
      */
     private ImageView iv_back;
+
     /**
      * 设置提示框显示项的个数
      *
@@ -128,8 +131,8 @@ public class BusinessSearchOtherBusinessPagerActivity extends Activity implement
                 view.setOnClickListener(new View.OnClickListener() {  //监听列表条目信息跳转的控件
                     @Override
                     public void onClick(View v) {
-                        Intent intent =new Intent(BusinessSearchOtherBusinessPagerActivity.this, BusinessChooseBusinessAndPermissionActivity.class);
-                        intent.putExtra("bId",businessList.get(position).getId());  //传递商家id
+                        Intent intent = new Intent(BusinessSearchOtherBusinessPagerActivity.this, BusinessChooseBusinessAndPermissionActivity.class);
+                        intent.putExtra("bId", businessList.get(position).getId());  //传递商家id
                         startActivity(intent);
 
                     }
@@ -212,7 +215,12 @@ public class BusinessSearchOtherBusinessPagerActivity extends Activity implement
     public void toMainActivity(List<Business> businessList) {
         System.out.println("我联网了");
         this.businessList = businessList;
-
+        for (Business business : this.businessList) {   //不让商家搜索到自己
+            if (Home_business.business.getName().equals(business.getName())) {
+                this.businessList.remove(business);
+                break;
+            }
+        }
         getResultData(name);
         lvResults.setVisibility(View.VISIBLE);
         //第一次获取结果 还未配置适配器
@@ -227,11 +235,11 @@ public class BusinessSearchOtherBusinessPagerActivity extends Activity implement
 
     @Override
     public void showFailedError() {
-        Toast.makeText(getApplication(),"搜索失败",Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplication(), "搜索失败", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void showNo() {
-        Toast.makeText(getApplication(),"搜索不到",Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplication(), "搜索不到", Toast.LENGTH_SHORT).show();
     }
 }
