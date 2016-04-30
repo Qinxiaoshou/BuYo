@@ -13,11 +13,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aode.buyoapp.LL.Presenter.BusinessQueryAllProductsPresenter;
-import com.aode.buyoapp.LL.bean.Business;
 import com.aode.buyoapp.LL.bean.Cloth;
 import com.aode.buyoapp.LL.view.IBusinessProductView;
 import com.aode.buyoapp.R;
-import com.aode.buyoapp.qinxiaoshou.fragment.BusinessSettingBusinessPerssionFragment;
 import com.aode.buyoapp.qinxiaoshou.fragment.BusinessUpdateBusinessPerssionFragment;
 
 import java.util.List;
@@ -64,7 +62,7 @@ public class BusinessUpdateBusinessAndPermissionActivity extends FragmentActivit
         transaction = fragmentManager.beginTransaction();
         //步骤二：用add()方法加上Fragment的对象rightFragment
 
-        toolbar = (Toolbar)findViewById(R.id.toolbar_g_product_appbar);
+        toolbar = (Toolbar)findViewById(R.id.toolbar_business_product_details);
         toolbar.setNavigationIcon(R.drawable.left_arrow);//设置导航栏图标
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

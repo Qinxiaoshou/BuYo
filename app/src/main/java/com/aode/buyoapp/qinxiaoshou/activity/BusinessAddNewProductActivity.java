@@ -39,7 +39,7 @@ public class BusinessAddNewProductActivity extends AppCompatActivity {
         //步骤一：添加一个FragmentTransaction的实例
         button = (Button) findViewById(R.id.btn_right_text);
         //步骤二：用add()方法加上Fragment的对象rightFragment
-        toolbar = (Toolbar) findViewById(R.id.toolbar_g_product_appbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar_business_product_details);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,7 +48,7 @@ public class BusinessAddNewProductActivity extends AppCompatActivity {
         });
         toolbar.setNavigationIcon(R.drawable.left_arrow);//设置导航栏图标
 
-        recyclerView = (RecyclerView)findViewById(R.id.rv_g_product_data_recycler_view);
+        recyclerView = (RecyclerView)findViewById(R.id.rv_product_details_view);
         recyclerView.setVisibility(View.VISIBLE);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new BusinessAddProductDataRecyclerViewAdapter(this,button));

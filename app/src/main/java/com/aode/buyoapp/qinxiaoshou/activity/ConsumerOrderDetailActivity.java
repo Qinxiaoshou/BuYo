@@ -41,7 +41,7 @@ public class ConsumerOrderDetailActivity extends FragmentActivity {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         //步骤二：用add()方法加上Fragment的对象rightFragment
         consumerOrderDetailsFragment = new ConsumerOrderDetailsFragment(order);
-        toolbar = (Toolbar)findViewById(R.id.toolbar_g_product_appbar);
+        toolbar = (Toolbar)findViewById(R.id.toolbar_business_product_details);
         tv_g_add_product_title = (TextView) findViewById(R.id.tv_g_add_product_title);
         button = (Button) findViewById(R.id.btn_right_text);
         toolbar.setNavigationIcon(R.drawable.left_arrow);//设置导航栏图标

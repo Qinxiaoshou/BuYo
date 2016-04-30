@@ -46,7 +46,7 @@ public class ConsumerProductDetailsActivity extends AppCompatActivity {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         //步骤二：用add()方法加上Fragment的对象rightFragment
         productItemDetailsFragment = new ProductItemDetailsFragment(cloth);
-        toolbar = (Toolbar) findViewById(R.id.toolbar_g_product_appbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar_business_product_details);
         tv_rg_name = (TextView) findViewById(R.id.tv_rg_name);
         tv_g_add_product_title = (TextView) findViewById(R.id.tv_g_add_product_title);
         rg_h_open_permission = (RadioGroup) findViewById(R.id.rg_h_open_permission);

@@ -8,9 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
-import com.aode.buyoapp.LL.Presenter.BusinessQueryAllProductsPresenter;
 import com.aode.buyoapp.LL.bean.Cloth;
-import com.aode.buyoapp.LL.view.IBusinessProductView;
 import com.aode.buyoapp.R;
 import com.aode.buyoapp.qinxiaoshou.fragment.BusinessDeleteProductDataFragment;
 
@@ -42,7 +40,7 @@ public class BusinessMamageProductActivity extends FragmentActivity{
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         //步骤二：用add()方法加上Fragment的对象rightFragment
         businessDeleteProductDataFragment = new BusinessDeleteProductDataFragment();
-        toolbar = (Toolbar)findViewById(R.id.toolbar_g_product_appbar);
+        toolbar = (Toolbar)findViewById(R.id.toolbar_business_product_details);
         toolbar.setNavigationIcon(R.drawable.left_arrow);//设置导航栏图标
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

@@ -47,7 +47,7 @@ public class BusinessUpdateProductMessagesActivity extends FragmentActivity {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         //步骤二：用add()方法加上Fragment的对象rightFragment
         businessUpdateProductDataFragment = new BusinessUpdateProductDataFragment(cloth,button);
-        toolbar = (Toolbar)findViewById(R.id.toolbar_g_product_appbar);
+        toolbar = (Toolbar)findViewById(R.id.toolbar_business_product_details);
         rg_h = (RadioGroup) findViewById(R.id.rg_h_open_permission);
         toolbar.setNavigationIcon(R.drawable.left_arrow);//设置导航栏图标
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {

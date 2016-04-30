@@ -1,6 +1,5 @@
 package com.aode.buyoapp.qinxiaoshou.activity;
 
-import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -59,7 +58,7 @@ public class BusinessChooseBusinessAndPermissionActivity extends FragmentActivit
         transaction = fragmentManager.beginTransaction();
         //步骤二：用add()方法加上Fragment的对象rightFragment
 
-        toolbar = (Toolbar)findViewById(R.id.toolbar_g_product_appbar);
+        toolbar = (Toolbar)findViewById(R.id.toolbar_business_product_details);
         toolbar.setNavigationIcon(R.drawable.left_arrow);//设置导航栏图标
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

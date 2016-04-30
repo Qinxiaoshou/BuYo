@@ -18,10 +18,7 @@ import com.aode.buyoapp.LL.bean.Orders;
 import com.aode.buyoapp.LL.view.IUserOrdersAddView;
 import com.aode.buyoapp.R;
 import com.aode.buyoapp.qinxiaoshou.ConsumerOrderListActivity;
-import com.aode.buyoapp.qinxiaoshou.adapter.ConsumerAddOrderDataRecyclerViewAdapter;
 import com.aode.buyoapp.qinxiaoshou.fragment.ConsumerAddOrderDetailsFragment;
-
-import java.util.logging.Handler;
 
 
 /**
@@ -57,7 +54,7 @@ public class ConsumerAddOrderDetailsActivity extends AppCompatActivity implement
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         //步骤二：用add()方法加上Fragment的对象rightFragment
         productItemDetailsFragment = new ConsumerAddOrderDetailsFragment(cloth);
-        toolbar = (Toolbar) findViewById(R.id.toolbar_g_product_appbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar_business_product_details);
         tv_rg_name = (TextView) findViewById(R.id.tv_rg_name);
         tv_g_add_product_title = (TextView) findViewById(R.id.tv_g_add_product_title);
         button = (Button) findViewById(R.id.btn_right_text);

@@ -15,9 +15,7 @@ import android.widget.Toast;
 
 import com.aode.buyoapp.LL.Home_person;
 import com.aode.buyoapp.LL.Presenter.UserQueryPermissionPresenter;
-import com.aode.buyoapp.LL.bean.Business;
 import com.aode.buyoapp.LL.bean.User;
-import com.aode.buyoapp.LL.view.IBusinessFriendToMeView;
 import com.aode.buyoapp.LL.view.IUserQueryPermissionProductView;
 import com.aode.buyoapp.R;
 
@@ -46,7 +44,7 @@ public class ConsumerPermissionPageActivity extends AppCompatActivity implements
         //调用交互层的方法
         userQueryPermissionPresenter.QueryPermission();
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar_g_product_appbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar_business_product_details);
         tv_g_add_product_title = (TextView) findViewById(R.id.tv_g_add_product_title);
         toolbar.setNavigationIcon(R.drawable.left_arrow);//设置导航栏图标
         tv_g_add_product_title.setText("个人权限");

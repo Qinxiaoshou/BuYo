@@ -1,7 +1,6 @@
 package com.aode.buyoapp.qinxiaoshou.activity;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,17 +11,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.aode.buyoapp.LL.Home_person;
 import com.aode.buyoapp.LL.bean.Orders;
-import com.aode.buyoapp.LL.bean.User;
 import com.aode.buyoapp.R;
-import com.aode.buyoapp.qinxiaoshou.fragment.BusinessManageConsumerOrderDetailsFragment;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 
 /**
@@ -46,7 +40,7 @@ public class BusinessManageConsumerOrderDetailActivity extends AppCompatActivity
         orders = (Orders) getIntent().getSerializableExtra("orders");
         System.out.println(orders);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar_g_product_appbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar_business_product_details);
         tv_g_add_product_title = (TextView) findViewById(R.id.tv_g_add_product_title);
         toolbar.setNavigationIcon(R.drawable.left_arrow);//设置导航栏图标
         tv_g_add_product_title.setText("客户订单详情");
