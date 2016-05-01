@@ -262,28 +262,103 @@
             android:layout_height="4dp"
             android:layout_below="@+id/rl_enter_store_ways"
             android:background="#eeeeee" />
-
-        <TextView
-            android:id="@+id/tv_text"
-            android:layout_below="@+id/tv_horizontal_drive1_03"
+<LinearLayout
+    android:id="@+id/ll_product_details_message"
+    android:layout_below="@+id/tv_horizontal_drive1_03"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/expand_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dip"
+        android:text="商品详情"
+        android:textColor="#000000"
+        android:drawableRight="@drawable/ach"
+        android:textSize="20dip" />
+    <LinearLayout
+        android:visibility="invisible"
+        android:id="@+id/description_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="12dip"
+        android:paddingRight="12dip"
+        android:paddingTop="5dip" >
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/ll_bussiness_product_details_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="10dip"
-            android:text="商品详情"
-            android:textColor="#000000"
-            android:textSize="20dip" />
+            android:orientation="vertical">
+            <RelativeLayout
+                android:id="@+id/rl_type"
+                android:paddingLeft="14dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <ImageView
+                    android:id="@+id/iv_l"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/l"
+                    />
+                <TextView
+                    android:id="@+id/tv_type_text"
+                    android:layout_toRightOf="@+id/iv_l"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="类别 : "
+                    android:textColor="#000000"
+                    android:textSize="18sp"/>
+                <TextView
+                    android:id="@+id/tv_type"
+                    android:layout_toRightOf="@+id/tv_type_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="布约"
+                    android:textColor="#000000"
+                    android:textSize="14sp"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:paddingLeft="14dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+                <ImageView
+                    android:id="@+id/iv_l_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/l"
+                    />
+                <TextView
+                    android:id="@+id/tv_good_descripe_text"
+                    android:layout_toRightOf="@+id/iv_l_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="材料描述 : "
+                    android:textColor="#000000"
+                    android:textSize="18sp"/>
+                <TextView
+                    android:paddingLeft="4dp"
+                    android:layout_below="@+id/tv_good_descripe_text"
+                    android:id="@+id/tv_good_descripe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="上等布匹纯手工，纯天然产品"
+                    android:textColor="#727272"
+                    android:textSize="13sp"/>
+            </RelativeLayout>
+        </LinearLayout>
 
-        <com.aode.buyoapp.qinxiaoshou.view.MoreTextView
-            android:layout_below="@+id/tv_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dip"
-            more:textColor="@android:color/black"
-            more:textSize="18dip"
-            more:maxLine="3"
-            more:text="在当今世界风云变换、物欲横流的时代拥有一颗备受熏陶的热爱自然、社会和人类的心至为重要。一个人在坠地的那刻起就有着一颗特殊的爱，不仅仅是源自于母爱，更多的是来自己自己内心的细胞，我们可以说是“自尊自爱”之心。唯有懂得爱惜自己尊重自己的人才能“己所不欲勿施于人”，才能做到“老吾老以及人之老，幼吾幼以及人之幼”，进而具备“穷则独善其身，达则兼济天下”的中华民族传统美德。这样一说范围就被我扩大了。"/>
-    </RelativeLayout>
+    </LinearLayout>
 
+</LinearLayout>
 </RelativeLayout>
-    </ScrollView>
+    </RelativeLayout>
+</ScrollView>

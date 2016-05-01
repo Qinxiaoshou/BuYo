@@ -4,22 +4,24 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.view.animation.Animation;
+import android.view.animation.RotateAnimation;
+import android.view.animation.Transformation;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.aode.buyoapp.LL.bean.Cloth;
 import com.aode.buyoapp.R;
-import com.aode.buyoapp.qinxiaoshou.view.MoreTextView;
 
 
 /**
@@ -41,7 +43,7 @@ public class BusinessProductDetailsActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Cloth cloth = (Cloth) intent.getSerializableExtra("cloth");
 
-       // productItemDetailsFragment = new ProductItemDetailsFragment(cloth);
+        // productItemDetailsFragment = new ProductItemDetailsFragment(cloth);
         toolbar = (Toolbar) findViewById(R.id.business_product_details);
         toolbar.setNavigationIcon(R.drawable.left_arrow);//设置导航栏图标
         toolbar.setTitle("");
@@ -83,6 +85,57 @@ class ProductDataRecyclerViewAdapter extends RecyclerView.Adapter<ProductDataRec
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onBindViewHolder(final ProductDataRecyclerViewAdapter.ViewHolder holder, int position) {
+        final TextView expandView = (TextView) holder.mView.findViewById(R.id.expand_view);
+        final LinearLayout descriptionView = (LinearLayout) holder.mView.findViewById(R.id.description_layout);
+        descriptionView.post(new Runnable() {
+
+            @Override
+            public void run() {
+                expandView.setVisibility(View.VISIBLE);
+
+            }
+        });
+        holder.mView.findViewById(R.id.expand_view).setOnClickListener(new View.OnClickListener() {
+            boolean isExpand;
+
+            @Override
+            public void onClick(View v) {
+                isExpand = !isExpand;
+                descriptionView.clearAnimation();
+                int durationMillis = 350;
+                if (isExpand) {
+                    Animation animation = new Animation() {
+                        protected void applyTransformation(float interpolatedTime, Transformation t) {
+                            //设置下拉图片方向
+                            Drawable nav_up = mContext.getResources().getDrawable(R.drawable.ach_turn);
+                            nav_up.setBounds(0, 0, nav_up.getMinimumWidth(), nav_up.getMinimumHeight());
+                            expandView.setCompoundDrawables(null, null, nav_up, null);
+                            //展示商品详情内容
+                            descriptionView.setVisibility(View.VISIBLE);
+                        }
+
+                    };
+                    animation.setDuration(durationMillis);
+                    descriptionView.startAnimation(animation);
+
+                } else {
+                    Animation animation = new Animation() {
+                        protected void applyTransformation(float interpolatedTime, Transformation t) {
+                            Drawable nav_up = mContext.getResources().getDrawable(R.drawable.ach);
+                            nav_up.setBounds(0, 0, nav_up.getMinimumWidth(), nav_up.getMinimumHeight());
+                            expandView.setCompoundDrawables(null, null, nav_up, null);
+                            descriptionView.setVisibility(View.GONE);
+                        }
+
+                    };
+                    animation.setDuration(durationMillis);
+                    descriptionView.startAnimation(animation);
+
+                }
+
+
+            }
+        });
        /* System.out.println("-->" + position);
         holder.imageView.setImageResource(R.drawable.buliao3);
         holder.tv_product_data_title.setText(cloth.getTitle());
