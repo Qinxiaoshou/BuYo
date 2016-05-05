@@ -28,7 +28,7 @@ public class BusinessManageConsumerOrderPagerActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.business_add_product_layout);
+        setContentView(R.layout.business_manage_consumer_order_layout);
         //步骤一：添加一个FragmentTransaction的实例
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();

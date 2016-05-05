@@ -1,13 +1,17 @@
 package com.aode.buyoapp.qinxiaoshou.activity;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,10 +46,10 @@ public class ConsumerProductDetailsActivity extends AppCompatActivity {
 
         setContentView(R.layout.business_add_product_layout);
         //步骤一：添加一个FragmentTransaction的实例
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
+      /*  FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();*/
         //步骤二：用add()方法加上Fragment的对象rightFragment
-        productItemDetailsFragment = new ProductItemDetailsFragment(cloth);
+     /*   productItemDetailsFragment = new ProductItemDetailsFragment(cloth);*/
         toolbar = (Toolbar) findViewById(R.id.toolbar_business_product_details);
         tv_rg_name = (TextView) findViewById(R.id.tv_rg_name);
         tv_g_add_product_title = (TextView) findViewById(R.id.tv_g_add_product_title);
@@ -63,7 +67,7 @@ public class ConsumerProductDetailsActivity extends AppCompatActivity {
         rg_h_open_permission.setVisibility(View.VISIBLE);
         tv_rg_name.setText("立即购买");
         button.setVisibility(View.GONE);
-        transaction.add(R.id.fl_g_framelayout, productItemDetailsFragment).commit();
+       /* transaction.add(R.id.fl_g_framelayout, productItemDetailsFragment).commit();*/
 
        //跳转到添加订单页面
 
@@ -82,5 +86,48 @@ public class ConsumerProductDetailsActivity extends AppCompatActivity {
                     }
                 }
             });
+        final TextView expandView = (TextView) findViewById(R.id.expand_view);
+        final LinearLayout descriptionView = (LinearLayout)findViewById(R.id.description_layout);
+        findViewById(R.id.expand_view).setOnClickListener(new View.OnClickListener() {
+            boolean isExpand;
+
+            @Override
+            public void onClick(View v) {
+                isExpand = !isExpand;
+                descriptionView.clearAnimation();
+                int durationMillis = 350;
+                if (isExpand) {
+                    Animation animation = new Animation() {
+                        protected void applyTransformation(float interpolatedTime, Transformation t) {
+                            //设置下拉图片方向
+                            Drawable nav_up = getResources().getDrawable(R.drawable.ach_turn);
+                            nav_up.setBounds(0, 0, nav_up.getMinimumWidth(), nav_up.getMinimumHeight());
+                            expandView.setCompoundDrawables(null, null, nav_up, null);
+                            //展示商品详情内容
+                            descriptionView.setVisibility(View.VISIBLE);
+                        }
+
+                    };
+                    animation.setDuration(durationMillis);
+                    descriptionView.startAnimation(animation);
+
+                } else {
+                    Animation animation = new Animation() {
+                        protected void applyTransformation(float interpolatedTime, Transformation t) {
+                            Drawable nav_up = getResources().getDrawable(R.drawable.ach);
+                            nav_up.setBounds(0, 0, nav_up.getMinimumWidth(), nav_up.getMinimumHeight());
+                            expandView.setCompoundDrawables(null, null, nav_up, null);
+                            descriptionView.setVisibility(View.GONE);
+                        }
+
+                    };
+                    animation.setDuration(durationMillis);
+                    descriptionView.startAnimation(animation);
+
+                }
+
+
+            }
+        });
     }
 }
