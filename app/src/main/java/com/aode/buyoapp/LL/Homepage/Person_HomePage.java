@@ -72,7 +72,7 @@ public class Person_HomePage extends Fragment implements IUserQueryAllProductVie
     }
 
     public void search() {
-        Spinner spinner_search = (Spinner) view.findViewById(R.id.spinner_search);
+        //Spinner spinner_search = (Spinner) view.findViewById(R.id.spinner_search);
         editText = (EditText) view.findViewById(R.id.et_Search);
         btn_search = (Button) view.findViewById(R.id.btn_search);
 
@@ -88,7 +88,7 @@ public class Person_HomePage extends Fragment implements IUserQueryAllProductVie
         });
         //OnClickListenerImpl按钮点击事件
         //下拉框选择事件
-        spinner_search.setOnItemSelectedListener(new OnISListenerImpl());
+        //spinner_search.setOnItemSelectedListener(new OnISListenerImpl());
         //搜索按钮事件
         btn_search.setOnClickListener(new View.OnClickListener() {
             @Override

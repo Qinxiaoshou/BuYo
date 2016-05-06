@@ -1,0 +1,7 @@
+<resources>
+
+    <dimen name="tv_home_bupi">16sp</dimen>
+    <dimen name="tv_home_details">12sp</dimen>
+    <dimen name="tv_home_goods_details">11sp</dimen>
+    <dimen name="tv_home_search_name">18sp</dimen>
+</resources>

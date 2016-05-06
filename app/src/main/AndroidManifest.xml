@@ -6,6 +6,12 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_app"
@@ -15,6 +21,12 @@
         <activity
             android:name=".business.StartActivity"
             android:theme="@style/notitle">
+
+            <!--
+            <activity
+            android:name=".business.TestActivity"
+            android:theme="@style/notitle">
+            -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -39,20 +51,18 @@
         <activity android:name=".qinxiaoshou.BusinessManageConsumerOrderPagerActivity" />
         <activity android:name=".qinxiaoshou.BusinessSearchOtherBusinessPagerActivity" />
         <activity android:name=".qinxiaoshou.ConsumerOrderListActivity" />
-        <activity android:name=".qinxiaoshou.ConsumerProductListActivity"
-            android:windowSoftInputMode="adjustPan"/>
-        <activity android:name=".qinxiaoshou.activity.ConsumerAddOrderDetailsActivity"
-            android:windowSoftInputMode="adjustPan"
-            />
-        <activity android:name=".qinxiaoshou.activity.BusinessProductDetailsActivity"/>
-        <activity android:name=".qinxiaoshou.activity.BusinessUpdateBusinessAndPermissionActivity"/>
-        <activity android:name=".qinxiaoshou.activity.ConsumerPermissionPageActivity"/>
         <activity
-            android:name=".LL.Login_business" />
+            android:name=".qinxiaoshou.ConsumerProductListActivity"
+            android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".LL.Register_person" />
-        <activity
-            android:name=".LL.Register_business" />
+            android:name=".qinxiaoshou.activity.ConsumerAddOrderDetailsActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".qinxiaoshou.activity.BusinessProductDetailsActivity" />
+        <activity android:name=".qinxiaoshou.activity.BusinessUpdateBusinessAndPermissionActivity" />
+        <activity android:name=".qinxiaoshou.activity.ConsumerPermissionPageActivity" />
+        <activity android:name=".LL.Login_business" />
+        <activity android:name=".LL.Register_person" />
+        <activity android:name=".LL.Register_business" />
         <activity
             android:name=".LL.Home_person"
             android:theme="@style/AppTheme.NoActionBar"
@@ -75,6 +85,7 @@
         <activity
             android:name=".LL.Personal.Person_password_update"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".LL.HomePersonActivity"></activity>
     </application>
 
 </manifest>

@@ -1,42 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="39dp"
     android:gravity="center"
     android:focusable="true"
-    android:background="#ff1f1c"
-    android:elevation="4dp"
+    android:background="#ff1f19"
     android:focusableInTouchMode="true"
     android:orientation="horizontal">
 
-    <Spinner
-        android:background="#ff1f1c"
-        android:id="@+id/spinner_search"
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:entries="@array/search"
-        android:animationCache="true"
-        android:drawSelectorOnTop="true"
+        android:layout_marginLeft="13dp"
+        android:background="@drawable/buyo"/>
 
-        />
-    <!--<EditText-->
-        <!--android:id="@+id/et_Search"-->
-        <!--android:layout_width="0dp"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginRight="10dp"-->
-        <!--android:layout_weight="4"-->
-        <!--android:hint="请输入商品名"-->
-        <!--android:singleLine="true"-->
-        <!--android:textColor="#fffff0"-->
-        <!--android:textSize="12sp" />-->
     <RelativeLayout
+        android:layout_gravity="center"
         style="@style/rl_Search"
         android:id="@+id/rl_Search"
         android:layout_width="0dp"
         android:layout_height="32dp"
         android:layout_weight="4"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginRight="15dp"
         >
 
         <ImageView
@@ -60,22 +46,16 @@
             android:textColorHint="#e0ffffff"
             android:paddingLeft="10dip"
             android:singleLine="true"
-            android:textSize="18sp" />
+            android:textSize="@dimen/tv_home_search_name" />
     </RelativeLayout>
 
-    <!-- <ImageView
-         android:id="@+id/ivDeleteText"
-         android:src="@drawable/search_delete"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:visibility="visible" />-->
     <Button
         android:id="@+id/btn_search"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:background="@null"
-        android:textSize="15sp"
+        android:textSize="@dimen/tv_home_bupi"
         android:textColor="#ffffff"
-        android:text="搜索" />
+        android:text="消息" />
 </LinearLayout>

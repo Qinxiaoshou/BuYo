@@ -5,13 +5,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Home_person">
-
+    <!--tools:layout="@layout/fragment_person_homepage"-->
     <FrameLayout
         android:id="@+id/person_homepage"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="13"
-        tools:layout="@layout/fragment_person_homepage" />
+        tools:layout="@layout/fragment_business_homepage" />
     <include
         android:id="@+id/id_bottombar"
         layout="@layout/bottombar"
