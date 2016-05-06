@@ -8,7 +8,6 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.Button;
 
-import com.aode.buyoapp.LL.HomePersonActivity;
 import com.aode.buyoapp.LL.Home_person;
 import com.aode.buyoapp.LL.Login_business;
 import com.aode.buyoapp.R;
@@ -63,8 +62,8 @@ public class StartActivity extends Activity {
                 btn_start_customer.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                       // startActivity(new Intent(StartActivity.this, Home_person.class));
-                        startActivity(new Intent(StartActivity.this, HomePersonActivity.class));
+                        // startActivity(new Intent(StartActivity.this, Home_person.class));
+                        startActivity(new Intent(StartActivity.this, Home_person.class));
                         StartActivity.this.finish();
 
                     }

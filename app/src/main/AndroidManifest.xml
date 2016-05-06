@@ -85,7 +85,6 @@
         <activity
             android:name=".LL.Personal.Person_password_update"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".LL.HomePersonActivity"></activity>
     </application>
 
 </manifest>

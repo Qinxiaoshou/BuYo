@@ -8,13 +8,13 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.aode.buyoapp.LL.Homepage.Person_HomePage;
+import com.aode.buyoapp.LL.Homepage.Person_Homepage2;
 import com.aode.buyoapp.LL.Personal.Person_Personal;
 import com.aode.buyoapp.R;
 
 public class Home_person extends AppCompatActivity implements Login_person.onNameListener {
 
-    private Person_HomePage homePage;
+    private Person_Homepage2 homePage;
     private Person_Personal personal;
     private Login_person login_person;
     private RadioGroup tabs;
@@ -37,7 +37,7 @@ public class Home_person extends AppCompatActivity implements Login_person.onNam
     }
 
     public void initView() {
-        homePage = new Person_HomePage();
+        homePage = new Person_Homepage2();
         getSupportFragmentManager().beginTransaction().add(R.id.person_homepage, homePage).commit();
         fragment = homePage;
         tabs = (RadioGroup) findViewById(R.id.person_menu);

@@ -1,12 +1,10 @@
-package com.aode.buyoapp.LL;
+package com.aode.buyoapp.LL.Homepage;
 
+import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +17,7 @@ import com.aode.buyoapp.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomePersonActivity extends FragmentActivity implements ViewPager.OnPageChangeListener{
+public class Person_Homepage2 extends Fragment implements ViewPager.OnPageChangeListener {
     private ImageView iv;
     private LinearLayout ll;
     private TextView tv;
@@ -32,6 +30,7 @@ public class HomePersonActivity extends FragmentActivity implements ViewPager.On
 
     private List<ImageView> list = new ArrayList<ImageView>();
     private View view;
+    private View view2;
     private LinearLayout.LayoutParams params;
     private String[] imageDescriptionArray = {
             "五一特价，全国包邮",
@@ -41,22 +40,26 @@ public class HomePersonActivity extends FragmentActivity implements ViewPager.On
             "布匹来袭，欧美风格",
     };
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
+        // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_business_homepage2);
+    }
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        view2 = inflater.inflate(R.layout.fragment_business_homepage2, container, false);
         init();
 
         //开启线程无限自动移动
-        new Thread(){
+        new Thread() {
             @Override
             public void run() {
                 while (!isStop) {
                     SystemClock.sleep(4000);    //每隔五秒钟，发送一条消息到主线程，更新viewpager的界面
 
                     //runOnUiThread此方法在主线程执行，也可以使用Handler
-                    runOnUiThread(new Runnable() {
+                    getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             int newIndex = viewPager.getCurrentItem() + 1;
@@ -66,28 +69,29 @@ public class HomePersonActivity extends FragmentActivity implements ViewPager.On
                 }
             }
         }.start();
+        return view2;
     }
 
     @Override
-    protected void onDestroy() {
+    public void onDestroy() {
         isStop = true;
         super.onDestroy();
     }
 
     private void init() {
 
-        viewPager = (ViewPager) findViewById(R.id.viewPager);
-        ll = (LinearLayout) findViewById(R.id.ll_point_group);
-        tv = (TextView) findViewById(R.id.tv_image_description);
+        viewPager = (ViewPager) view2.findViewById(R.id.viewPager);
+        ll = (LinearLayout) view2.findViewById(R.id.ll_point_group);
+        tv = (TextView) view2.findViewById(R.id.tv_image_description);
 
         int[] imageResID = {R.drawable.ad1, R.drawable.ad2, R.drawable.ad3, R.drawable.ad4, R.drawable.ad5};
         for (int id : imageResID) {
-            iv = new ImageView(this);
+            iv = new ImageView(getContext());
             iv.setBackgroundResource(id);
             list.add(iv);
 
             //每循环一次，添加一个点到LinearLayout中
-            view = new View(this);
+            view = new View(getContext());
             view.setBackgroundResource(R.drawable.point_background);
             params = new LinearLayout.LayoutParams(10, 10);
             params.leftMargin = 10;
@@ -99,7 +103,7 @@ public class HomePersonActivity extends FragmentActivity implements ViewPager.On
         viewPager.addOnPageChangeListener(this);
 
         //初始化ViewPager的默认position为Integer.Max_value的一半
-        int index = (Integer.MAX_VALUE / 2) -(Integer.MAX_VALUE / 2 % list.size());
+        int index = (Integer.MAX_VALUE / 2) - (Integer.MAX_VALUE / 2 % list.size());
         viewPager.setCurrentItem(index);    //设置当前viewpager选中的pager页,会默认触发OnPageChangeListener.onPageSelected
     }
 
