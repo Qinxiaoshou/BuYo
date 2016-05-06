@@ -62,7 +62,6 @@ public class StartActivity extends Activity {
                 btn_start_customer.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        // startActivity(new Intent(StartActivity.this, Home_person.class));
                         startActivity(new Intent(StartActivity.this, Home_person.class));
                         StartActivity.this.finish();
 

@@ -85,7 +85,10 @@
         <activity
             android:name=".LL.Personal.Person_password_update"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".LL.HomePersonActivity"></activity>
+        <activity android:name=".business.BrowseBusinessActivity"/>
     </application>
-
+    <supports-screens
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:anyDensity = "true"/>
 </manifest>

@@ -1,5 +1,6 @@
 package com.aode.buyoapp.LL.Homepage;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.v4.app.Fragment;
@@ -10,24 +11,29 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.aode.buyoapp.R;
+import com.aode.buyoapp.business.BrowseBusinessActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 布约app第二版首页界面
+ *
+ * @author 陈映苗
+ * @// FIXME: 2016/5/6
+ */
 public class Person_Homepage2 extends Fragment implements ViewPager.OnPageChangeListener {
     private ImageView iv;
+    private RelativeLayout rl_changshang_browser;
     private LinearLayout ll;
     private TextView tv;
-
     private ViewPager viewPager;
-
     private boolean isStop = false; //是否停止子线程，默认不会停止
-
     private int previousEnabledPosition = 0; //前一个被选中的“点”的索引
-
     private List<ImageView> list = new ArrayList<ImageView>();
     private View view;
     private View view2;
@@ -49,6 +55,7 @@ public class Person_Homepage2 extends Fragment implements ViewPager.OnPageChange
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view2 = inflater.inflate(R.layout.fragment_business_homepage2, container, false);
+
         init();
 
         //开启线程无限自动移动
@@ -79,7 +86,14 @@ public class Person_Homepage2 extends Fragment implements ViewPager.OnPageChange
     }
 
     private void init() {
-
+        rl_changshang_browser = (RelativeLayout) view2.findViewById(R.id.rl_changshang_browser);
+        //点击厂商一览进入厂商一览界面
+        rl_changshang_browser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), BrowseBusinessActivity.class));
+            }
+        });
         viewPager = (ViewPager) view2.findViewById(R.id.viewPager);
         ll = (LinearLayout) view2.findViewById(R.id.ll_point_group);
         tv = (TextView) view2.findViewById(R.id.tv_image_description);

@@ -2,28 +2,27 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="39dp"
-    android:gravity="center"
+    android:background="@color/home_title"
     android:focusable="true"
-    android:background="#ff1f19"
     android:focusableInTouchMode="true"
+    android:gravity="center"
     android:orientation="horizontal">
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="13dp"
-        android:background="@drawable/buyo"/>
+        android:background="@drawable/buyo" />
 
     <RelativeLayout
-        android:layout_gravity="center"
-        style="@style/rl_Search"
         android:id="@+id/rl_Search"
+        style="@style/rl_Search"
         android:layout_width="0dp"
         android:layout_height="32dp"
-        android:layout_weight="4"
+        android:layout_gravity="center"
         android:layout_marginLeft="22dp"
         android:layout_marginRight="15dp"
-        >
+        android:layout_weight="4">
 
         <ImageView
             android:id="@+id/iv_Search"
@@ -41,12 +40,12 @@
             android:layout_alignParentTop="true"
             android:layout_marginLeft="10dp"
             android:background="@null"
-            android:hint="请输入商品名"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#e0ffffff"
+            android:hint="@string/input_goods_name"
             android:paddingLeft="10dip"
             android:singleLine="true"
-            android:textSize="@dimen/tv_home_search_name" />
+            android:textColor="@color/white"
+            android:textColorHint="@color/white2"
+            android:textSize="@dimen/x18" />
     </RelativeLayout>
 
     <Button
@@ -55,7 +54,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:background="@null"
-        android:textSize="@dimen/tv_home_bupi"
-        android:textColor="#ffffff"
-        android:text="消息" />
+        android:text="@string/message"
+        android:textColor="@color/white"
+        android:textSize="@dimen/x16" />
 </LinearLayout>

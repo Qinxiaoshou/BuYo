@@ -3,14 +3,14 @@
     android:id="@+id/homepage_scrollview"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="#FFFFFF"
+    android:background="@color/white"
     android:fillViewport="true"
     android:scrollbars="none">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#f1f1f1"
+        android:background="@color/huise"
         android:orientation="vertical">
 
         <include
@@ -29,8 +29,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="3dp"
-            android:background="#FFFFFF" />
-
+            android:background="@color/white" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -39,106 +38,63 @@
             android:paddingLeft="15.5dp"
             android:paddingTop="5dp">
 
-            <!--android:layout_marginLeft="15.5dp"
-            android:layout_marginTop="5dp"-->
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
-                android:background="#FFFFFF">
+                android:background="@color/white">
 
                 <ImageView
                     android:id="@+id/imageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="11.5dp"
+                    style="@style/home_bupi_imageview"
                     android:background="@drawable/daquan" />
-
 
                 <TextView
                     android:id="@+id/tv_daquan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginTop="17dp"
+                    style="@style/home_bupi_biaoti"
                     android:layout_toEndOf="@+id/imageView"
-                    android:paddingLeft="7dp"
-                    android:text="布匹大全"
-                    android:textColor="#000000"
-                    android:textSize="@dimen/tv_home_bupi"
-                    android:textStyle="normal" />
+                    android:text="@string/bupi_daquan" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/home_bupi_detail"
                     android:layout_alignStart="@+id/tv_daquan"
                     android:layout_below="@+id/tv_daquan"
-                    android:paddingBottom="13.5dp"
-                    android:paddingLeft="7dp"
-                    android:paddingTop="9dp"
-                    android:text="布匹大全描述"
-                    android:textColor="#727272"
-                    android:textSize="@dimen/tv_home_details"
-                    android:textStyle="bold" />
+                    android:text="@string/daquan_detail" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentTop="true"
+                    style="@style/home_bupi_right_imageview"
                     android:background="@drawable/ada" />
             </RelativeLayout>
 
             <RelativeLayout
+                android:clickable="true"
+                android:id="@+id/rl_changshang_browser"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="15.5dp"
                 android:layout_weight="1"
-
-                android:background="#FFFFFF">
+                android:background="@color/white">
 
                 <ImageView
                     android:id="@+id/iv_yilan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="11.5dp"
+                    style="@style/home_bupi_imageview"
                     android:background="@drawable/yilan" />
-
 
                 <TextView
                     android:id="@+id/tv_yilan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginTop="17dp"
+                    style="@style/home_bupi_biaoti"
                     android:layout_toEndOf="@+id/iv_yilan"
-                    android:paddingLeft="7dp"
-                    android:text="厂商一览"
-                    android:textColor="#000000"
-                    android:textSize="@dimen/tv_home_bupi"
-                    android:textStyle="normal" />
+                    android:text="@string/changshang_browser" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/home_bupi_detail"
                     android:layout_alignStart="@+id/tv_yilan"
                     android:layout_below="@+id/tv_yilan"
-                    android:paddingBottom="13.5dp"
-                    android:paddingLeft="7dp"
-                    android:paddingTop="9dp"
-                    android:text="布匹大全描述"
-                    android:textColor="#727272"
-                    android:textSize="@dimen/tv_home_details"
-                    android:textStyle="bold" />
+                    android:text="@string/changshang_detail" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentTop="true"
+                    style="@style/home_bupi_right_imageview"
                     android:background="@drawable/adb" />
             </RelativeLayout>
         </LinearLayout>
@@ -150,50 +106,29 @@
             android:paddingLeft="15.5dp"
             android:paddingTop="5dp">
 
-            <!--android:layout_marginLeft="15.5dp"
-            android:layout_marginTop="5dp"-->
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
-                android:background="#FFFFFF">
+                android:background="@color/white">
 
                 <ImageView
                     android:id="@+id/iv_xuetang"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="11.5dp"
+                    style="@style/home_bupi_imageview"
                     android:background="@drawable/xuetang" />
-
 
                 <TextView
                     android:id="@+id/tv_xuetang"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginTop="17dp"
+                    style="@style/home_bupi_biaoti"
                     android:layout_toEndOf="@+id/iv_xuetang"
-                    android:paddingLeft="7dp"
-                    android:text="布匹学堂"
-                    android:textColor="#000000"
-                    android:textSize="@dimen/tv_home_bupi"
-                    android:textStyle="normal" />
+                    android:text="@string/bupi_xuetang" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/home_bupi_detail"
                     android:layout_alignStart="@+id/tv_xuetang"
                     android:layout_below="@+id/tv_xuetang"
-                    android:paddingBottom="13.5dp"
-                    android:paddingLeft="7dp"
-                    android:paddingTop="9dp"
-                    android:text="布匹学堂描述"
-                    android:textColor="#727272"
-                    android:textSize="@dimen/tv_home_details"
-                    android:textStyle="bold" />
-
+                    android:text="@string/xuetang_detail" />
 
             </RelativeLayout>
 
@@ -202,65 +137,40 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="15.5dp"
                 android:layout_weight="1"
-                android:background="#FFFFFF">
+                android:background="@color/white">
 
                 <ImageView
                     android:id="@+id/iv_guanyu"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="11.5dp"
+                    style="@style/home_bupi_imageview"
                     android:background="@drawable/guanyu" />
-
 
                 <TextView
                     android:id="@+id/tv_guanyu"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginTop="17dp"
+                    style="@style/home_bupi_biaoti"
                     android:layout_toEndOf="@+id/iv_guanyu"
-                    android:paddingLeft="7dp"
-                    android:text="关于我们"
-                    android:textColor="#000000"
-                    android:textSize="@dimen/tv_home_bupi"
-                    android:textStyle="normal" />
+                    android:text="@string/about_we" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/home_bupi_detail"
                     android:layout_alignStart="@+id/tv_guanyu"
                     android:layout_below="@+id/tv_guanyu"
-                    android:paddingBottom="13.5dp"
-                    android:paddingLeft="7dp"
-                    android:paddingTop="9dp"
-                    android:text="关于我们描述"
-                    android:textColor="#727272"
-                    android:textSize="@dimen/tv_home_details"
-                    android:textStyle="bold" />
-
+                    android:text="@string/about_we_detail" />
 
             </RelativeLayout>
-
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingLeft="15.5dp"
             android:paddingRight="15.5dp"
             android:paddingTop="9.5dp">
 
-            <!--android:layout_marginLeft="15.5dp"
-            android:layout_marginRight="15.5dp"
-            android:layout_marginTop="9.5dp"-->
-
-            <!--android:layout_height="108.5dp"-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#FFFFFF">
+                android:background="@color/white">
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -276,20 +186,12 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="今日清仓大甩卖"
-                        android:textColor="#000000"
-                        android:textSize="@dimen/tv_home_details" />
+                        style="@style/home_remai_biaoti"
+                        android:text="@string/biaoti1" />
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="38块一件"
-                        android:textColor="#727272"
-                        android:textSize="@dimen/tv_home_goods_details"
-                        android:textStyle="bold" />
+                        style="@style/home_remai_detail"
+                        android:text="@string/biaoti1_1" />
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -308,19 +210,12 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="过了这村没这店"
-                        android:textColor="#000000"
-                        android:textSize="@dimen/tv_home_details" />
+                        style="@style/home_remai_biaoti"
+                        android:text="@string/biaoti2" />
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="老司机带带钱"
-                        android:textColor="#727272"
-                        android:textSize="@dimen/tv_home_goods_details"
-                        android:textStyle="bold" />
+                        style="@style/home_remai_detail"
+                        android:text="@string/biaoti2_2" />
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -338,19 +233,12 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="炸锅大甩卖"
-                        android:textColor="#000000"
-                        android:textSize="@dimen/tv_home_details" />
+                        style="@style/home_remai_biaoti"
+                        android:text="@string/biaoti3" />
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="免费送"
-                        android:textColor="#727272"
-                        android:textSize="@dimen/tv_home_goods_details"
-                        android:textStyle="bold" />
+                        style="@style/home_remai_detail"
+                        android:text="@string/biaoti3_3" />
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -379,11 +267,10 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="5.5dp"
-                android:background="#FFFFFF"
+                android:background="@color/white"
                 android:orientation="vertical">
-
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -404,7 +291,6 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-
                     </LinearLayout>
 
                     <TextView
@@ -414,9 +300,9 @@
                         android:layout_alignBottom="@+id/iv_xinwen"
                         android:layout_toEndOf="@+id/iv_xinwen"
                         android:paddingBottom="5dp"
-                        android:text="行业新闻"
-                        android:textColor="#000000"
-                        android:textSize="@dimen/tv_home_bupi" />
+                        android:text="@string/xinwen"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/x16" />
 
                     <View
                         android:layout_width="wrap_content"
@@ -440,24 +326,15 @@
 
                     <ImageView
                         android:id="@+id/iv_yuandian"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/home_xinwen_yuandian"
                         android:layout_alignBottom="@+id/tv_xinwen1"
-                        android:layout_alignParentStart="true"
-                        android:layout_marginStart="31dp"
                         android:background="@drawable/yuandian" />
 
                     <TextView
                         android:id="@+id/tv_xinwen1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
-                        android:layout_marginLeft="3.5dp"
+                        style="@style/home_xinwen_detail"
                         android:layout_toEndOf="@+id/iv_yuandian"
-                        android:text="生意要怎么做？我家是做布匹生意"
-                        android:textColor="#3b3b3b"
-                        android:textSize="@dimen/tv_home_bupi"
-                        android:textStyle="bold" />
+                        android:text="@string/xinwen1" />
 
                     <View
                         android:layout_width="wrap_content"
@@ -465,15 +342,12 @@
                         android:layout_alignStart="@+id/tv_xinwen1"
                         android:layout_below="@+id/iv_yuandian"
                         android:layout_toStartOf="@+id/iv_huidian1"
-                        android:background="#cecece" />
+                        android:background="@color/huise2" />
 
                     <ImageView
                         android:id="@+id/iv_huidian1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
+                        style="@style/home_xinwen_huidian"
                         android:layout_alignTop="@+id/iv_yuandian"
-                        android:layout_marginEnd="10dp"
                         android:background="@drawable/huidian" />
 
                 </RelativeLayout>
@@ -484,24 +358,15 @@
 
                     <ImageView
                         android:id="@+id/iv_yuandian2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/home_xinwen_yuandian"
                         android:layout_alignBottom="@+id/tv_xinwen2"
-                        android:layout_alignParentStart="true"
-                        android:layout_marginStart="31dp"
                         android:background="@drawable/yuandian" />
 
                     <TextView
                         android:id="@+id/tv_xinwen2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
-                        android:layout_marginLeft="3.5dp"
+                        style="@style/home_xinwen_detail"
                         android:layout_toEndOf="@+id/iv_yuandian2"
-                        android:text="30万投资，可以做布料生意吗？"
-                        android:textColor="#3b3b3b"
-                        android:textSize="@dimen/tv_home_bupi"
-                        android:textStyle="bold" />
+                        android:text="@string/xinwen2" />
 
                     <View
                         android:layout_width="wrap_content"
@@ -509,15 +374,12 @@
                         android:layout_alignStart="@+id/tv_xinwen2"
                         android:layout_below="@+id/iv_yuandian2"
                         android:layout_toStartOf="@+id/iv_huidian2"
-                        android:background="#cecece" />
+                        android:background="@color/huise2" />
 
                     <ImageView
                         android:id="@+id/iv_huidian2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
+                        style="@style/home_xinwen_huidian"
                         android:layout_alignTop="@+id/iv_yuandian2"
-                        android:layout_marginEnd="10dp"
                         android:background="@drawable/huidian" />
 
                 </RelativeLayout>
@@ -528,24 +390,15 @@
 
                     <ImageView
                         android:id="@+id/iv_yuandian3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/home_xinwen_yuandian"
                         android:layout_alignBottom="@+id/tv_xinwen3"
-                        android:layout_alignParentStart="true"
-                        android:layout_marginStart="31dp"
                         android:background="@drawable/yuandian2" />
 
                     <TextView
                         android:id="@+id/tv_xinwen3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
-                        android:layout_marginLeft="3.5dp"
+                        style="@style/home_xinwen_detail"
                         android:layout_toEndOf="@+id/iv_yuandian3"
-                        android:text="生意要怎么做？我家是做布匹生意"
-                        android:textColor="#3b3b3b"
-                        android:textSize="@dimen/tv_home_bupi"
-                        android:textStyle="bold" />
+                        android:text="@string/xinwen3" />
 
                     <View
                         android:layout_width="wrap_content"
@@ -553,20 +406,16 @@
                         android:layout_alignStart="@+id/tv_xinwen3"
                         android:layout_below="@+id/iv_yuandian3"
                         android:layout_toStartOf="@+id/iv_huidian3"
-                        android:background="#cecece" />
+                        android:background="@color/huise2" />
 
                     <ImageView
                         android:id="@+id/iv_huidian3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
+                        style="@style/home_xinwen_huidian"
                         android:layout_alignTop="@+id/iv_yuandian3"
-                        android:layout_marginEnd="10dp"
                         android:background="@drawable/huidian" />
 
                 </RelativeLayout>
             </LinearLayout>
         </LinearLayout>
-
     </LinearLayout>
 </com.aode.buyoapp.LL.Homepage.MyScrollview>

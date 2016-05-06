@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@id/viewPager"
         android:layout_centerHorizontal="true"
-        android:background="#33000000"
+        android:background="@color/huise5"
         android:orientation="vertical"
         android:padding="5dp">
 
@@ -30,12 +30,10 @@
             android:id="@+id/ll_point_group"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="5dp">
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
 
         </LinearLayout>
-
     </LinearLayout>
-
 </RelativeLayout>

@@ -14,9 +14,15 @@
     <dimen name="btn_width">50dp</dimen>
 
 
-    <dimen name="tv_home_bupi">16sp</dimen>
-    <dimen name="tv_home_details">12sp</dimen>
-    <dimen name="tv_home_goods_details">11sp</dimen>
-    <dimen name="tv_home_search_name">18sp</dimen>
+    <dimen name="x10">10sp</dimen>
+    <dimen name="x11">11sp</dimen>
+    <dimen name="x12">12sp</dimen>
+    <dimen name="x13">13sp</dimen>
+    <dimen name="x14">14sp</dimen>
+    <dimen name="x15">15sp</dimen>
+    <dimen name="x16">16sp</dimen>
+    <dimen name="x17">17sp</dimen>
+    <dimen name="x18">18sp</dimen>
+    <dimen name="x24">24sp</dimen>
 
 </resources>
