@@ -64,6 +64,7 @@
     <style name="browser_business_btn">
         <item name="android:textSize">@dimen/x13</item>
         <item name="android:paddingLeft">17.5dp</item>
+        <item name="android:paddingRight">17.5dp</item>
         <item name="android:background">@color/white</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
@@ -75,6 +76,11 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_centerVertical">true</item>
         <item name="android:layout_marginLeft">11.5dp</item>
+    </style>
+    <style name="home_bupi_column">
+        <item name="android:clickable">true</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:background">@drawable/shape_border</item>
     </style>
 
     <style name="home_bupi_biaoti">
@@ -93,10 +99,8 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:paddingBottom">13.5dp</item>
         <item name="android:paddingLeft">7dp</item>
-        <item name="android:paddingTop">9dp</item>
         <item name="android:textColor">@color/huise3</item>
         <item name="android:textSize">@dimen/x12</item>
-        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="home_bupi_right_imageview">
@@ -111,12 +115,14 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">@dimen/x12</item>
+        <item name="android:layout_gravity">left</item>
+        <item name="android:singleLine">true</item>
     </style>
 
     <style name="home_remai_detail">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_gravity">left</item>
         <item name="android:textColor">@color/huise3</item>
         <item name="android:textSize">@dimen/x11</item>
         <item name="android:textStyle">bold</item>
@@ -129,14 +135,13 @@
         <item name="android:layout_marginLeft">3.5dp</item>
         <item name="android:textColor">@color/light_black</item>
         <item name="android:textSize">@dimen/x16</item>
-        <item name="android:textStyle">bold</item>
+        <item name="android:textStyle">normal</item>
     </style>
 
     <style name="home_xinwen_yuandian">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_alignParentStart">true</item>
-        <item name="android:layout_marginStart">31dp</item>
     </style>
 
     <style name="home_xinwen_huidian">
