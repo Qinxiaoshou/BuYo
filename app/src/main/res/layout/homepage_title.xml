@@ -32,8 +32,22 @@
             android:layout_centerVertical="true"
             android:src="@drawable/search" />
 
-        <EditText
+       <!-- <EditText
             android:id="@+id/et_Search"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="10dp"
+            android:background="@null"
+            android:hint="@string/input_goods_name"
+            android:paddingLeft="10dip"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white2"
+            android:textSize="@dimen/x18" />-->
+        <TextView
+            android:id="@+id/tv_Search"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_alignParentStart="true"

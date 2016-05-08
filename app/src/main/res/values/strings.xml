@@ -40,11 +40,9 @@
     <string name="xinwen3">生意要怎么做？我家是做布匹生意</string>
 
 
-    <string-array name="student">
+    <string-array name="activitysearch">
         <item>全部</item>
-        <item>机票</item>
-        <item>彩票</item>
-        <item>电影票</item>
-        <item>火车票</item>
+        <item>商家</item>
+        <item>布匹</item>
     </string-array>
 </resources>

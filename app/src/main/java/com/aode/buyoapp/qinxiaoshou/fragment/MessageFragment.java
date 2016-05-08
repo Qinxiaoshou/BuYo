@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aode.buyoapp.LL.Presenter.BusinessQueryAllProductsPresenter;
@@ -31,8 +32,8 @@ import java.util.List;
 @SuppressLint("ValidFragment")
 public class MessageFragment extends Fragment implements IBusinessProductView {
     private View view;
-    private Button btn_add;
-    private Button btn_call_moreproduct_manager;
+    private TextView tv_add;
+    private TextView tv_call_moreproduct_manager;
 
 
     BusinessQueryAllProductsPresenter businessQueryAllProductsPresenter = new BusinessQueryAllProductsPresenter(this);
@@ -47,21 +48,19 @@ public class MessageFragment extends Fragment implements IBusinessProductView {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        btn_add = (Button) view.findViewById(R.id.btn_add); //添加商品
-        btn_call_moreproduct_manager = (Button) view.findViewById(R.id.btn_call_moreproduct_manager); //管理商品
-        btn_add.setOnClickListener(new View.OnClickListener() {
+        tv_add = (TextView) view.findViewById(R.id.tv_add); //添加商品
+        tv_call_moreproduct_manager = (TextView) view.findViewById(R.id.tv_call_moreproduct_manager); //管理商品
+        tv_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "添加商品界面", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getContext(), BusinessAddNewProductActivity.class);
                 startActivity(intent);
 
             }
         });
-        btn_call_moreproduct_manager.setOnClickListener(new View.OnClickListener() {
+        tv_call_moreproduct_manager.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "管理商品界面", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getContext(), BusinessMamageProductActivity.class);
                 startActivity(intent);
 

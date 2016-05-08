@@ -11,32 +11,46 @@
         android:id="@+id/recycler_view_f_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-    <RadioGroup
-        android:layout_weight="1.0"
+    <TextView
+        android:layout_above="@+id/rg_manager_products"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#dddada"/>
+    <LinearLayout
+        android:background="#df3031"
         android:layout_alignParentBottom="true"
         android:id="@+id/rg_manager_products"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_gravity="bottom"
-        android:gravity="center"
         android:orientation="horizontal"
         >
-        <Button
-            android:id="@+id/btn_add"
-            android:background="@drawable/shape_d_image"
-            android:textColor="#000000"
-            android:textSize="14sp"
+        <TextView
+            android:id="@+id/tv_add"
+            android:textColor="#fff"
+            android:textSize="18sp"
             android:text="添加新产品"
+            android:gravity="center"
             android:layout_marginRight="2dp"
-            android:layout_weight="0.35" />
-        <Button
-            android:id="@+id/btn_call_moreproduct_manager"
-            android:background="@drawable/shape_d_image"
-            android:textColor="#000000"
-            android:textSize="14sp"
+            android:layout_weight="1.0"
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content" />
+        <TextView
+            android:layout_width="0.8dp"
+            android:layout_height="26dp"
+            android:gravity="center"
+            android:background="#fff"/>
+        <TextView
+            android:layout_toRightOf="@+id/tv_add"
+            android:id="@+id/tv_call_moreproduct_manager"
+            android:textColor="#fff"
+            android:textSize="18sp"
             android:text="管理商品"
-            android:layout_weight="0.32" />
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content" />
 
-    </RadioGroup>
+    </LinearLayout>
 
 </RelativeLayout>

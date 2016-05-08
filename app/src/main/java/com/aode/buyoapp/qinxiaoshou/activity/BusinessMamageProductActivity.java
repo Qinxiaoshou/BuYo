@@ -32,7 +32,7 @@ public class BusinessMamageProductActivity extends FragmentActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.business_add_product_layout);
+        setContentView(R.layout.business_delete_product_layout);
         toolbarTitle = (TextView) findViewById(R.id.tv_g_add_product_title);
         btn_right_text = findViewById(R.id.btn_right_text);
         //步骤一：添加一个FragmentTransaction的实例

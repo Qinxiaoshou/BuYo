@@ -44,7 +44,7 @@ public class ConsumerProductDetailsActivity extends AppCompatActivity {
         Intent intent = getIntent();
         cloth = (Cloth) intent.getSerializableExtra("cloth");
 
-        setContentView(R.layout.business_add_product_layout);
+        setContentView(R.layout.business_product_message_layout);
         //步骤一：添加一个FragmentTransaction的实例
       /*  FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();*/
