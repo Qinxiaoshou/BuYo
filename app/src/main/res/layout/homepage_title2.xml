@@ -12,7 +12,8 @@
         android:layout_marginLeft="16dp"
         />
     <ImageView
-
+        android:id="@+id/iv_search_img"
+        android:clickable="true"
         android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

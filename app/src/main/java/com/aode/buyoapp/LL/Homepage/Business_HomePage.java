@@ -69,11 +69,11 @@ public class Business_HomePage extends Fragment implements IUserQueryAllProductV
         //scrollview的操作
         scroll();
         //搜索框
-        search();
+       // search();
         return view;
     }
 
-    public void search() {
+   /* public void search() {
        // Spinner spinner_search = (Spinner) view.findViewById(R.id.spinner_search);
         editText = (EditText) view.findViewById(R.id.et_Search);
         btn_search = (Button) view.findViewById(R.id.btn_search);
@@ -100,7 +100,7 @@ public class Business_HomePage extends Fragment implements IUserQueryAllProductV
             }
         });
     }
-
+*/
     @Override
     public void toMainActivity(final List<Cloth> clothlist) {
         System.out.println("加载商品" + clothlist);

@@ -51,6 +51,7 @@
         <activity android:name=".qinxiaoshou.BusinessManageConsumerOrderPagerActivity" />
         <activity android:name=".qinxiaoshou.BusinessSearchOtherBusinessPagerActivity" />
         <activity android:name=".qinxiaoshou.ConsumerOrderListActivity" />
+        <activity android:name=".qinxiaoshou.activity.SearchActivity"/>
         <activity
             android:name=".qinxiaoshou.ConsumerProductListActivity"
             android:windowSoftInputMode="adjustPan" />

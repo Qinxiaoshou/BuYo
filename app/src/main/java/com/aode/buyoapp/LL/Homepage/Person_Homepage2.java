@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.aode.buyoapp.R;
 import com.aode.buyoapp.business.BrowseBusinessActivity;
+import com.aode.buyoapp.qinxiaoshou.activity.SearchActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -86,6 +87,14 @@ public class Person_Homepage2 extends Fragment implements ViewPager.OnPageChange
     }
 
     private void init() {
+        ImageView iv_search_img = (ImageView) view2.findViewById(R.id.iv_search_img);
+        iv_search_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), SearchActivity.class));
+            }
+        });
+
         rl_changshang_browser = (RelativeLayout) view2.findViewById(R.id.rl_changshang_browser);
         //点击厂商一览进入厂商一览界面
         rl_changshang_browser.setOnClickListener(new View.OnClickListener() {
