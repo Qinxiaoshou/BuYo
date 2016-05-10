@@ -6,11 +6,11 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <!--在SDCard中创建与删除文件权限  -->
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <!-- 往SDCard写入数据权限 -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!--  从SDCard读取数据权限 -->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <supports-screens
         android:anyDensity="true"
@@ -57,7 +57,7 @@
         <activity android:name=".qinxiaoshou.BusinessManageConsumerOrderPagerActivity" />
         <activity android:name=".qinxiaoshou.BusinessSearchOtherBusinessPagerActivity" />
         <activity android:name=".qinxiaoshou.ConsumerOrderListActivity" />
-        <activity android:name=".qinxiaoshou.activity.SearchActivity"/>
+        <activity android:name=".qinxiaoshou.activity.SearchActivity" />
         <activity
             android:name=".qinxiaoshou.ConsumerProductListActivity"
             android:windowSoftInputMode="adjustPan" />
@@ -92,10 +92,17 @@
         <activity
             android:name=".LL.Personal.Person_password_update"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".business.BrowseBusinessActivity"/>
+        <activity
+            android:name=".LL.Homepage.AllCloth.Person_HomePage_AllCloth"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".LL.Homepage.About.Person_HomePage_About"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity android:name=".business.BrowseBusinessActivity" />
     </application>
     <supports-screens
+        android:anyDensity="true"
         android:largeScreens="true"
-        android:normalScreens="true"
-        android:anyDensity = "true"/>
+        android:normalScreens="true" />
 </manifest>

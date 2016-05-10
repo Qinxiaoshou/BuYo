@@ -1,4 +1,4 @@
-package com.aode.buyoapp.LL.Homepage;
+package com.aode.buyoapp.LL.Homepage.AllCloth;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -13,19 +13,14 @@ import com.aode.buyoapp.R;
 
 import java.util.List;
 
-/**
- * Created by LiLei on 2016/4/10.Go.
- */
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
-
+public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder> {
     private Context context;
     private List<Cloth> cloths;
 
-    public MyAdapter(Context context, List<Cloth> cloths) {
+    public ListAdapter(Context context, List<Cloth> cloths) {
         this.context = context;
         this.cloths = cloths;
     }
-
 
 
     //接口
@@ -40,17 +35,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     }
 
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        MyViewHolder holder = new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.homepage_item, parent,
-                false));
-        return holder;
+    public ListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        ListViewHolder viewHolder = new ListViewHolder(LayoutInflater.from(context).inflate(R.layout.homepage_clothlist_item, parent, false));
+        return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(final MyViewHolder holder, int position) {
+    public void onBindViewHolder(final ListViewHolder holder, int position) {
         holder.iv_itemIv.setImageResource(R.drawable.buliao2);
         holder.id_item_abstruct.setText(cloths.get(position).getTitle());
-            holder.id_item_price.setText("$"+cloths.get(position).getPrice());
+        holder.id_item_price.setText("$" + cloths.get(position).getPrice());
 
         // 如果设置了回调，则设置点击事件
         if (mOnItemClickLitener != null) {
@@ -62,6 +56,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 }
             });
         }
+        ;
     }
 
     @Override
@@ -69,13 +64,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         return cloths.size();
     }
 
-
-    class MyViewHolder extends RecyclerView.ViewHolder {
+    class ListViewHolder extends RecyclerView.ViewHolder {
         ImageView iv_itemIv;
         TextView id_item_abstruct;
         TextView id_item_price;
 
-        public MyViewHolder(View view) {
+        public ListViewHolder(View view) {
             super(view);
             iv_itemIv = (ImageView) view.findViewById(R.id.iv_itemIv);
             id_item_abstruct = (TextView) view.findViewById(R.id.id_item_abstruct);
@@ -83,4 +77,3 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         }
     }
 }
-
