@@ -6,13 +6,16 @@
     android:background="@color/white"
     android:fillViewport="true"
     android:scrollbars="none">
+
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <include
             android:id="@+id/fragment_toolbar"
-            layout="@layout/homepage_title2" />
+            layout="@layout/homepage_title" />
+
         <include
             android:id="@+id/fragment_toolbar"
             layout="@layout/activity_viewpager" />
@@ -20,17 +23,19 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
+
             <RelativeLayout
-               style="@style/home_bupi_column"
-                android:layout_weight="1"
+                style="@style/home_bupi_column"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
                 <ImageView
                     android:id="@+id/imageView"
                     style="@style/home_bupi_imageview"
                     android:background="@drawable/daquan" />
+
                 <TextView
                     android:id="@+id/tv_daquan"
                     style="@style/home_bupi_biaoti"
@@ -46,11 +51,10 @@
 
             <RelativeLayout
                 android:id="@+id/rl_changshang_browser"
+                style="@style/home_bupi_column"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                style="@style/home_bupi_column"
-       >
+                android:layout_weight="1">
 
                 <ImageView
                     android:id="@+id/iv_yilan"
@@ -70,18 +74,19 @@
                     android:text="@string/changshang_detail" />
             </RelativeLayout>
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
 
-          >
+            >
+
             <RelativeLayout
+                style="@style/home_bupi_column"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                style="@style/home_bupi_column"
-           >
+                android:layout_weight="1">
 
                 <ImageView
                     android:id="@+id/iv_xuetang"
@@ -103,11 +108,10 @@
             </RelativeLayout>
 
             <RelativeLayout
+                style="@style/home_bupi_column"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                style="@style/home_bupi_column"
-          >
+                android:layout_weight="1">
 
                 <ImageView
                     android:id="@+id/iv_guanyu"
@@ -128,51 +132,139 @@
 
             </RelativeLayout>
         </LinearLayout>
+
         <View
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:background="@drawable/shape_border_cotton" />
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@drawable/shape_border_cotton" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-
-   >
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingRight="16dp"
+                android:background="@color/white"
 
-                android:background="@color/white">
-<LinearLayout
-    android:layout_width="32dp"
-    android:layout_height="match_parent"
-    android:background="@color/home_title"
-    android:gravity="center"
-    android:padding="5dp"
-    android:orientation="vertical"
-    >
-                <TextView
-                    android:ems="1"
-                    android:text="热卖产品"
-                    android:layout_width="wrap_content"
+                android:paddingRight="16dp">
+
+                <LinearLayout
+                    android:layout_width="32dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/home_title"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="1"
+                        android:text="热卖产品"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/x16" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/hot" />
+                </LinearLayout>
+
+                <!--<LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/x16"
-                    android:textColor="@color/white"
-                 />
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/hot"
-        />
-</LinearLayout>
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        style="@style/home_remai_biaoti"
+                        android:text="@string/biaoti1" />
+
+                    <TextView
+                        style="@style/home_remai_detail"
+                        android:text="@string/biaoti1_1" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@drawable/bu1" />
+
+                </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        style="@style/home_remai_biaoti"
+                        android:text="@string/biaoti2" />
+
+                    <TextView
+                        style="@style/home_remai_detail"
+                        android:text="@string/biaoti2_2" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bu2" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        style="@style/home_remai_biaoti"
+                        android:text="@string/biaoti3" />
+
+                    <TextView
+                        style="@style/home_remai_detail"
+                        android:text="@string/biaoti3_3" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop="6dp"
+                        android:background="@drawable/bu3" />
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10.5dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_weight="0.5">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentTop="true"
+                        android:background="@drawable/point" />
+                </RelativeLayout>-->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_weight="2.2"
                     android:orientation="vertical">
 
                     <TextView
@@ -194,9 +286,9 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_weight="2.2"
                     android:orientation="vertical">
 
                     <TextView
@@ -217,9 +309,9 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:gravity="center_horizontal"
-                    android:layout_weight="1"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_weight="1.6"
                     android:orientation="vertical">
 
                     <TextView
@@ -254,16 +346,18 @@
                         android:background="@drawable/point" />
                 </RelativeLayout>
             </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
                 android:background="@drawable/shape_border_cotton" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
                 android:background="@color/white"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="16dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -275,8 +369,8 @@
                         android:id="@+id/iv_xinwen"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
                         android:layout_marginRight="5dp"
+                        android:layout_marginTop="5dp"
                         android:background="@drawable/xinwen" />
 
                     <LinearLayout
@@ -299,9 +393,9 @@
                     <View
                         android:layout_width="wrap_content"
                         android:layout_height="1dp"
-                        android:layout_marginTop="5dp"
                         android:layout_alignEnd="@+id/tv_xinwen"
                         android:layout_below="@+id/tv_xinwen"
+                        android:layout_marginTop="5dp"
                         android:layout_toEndOf="@+id/iv_xinwen"
                         android:background="#FF3300" />
 
@@ -315,8 +409,8 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:padding="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:padding="5dp">
 
                     <ImageView
                         android:id="@+id/iv_yuandian"
@@ -348,8 +442,8 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:padding="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:padding="5dp">
 
                     <ImageView
                         android:id="@+id/iv_yuandian2"
@@ -381,8 +475,8 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:padding="5dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:padding="5dp">
 
                     <ImageView
                         android:id="@+id/iv_yuandian3"

@@ -55,7 +55,7 @@ public class Person_Homepage2 extends Fragment implements ViewPager.OnPageChange
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view2 = inflater.inflate(R.layout.fragment_business_homepage3, container, false);
+        view2 = inflater.inflate(R.layout.fragment_business_homepage2, container, false);
 
         init();
 
