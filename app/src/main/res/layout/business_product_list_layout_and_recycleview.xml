@@ -17,7 +17,7 @@
         android:layout_height="0.5dp"
         android:background="#dddada"/>
     <LinearLayout
-        android:background="#df3031"
+        android:background="#ff3300"
         android:layout_alignParentBottom="true"
         android:id="@+id/rg_manager_products"
         android:layout_width="match_parent"
