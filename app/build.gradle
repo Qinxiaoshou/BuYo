@@ -31,4 +31,5 @@ dependencies {
     compile 'com.android.support:support-v4:23.2.0'
     compile 'com.zhy:okhttputils:2.3.7'
     compile 'com.google.code.gson:gson:2.2.4'
+    compile 'de.greenrobot:eventbus:2.4.0'
 }
