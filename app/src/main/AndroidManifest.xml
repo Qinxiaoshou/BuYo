@@ -27,12 +27,6 @@
         <activity
             android:name=".business.StartActivity"
             android:theme="@style/notitle">
-
-            <!--
-            <activity
-            android:name=".business.TestActivity"
-            android:theme="@style/notitle">
-            -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
