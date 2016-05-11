@@ -31,6 +31,7 @@
             android:orientation="horizontal">
 
             <RelativeLayout
+                android:id="@+id/rl_homepage_allcloth"
                 style="@style/home_bupi_column"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -113,7 +114,7 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/rl_about_we"
+                android:id="@+id/rl_homepage_aboutme"
                 style="@style/home_bupi_column"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

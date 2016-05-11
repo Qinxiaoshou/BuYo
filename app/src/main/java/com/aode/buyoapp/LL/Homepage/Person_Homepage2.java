@@ -15,6 +15,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.aode.buyoapp.LL.Homepage.About.Person_Homepage_About;
+import com.aode.buyoapp.LL.Homepage.AllCloth.Person_HomePage_AllCloth;
 import com.aode.buyoapp.R;
 import com.aode.buyoapp.business.BrowseBusinessActivity;
 import com.aode.buyoapp.qinxiaoshou.activity.SearchActivity;
@@ -30,7 +31,7 @@ import java.util.List;
  */
 public class Person_Homepage2 extends Fragment implements ViewPager.OnPageChangeListener {
     private ImageView iv;
-    private RelativeLayout rl_changshang_browser,rl_about_we;
+    private RelativeLayout rl_changshang_browser, rl_homepage_aboutme, rl_homepage_allcloth;
     private LinearLayout ll;
     private TextView tv;
     private ViewPager viewPager;
@@ -105,9 +106,17 @@ public class Person_Homepage2 extends Fragment implements ViewPager.OnPageChange
             }
         });
 
-        rl_about_we = (RelativeLayout) view2.findViewById(R.id.rl_about_we);
+        rl_homepage_allcloth = (RelativeLayout) view2.findViewById(R.id.rl_homepage_allcloth);
+        rl_homepage_allcloth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), Person_HomePage_AllCloth.class));
+            }
+        });
+
+        rl_homepage_aboutme = (RelativeLayout) view2.findViewById(R.id.rl_homepage_aboutme);
         //点击关于我们进入关于我们界面
-        rl_about_we.setOnClickListener(new View.OnClickListener() {
+        rl_homepage_aboutme.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getActivity(), Person_Homepage_About.class));

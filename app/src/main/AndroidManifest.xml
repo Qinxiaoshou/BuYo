@@ -94,7 +94,9 @@
             android:name=".LL.Homepage.AllCloth.Person_HomePage_AllCloth"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".business.BrowseBusinessActivity" />
-        <activity android:name=".LL.Homepage.About.Person_Homepage_About"></activity>
+        <activity
+            android:name=".LL.Homepage.About.Person_Homepage_About"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
