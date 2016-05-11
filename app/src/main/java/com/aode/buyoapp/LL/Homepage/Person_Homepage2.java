@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.aode.buyoapp.LL.Homepage.About.Person_Homepage_About;
 import com.aode.buyoapp.R;
 import com.aode.buyoapp.business.BrowseBusinessActivity;
 import com.aode.buyoapp.qinxiaoshou.activity.SearchActivity;
@@ -29,7 +30,7 @@ import java.util.List;
  */
 public class Person_Homepage2 extends Fragment implements ViewPager.OnPageChangeListener {
     private ImageView iv;
-    private RelativeLayout rl_changshang_browser;
+    private RelativeLayout rl_changshang_browser,rl_about_we;
     private LinearLayout ll;
     private TextView tv;
     private ViewPager viewPager;
@@ -101,6 +102,15 @@ public class Person_Homepage2 extends Fragment implements ViewPager.OnPageChange
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getActivity(), BrowseBusinessActivity.class));
+            }
+        });
+
+        rl_about_we = (RelativeLayout) view2.findViewById(R.id.rl_about_we);
+        //点击关于我们进入关于我们界面
+        rl_about_we.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), Person_Homepage_About.class));
             }
         });
         viewPager = (ViewPager) view2.findViewById(R.id.viewPager);
