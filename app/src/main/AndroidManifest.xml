@@ -97,6 +97,7 @@
         <activity
             android:name=".LL.Homepage.About.Person_Homepage_About"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".business.activity.BusinessDetailActivity"></activity>
     </application>
 
 </manifest>
