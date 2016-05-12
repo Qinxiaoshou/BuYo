@@ -8,16 +8,16 @@ import android.widget.ImageView;
 import com.aode.buyoapp.R;
 
 public class Person_Homepage_About extends AppCompatActivity {
-    private ImageView iv_homepage_about_back;
+    private ImageView iv_back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_person_homepage_about);
 
-        iv_homepage_about_back = (ImageView) findViewById(R.id.iv_homepage_about_back);
+        iv_back = (ImageView) findViewById(R.id.iv_back);
         //返回键事件
-        iv_homepage_about_back.setOnClickListener(new View.OnClickListener() {
+        iv_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
