@@ -22,7 +22,7 @@ public class Person_HomePage_AllCloth extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().add(R.id.fl_list, typeFragment).commit();
         getSupportFragmentManager().beginTransaction().add(R.id.fl_container, detailFragment).commit();
 
-        iv_homepage_allcloth_back = (ImageView) findViewById(R.id.iv_homepage_allcloth_back);
+        iv_homepage_allcloth_back = (ImageView) findViewById(R.id.iv_back);
         iv_homepage_allcloth_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

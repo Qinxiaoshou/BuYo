@@ -162,7 +162,7 @@
                     android:background="@color/home_title"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:paddingLeft="2dp"
+                    android:paddingLeft="1dp"
                     android:paddingRight="2dp">
 
                     <TextView

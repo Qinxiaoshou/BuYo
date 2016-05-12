@@ -20,7 +20,7 @@ public class BrowseBusinessActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_browse_business);
-        iv_browse_business_back = (ImageView)findViewById(R.id.iv_browse_business_back);
+        iv_browse_business_back = (ImageView)findViewById(R.id.iv_back);
         iv_browse_business_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

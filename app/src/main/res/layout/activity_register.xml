@@ -22,7 +22,7 @@
         android:layout_height="0dip"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_weight="1.5"
+        android:layout_weight="2"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -154,6 +154,19 @@
                 android:singleLine="true"
                 android:textSize="18sp" />
         </RelativeLayout>
+
+        <CheckedTextView
+            android:id="@+id/register_activity_cbx"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et_register_confirm_password"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/checked_mini_style"
+            android:checked="true"
+            android:text="  已阅读并同意"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
