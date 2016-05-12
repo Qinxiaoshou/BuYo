@@ -105,7 +105,7 @@ public class Person_Homepage2 extends Fragment implements ViewPager.OnPageChange
                 startActivity(new Intent(getActivity(), BrowseBusinessActivity.class));
             }
         });
-
+        //个人布匹大全
         rl_homepage_allcloth = (RelativeLayout) view2.findViewById(R.id.rl_homepage_allcloth);
         rl_homepage_allcloth.setOnClickListener(new View.OnClickListener() {
             @Override

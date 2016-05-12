@@ -95,6 +95,7 @@ public class Login_person extends Fragment implements IUserLoginView {
 
     @Override
     public void showFailedError() {
+        listener.onTest("不登陆还想进来个人页面你也是拽");
         Toast.makeText(getActivity(), "登录失败,请检查网络密码账号!", Toast.LENGTH_LONG).show();
     }
 

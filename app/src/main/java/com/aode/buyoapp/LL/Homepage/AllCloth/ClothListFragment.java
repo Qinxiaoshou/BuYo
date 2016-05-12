@@ -1,6 +1,7 @@
 package com.aode.buyoapp.LL.Homepage.AllCloth;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
@@ -11,6 +12,7 @@ import android.view.ViewGroup;
 import com.aode.buyoapp.LL.bean.Cloth;
 import com.aode.buyoapp.LL.bean.Item;
 import com.aode.buyoapp.R;
+import com.aode.buyoapp.qinxiaoshou.activity.ConsumerProductDetailsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,12 +69,9 @@ public class ClothListFragment extends Fragment {
             listAdapter.setOnItemClickLitener(new ListAdapter.OnItemClickLitener() {
                 @Override
                 public void onItemClick(View view, int position) {
-                   /* //点击进入商品详情
+                    //点击进入商品详情
                     Intent intent = new Intent(getActivity(), ConsumerProductDetailsActivity.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("cloth",clothlist.get(position));
-                    intent.putExtras(bundle);
-                    startActivity(intent);*/
+                    startActivity(intent);
                     System.out.println("位置:" + position);
                 }
             });
