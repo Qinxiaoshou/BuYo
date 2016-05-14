@@ -74,12 +74,15 @@
 
             android:shrinkColumns="0"
             android:stretchColumns="0">
-
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:background="#727272" />
             <TableRow
                 android:layout_width="match_parent"
                 android:background="#ffffff"
-                android:paddingBottom="8dp"
-                android:paddingTop="8dp">
+                android:paddingBottom="16dp"
+                android:paddingTop="16dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -103,14 +106,14 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="0.1dp"
+                android:layout_marginRight="40dp"
                 android:background="#727272" />
-
             <TableRow
                 android:layout_width="match_parent"
                 android:background="#ffffff"
-                android:paddingBottom="8dp"
-                android:paddingTop="8dp">
+                android:paddingBottom="16dp"
+                android:paddingTop="16dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -133,15 +136,16 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="0.1dp"
+                android:layout_marginRight="40dp"
                 android:background="#727272" />
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#ffffff"
-                android:paddingBottom="8dp"
-                android:paddingTop="8dp">
+                android:paddingBottom="16dp"
+                android:paddingTop="16dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -164,15 +168,16 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="0.1dp"
+                android:layout_marginRight="40dp"
                 android:background="#727272" />
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#ffffff"
-                android:paddingBottom="8dp"
-                android:paddingTop="8dp">
+                android:paddingBottom="16dp"
+                android:paddingTop="16dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -195,15 +200,16 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="0.1dp"
+               android:layout_marginRight="40dp"
                 android:background="#727272" />
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#ffffff"
-                android:paddingBottom="8dp"
-                android:paddingTop="8dp">
+                android:paddingBottom="16dp"
+                android:paddingTop="16dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -223,6 +229,10 @@
                     android:background="@drawable/homepage_about_enter"
                     android:gravity="center_vertical" />
             </TableRow>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:background="#727272" />
         </TableLayout>
         <!--下部分-->
     </LinearLayout>
