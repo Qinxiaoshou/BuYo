@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ff1f19"
+        android:paddingBottom="6.5dp"
+        android:paddingLeft="23dp"
+        android:paddingTop="6.5dp">
+
+        <!--<ImageView
+            android:id="@+id/iv_person_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/back" />-->
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="物流管理"
+            android:textColor="#FFFFFF"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:background="@drawable/logistics" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:orientation="vertical">
+
+        <RadioGroup
+            android:id="@+id/person_logistics_menu"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_Logistics_ExpressWeb"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/button_logistics_choose"
+                android:button="@null"
+                android:checked="true"
+                android:gravity="center"
+                android:text="快递官网直通车"
+                android:textColor="@color/logistics_transparent" />
+
+            <RadioButton
+                android:id="@+id/rb_Logistics_logisticsMsg"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/button_logistics_choose"
+                android:button="@null"
+                android:drawableRight="@drawable/logistics_msg"
+                android:gravity="center"
+                android:paddingLeft="20dp"
+                android:paddingRight="50dp"
+                android:text="物流信息"
+                android:textColor="@color/logistics_transparent" />
+        </RadioGroup>
+
+        <FrameLayout
+            android:id="@+id/person_logistics"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="6" />
+    </LinearLayout>
+</LinearLayout>

@@ -9,14 +9,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aode.buyoapp.LL.Homepage.Person_Homepage2;
+import com.aode.buyoapp.LL.Logistics.Person_Logistics;
 import com.aode.buyoapp.LL.Personal.Person_Personal;
+import com.aode.buyoapp.LL.Recruits.Person_Recruits;
 import com.aode.buyoapp.R;
 
 public class Home_person extends AppCompatActivity implements Login_person.onNameListener {
 
     private Person_Homepage2 homePage;
+    private Person_Logistics logistics;
+    private Person_Recruits recruits;
     private Person_Personal personal;
     private Login_person login_person;
+
     private RadioGroup tabs;
     public static Fragment fragment;
     public static boolean result = false;
@@ -58,8 +63,28 @@ public class Home_person extends AppCompatActivity implements Login_person.onNam
                                 }
                                 break;
                             case R.id.rb_Logistics:
+                                if (logistics == null)
+                                    logistics = new Person_Logistics();
+                                if (logistics != fragment) {
+                                    if (!logistics.isAdded()) {
+                                        getSupportFragmentManager().beginTransaction().hide(fragment).add(R.id.person_homepage, logistics).commit();
+                                    } else {
+                                        getSupportFragmentManager().beginTransaction().hide(fragment).show(logistics).commit();
+                                    }
+                                    fragment = logistics;
+                                }
                                 break;
                             case R.id.rb_Recruits:
+                                if (recruits == null)
+                                    recruits = new Person_Recruits();
+                                if (recruits != fragment) {
+                                    if (!recruits.isAdded()) {
+                                        getSupportFragmentManager().beginTransaction().hide(fragment).add(R.id.person_homepage, recruits).commit();
+                                    } else {
+                                        getSupportFragmentManager().beginTransaction().hide(fragment).show(recruits).commit();
+                                    }
+                                    fragment = recruits;
+                                }
                                 break;
                             case R.id.rb_Personal:
                                 if (personal == null)

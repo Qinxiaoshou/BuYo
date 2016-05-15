@@ -33,5 +33,13 @@
     <color name="huise5">#33000000</color>
     <color name="light_black">#3b3b3b</color>
     <color name="black">#000000</color>
-
+   <!-- 物流-->
+    <color name="logistics_transparent">#717171</color>
+    <color name="logistics_white">#FFFFFF</color>
+    <color name="logistics_grey">#ededed</color>
+    <!--招聘 -->
+    <color name="recruits_transparent">#000001</color>
+    <color name="recruits_1">#FFFFFF</color>
+    <color name="recruits_2">#F0904A</color>
+    <color name="recruits_3">#b4b4b4</color>
 </resources>
