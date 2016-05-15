@@ -40,7 +40,7 @@ public class RecruitsListAdapter extends RecyclerView.Adapter<RecruitsListAdapte
     }
     @Override
     public RecruitsListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        RecruitsListViewHolder viewHolder = new RecruitsListViewHolder(LayoutInflater.from(context).inflate(R.layout.recruits_msg_item, parent, false));
+        RecruitsListViewHolder viewHolder = new RecruitsListViewHolder(LayoutInflater.from(context).inflate(R.layout.recruits_message_item, parent, false));
         return viewHolder;
     }
 

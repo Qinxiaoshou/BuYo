@@ -84,42 +84,17 @@ public class BusinessUpdateProductMessagesActivity extends FragmentActivity impl
                 try {
                     cloth2 = new Cloth();
                     Long id = cloth.getId();
-                    if (id != null) {
                         cloth2.setId(id);
-                    }
-                    if (et_title.getText().toString().trim() != null) {
                         cloth2.setTitle(et_title.getText().toString().trim());
-                    } else {
-                        Toast.makeText(getBaseContext(), "布匹标题不能为空", Toast.LENGTH_SHORT).show();
-                    }
-
-                    if (et_size.getText().toString().trim() != null) {
                         cloth2.setSize(et_size.getText().toString().trim());
-                    } else {
-                        Toast.makeText(getApplicationContext(), "布匹尺寸不能为空 ", Toast.LENGTH_SHORT).show();
-                    }
-                    if (Double.valueOf(et_price.getText().toString().trim()) != null) {
                         cloth2.setPrice(Double.valueOf(et_price.getText().toString().trim()));
-                    } else {
-                        Toast.makeText(getApplicationContext(), "布匹价格不能为空", Toast.LENGTH_SHORT).show();
-                    }
-                    if (Long.valueOf(et_stock.getText().toString().trim()) != null) {
                         cloth2.setStock(Long.valueOf(et_stock.getText().toString().trim()));
-                    } else {
-                        Toast.makeText(getApplicationContext(), "库存量不能为空 ", Toast.LENGTH_SHORT).show();
-                    }
-                    if (et_color.getText().toString().trim() != null) {
                         cloth2.setColor(et_color.getText().toString().trim());
-                    }
-
-                    if (et_parttern.getText().toString().trim() != null) {
                         cloth2.setPattern(et_parttern.getText().toString().trim());
-                    }
-                    if (cloth.getbId() != null) {
                         cloth2.setbId(cloth.getbId());
-                    }
                     businessProductChangePresenter.ProductChange();
                 }catch (Exception e){
+                    Toast.makeText(getApplicationContext(),"请填写完整布匹信息",Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -135,11 +110,13 @@ public class BusinessUpdateProductMessagesActivity extends FragmentActivity impl
     @Override
     public void toMainActivity() {
         Toast.makeText(getApplicationContext(),"修改成功",Toast.LENGTH_SHORT).show();
+        onBackPressed();
     }
 
     @Override
     public void showFailedError() {
         Toast.makeText(getApplicationContext(),"修改失败",Toast.LENGTH_SHORT).show();
+        onBackPressed();
     }
 
 }

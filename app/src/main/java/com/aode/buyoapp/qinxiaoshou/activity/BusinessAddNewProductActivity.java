@@ -33,7 +33,6 @@ import java.util.ArrayList;
 import java.util.logging.LogRecord;
 
 
-
 /**
  * 添加商品界面
  *
@@ -57,20 +56,7 @@ public class BusinessAddNewProductActivity extends AppCompatActivity implements 
     ImageView iv_prodct_image;
     private Cloth cloth;
     BusinessProductAddPresenter businessProductAddPresenter = new BusinessProductAddPresenter(this);
-    public Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            Bundle bundle = msg.getData();
-            String imgOk = bundle.getString("imgOk");
-            if ("imgOk".equals(imgOk)) {
-                System.out.println("***********************:" + bitmap.toString());
-                iv_prodct_image.setImageBitmap(bitmap);
-            } else {
-                System.out.println("图片设置后的更新页面失败");
-            }
 
-        }
-    };
 
     //完成按钮
     Button button;
@@ -106,18 +92,19 @@ public class BusinessAddNewProductActivity extends AppCompatActivity implements 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cloth = new Cloth();
-                cloth.setTitle(et_title.getText().toString().trim());
-                cloth.setSize(et_size.getText().toString().trim());
-                cloth.setPrice(Double.valueOf(et_price.getText().toString().trim()));
-                cloth.setStock(Long.valueOf(et_stock.getText().toString().trim()));
-                cloth.setColor(et_color.getText().toString().trim());
-                cloth.setPattern(et_parttern.getText().toString().trim());
-                cloth.setbId(Home_business.business.getId());
-                if (cloth != null) {
+                try {
+                    cloth = new Cloth();
+                    cloth.setTitle(et_title.getText().toString().trim());
+                    cloth.setSize(et_size.getText().toString().trim());
+                    cloth.setPrice(Double.valueOf(et_price.getText().toString().trim()));
+                    cloth.setStock(Long.valueOf(et_stock.getText().toString().trim()));
+                    cloth.setColor(et_color.getText().toString().trim());
+                    cloth.setPattern(et_parttern.getText().toString().trim());
+                    cloth.setbId(Home_business.business.getId());
                     businessProductAddPresenter.ProductAdd();
-                } else {
-                    Toast.makeText(getApplicationContext(), "请输入商品信息", Toast.LENGTH_LONG).show();
+
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), "请填完整布匹信息", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -147,11 +134,13 @@ public class BusinessAddNewProductActivity extends AppCompatActivity implements 
     @Override
     public void toMainActivity() {
         Toast.makeText(getApplicationContext(), "添加成功", Toast.LENGTH_SHORT).show();
+        onBackPressed();
     }
 
     @Override
     public void showFailedError() {
         Toast.makeText(getApplicationContext(), "添加失败", Toast.LENGTH_SHORT).show();
+        onBackPressed();
     }
 }
 
