@@ -2,18 +2,13 @@ package com.aode.buyoapp.qinxiaoshou.activity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.os.Environment;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -23,14 +18,7 @@ import com.aode.buyoapp.LL.bean.Cloth;
 import com.aode.buyoapp.LL.view.IBusinessProductAddView;
 import com.aode.buyoapp.R;
 
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.logging.LogRecord;
 
 
 /**
@@ -83,7 +71,7 @@ public class BusinessAddNewProductActivity extends AppCompatActivity implements 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBackPressed();
+                finish();
             }
         });
         toolbar.setNavigationIcon(R.drawable.left_arrow);//设置导航栏图标
@@ -134,13 +122,13 @@ public class BusinessAddNewProductActivity extends AppCompatActivity implements 
     @Override
     public void toMainActivity() {
         Toast.makeText(getApplicationContext(), "添加成功", Toast.LENGTH_SHORT).show();
-        onBackPressed();
+        finish();
     }
 
     @Override
     public void showFailedError() {
         Toast.makeText(getApplicationContext(), "添加失败", Toast.LENGTH_SHORT).show();
-        onBackPressed();
+        finish();
     }
 }
 

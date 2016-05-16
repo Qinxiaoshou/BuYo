@@ -64,7 +64,7 @@ public class BusinessUpdateProductMessagesActivity extends FragmentActivity impl
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBackPressed();
+                finish();
             }
         });
         rg_h.setVisibility(View.INVISIBLE);
@@ -110,13 +110,13 @@ public class BusinessUpdateProductMessagesActivity extends FragmentActivity impl
     @Override
     public void toMainActivity() {
         Toast.makeText(getApplicationContext(),"修改成功",Toast.LENGTH_SHORT).show();
-        onBackPressed();
+        finish();
     }
 
     @Override
     public void showFailedError() {
         Toast.makeText(getApplicationContext(),"修改失败",Toast.LENGTH_SHORT).show();
-        onBackPressed();
+        finish();
     }
 
 }
