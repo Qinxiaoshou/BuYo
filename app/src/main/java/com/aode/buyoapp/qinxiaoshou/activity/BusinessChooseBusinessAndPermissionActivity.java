@@ -50,7 +50,7 @@ public class BusinessChooseBusinessAndPermissionActivity extends FragmentActivit
 
         rg_h_open_permission = (RadioGroup) findViewById(R.id.rg_h_open_permission);
 
-        toolbarTitle = (TextView) findViewById(R.id.tv_g_add_product_title);
+        toolbarTitle = (TextView) findViewById(R.id.tv_g_search_business_title);
         toolbarRigntButton = (Button) findViewById(R.id.btn_right_text);
         radioGroup = (RadioGroup) findViewById(R.id.rg_h_open_permission);
         //步骤一：添加一个FragmentTransaction的实例
@@ -58,7 +58,7 @@ public class BusinessChooseBusinessAndPermissionActivity extends FragmentActivit
         transaction = fragmentManager.beginTransaction();
         //步骤二：用add()方法加上Fragment的对象rightFragment
 
-        toolbar = (Toolbar)findViewById(R.id.toolbar_business_product_details);
+        toolbar = (Toolbar)findViewById(R.id.toolbar_business_search);
         toolbar.setNavigationIcon(R.drawable.left_arrow);//设置导航栏图标
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,7 +77,7 @@ public class BusinessChooseBusinessAndPermissionActivity extends FragmentActivit
     @Override
     public void toMainActivity(List<Cloth> clothlist) {
         catalogue8SettingBusinessPerssionFragment = new BusinessSettingBusinessPerssionFragment(clothlist,bId,rg_h_open_permission);
-        transaction.add(R.id.fl_g_framelayout, catalogue8SettingBusinessPerssionFragment).commit();
+        transaction.add(R.id.rv_search_outherbusiness_view, catalogue8SettingBusinessPerssionFragment).commit();
     }
 
     @Override

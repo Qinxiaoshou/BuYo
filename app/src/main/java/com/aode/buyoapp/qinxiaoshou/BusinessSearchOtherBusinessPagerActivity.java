@@ -89,7 +89,7 @@ public class BusinessSearchOtherBusinessPagerActivity extends Activity implement
     /**
      * 返回键
      */
-    private ImageView iv_back;
+    private ImageView iv_search_business_back;
 
     /**
      * 设置提示框显示项的个数
@@ -106,11 +106,11 @@ public class BusinessSearchOtherBusinessPagerActivity extends Activity implement
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.business_search_otherbusiness_search_layout);
-        iv_back = (ImageView) findViewById(R.id.iv_search_business_back);
-        iv_back.setOnClickListener(new View.OnClickListener() {
+        iv_search_business_back = (ImageView) findViewById(R.id.iv_search_business_back);
+        iv_search_business_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBackPressed();
+                finish();
             }
         });
         initViews();

@@ -46,7 +46,7 @@ public class MySearchView extends LinearLayout implements View.OnClickListener  
     /**
      * 返回按钮
      */
-    private ImageView iv_back;
+    private ImageView iv_search_business_back;
 
     /**
      * 上下文对象
@@ -88,7 +88,7 @@ public class MySearchView extends LinearLayout implements View.OnClickListener  
     private void initViews() {
         etInput = (EditText) findViewById(R.id.search_et_input);
         ivDelete = (ImageView) findViewById(R.id.search_iv_delete);
-        iv_back = (ImageView) findViewById(R.id.iv_search_business_back);
+        iv_search_business_back = (ImageView) findViewById(R.id.iv_search_business_back);
         btn_search = (Button) findViewById(R.id.btn_search);
 
 

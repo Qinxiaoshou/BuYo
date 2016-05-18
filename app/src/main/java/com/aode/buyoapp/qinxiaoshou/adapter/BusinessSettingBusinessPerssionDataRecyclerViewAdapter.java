@@ -1,30 +1,24 @@
 package com.aode.buyoapp.qinxiaoshou.adapter;
 
-import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Context;
-import android.os.Build;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aode.buyoapp.LL.Home_business;
-import com.aode.buyoapp.LL.Homepage.Business_HomePage;
 import com.aode.buyoapp.LL.Presenter.BusinessPermissionPresenter;
-import com.aode.buyoapp.LL.Presenter.BusinessQueryAllProductsPresenter;
-import com.aode.buyoapp.LL.Presenter.BusinessSearchPresenter;
 import com.aode.buyoapp.LL.bean.Cloth;
 import com.aode.buyoapp.LL.view.IBusinessPermissionView;
-import com.aode.buyoapp.LL.view.IBusinessProductView;
-import com.aode.buyoapp.LL.view.IBusinessSearchView;
 import com.aode.buyoapp.R;
+import com.aode.buyoapp.qinxiaoshou.activity.BusinessChooseBusinessAndPermissionActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,19 +30,21 @@ import java.util.List;
  * @author 覃培周
  * @// FIXME: 2016/4/7
  */
-public class BusinessSettingBusinessPerssionDataRecyclerViewAdapter extends RecyclerView.Adapter<BusinessSettingBusinessPerssionDataRecyclerViewAdapter.ViewHolder> implements IBusinessPermissionView{
+public class BusinessSettingBusinessPerssionDataRecyclerViewAdapter extends RecyclerView.Adapter<BusinessSettingBusinessPerssionDataRecyclerViewAdapter.ViewHolder> implements IBusinessPermissionView {
 
 
     BusinessPermissionPresenter businessPermissionPresenter = new BusinessPermissionPresenter(this);
     private Context mContext;
-    private List<Cloth> cloths;
+    private List<Cloth> oldCloths;
     private List<Cloth> productIds = new ArrayList<Cloth>();
     private String bId;
     private RadioGroup rg_h_open_permission;
+    Activity mMctivity;
 
-    public BusinessSettingBusinessPerssionDataRecyclerViewAdapter(Context mContext, List<Cloth> cloths, String bId, RadioGroup rg_h_open_permission) {
+    public BusinessSettingBusinessPerssionDataRecyclerViewAdapter(Activity activity, Context mContext, List<Cloth> cloths, String bId, RadioGroup rg_h_open_permission) {
+         this.mMctivity = activity;
         this.mContext = mContext;
-        this.cloths = cloths;
+        this.oldCloths = cloths;
         this.bId = bId;
         this.rg_h_open_permission = rg_h_open_permission;
     }
@@ -64,9 +60,9 @@ public class BusinessSettingBusinessPerssionDataRecyclerViewAdapter extends Recy
     @Override
     public void onBindViewHolder(final BusinessSettingBusinessPerssionDataRecyclerViewAdapter.ViewHolder holder, final int position) {
         holder.iv_h_perssion_product.setImageResource(R.drawable.cheese_3);
-        holder.title.setText(cloths.get(position).getTitle());
-        holder.tv_price.setText("￥" + cloths.get(position).getPrice());
-        holder.tv_stock.setText("库存:" + cloths.get(position).getStock());
+        holder.title.setText(oldCloths.get(position).getTitle());
+        holder.tv_price.setText("￥" + oldCloths.get(position).getPrice());
+        holder.tv_stock.setText("库存:" + oldCloths.get(position).getStock());
         //给CheckBox设置事件监听
         holder.cb_permission.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -74,7 +70,7 @@ public class BusinessSettingBusinessPerssionDataRecyclerViewAdapter extends Recy
                                          boolean isChecked) {
                 if (isChecked) {
                     Cloth cloth = new Cloth();
-                    cloth.setId(cloths.get(position).getId());
+                    cloth.setId(oldCloths.get(position).getId());
                     productIds.add(cloth);
                 } else {
 
@@ -86,7 +82,7 @@ public class BusinessSettingBusinessPerssionDataRecyclerViewAdapter extends Recy
         rg_h_open_permission.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("本商家："+Home_business.business.getId()+"##目标商家:"+bId+"##id集合："+productIds+"选择个数："+productIds.size());
+                System.out.println("本商家：" + Home_business.business.getId() + "##目标商家:" + bId + "##id集合：" + productIds + "选择个数：" + productIds.size());
                 businessPermissionPresenter.Permission();
 
             }
@@ -95,7 +91,7 @@ public class BusinessSettingBusinessPerssionDataRecyclerViewAdapter extends Recy
 
     @Override
     public int getItemCount() {
-        return cloths.size();
+        return oldCloths.size();
     }
 
     @Override
@@ -115,12 +111,17 @@ public class BusinessSettingBusinessPerssionDataRecyclerViewAdapter extends Recy
 
     @Override
     public void toMainActivity() {
-        Toast.makeText(mContext,"设置权限成功",Toast.LENGTH_SHORT).show();
+        try {
+            mMctivity.onBackPressed();
+        }catch (Exception e){
+            Toast.makeText(mContext, "设置权限成功", Toast.LENGTH_LONG).show();
+        }
+
     }
 
     @Override
     public void showFailedError() {
-        Toast.makeText(mContext,"设置权限失败",Toast.LENGTH_SHORT).show();
+        Toast.makeText(mContext, "设置权限失败", Toast.LENGTH_SHORT).show();
     }
 
 
