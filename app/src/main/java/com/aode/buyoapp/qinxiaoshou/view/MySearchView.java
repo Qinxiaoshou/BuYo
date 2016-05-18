@@ -88,7 +88,7 @@ public class MySearchView extends LinearLayout implements View.OnClickListener  
     private void initViews() {
         etInput = (EditText) findViewById(R.id.search_et_input);
         ivDelete = (ImageView) findViewById(R.id.search_iv_delete);
-        iv_back = (ImageView) findViewById(R.id.search_btn_back);
+        iv_back = (ImageView) findViewById(R.id.iv_search_business_back);
         btn_search = (Button) findViewById(R.id.btn_search);
 
 
@@ -155,7 +155,7 @@ public class MySearchView extends LinearLayout implements View.OnClickListener  
                 etInput.setText("");
                 ivDelete.setVisibility(GONE);
                 break;
-            case R.id.search_btn_back:
+            case R.id.iv_search_business_back:
                 ((Activity) mContext).finish();
                 break;
         }

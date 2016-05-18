@@ -28,10 +28,12 @@ import com.google.gson.reflect.TypeToken;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.Callback;
 
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.UUID;
 
 import okhttp3.Call;
 import okhttp3.Response;
@@ -215,13 +217,14 @@ public class BusinessBiz implements IBusinessBiz {
      * @param bAddProductListener
      */
     @Override
-    public void addProduct(Cloth cloth, final BAddProductListener bAddProductListener) {
+    public void addProduct(Cloth cloth, final BAddProductListener bAddProductListener,File picture) {
         String json = new Gson().toJson(cloth);
         System.out.println(json);
         OkHttpUtils
                 .post()
-                .url(url.getUrl() + "/tb/admin/cloth/save")
+                .url(url.getUrl() + "/tb/admin/cloth/save2")
                 .addParams("clothStr", json)
+                .addFile("picture", UUID.randomUUID().toString(),picture)
                 .build()
                 .execute(new Callback() {
                     @Override
@@ -231,6 +234,7 @@ public class BusinessBiz implements IBusinessBiz {
 
                     @Override
                     public void onError(Call call, Exception e) {
+                        System.out.println(e);
                         bAddProductListener.addFailed();
                     }
 

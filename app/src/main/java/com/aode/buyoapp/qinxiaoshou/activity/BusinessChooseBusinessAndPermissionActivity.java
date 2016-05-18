@@ -43,7 +43,7 @@ public class BusinessChooseBusinessAndPermissionActivity extends FragmentActivit
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.business_add_product_layout);
+        setContentView(R.layout.business_search_other_business_layout);
         //或得需要设置权限商家的id
         Intent intent  = getIntent();
         bId = intent.getStringExtra("bId");

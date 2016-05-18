@@ -24,8 +24,11 @@ import com.aode.buyoapp.LL.bean.Cloth;
 import com.aode.buyoapp.LL.view.IBusinessProductAddView;
 import com.aode.buyoapp.R;
 
+import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import okhttp3.internal.framed.Header;
@@ -45,6 +48,7 @@ public class BusinessAddNewProductActivity extends AppCompatActivity implements 
     /* 头像名称 */
     private static final String PHOTO_FILE_NAME = "temp_photo.jpg";
     private File tempFile;
+    private File picture;
 
     private RecyclerView recyclerView;
     private Toolbar toolbar;
@@ -97,7 +101,7 @@ public class BusinessAddNewProductActivity extends AppCompatActivity implements 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
+
                     cloth = new Cloth();
                     cloth.setTitle(et_title.getText().toString().trim());
                     cloth.setSize(et_size.getText().toString().trim());
@@ -105,12 +109,9 @@ public class BusinessAddNewProductActivity extends AppCompatActivity implements 
                     cloth.setStock(Long.valueOf(et_stock.getText().toString().trim()));
                     cloth.setColor(et_color.getText().toString().trim());
                     cloth.setPattern(et_parttern.getText().toString().trim());
-                    cloth.setbId(Home_business.business.getId());
+                   //  cloth.setbId(Home_business.business.getId());
+                    cloth.setbId("hbzz");
                     businessProductAddPresenter.ProductAdd();
-
-                } catch (Exception e) {
-                    Toast.makeText(getApplicationContext(), "请填完整布匹信息", Toast.LENGTH_LONG).show();
-                }
             }
         });
 
@@ -119,7 +120,7 @@ public class BusinessAddNewProductActivity extends AppCompatActivity implements 
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(BusinessAddNewProductActivity.this);
-                builder.setIcon(R.drawable.ic_launcher);
+                builder.setIcon(R.drawable.acq);
                 builder.setTitle("请选择上传图片方式");
                 //    指定下拉列表的显示数据
                 final String[] cities = {"本地相册上传", "拍照上传"};
@@ -127,7 +128,6 @@ public class BusinessAddNewProductActivity extends AppCompatActivity implements 
                 builder.setItems(cities, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(BusinessAddNewProductActivity.this, "选择上传图片的方式是为：" + cities[which], Toast.LENGTH_SHORT).show();
                         switch (cities[which]) {
                             case "本地相册上传":
                                 gallery();
@@ -237,6 +237,7 @@ public class BusinessAddNewProductActivity extends AppCompatActivity implements 
             if (hasSdcard()) {
                 tempFile = new File(Environment.getExternalStorageDirectory(),
                         PHOTO_FILE_NAME);
+                picture=tempFile;
                 crop(Uri.fromFile(tempFile));
             } else {
                 Toast.makeText(BusinessAddNewProductActivity.this, "未找到存储卡，无法存储照片！", Toast.LENGTH_SHORT).show();
@@ -246,25 +247,32 @@ public class BusinessAddNewProductActivity extends AppCompatActivity implements 
             try {
                 bitmap = data.getParcelableExtra("data");
                 this.iv_prodct_image.setImageBitmap(bitmap);
-                boolean delete = tempFile.delete();
+                 picture =  saveBitmapFile(bitmap);
+               boolean delete = tempFile.delete();
                 System.out.println("delete = " + delete);
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
         }
-
         super.onActivityResult(requestCode, resultCode, data);
+    }
+    public File saveBitmapFile(Bitmap bitmap){
+        File file=new File("/mnt/sdcard/pic/01.jpg");//将要保存图片的路径
+        try {
+            BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file));
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
+            bos.flush();
+            bos.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return  file;
     }
 
     /**
      * 剪切图片
      *
-     * @param uri
-     * @function:
-     * @author:Jerry
-     * @date:2013-12-30
      */
     private void crop(Uri uri) {
         // 裁剪图片意图
@@ -272,18 +280,17 @@ public class BusinessAddNewProductActivity extends AppCompatActivity implements 
         intent.setDataAndType(uri, "image/*");
         intent.putExtra("crop", "true");
         // 裁剪框的比例，1：1
-        intent.putExtra("aspectX", 1);
+        intent.putExtra("aspectX", 0.6);
         intent.putExtra("aspectY", 1);
         // 裁剪后输出图片的尺寸大小
-        intent.putExtra("outputX", 250);
-        intent.putExtra("outputY", 250);
+        /*intent.putExtra("outputX", 250);
+        intent.putExtra("outputY", 250);*/
         // 图片格式
         intent.putExtra("outputFormat", "JPEG");
         intent.putExtra("noFaceDetection", true);// 取消人脸识别
         intent.putExtra("return-data", true);// true:不返回uri，false：返回uri
         startActivityForResult(intent, PHOTO_REQUEST_CUT);
     }
-
     private boolean hasSdcard() {
         if (Environment.getExternalStorageState().equals(
                 Environment.MEDIA_MOUNTED)) {
@@ -292,11 +299,14 @@ public class BusinessAddNewProductActivity extends AppCompatActivity implements 
             return false;
         }
     }
-
-
     @Override
     public Cloth getProduct() {
         return cloth;
+    }
+
+    @Override
+    public File getPicture() {
+        return picture;
     }
 
     /**

@@ -21,6 +21,7 @@ import com.aode.buyoapp.LL.bean.Business;
 import com.aode.buyoapp.LL.bean.Cloth;
 import com.aode.buyoapp.LL.bean.Orders;
 
+import java.io.File;
 import java.util.List;
 
 /**
@@ -47,7 +48,8 @@ public interface IBusinessBiz {
      * 商品
      */
     //增加我商家的商品
-    void addProduct(Cloth cloth, BAddProductListener bAddProductListener);
+    //void addProduct(Cloth product, BAddProductListener bAddProductListener);
+    void addProduct(Cloth cloth, BAddProductListener bAddProductListener, File picture);
 
     //删除我商家的商品
     void deleteProduct(Cloth cloth, BDeleteProductListener bDeleteProductListener);
@@ -90,6 +92,7 @@ public interface IBusinessBiz {
 
     //个人修改自己的订单
     void OrdersUpDate(Orders orders, BOrdersUpDateListener bOrdersUpDateListener);
+
 
 
 }

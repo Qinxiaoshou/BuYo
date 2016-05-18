@@ -106,7 +106,7 @@ public class BusinessSearchOtherBusinessPagerActivity extends Activity implement
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.business_search_otherbusiness_search_layout);
-        iv_back = (ImageView) findViewById(R.id.search_btn_back);
+        iv_back = (ImageView) findViewById(R.id.iv_search_business_back);
         iv_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
