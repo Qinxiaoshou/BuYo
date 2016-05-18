@@ -1,7 +1,9 @@
 package com.aode.buyoapp.LL.biz;
 
+import com.aode.buyoapp.LL.Homepage.AllCloth.ClothListFragment;
 import com.aode.buyoapp.LL.Listener.BQueryPermissionListener;
 import com.aode.buyoapp.LL.Listener.ChangePasswordListener;
+import com.aode.buyoapp.LL.Listener.ClothListListener;
 import com.aode.buyoapp.LL.Listener.LoginListener;
 import com.aode.buyoapp.LL.Listener.OrdersAddListener;
 import com.aode.buyoapp.LL.Listener.OrdersShowListener;
@@ -10,7 +12,9 @@ import com.aode.buyoapp.LL.Listener.QueryProductListener;
 import com.aode.buyoapp.LL.Listener.RegisterListener;
 import com.aode.buyoapp.LL.Listener.ShowChangeListener;
 import com.aode.buyoapp.LL.Listener.ShowListener;
+import com.aode.buyoapp.LL.Listener.ClothTypeListener;
 import com.aode.buyoapp.LL.bean.Cloth;
+import com.aode.buyoapp.LL.bean.ClothCategory;
 import com.aode.buyoapp.LL.bean.Orders;
 import com.aode.buyoapp.LL.bean.User;
 import com.aode.buyoapp.LL.url;
@@ -105,6 +109,7 @@ public class UserBiz implements IUserBiz {
                 });
     }
 
+    //获取个人数据
     @Override
     public void show(String id, final ShowListener showListener) {
         abstract class UserCallback extends Callback<User> {
@@ -142,6 +147,7 @@ public class UserBiz implements IUserBiz {
                 });
     }
 
+    //修改个人信息
     @Override
     public void change(User user, final ShowChangeListener showChangeListener) {
         OkHttpUtils
@@ -149,7 +155,7 @@ public class UserBiz implements IUserBiz {
                 .url(url.getUrl() + "/tb/admin/user/update")
                 .addParams("id", user.getId())
                 .addParams("LoginName", user.getLoginName())
-                .addParams("name",user.getName())
+                .addParams("name", user.getName())
                 .addParams("phoneNumber", user.getPhoneNumber())
                 .addParams("email", user.getEmail())
                 .addParams("gender", user.getGender())
@@ -172,6 +178,7 @@ public class UserBiz implements IUserBiz {
                 });
     }
 
+    //修改个人密码
     @Override
     public void changePassword(String id, String oldPassword, String newPassword, final ChangePasswordListener changePasswordListener) {
         abstract class IntegerCallback extends Callback<Integer> {
@@ -213,6 +220,11 @@ public class UserBiz implements IUserBiz {
 
     }
 
+    /**
+     * 获取所有商品
+     *
+     * @param queryProductListener
+     */
     @Override
     public void queryAllProduct(final QueryProductListener queryProductListener) {
         abstract class ClothCallback extends Callback<List<Cloth>> {
@@ -227,7 +239,7 @@ public class UserBiz implements IUserBiz {
         }
         OkHttpUtils
                 .post()
-                .url(url.getUrl() + "/tb/")
+                .url(url.getUrl() + "/tb/userClothComplete")
                 .build()
                 .execute(new ClothCallback() {
                     @Override
@@ -248,6 +260,95 @@ public class UserBiz implements IUserBiz {
     }
 
     /**
+     * 布匹大全-布匹类型
+     * @param clothTypeListener
+     */
+    @Override
+    public void getClothType(final ClothTypeListener clothTypeListener) {
+
+        abstract class ClothCategoryCallback extends Callback<ClothCategory> {
+            @Override
+            public ClothCategory parseNetworkResponse(Response response) throws IOException {
+                String string = response.body().string();
+                ClothCategory clothCategory = new Gson().fromJson(string, ClothCategory.class);
+                return clothCategory;
+            }
+        }
+        OkHttpUtils
+                .post()
+                .url(url.getUrl() + "/tb/admin/cloth/category")
+                .build()
+                .execute(new ClothCategoryCallback() {
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        clothTypeListener.getClothTypeFailed();
+                    }
+
+                    @Override
+                    public void onResponse(ClothCategory response) {
+                        if (response != null) {
+                            clothTypeListener.getClothTypeSuccess(response);
+                        } else {
+                            clothTypeListener.getClothTypeNone();
+                        }
+
+                    }
+
+                    @Override
+                    public ClothCategory parseNetworkResponse(Response response) throws IOException {
+                        return super.parseNetworkResponse(response);
+                    }
+                });
+    }
+
+    /**
+     * 布匹大全-布匹列表
+     * @param clothListListener
+     */
+    @Override
+    public void getClothList(String type, final ClothListListener clothListListener) {
+
+        System.out.println("类型:"+type);
+        System.out.println("标签:"+ClothListFragment.label);
+
+        abstract class ClothCallback extends Callback<List<Cloth>> {
+            @Override
+            public List<Cloth> parseNetworkResponse(Response response) throws IOException {
+                String string = response.body().string();
+                Type listType = new TypeToken<LinkedList<Cloth>>() {
+                }.getType();
+                List<Cloth> cloths = new Gson().fromJson(string, listType);
+                return cloths;
+            }
+        }
+        OkHttpUtils
+                .post()
+                .url(url.getUrl() + "/tb/admin/cloth/conditionSearch")
+                .addParams(ClothListFragment.label, type)
+                .build()
+                .execute(new ClothCallback() {
+
+                    @Override
+                    public List<Cloth> parseNetworkResponse(Response response) throws IOException {
+                        return super.parseNetworkResponse(response);
+                    }
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        clothListListener.getClothListFailed();
+                    }
+
+                    @Override
+                    public void onResponse(List<Cloth> response) {
+                        if (response != null && !response.isEmpty()) {
+                            clothListListener.getClothListSuccess(response);
+                        }else{
+                            clothListListener.getClothListNone();
+                        }
+                    }
+                });
+    }
+
+    /**
      * 个人添加订单
      *
      * @param orders
@@ -256,7 +357,7 @@ public class UserBiz implements IUserBiz {
     @Override
     public void OrdersAdd(Orders orders, final OrdersAddListener ordersAddListener) {
         String json = new Gson().toJson(orders);
-        System.out.println("用户订单json：" + json);
+
         OkHttpUtils
                 .post()
                 .url(url.getUrl() + "/tb/admin/user/orders/add")
@@ -294,7 +395,7 @@ public class UserBiz implements IUserBiz {
                 String string = response.body().string();
                 Type listType = new TypeToken<List<Orders>>() {
                 }.getType();
-                System.out.println("OrdersShow string："+string);
+                System.out.println("OrdersShow string：" + string);
                 Gson gson = new GsonBuilder()
                         .setDateFormat("yyyy-MM-dd HH:mm:ss")
                         .create();
@@ -317,9 +418,9 @@ public class UserBiz implements IUserBiz {
 
                     @Override
                     public void onResponse(List<Orders> response) {
-                        if (response != null && !response.isEmpty()){
+                        if (response != null && !response.isEmpty()) {
                             ordersShowListener.OrdersShowSuccess(response);
-                        }else {
+                        } else {
                             ordersShowListener.OrdersShowNo();
                         }
 
@@ -342,7 +443,7 @@ public class UserBiz implements IUserBiz {
     @Override
     public void OrdersUpDate(Orders orders, final OrdersUpDateListener ordersUpDateListener) {
         String json = new Gson().toJson(orders);
-        System.out.println("后台个人修改订单："+json);
+
         OkHttpUtils
                 .post()
                 .url(url.getUrl() + "/tb/admin/user/orders/updateState")
@@ -365,8 +466,10 @@ public class UserBiz implements IUserBiz {
                     }
                 });
     }
+
     /**
      * 用户查看个人权限
+     *
      * @param id
      * @param bQueryPermissionListener
      */

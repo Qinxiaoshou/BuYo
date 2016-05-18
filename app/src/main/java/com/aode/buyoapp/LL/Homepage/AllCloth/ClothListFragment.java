@@ -8,22 +8,30 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.aode.buyoapp.LL.Presenter.UserClothListPresenter;
+import com.aode.buyoapp.LL.Presenter.UserQueryAllProductsPresenter;
 import com.aode.buyoapp.LL.bean.Cloth;
-import com.aode.buyoapp.LL.bean.Item;
+import com.aode.buyoapp.LL.view.IUserClothListView;
+import com.aode.buyoapp.LL.view.IUserQueryAllProductView;
 import com.aode.buyoapp.R;
 import com.aode.buyoapp.qinxiaoshou.activity.ConsumerProductDetailsActivity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import de.greenrobot.event.EventBus;
 
-public class ClothListFragment extends Fragment {
+public class ClothListFragment extends Fragment implements IUserQueryAllProductView, IUserClothListView {
     private View view;
     private RecyclerView recyclerView;
     private ListAdapter listAdapter;
     private MLManager mlManager;
+    private String type;
+    public static String label = "";
+
+    UserQueryAllProductsPresenter userQueryAllProductsPresenter = new UserQueryAllProductsPresenter(this);
+    UserClothListPresenter userClothListPresenter = new UserClothListPresenter(this);
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -49,32 +57,51 @@ public class ClothListFragment extends Fragment {
     /**
      * List点击时会发送些事件，接收到事件后更新详情
      */
-    public void onEventMainThread(Item item) {
-        if (item != null) {
-            //处理信息
-            recyclerView = (RecyclerView) view.findViewById(R.id.rv_detail);
-            //设置布局管理器,重写使之自适应
-            recyclerView.setLayoutManager(mlManager = new MLManager(getActivity(), 2));
-            //设置adapter
-            List<Cloth> cloths = new ArrayList<Cloth>();
-            for (int i = 0; i < 10; i++) {
-                //引用
-                Cloth cloth = new Cloth();
-                cloth.setTitle(i + item.getContent() + ":" + item.getContent());
-                cloth.setPrice((double) ((i * 10) + 12));
-                cloths.add(cloth);
+    public void onEventMainThread(String string) {
+        if (string != null) {
+            if ("-1".equals(string)) {
+                userQueryAllProductsPresenter.QueryAllProduct();
+            } else {
+                type = string;
+                userClothListPresenter.getClothList();
             }
-            recyclerView.setAdapter(listAdapter = new ListAdapter(getActivity(), cloths));
-            //点击事件
-            listAdapter.setOnItemClickLitener(new ListAdapter.OnItemClickLitener() {
-                @Override
-                public void onItemClick(View view, int position) {
-                    //点击进入商品详情
-                    Intent intent = new Intent(getActivity(), ConsumerProductDetailsActivity.class);
-                    startActivity(intent);
-                    System.out.println("位置:" + position);
-                }
-            });
+        } else {
+            Toast.makeText(getActivity(), "未知类型!", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    public String getType() {
+        return type;
+    }
+
+    @Override
+    public void toMainActivity(List<Cloth> clothlist) {
+        //处理信息
+        recyclerView = (RecyclerView) view.findViewById(R.id.rv_detail);
+        //设置布局管理器,重写使之自适应
+        recyclerView.setLayoutManager(mlManager = new MLManager(getActivity(), 2));
+        //设置adapter
+        recyclerView.setAdapter(listAdapter = new ListAdapter(getActivity(), clothlist));
+        //点击事件
+        listAdapter.setOnItemClickLitener(new ListAdapter.OnItemClickLitener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                //点击进入商品详情
+                Intent intent = new Intent(getActivity(), ConsumerProductDetailsActivity.class);
+                startActivity(intent);
+                System.out.println("位置:" + position);
+            }
+        });
+    }
+
+    @Override
+    public void showFailedError() {
+        Toast.makeText(getActivity(), "加载失败，请检查网络", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showNone() {
+        Toast.makeText(getActivity(), "未查到任何商品!", Toast.LENGTH_SHORT).show();
     }
 }

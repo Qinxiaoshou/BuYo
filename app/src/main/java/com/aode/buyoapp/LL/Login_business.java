@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.aode.buyoapp.LL.Homepage.Person_Homepage2;
 import com.aode.buyoapp.LL.Presenter.BusinessLoginPresenter;
 import com.aode.buyoapp.LL.bean.Business;
 import com.aode.buyoapp.LL.view.IBusinessLoginView;
@@ -41,13 +40,12 @@ public class Login_business extends AppCompatActivity implements IBusinessLoginV
         btn_login_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), Home_person.class));
-               /* name = ((EditText) findViewById(R.id.et_loginName)).getText().toString();
+                name = ((EditText) findViewById(R.id.et_loginName)).getText().toString();
                 password = ((EditText) findViewById(R.id.et_password)).getText().toString();
-               *//* UserBiz userBiz = new UserBiz();
-                userBiz.login(name, password, );*//*
+                /*UserBiz userBiz = new UserBiz();
+                userBiz.login(name, password, );*/
                 //交互接口-登录操作
-                mBusinessLoginPresenter.Login();*/
+                mBusinessLoginPresenter.Login();
             }
         });
     }

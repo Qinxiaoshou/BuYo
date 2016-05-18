@@ -14,7 +14,7 @@
         android:layout_height="50dp"
         android:background="#fdb4b0b0"
         android:gravity="center"
-        android:text="产品"
+        android:text=""
         android:textColor="#FFFFFF"
         android:textSize="23dp" />
 </LinearLayout>

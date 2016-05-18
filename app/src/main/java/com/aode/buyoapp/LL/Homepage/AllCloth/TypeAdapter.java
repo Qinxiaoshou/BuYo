@@ -8,18 +8,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.aode.buyoapp.LL.bean.Item;
 import com.aode.buyoapp.R;
 
 import java.util.List;
 
 public class TypeAdapter extends RecyclerView.Adapter<TypeAdapter.ListViewHolder> {
     private Context context;
-    private List<Item> items;
+    private List<String> strings;
 
-    public TypeAdapter(Context context, List<Item> items) {
+    public TypeAdapter(Context context, List<String> strings) {
         this.context = context;
-        this.items = items;
+        this.strings = strings;
     }
 
 
@@ -43,7 +42,8 @@ public class TypeAdapter extends RecyclerView.Adapter<TypeAdapter.ListViewHolder
     @Override
     public void onBindViewHolder(final ListViewHolder holder, int position) {
 
-        if (!"花型".equals(items.get(position).getContent()) && !"底部".equals(items.get(position).getContent())) {
+        if (!"尺寸".equals(strings.get(position)) && !"颜色".equals(strings.get(position))
+                && !"图案".equals(strings.get(position)) && !"宽度".equals(strings.get(position))) {
             holder.tv_list_item.setBackgroundColor(Color.argb(253, 233, 232, 232));
             holder.tv_list_item.setTextColor(Color.argb(255, 0, 0, 0));
             holder.tv_list_item.setTextSize(20);
@@ -58,13 +58,18 @@ public class TypeAdapter extends RecyclerView.Adapter<TypeAdapter.ListViewHolder
                     }
                 });
             }
+        } else {
+            holder.tv_list_item.setBackgroundColor(Color.argb(253, 180, 176, 176));
+            holder.tv_list_item.setTextColor(Color.argb(255, 255, 255, 255));
+            holder.tv_list_item.setTextSize(23);
         }
-        holder.tv_list_item.setText(items.get(position).getContent());
+        holder.tv_list_item.setText(strings.get(position));
     }
+
 
     @Override
     public int getItemCount() {
-        return items.size();
+        return strings.size();
     }
 
     class ListViewHolder extends RecyclerView.ViewHolder {

@@ -2,6 +2,7 @@ package com.aode.buyoapp.LL.biz;
 
 import com.aode.buyoapp.LL.Listener.BQueryPermissionListener;
 import com.aode.buyoapp.LL.Listener.ChangePasswordListener;
+import com.aode.buyoapp.LL.Listener.ClothListListener;
 import com.aode.buyoapp.LL.Listener.LoginListener;
 import com.aode.buyoapp.LL.Listener.OrdersAddListener;
 import com.aode.buyoapp.LL.Listener.OrdersShowListener;
@@ -10,6 +11,7 @@ import com.aode.buyoapp.LL.Listener.QueryProductListener;
 import com.aode.buyoapp.LL.Listener.RegisterListener;
 import com.aode.buyoapp.LL.Listener.ShowChangeListener;
 import com.aode.buyoapp.LL.Listener.ShowListener;
+import com.aode.buyoapp.LL.Listener.ClothTypeListener;
 import com.aode.buyoapp.LL.bean.Orders;
 import com.aode.buyoapp.LL.bean.User;
 
@@ -18,6 +20,9 @@ import com.aode.buyoapp.LL.bean.User;
  * 个人业务类接口
  */
 public interface IUserBiz {
+    /**
+     * 个人
+     */
     //登录接口
     void login(String name, String password, LoginListener loginListener);
 
@@ -36,6 +41,11 @@ public interface IUserBiz {
     //获取个人的商品
     void queryAllProduct(QueryProductListener queryProductListener);
 
+    //获取个人主页的布匹大全的布匹类型
+    void getClothType(ClothTypeListener clothTypeListener);
+
+    //获取个人主页的布匹大全的布匹列表
+    void getClothList(String type,ClothListListener clothListListener);
     /**
      * 订单
      */
@@ -50,4 +60,6 @@ public interface IUserBiz {
 
     //个人查看个人权限
     void QuseryPermission(String id,BQueryPermissionListener bQueryPermissionListener);
+
+
 }
