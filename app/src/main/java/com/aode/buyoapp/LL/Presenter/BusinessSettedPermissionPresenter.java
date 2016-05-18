@@ -35,7 +35,7 @@ public class BusinessSettedPermissionPresenter {
                 mHandler.post(new Runnable() {
                     @Override
                     public void run() {
-                        IBusinessSettedPermissionView.toMainActivity(cloths);
+                        IBusinessSettedPermissionView.toMainActivityCheck(cloths);
                     }
                 });
             }

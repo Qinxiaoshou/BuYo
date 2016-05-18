@@ -14,7 +14,7 @@ public interface IBusinessSettedPermissionView {
 
     String getBusinessId();
 
-    void toMainActivity(List<Cloth> cloths);//成功跳转Activity
+    void toMainActivityCheck(List<Cloth> cloths);//成功跳转Activity
 
     void findFailedError();//失败提示
 

@@ -30,28 +30,15 @@ import java.util.List;
  * @author 覃培周
  * @// FIXME: 2016/4/7
  */
-public class BusinessSettingBusinessFriendRecyclerViewAdapter extends RecyclerView.Adapter<BusinessSettingBusinessFriendRecyclerViewAdapter.ViewHolder> implements IBusinessSettedPermissionView {
+public class BusinessSettingBusinessFriendRecyclerViewAdapter extends RecyclerView.Adapter<BusinessSettingBusinessFriendRecyclerViewAdapter.ViewHolder> {
 
     private Context mContext;
     private List<Business> businesses;
     private List<Cloth> cloths;
     private int position;
-    private AaimId aaimId;
-
-    private class AaimId {
-        String getId;
-
-        public String getGetId() {
-            return getId;
-        }
-
-        public void setGetId(String getId) {
-            this.getId = getId;
-        }
-    }
 
 
-    BusinessSettedPermissionPresenter businessSettedPermissionPresenter = new BusinessSettedPermissionPresenter(this);
+
 
     public BusinessSettingBusinessFriendRecyclerViewAdapter(Context mContext, List<Business> businesses) {
         this.mContext = mContext;
@@ -79,10 +66,13 @@ public class BusinessSettingBusinessFriendRecyclerViewAdapter extends RecyclerVi
             holder.mView.setOnClickListener(new View.OnClickListener() {  //监听列表条目信息跳转的控件
                 @Override
                 public void onClick(View v) {
-                    aaimId = new AaimId();
-                    System.out.println("Position-->" + position);
-                    aaimId.setGetId(businesses.get(position).getId());
-                    businessSettedPermissionPresenter.Permission();
+                    System.out.println("Position-->" + position+"bId:"+businesses.get(position).getId());
+                    Intent intent = new Intent(mContext, BusinessUpdateBusinessAndPermissionActivity.class);
+                    //传该商家拥有本店商品权限的集合
+                    Bundle bundle = new Bundle();
+                    intent.putExtra("bId", businesses.get(position).getId());
+                    intent.putExtras(bundle);
+                    mContext.startActivity(intent);
                 }
             });
         }
@@ -99,39 +89,6 @@ public class BusinessSettingBusinessFriendRecyclerViewAdapter extends RecyclerVi
     }
 
 
-    @Override
-    public String getMeId() {
-        return Home_business.business.getId();
-    }
-
-    @Override
-    public String getBusinessId() {
-        System.out.println("bId:" + aaimId.getGetId() + "  mId;" + Home_business.business.getId());
-        return aaimId.getGetId();
-    }
-
-    @Override
-    public void toMainActivity(List<Cloth> cloths) {
-        System.out.println("!!!!!!!!!!!!!!!-->:" + cloths);
-        this.cloths = cloths;
-        Intent intent = new Intent(mContext, BusinessUpdateBusinessAndPermissionActivity.class);
-        //传该商家拥有本店商品权限的集合
-        Bundle bundle = new Bundle();
-        intent.putExtra("bId", businesses.get(position).getId());
-        bundle.putSerializable("BUSINESSES", (Serializable) cloths);
-        intent.putExtras(bundle);
-        mContext.startActivity(intent);
-    }
-
-    @Override
-    public void findFailedError() {
-        System.out.println("查询商家拥有本店商品失败");
-    }
-
-    @Override
-    public void findNo() {
-        System.out.println("没有查询到商家拥有本店商品");
-    }
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
