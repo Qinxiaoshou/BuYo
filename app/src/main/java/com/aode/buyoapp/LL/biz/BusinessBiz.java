@@ -1,10 +1,12 @@
 package com.aode.buyoapp.LL.biz;
 
 import com.aode.buyoapp.LL.Home_business;
+import com.aode.buyoapp.LL.Homepage.AllCloth.BusinessClothListFragment;
 import com.aode.buyoapp.LL.Listener.BAddProductListener;
 import com.aode.buyoapp.LL.Listener.BBusinessFriendListener;
 import com.aode.buyoapp.LL.Listener.BBusinessFriendSettedPermissionListener;
 import com.aode.buyoapp.LL.Listener.BBusinessFriendToMeListener;
+import com.aode.buyoapp.LL.Listener.BClothListListener;
 import com.aode.buyoapp.LL.Listener.BDeleteProductListener;
 import com.aode.buyoapp.LL.Listener.BFriendBusinessChangeListener;
 import com.aode.buyoapp.LL.Listener.BLoginListener;
@@ -217,14 +219,14 @@ public class BusinessBiz implements IBusinessBiz {
      * @param bAddProductListener
      */
     @Override
-    public void addProduct(Cloth cloth, final BAddProductListener bAddProductListener,File picture) {
+    public void addProduct(Cloth cloth, final BAddProductListener bAddProductListener, File picture) {
         String json = new Gson().toJson(cloth);
         System.out.println(json);
         OkHttpUtils
                 .post()
                 .url(url.getUrl() + "/tb/admin/cloth/save2")
                 .addParams("clothStr", json)
-                .addFile("picture", UUID.randomUUID().toString(),picture)
+                .addFile("picture", UUID.randomUUID().toString(), picture)
                 .build()
                 .execute(new Callback() {
                     @Override
@@ -297,7 +299,7 @@ public class BusinessBiz implements IBusinessBiz {
         }
         OkHttpUtils
                 .post()
-                .url(url.getUrl() + "/tb/admin/cloth/listByBus")
+                .url(url.getUrl() + "/tb/busClothComplete")
                 .addParams("id", Home_business.business.getId())
                 .build()
                 .execute(new ClothCallback() {
@@ -348,6 +350,54 @@ public class BusinessBiz implements IBusinessBiz {
                     @Override
                     public void onResponse(Object response) {
                         bProductChangeListener.changeSuccess();
+                    }
+                });
+    }
+
+
+    /**
+     * 根据类型获取商家的商品列表
+     *
+     * @param type
+     * @param bClothListListener
+     */
+    @Override
+    public void getClothList(String type, final BClothListListener bClothListListener) {
+
+        abstract class ClothCallback extends Callback<List<Cloth>> {
+            @Override
+            public List<Cloth> parseNetworkResponse(Response response) throws IOException {
+                String string = response.body().string();
+                Type listType = new TypeToken<LinkedList<Cloth>>() {
+                }.getType();
+                List<Cloth> cloths = new Gson().fromJson(string, listType);
+                return cloths;
+            }
+        }
+        OkHttpUtils
+                .post()
+                .url(url.getUrl() + "/tb/admin/cloth/conditionSearch")
+                .addParams(BusinessClothListFragment.label, type)
+                .build()
+                .execute(new ClothCallback() {
+
+                    @Override
+                    public List<Cloth> parseNetworkResponse(Response response) throws IOException {
+                        return super.parseNetworkResponse(response);
+                    }
+
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        bClothListListener.getClothListFailed();
+                    }
+
+                    @Override
+                    public void onResponse(List<Cloth> response) {
+                        if (response != null && !response.isEmpty()) {
+                            bClothListListener.getClothListSuccess(response);
+                        } else {
+                            bClothListListener.getClothListNone();
+                        }
                     }
                 });
     }

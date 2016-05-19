@@ -4,6 +4,7 @@ import com.aode.buyoapp.LL.Listener.BAddProductListener;
 import com.aode.buyoapp.LL.Listener.BBusinessFriendListener;
 import com.aode.buyoapp.LL.Listener.BBusinessFriendSettedPermissionListener;
 import com.aode.buyoapp.LL.Listener.BBusinessFriendToMeListener;
+import com.aode.buyoapp.LL.Listener.BClothListListener;
 import com.aode.buyoapp.LL.Listener.BDeleteProductListener;
 import com.aode.buyoapp.LL.Listener.BFriendBusinessChangeListener;
 import com.aode.buyoapp.LL.Listener.BLoginListener;
@@ -60,6 +61,8 @@ public interface IBusinessBiz {
     //修改商品资料
     void ProductChange(Cloth cloth, BProductChangeListener bProductChangeListener);
 
+    //获取我商家布匹大全的布匹列表
+    void getClothList(String type, BClothListListener bClothListListener);
     /**
      * 商家关系
      */

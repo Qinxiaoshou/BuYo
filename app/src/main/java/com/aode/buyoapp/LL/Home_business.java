@@ -7,13 +7,17 @@ import android.view.KeyEvent;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.aode.buyoapp.LL.Homepage.Business_HomePage;
+import com.aode.buyoapp.LL.Homepage.Business_HomePage2;
+import com.aode.buyoapp.LL.Logistics.Person_Logistics;
 import com.aode.buyoapp.LL.Personal.Business_Personal;
+import com.aode.buyoapp.LL.Recruits.Person_Recruits;
 import com.aode.buyoapp.LL.bean.Business;
 import com.aode.buyoapp.R;
 
 public class Home_business extends AppCompatActivity {
-    private Business_HomePage homePage;
+    private Business_HomePage2 homePage;
+    private Person_Logistics logistics;
+    private Person_Recruits recruits;
     private Business_Personal personal;
     private RadioGroup tabs;
     private long exitTime = 0;
@@ -30,7 +34,7 @@ public class Home_business extends AppCompatActivity {
     }
 
     public void initView() {
-        homePage = new Business_HomePage();
+        homePage = new Business_HomePage2();
         getSupportFragmentManager().beginTransaction().add(R.id.business_homepage, homePage).commit();
         fragment = homePage;
         tabs = (RadioGroup) findViewById(R.id.person_menu);
@@ -51,15 +55,28 @@ public class Home_business extends AppCompatActivity {
                         }
                         break;
                     case R.id.rb_Logistics:
-                        /*if (address == null) {
-                            address = new FragmentAddress();
+                        if (logistics == null)
+                            logistics = new Person_Logistics();
+                        if (logistics != fragment) {
+                            if (!logistics.isAdded()) {
+                                getSupportFragmentManager().beginTransaction().hide(fragment).add(R.id.business_homepage, logistics).commit();
+                            } else {
+                                getSupportFragmentManager().beginTransaction().hide(fragment).show(logistics).commit();
+                            }
+                            fragment = logistics;
                         }
-                        *//*Log.i("MyFragment", "FragmentAddress");*//*
-                        getSupportFragmentManager().beginTransaction().replace(R.id.id_fragment_content, address).commit();*/
                         break;
                     case R.id.rb_Recruits:
-                        /*find = new FragmentFind();
-                        getSupportFragmentManager().beginTransaction().replace(R.id.id_fragment_content, find).commit();*/
+                        if (recruits == null)
+                            recruits = new Person_Recruits();
+                        if (recruits != fragment) {
+                            if (!recruits.isAdded()) {
+                                getSupportFragmentManager().beginTransaction().hide(fragment).add(R.id.business_homepage, recruits).commit();
+                            } else {
+                                getSupportFragmentManager().beginTransaction().hide(fragment).show(recruits).commit();
+                            }
+                            fragment = recruits;
+                        }
                         break;
                     case R.id.rb_Personal:
                         if (personal == null) {

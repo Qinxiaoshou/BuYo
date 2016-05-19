@@ -66,6 +66,7 @@
         <activity android:name=".qinxiaoshou.activity.BusinessProductDetailsActivity" />
         <activity android:name=".qinxiaoshou.activity.BusinessUpdateBusinessAndPermissionActivity" />
         <activity android:name=".qinxiaoshou.activity.ConsumerPermissionPageActivity" />
+        <activity android:name=".business.activity.BusinessDetailActivity"></activity>
         <activity android:name=".LL.Login_business" />
         <activity android:name=".LL.Register_person" />
         <activity android:name=".LL.Register_business" />
@@ -101,7 +102,7 @@
         <activity
             android:name=".LL.Recruits.Person_Recruits_Detail"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".business.activity.BusinessDetailActivity"></activity>
+
     </application>
 
 </manifest>

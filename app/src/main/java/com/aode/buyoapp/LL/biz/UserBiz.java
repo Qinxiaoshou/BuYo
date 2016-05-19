@@ -308,9 +308,6 @@ public class UserBiz implements IUserBiz {
     @Override
     public void getClothList(String type, final ClothListListener clothListListener) {
 
-        System.out.println("类型:"+type);
-        System.out.println("标签:"+ClothListFragment.label);
-
         abstract class ClothCallback extends Callback<List<Cloth>> {
             @Override
             public List<Cloth> parseNetworkResponse(Response response) throws IOException {

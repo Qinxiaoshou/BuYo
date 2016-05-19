@@ -15,7 +15,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.aode.buyoapp.LL.Homepage.About.Person_Homepage_About;
-import com.aode.buyoapp.LL.Homepage.AllCloth.Person_HomePage_AllCloth;
+import com.aode.buyoapp.LL.Homepage.AllCloth.Business_HomePage_AllCloth;
 import com.aode.buyoapp.R;
 import com.aode.buyoapp.business.BrowseBusinessActivity;
 import com.aode.buyoapp.qinxiaoshou.activity.SearchActivity;
@@ -24,12 +24,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 布约app第二版首页界面
- *
- * @author 陈映苗
- * @// FIXME: 2016/5/6
+ * Created by LiLei on 2016/5/18.Go.
  */
-public class Person_HomePage2 extends Fragment implements ViewPager.OnPageChangeListener {
+public class Business_HomePage2 extends Fragment implements ViewPager.OnPageChangeListener {
     private ImageView iv;
     private RelativeLayout rl_changshang_browser, rl_homepage_aboutme, rl_homepage_allcloth;
     private LinearLayout ll;
@@ -105,12 +102,12 @@ public class Person_HomePage2 extends Fragment implements ViewPager.OnPageChange
                 startActivity(new Intent(getActivity(), BrowseBusinessActivity.class));
             }
         });
-        //个人布匹大全
+        //商家布匹大全
         rl_homepage_allcloth = (RelativeLayout) view2.findViewById(R.id.rl_homepage_allcloth);
         rl_homepage_allcloth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), Person_HomePage_AllCloth.class));
+                startActivity(new Intent(getActivity(), Business_HomePage_AllCloth.class));
             }
         });
 

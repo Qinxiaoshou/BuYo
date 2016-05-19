@@ -95,15 +95,19 @@ public class ClothTypeFragment extends Fragment implements IUserClothTypeView {
 
                         if ("尺寸".equals(type.get(i))) {
                             ClothListFragment.label = "size";
+                            BusinessClothListFragment.label = "size";
                             break;
                         } else if ("颜色".equals(type.get(i))) {
                             ClothListFragment.label = "color";
+                            BusinessClothListFragment.label = "color";
                             break;
                         } else if ("图案".equals(type.get(i))) {
                             ClothListFragment.label = "pattern";
+                            BusinessClothListFragment.label = "pattern";
                             break;
                         } else if ("宽度".equals(type.get(i))) {
                             ClothListFragment.label = "width";
+                            BusinessClothListFragment.label = "width";
                             break;
                         }
 
