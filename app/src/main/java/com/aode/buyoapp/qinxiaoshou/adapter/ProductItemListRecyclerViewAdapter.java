@@ -48,6 +48,7 @@ public class ProductItemListRecyclerViewAdapter extends RecyclerView.Adapter<Pro
             public void onClick(View v) {
                         //跳转到商品详情页
                         mContext.startActivity(new Intent(mContext, ConsumerProductDetailsActivity.class));
+
             }
         });
     }

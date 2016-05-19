@@ -212,12 +212,12 @@ public class BusinessBiz implements IBusinessBiz {
                 });
     }
 
-    /**
+   /* *//**
      * 增加商品
      *
      * @param cloth
      * @param bAddProductListener
-     */
+     *//*
     @Override
     public void addProduct(Cloth cloth, final BAddProductListener bAddProductListener, File picture) {
         String json = new Gson().toJson(cloth);
@@ -227,6 +227,40 @@ public class BusinessBiz implements IBusinessBiz {
                 .url(url.getUrl() + "/tb/admin/cloth/save2")
                 .addParams("clothStr", json)
                 .addFile("picture", UUID.randomUUID().toString(), picture)
+                .build()
+                .execute(new Callback() {
+                    @Override
+                    public Object parseNetworkResponse(Response response) throws Exception {
+                        return null;
+                    }
+
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        System.out.println(e);
+                        bAddProductListener.addFailed();
+                    }
+
+                    @Override
+                    public void onResponse(Object response) {
+                        bAddProductListener.addSuccess();
+                    }
+                });
+    }*/
+
+    /**
+     * 增加商品
+     *
+     * @param cloth
+     * @param bAddProductListener
+     */
+    @Override
+    public void addProduct(Cloth cloth, final BAddProductListener bAddProductListener) {
+        String json = new Gson().toJson(cloth);
+        System.out.println(json);
+        OkHttpUtils
+                .post()
+                .url(url.getUrl() + "/tb/admin/cloth/save2")
+                .addParams("clothStr", json)
                 .build()
                 .execute(new Callback() {
                     @Override

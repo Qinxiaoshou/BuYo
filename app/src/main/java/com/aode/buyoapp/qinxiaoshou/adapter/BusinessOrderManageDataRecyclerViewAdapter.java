@@ -40,9 +40,6 @@ public class BusinessOrderManageDataRecyclerViewAdapter extends RecyclerView.Ada
 
     BusinessOrdersUpDatePresenter businessOrdersUpDatePresenter = new BusinessOrdersUpDatePresenter(this);
 
-    public BusinessOrderManageDataRecyclerViewAdapter(Context mContext) {
-        this.mContext = mContext;
-    }
 
     public BusinessOrderManageDataRecyclerViewAdapter(Context mContext, List<Orders> orderses) {
         this.mContext = mContext;

@@ -27,13 +27,14 @@ import com.aode.buyoapp.qinxiaoshou.fragment.ProductItemDetailsFragment;
  */
 public class ConsumerProductDetailsActivity extends AppCompatActivity {
 
-    private ProductItemDetailsFragment productItemDetailsFragment;
     private TextView tv_g_add_product_title;
     private Button button;
     private Toolbar toolbar;
     private RadioGroup rg_h_open_permission;
     private TextView tv_rg_name;
     private Cloth cloth;
+    private TextView tv_product_data_title;
+    private TextView tv_product_data_price;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,17 +42,21 @@ public class ConsumerProductDetailsActivity extends AppCompatActivity {
         //获取商品信息
         Intent intent = getIntent();
         cloth = (Cloth) intent.getSerializableExtra("cloth");
-
         setContentView(R.layout.business_product_message_layout);
-        //步骤一：添加一个FragmentTransaction的实例
-      /*  FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();*/
-        //步骤二：用add()方法加上Fragment的对象rightFragment
-     /*   productItemDetailsFragment = new ProductItemDetailsFragment(cloth);*/
         toolbar = (Toolbar) findViewById(R.id.toolbar_business_product_details);
         tv_rg_name = (TextView) findViewById(R.id.tv_rg_name);
         tv_g_add_product_title = (TextView) findViewById(R.id.tv_g_add_product_title);
         rg_h_open_permission = (RadioGroup) findViewById(R.id.rg_h_open_permission);
+        //商品标题
+        tv_product_data_title = (TextView) findViewById(R.id.tv_product_data_title);
+        //商品价格
+        tv_product_data_price = (TextView) findViewById(R.id.tv_product_data_price);
+
+
+        tv_product_data_title.setText(cloth.getTitle());
+        tv_product_data_price.setText(cloth.getPrice()+"/米");
+
+
         button = (Button) findViewById(R.id.btn_right_text);
         toolbar.setNavigationIcon(R.drawable.left_arrow);//设置导航栏图标
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -65,7 +70,6 @@ public class ConsumerProductDetailsActivity extends AppCompatActivity {
         rg_h_open_permission.setVisibility(View.VISIBLE);
         tv_rg_name.setText("立即购买");
         button.setVisibility(View.GONE);
-       /* transaction.add(R.id.fl_g_framelayout, productItemDetailsFragment).commit();*/
 
        //跳转到添加订单页面
 

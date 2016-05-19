@@ -69,6 +69,7 @@ public class BusinessAddNewProductActivity extends AppCompatActivity implements 
 
     //完成按钮
     Button button;
+    private File file;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,7 +102,7 @@ public class BusinessAddNewProductActivity extends AppCompatActivity implements 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                try {
                     cloth = new Cloth();
                     cloth.setTitle(et_title.getText().toString().trim());
                     cloth.setSize(et_size.getText().toString().trim());
@@ -109,9 +110,12 @@ public class BusinessAddNewProductActivity extends AppCompatActivity implements 
                     cloth.setStock(Long.valueOf(et_stock.getText().toString().trim()));
                     cloth.setColor(et_color.getText().toString().trim());
                     cloth.setPattern(et_parttern.getText().toString().trim());
-                   //  cloth.setbId(Home_business.business.getId());
-                    cloth.setbId("hbzz");
+                    cloth.setbId(Home_business.business.getId());
                     businessProductAddPresenter.ProductAdd();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                   Toast.makeText(getApplicationContext(),"请把商品信息填充完整",Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -235,9 +239,8 @@ public class BusinessAddNewProductActivity extends AppCompatActivity implements 
 
         } else if (requestCode == PHOTO_REQUEST_CAMERA) {
             if (hasSdcard()) {
-                tempFile = new File(Environment.getExternalStorageDirectory(),
-                        PHOTO_FILE_NAME);
-                picture=tempFile;
+                tempFile = new File(Environment.getExternalStorageDirectory(), PHOTO_FILE_NAME);
+                picture = tempFile;
                 crop(Uri.fromFile(tempFile));
             } else {
                 Toast.makeText(BusinessAddNewProductActivity.this, "未找到存储卡，无法存储照片！", Toast.LENGTH_SHORT).show();
@@ -247,17 +250,27 @@ public class BusinessAddNewProductActivity extends AppCompatActivity implements 
             try {
                 bitmap = data.getParcelableExtra("data");
                 this.iv_prodct_image.setImageBitmap(bitmap);
-                 picture =  saveBitmapFile(bitmap);
-               boolean delete = tempFile.delete();
-                System.out.println("delete = " + delete);
+                /*boolean delete = tempFile.delete();
+                System.out.println("delete = " + delete);*/
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
-    public File saveBitmapFile(Bitmap bitmap){
-        File file=new File("/mnt/sdcard/pic/01.jpg");//将要保存图片的路径
+
+    /**
+     * 将bitmap转化成file格式
+     *
+     * @param bitmap
+     * @return
+     */
+    public File saveBitmapFile(Bitmap bitmap) {
+        if(file!=null){
+            file.delete();
+        }
+        //将要保存图片的路径
+        file = new File(Environment.getExternalStorageDirectory(),PHOTO_FILE_NAME);
         try {
             BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file));
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
@@ -265,14 +278,14 @@ public class BusinessAddNewProductActivity extends AppCompatActivity implements 
             bos.close();
 
         } catch (IOException e) {
+            System.out.println("没有该图片文件，需要创建");
             e.printStackTrace();
         }
-        return  file;
+        return file;
     }
 
     /**
      * 剪切图片
-     *
      */
     private void crop(Uri uri) {
         // 裁剪图片意图
@@ -291,6 +304,7 @@ public class BusinessAddNewProductActivity extends AppCompatActivity implements 
         intent.putExtra("return-data", true);// true:不返回uri，false：返回uri
         startActivityForResult(intent, PHOTO_REQUEST_CUT);
     }
+
     private boolean hasSdcard() {
         if (Environment.getExternalStorageState().equals(
                 Environment.MEDIA_MOUNTED)) {
@@ -299,16 +313,30 @@ public class BusinessAddNewProductActivity extends AppCompatActivity implements 
             return false;
         }
     }
+
     @Override
     public Cloth getProduct() {
         return cloth;
     }
 
-    @Override
+   /* @Override
     public File getPicture() {
+        try {
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
+            out.flush();
+            out.close();
+            byte[] buffer = out.toByteArray();
+            byte[] encode = Base64.encode(buffer, Base64.DEFAULT);
+            String photo = new String(encode);
+            picture = new File(photo, PHOTO_FILE_NAME);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        System.out.println("@@@@@@@@@@@@@@@@-->picture file:"+picture);
         return picture;
     }
-
+*/
     /**
      * 出现不能添加商品问题
      */

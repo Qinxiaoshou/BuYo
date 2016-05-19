@@ -74,16 +74,15 @@
                     android:layout_below="@+id/iv_product"
                     android:orientation="horizontal"
                     android:paddingLeft="10dp"
-                    android:paddingTop="15dp">
+                    android:paddingTop="20dp">
 
                     <TextView
                         android:id="@+id/tv_product_data_title"
                         android:layout_width="280dp"
                         android:layout_height="wrap_content"
-                        android:maxLines="2"
                         android:text="春夏新品瑞士进口彩色印花直贡100纯棉衬衣服料面"
                         android:textColor="#000000"
-                        android:textSize="18sp"
+                        android:textSize="17sp"
                         android:typeface="sans" />
 
                     <ImageView
@@ -92,6 +91,7 @@
                         android:layout_alignParentRight="true"
                         android:layout_centerInParent="true"
                         android:paddingRight="10dp"
+                        android:paddingTop="10dp"
                         android:src="@drawable/share" />
 
                 </RelativeLayout>

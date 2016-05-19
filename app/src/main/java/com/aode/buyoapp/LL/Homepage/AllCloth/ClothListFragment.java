@@ -76,7 +76,7 @@ public class ClothListFragment extends Fragment implements IUserQueryAllProductV
     }
 
     @Override
-    public void toMainActivity(List<Cloth> clothlist) {
+    public void toMainActivity(final List<Cloth> clothlist) {
         //处理信息
         recyclerView = (RecyclerView) view.findViewById(R.id.rv_detail);
         //设置布局管理器,重写使之自适应
@@ -89,6 +89,9 @@ public class ClothListFragment extends Fragment implements IUserQueryAllProductV
             public void onItemClick(View view, int position) {
                 //点击进入商品详情
                 Intent intent = new Intent(getActivity(), ConsumerProductDetailsActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("cloth", clothlist.get(position));
+                intent.putExtras(bundle);
                 startActivity(intent);
                 System.out.println("位置:" + position);
             }
