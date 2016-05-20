@@ -29,7 +29,7 @@ import java.util.List;
  * @author 陈映苗
  * @// FIXME: 2016/5/6
  */
-public class Person_HomePage2 extends Fragment implements ViewPager.OnPageChangeListener {
+public class Person_Homepage2 extends Fragment implements ViewPager.OnPageChangeListener {
     private ImageView iv;
     private RelativeLayout rl_changshang_browser, rl_homepage_aboutme, rl_homepage_allcloth;
     private LinearLayout ll;
