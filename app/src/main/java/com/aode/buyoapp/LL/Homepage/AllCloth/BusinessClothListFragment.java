@@ -10,10 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.aode.buyoapp.LL.Presenter.BusinessQueryAllProductsPresenter;
+import com.aode.buyoapp.LL.Presenter.BusinessNoMeProductsPresenter;
 import com.aode.buyoapp.LL.Presenter.UserClothListPresenter;
 import com.aode.buyoapp.LL.bean.Cloth;
-import com.aode.buyoapp.LL.view.IBusinessProductView;
+import com.aode.buyoapp.LL.view.IBusinessNoMeProductView;
 import com.aode.buyoapp.LL.view.IUserClothListView;
 import com.aode.buyoapp.R;
 import com.aode.buyoapp.qinxiaoshou.activity.ConsumerProductDetailsActivity;
@@ -22,7 +22,7 @@ import java.util.List;
 
 import de.greenrobot.event.EventBus;
 
-public class BusinessClothListFragment extends Fragment implements IBusinessProductView, IUserClothListView {
+public class BusinessClothListFragment extends Fragment implements IBusinessNoMeProductView, IUserClothListView {
     private View view;
     private RecyclerView recyclerView;
     private ListAdapter listAdapter;
@@ -30,7 +30,7 @@ public class BusinessClothListFragment extends Fragment implements IBusinessProd
     private String type;
     public static String label = "";
 
-    BusinessQueryAllProductsPresenter userQueryAllProductsPresenter = new BusinessQueryAllProductsPresenter(this);
+    BusinessNoMeProductsPresenter businessNoMeProductsPresenter = new BusinessNoMeProductsPresenter(this);
     UserClothListPresenter userClothListPresenter = new UserClothListPresenter(this);
 
     @Override
@@ -60,7 +60,7 @@ public class BusinessClothListFragment extends Fragment implements IBusinessProd
     public void onEventMainThread(String string) {
         if (string != null) {
             if ("-1".equals(string)) {
-                userQueryAllProductsPresenter.QueryAllProduct();
+                businessNoMeProductsPresenter.QueryAllProduct();
             } else {
                 type = string;
                 userClothListPresenter.getClothList();

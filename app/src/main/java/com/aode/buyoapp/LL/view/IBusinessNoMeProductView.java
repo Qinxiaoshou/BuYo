@@ -7,9 +7,9 @@ import java.util.List;
 
 /**
  * Created by LiLei on 2016/4/9.Go.
- * 商家查询所有自己商品接口
+ * 商家查询所有除了自己商品的其他商品接口
  */
-public interface IBusinessProductView {
+public interface IBusinessNoMeProductView {
 
     void toMainActivity(List<Cloth> clothlist);//成功跳转Activity
 

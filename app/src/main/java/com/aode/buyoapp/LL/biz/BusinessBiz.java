@@ -15,6 +15,7 @@ import com.aode.buyoapp.LL.Listener.BOrdersShowListener;
 import com.aode.buyoapp.LL.Listener.BOrdersUpDateListener;
 import com.aode.buyoapp.LL.Listener.BProductChangeListener;
 import com.aode.buyoapp.LL.Listener.BQueryBusinessPermissionListener;
+import com.aode.buyoapp.LL.Listener.BQueryNoMeProductListener;
 import com.aode.buyoapp.LL.Listener.BQueryProductListener;
 import com.aode.buyoapp.LL.Listener.BRegisterListener;
 import com.aode.buyoapp.LL.Listener.BSearchListener;
@@ -331,7 +332,7 @@ public class BusinessBiz implements IBusinessBiz {
         }
         OkHttpUtils
                 .post()
-                .url(url.getUrl() + "tb/admin/cloth/listByBus")
+                .url(url.getUrl() + "/tb/admin/cloth/listByBus")
                 .addParams("id", Home_business.business.getId())
                 .build()
                 .execute(new ClothCallback() {
@@ -343,6 +344,41 @@ public class BusinessBiz implements IBusinessBiz {
                     @Override
                     public void onResponse(List<Cloth> response) {
                         bQueryProductListener.getSuccess(response);
+                    }
+
+                    @Override
+                    public List<Cloth> parseNetworkResponse(Response response) throws IOException {
+                        return super.parseNetworkResponse(response);
+                    }
+                });
+    }
+
+    @Override
+    public void getNoMeProduct(final BQueryNoMeProductListener bQueryNoMeProductListener) {
+        abstract class ClothCallback extends Callback<List<Cloth>> {
+            @Override
+            public List<Cloth> parseNetworkResponse(Response response) throws IOException {
+                String string = response.body().string();
+                Type listType = new TypeToken<LinkedList<Cloth>>() {
+                }.getType();
+                List<Cloth> cloths = new Gson().fromJson(string, listType);
+                return cloths;
+            }
+        }
+        OkHttpUtils
+                .post()
+                .url(url.getUrl() + "/tb/busClothComplete")
+                .addParams("id", Home_business.business.getId())
+                .build()
+                .execute(new ClothCallback() {
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        bQueryNoMeProductListener.getFailed();
+                    }
+
+                    @Override
+                    public void onResponse(List<Cloth> response) {
+                        bQueryNoMeProductListener.getSuccess(response);
                     }
 
                     @Override

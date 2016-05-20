@@ -13,6 +13,7 @@ import com.aode.buyoapp.LL.Listener.BOrdersShowListener;
 import com.aode.buyoapp.LL.Listener.BOrdersUpDateListener;
 import com.aode.buyoapp.LL.Listener.BProductChangeListener;
 import com.aode.buyoapp.LL.Listener.BQueryBusinessPermissionListener;
+import com.aode.buyoapp.LL.Listener.BQueryNoMeProductListener;
 import com.aode.buyoapp.LL.Listener.BQueryProductListener;
 import com.aode.buyoapp.LL.Listener.BRegisterListener;
 import com.aode.buyoapp.LL.Listener.BSearchListener;
@@ -22,7 +23,6 @@ import com.aode.buyoapp.LL.bean.Business;
 import com.aode.buyoapp.LL.bean.Cloth;
 import com.aode.buyoapp.LL.bean.Orders;
 
-import java.io.File;
 import java.util.List;
 
 /**
@@ -57,6 +57,9 @@ public interface IBusinessBiz {
 
     //获取我商家的商品
     void getProduct(BQueryProductListener bQueryProductListener);
+
+    //获取除了我商家的其他商家的商品
+    void getNoMeProduct(BQueryNoMeProductListener bQueryNoMeProductListener);
 
     //修改商品资料
     void ProductChange(Cloth cloth, BProductChangeListener bProductChangeListener);
