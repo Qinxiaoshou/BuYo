@@ -1,5 +1,6 @@
 package com.aode.buyoapp.LL.Homepage;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -24,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by LiLei on 2016/5/18.Go.
+ * A simple {@link Fragment} subclass.
  */
 public class Business_HomePage2 extends Fragment implements ViewPager.OnPageChangeListener {
     private ImageView iv;
