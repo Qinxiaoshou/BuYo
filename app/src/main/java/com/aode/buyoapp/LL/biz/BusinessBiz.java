@@ -258,7 +258,7 @@ public class BusinessBiz implements IBusinessBiz {
         System.out.println(json);
         OkHttpUtils
                 .post()
-                .url(url.getUrl() + "/tb/admin/cloth/save2")
+                .url(url.getUrl() + "/tb/admin/cloth/save")
                 .addParams("clothStr", json)
                 .build()
                 .execute(new Callback() {
