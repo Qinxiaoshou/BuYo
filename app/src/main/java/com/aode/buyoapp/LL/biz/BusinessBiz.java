@@ -30,12 +30,10 @@ import com.google.gson.reflect.TypeToken;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.Callback;
 
-import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.UUID;
 
 import okhttp3.Call;
 import okhttp3.Response;
@@ -315,7 +313,7 @@ public class BusinessBiz implements IBusinessBiz {
     }
 
     /**
-     * 获取商品
+     * 获取商家的商品
      *
      * @param bQueryProductListener
      */
@@ -333,7 +331,7 @@ public class BusinessBiz implements IBusinessBiz {
         }
         OkHttpUtils
                 .post()
-                .url(url.getUrl() + "/tb/busClothComplete")
+                .url(url.getUrl() + "tb/admin/cloth/listByBus")
                 .addParams("id", Home_business.business.getId())
                 .build()
                 .execute(new ClothCallback() {
