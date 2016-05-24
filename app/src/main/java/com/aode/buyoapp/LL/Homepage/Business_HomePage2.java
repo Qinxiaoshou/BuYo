@@ -67,6 +67,7 @@ public class Business_HomePage2 extends Fragment implements ViewPager.OnPageChan
                     SystemClock.sleep(4000);    //每隔五秒钟，发送一条消息到主线程，更新viewpager的界面
 
                     //runOnUiThread此方法在主线程执行，也可以使用Handler
+                    if(getActivity()!=null)
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -83,6 +84,7 @@ public class Business_HomePage2 extends Fragment implements ViewPager.OnPageChan
     @Override
     public void onDestroy() {
         isStop = true;
+        System.out.println("说好的finish?");
         super.onDestroy();
     }
 

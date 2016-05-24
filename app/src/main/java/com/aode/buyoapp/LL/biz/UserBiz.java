@@ -5,6 +5,7 @@ import com.aode.buyoapp.LL.Listener.BQueryPermissionListener;
 import com.aode.buyoapp.LL.Listener.ChangePasswordListener;
 import com.aode.buyoapp.LL.Listener.ClothListListener;
 import com.aode.buyoapp.LL.Listener.LoginListener;
+import com.aode.buyoapp.LL.Listener.LoginOutListener;
 import com.aode.buyoapp.LL.Listener.OrdersAddListener;
 import com.aode.buyoapp.LL.Listener.OrdersShowListener;
 import com.aode.buyoapp.LL.Listener.OrdersUpDateListener;
@@ -105,6 +106,31 @@ public class UserBiz implements IUserBiz {
                     @Override
                     public void onResponse(Object response) {
                         registerListener.registerSuccess();
+                    }
+                });
+    }
+
+    @Override
+    public void loginOut(final LoginOutListener loginOutListener) {
+        OkHttpUtils
+                .post()
+                .url(url.getUrl() + "/tb/admin/user/logout")
+                .build()
+                .execute(new Callback() {
+                    @Override
+                    public Object parseNetworkResponse(Response response) throws Exception {
+                        return null;
+                    }
+
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        loginOutListener.registerFailed();
+                        System.out.println("错误:" + e);
+                    }
+
+                    @Override
+                    public void onResponse(Object response) {
+                        loginOutListener.registerSuccess();
                     }
                 });
     }
@@ -261,6 +287,7 @@ public class UserBiz implements IUserBiz {
 
     /**
      * 布匹大全-布匹类型
+     *
      * @param clothTypeListener
      */
     @Override
@@ -303,6 +330,7 @@ public class UserBiz implements IUserBiz {
 
     /**
      * 布匹大全-布匹列表
+     *
      * @param clothListListener
      */
     @Override
@@ -329,6 +357,7 @@ public class UserBiz implements IUserBiz {
                     public List<Cloth> parseNetworkResponse(Response response) throws IOException {
                         return super.parseNetworkResponse(response);
                     }
+
                     @Override
                     public void onError(Call call, Exception e) {
                         clothListListener.getClothListFailed();
@@ -338,7 +367,7 @@ public class UserBiz implements IUserBiz {
                     public void onResponse(List<Cloth> response) {
                         if (response != null && !response.isEmpty()) {
                             clothListListener.getClothListSuccess(response);
-                        }else{
+                        } else {
                             clothListListener.getClothListNone();
                         }
                     }

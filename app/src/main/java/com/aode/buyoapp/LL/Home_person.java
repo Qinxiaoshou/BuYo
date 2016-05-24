@@ -15,7 +15,7 @@ import com.aode.buyoapp.LL.Personal.Person_Personal;
 import com.aode.buyoapp.LL.Recruits.Person_Recruits;
 import com.aode.buyoapp.R;
 
-public class Home_person extends AppCompatActivity implements Login_person.onNameListener {
+public class Home_person extends AppCompatActivity implements Login_person.onNameListener,Person_Personal.onLoginOutListener {
 
     private Person_HomePage2 homePage;
     private Person_Logistics logistics;
@@ -148,5 +148,23 @@ public class Home_person extends AppCompatActivity implements Login_person.onNam
     protected void onDestroy() {
         result = false;
         super.onDestroy();
+    }
+
+    @Override
+    public void onLoginOut() {
+        result = false;
+        loginName = "个人用户名";
+        id = "";
+        phone = "";
+        login_person = null;
+
+        if (login_person == null)
+            login_person = new Login_person();
+        if (!login_person.isAdded()) {
+            getSupportFragmentManager().beginTransaction().hide(personal).add(R.id.person_homepage, login_person).commit();
+        } else {
+            getSupportFragmentManager().beginTransaction().hide(personal).show(login_person).commit();
+        }
+        fragment = login_person;
     }
 }

@@ -26,7 +26,6 @@ public class Login_business extends AppCompatActivity implements IBusinessLoginV
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.fragment_person_login);
         //登录和注册方法
         Login();

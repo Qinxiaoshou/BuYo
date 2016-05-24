@@ -25,10 +25,13 @@ public class Home_business extends AppCompatActivity {
     public static Fragment fragment;
     public static Business business;
 
+    public static Home_business instance;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_business);
+        instance = this;
         //按钮
         initView();
     }
