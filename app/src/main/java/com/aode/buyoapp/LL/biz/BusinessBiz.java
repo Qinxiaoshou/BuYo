@@ -31,12 +31,20 @@ import com.google.gson.reflect.TypeToken;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.Callback;
 
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.UUID;
 
 import okhttp3.Call;
+import okhttp3.Headers;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 
 /**
@@ -211,26 +219,64 @@ public class BusinessBiz implements IBusinessBiz {
                 });
     }
 
-   /* *//**
+    /**
      * 增加商品
+     * author 覃培周
      *
      * @param cloth
      * @param bAddProductListener
-     *//*
+     */
+    private final OkHttpClient client = new OkHttpClient();
+
     @Override
-    public void addProduct(Cloth cloth, final BAddProductListener bAddProductListener, File picture) {
-        String json = new Gson().toJson(cloth);
-        System.out.println(json);
-        OkHttpUtils
+    public void addProduct(final Cloth cloth, final BAddProductListener bAddProductListener, final File picture) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    String json = new Gson().toJson(cloth);
+                    System.out.println(json);
+                    RequestBody fileBody = RequestBody.create(MediaType.parse("application/octet-stream"), picture);
+                    RequestBody requestBody = new MultipartBody.Builder() //建立请求的内容
+                            .setType(MultipartBody.FORM)//表单形式
+                            .addPart(Headers.of(
+                                    "Content-Disposition",
+                                    "form-data; name=\"clothStr\""),
+                                    RequestBody.create(null,json))
+                            .addPart(Headers.of(
+                                    "Content-Disposition",
+                                    "form-data; name=\"picture\"; filename =\"wjd.png\""), fileBody)
+                            .build();
+
+                    Request request = new Request.Builder()//建立请求
+                            .url(url.getUrl() + "/tb/admin/cloth/save")//请求的地址
+                            .post(requestBody)//请求的内容（上面建立的requestBody）
+                            .build();
+                    Response response = client.newCall(request).execute();
+                    if (!response.isSuccessful()) {
+                        bAddProductListener.addFailed();
+                        throw new IOException("Unexpected code " + response);
+                    }else{
+                        bAddProductListener.addSuccess();
+                    }
+
+                    System.out.println(response.body().string());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+
+
+//上传连接并通过Callback来获取返回结果
+       /* OkHttpUtils
                 .post()
-                .url(url.getUrl() + "/tb/admin/cloth/save2")
-                .addParams("clothStr", json)
-                .addFile("picture", UUID.randomUUID().toString(), picture)
+                .url(url.getUrl() + "/tb/admin/cloth/save")
                 .build()
                 .execute(new Callback() {
                     @Override
                     public Object parseNetworkResponse(Response response) throws Exception {
-                        return null;
+                        return body;
                     }
 
                     @Override
@@ -243,15 +289,15 @@ public class BusinessBiz implements IBusinessBiz {
                     public void onResponse(Object response) {
                         bAddProductListener.addSuccess();
                     }
-                });
-    }*/
+                });*/
+    }
+/**
+ * 增加商品
+ *
+ * @param cloth
+ * @param bAddProductListener
+ *//*
 
-    /**
-     * 增加商品
-     *
-     * @param cloth
-     * @param bAddProductListener
-     */
     @Override
     public void addProduct(Cloth cloth, final BAddProductListener bAddProductListener) {
         String json = new Gson().toJson(cloth);
@@ -279,6 +325,7 @@ public class BusinessBiz implements IBusinessBiz {
                     }
                 });
     }
+*/
 
     /**
      * 删除商品

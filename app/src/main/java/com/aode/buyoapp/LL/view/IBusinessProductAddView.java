@@ -12,7 +12,7 @@ import java.io.File;
 public interface IBusinessProductAddView {
     Cloth getProduct();//获取商品
 
-   // File getPicture(); //获取图片
+    File getPicture(); //获取图片
 
     void toMainActivity();//成功跳转Activity
 

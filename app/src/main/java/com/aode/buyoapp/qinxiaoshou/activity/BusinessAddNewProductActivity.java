@@ -273,7 +273,7 @@ public class BusinessAddNewProductActivity extends AppCompatActivity implements 
         file = new File(Environment.getExternalStorageDirectory(),PHOTO_FILE_NAME);
         try {
             BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file));
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, bos);
             bos.flush();
             bos.close();
 
@@ -288,21 +288,25 @@ public class BusinessAddNewProductActivity extends AppCompatActivity implements 
      * 剪切图片
      */
     private void crop(Uri uri) {
-        // 裁剪图片意图
-        Intent intent = new Intent("com.android.camera.action.CROP");
-        intent.setDataAndType(uri, "image/*");
-        intent.putExtra("crop", "true");
-        // 裁剪框的比例，1：1
-        intent.putExtra("aspectX", 0.6);
-        intent.putExtra("aspectY", 1);
-        // 裁剪后输出图片的尺寸大小
+        try {
+            // 裁剪图片意图
+            Intent intent = new Intent("com.android.camera.action.CROP");
+            intent.setDataAndType(uri, "image/*");
+            intent.putExtra("crop", "true");
+            // 裁剪框的比例，1：1
+            intent.putExtra("aspectX", 0.6);
+            intent.putExtra("aspectY", 1);
+            // 裁剪后输出图片的尺寸大小
         /*intent.putExtra("outputX", 250);
         intent.putExtra("outputY", 250);*/
-        // 图片格式
-        intent.putExtra("outputFormat", "JPEG");
-        intent.putExtra("noFaceDetection", true);// 取消人脸识别
-        intent.putExtra("return-data", true);// true:不返回uri，false：返回uri
-        startActivityForResult(intent, PHOTO_REQUEST_CUT);
+            // 图片格式
+            intent.putExtra("outputFormat", "JPEG");
+            intent.putExtra("noFaceDetection", true);// 取消人脸识别
+            intent.putExtra("return-data", true);// true:不返回uri，false：返回uri
+            startActivityForResult(intent, PHOTO_REQUEST_CUT);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     private boolean hasSdcard() {
@@ -319,27 +323,11 @@ public class BusinessAddNewProductActivity extends AppCompatActivity implements 
         return cloth;
     }
 
-   /* @Override
+    @Override
     public File getPicture() {
-        try {
-            ByteArrayOutputStream out = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
-            out.flush();
-            out.close();
-            byte[] buffer = out.toByteArray();
-            byte[] encode = Base64.encode(buffer, Base64.DEFAULT);
-            String photo = new String(encode);
-            picture = new File(photo, PHOTO_FILE_NAME);
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-        System.out.println("@@@@@@@@@@@@@@@@-->picture file:"+picture);
+        picture = saveBitmapFile(bitmap);
         return picture;
     }
-*/
-    /**
-     * 出现不能添加商品问题
-     */
     @Override
     public void toMainActivity() {
         Toast.makeText(getApplicationContext(), "添加成功", Toast.LENGTH_SHORT).show();
