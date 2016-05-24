@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import com.aode.buyoapp.LL.Home_business;
 import com.aode.buyoapp.LL.Login_business;
+import com.aode.buyoapp.LL.Presenter.BusinessLoginOutPresenter;
+import com.aode.buyoapp.LL.view.IBusinessLoginOutView;
 import com.aode.buyoapp.R;
 import com.aode.buyoapp.qinxiaoshou.BusinessFriendPagerActivity;
 import com.aode.buyoapp.qinxiaoshou.BusinessManageConsumerOrderPagerActivity;
@@ -20,11 +22,13 @@ import com.aode.buyoapp.qinxiaoshou.BusinessProductManageSwitchActivity;
 import com.aode.buyoapp.qinxiaoshou.BusinessSearchOtherBusinessPagerActivity;
 
 
-public class Business_Personal extends Fragment implements View.OnClickListener {
+public class Business_Personal extends Fragment implements View.OnClickListener, IBusinessLoginOutView {
     private View view;
     private ImageView iv_message, iv_publish, iv_order, iv_amity, iv_permission;
     private TextView tv_business_name;
     private ImageButton btn_login_out;
+
+    BusinessLoginOutPresenter businessLoginOutPresenter = new BusinessLoginOutPresenter(this);
 
     public void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
@@ -87,12 +91,22 @@ public class Business_Personal extends Fragment implements View.OnClickListener 
                 Toast.makeText(getActivity(), "此处还在施工", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btn_login_out:
-                Toast.makeText(getActivity(), "注销成功", Toast.LENGTH_SHORT).show();
-                Home_business.business = null;
-                Home_business.instance.finish();
-                startActivity(new Intent(getActivity(), Login_business.class));
-
+                businessLoginOutPresenter.LoginOut();
                 break;
         }
+    }
+
+    @Override
+    public void toMainActivity() {
+        Home_business.business = null;
+        Home_business.instance.finish();
+        startActivity(new Intent(getActivity(), Login_business.class));
+
+        Toast.makeText(getActivity(), "注销成功", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showFailedError() {
+        Toast.makeText(getActivity(), "注销失败", Toast.LENGTH_SHORT).show();
     }
 }

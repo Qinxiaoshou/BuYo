@@ -8,6 +8,7 @@ import com.aode.buyoapp.LL.Listener.BClothListListener;
 import com.aode.buyoapp.LL.Listener.BDeleteProductListener;
 import com.aode.buyoapp.LL.Listener.BFriendBusinessChangeListener;
 import com.aode.buyoapp.LL.Listener.BLoginListener;
+import com.aode.buyoapp.LL.Listener.BLoginOutListener;
 import com.aode.buyoapp.LL.Listener.BOrdersAddListener;
 import com.aode.buyoapp.LL.Listener.BOrdersShowListener;
 import com.aode.buyoapp.LL.Listener.BOrdersUpDateListener;
@@ -39,6 +40,9 @@ public interface IBusinessBiz {
 
     //注册接口
     void register(String loginName, String name, String password, BRegisterListener bRegisterListener);
+
+    //注销
+    void loginOut(BLoginOutListener bLoginOutListener);
 
     //展示资料接口
     void show(String id, BShowListener BShowListener);

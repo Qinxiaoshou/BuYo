@@ -10,6 +10,7 @@ import com.aode.buyoapp.LL.Listener.BClothListListener;
 import com.aode.buyoapp.LL.Listener.BDeleteProductListener;
 import com.aode.buyoapp.LL.Listener.BFriendBusinessChangeListener;
 import com.aode.buyoapp.LL.Listener.BLoginListener;
+import com.aode.buyoapp.LL.Listener.BLoginOutListener;
 import com.aode.buyoapp.LL.Listener.BOrdersAddListener;
 import com.aode.buyoapp.LL.Listener.BOrdersShowListener;
 import com.aode.buyoapp.LL.Listener.BOrdersUpDateListener;
@@ -36,7 +37,6 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.UUID;
 
 import okhttp3.Call;
 import okhttp3.Headers;
@@ -134,6 +134,31 @@ public class BusinessBiz implements IBusinessBiz {
                     @Override
                     public void onResponse(Object response) {
                         bRegisterListener.bRegisterSuccess();
+                    }
+                });
+    }
+
+    @Override
+    public void loginOut(final BLoginOutListener bLoginOutListener) {
+        OkHttpUtils
+                .get()
+                .url(url.getUrl() + "/tb/admin/business/logout")
+                .build()
+                .execute(new Callback() {
+                    @Override
+                    public Object parseNetworkResponse(Response response) throws Exception {
+                        return null;
+                    }
+
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        bLoginOutListener.registerFailed();
+                        System.out.println("错误:" + e);
+                    }
+
+                    @Override
+                    public void onResponse(Object response) {
+                        bLoginOutListener.registerSuccess();
                     }
                 });
     }
@@ -240,9 +265,9 @@ public class BusinessBiz implements IBusinessBiz {
                     RequestBody requestBody = new MultipartBody.Builder() //建立请求的内容
                             .setType(MultipartBody.FORM)//表单形式
                             .addPart(Headers.of(
-                                    "Content-Disposition",
-                                    "form-data; name=\"clothStr\""),
-                                    RequestBody.create(null,json))
+                                            "Content-Disposition",
+                                            "form-data; name=\"clothStr\""),
+                                    RequestBody.create(null, json))
                             .addPart(Headers.of(
                                     "Content-Disposition",
                                     "form-data; name=\"picture\"; filename =\"wjd.png\""), fileBody)
@@ -256,7 +281,7 @@ public class BusinessBiz implements IBusinessBiz {
                     if (!response.isSuccessful()) {
                         bAddProductListener.addFailed();
                         throw new IOException("Unexpected code " + response);
-                    }else{
+                    } else {
                         bAddProductListener.addSuccess();
                     }
 
