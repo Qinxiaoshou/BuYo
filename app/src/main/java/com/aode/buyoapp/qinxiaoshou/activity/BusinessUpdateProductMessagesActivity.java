@@ -147,6 +147,7 @@ public class BusinessUpdateProductMessagesActivity extends FragmentActivity impl
                     cloth2.setColor(et_color.getText().toString().trim());
                     cloth2.setPattern(et_parttern.getText().toString().trim());
                     cloth2.setbId(cloth.getbId());
+                    cloth2.setPicture(cloth.getPicture());
                     businessProductChangePresenter.ProductChange();
                 } catch (Exception e) {
                     Toast.makeText(getApplicationContext(), "请填写完整布匹信息", Toast.LENGTH_SHORT).show();
