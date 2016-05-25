@@ -58,7 +58,6 @@ public interface IBusinessBiz {
 
     /**
      * 增加商家的商品
-     * author 覃培周 有什么问题来找我
      * @param cloth
      * @param bAddProductListener
      * @param picture
@@ -75,7 +74,7 @@ public interface IBusinessBiz {
     void getNoMeProduct(BQueryNoMeProductListener bQueryNoMeProductListener);
 
     //修改商品资料
-    void ProductChange(Cloth cloth, BProductChangeListener bProductChangeListener);
+    void ProductChange(Cloth cloth, BProductChangeListener bProductChangeListener,File picture);
 
     //获取我商家布匹大全的布匹列表
     void getClothList(String type, BClothListListener bClothListListener);

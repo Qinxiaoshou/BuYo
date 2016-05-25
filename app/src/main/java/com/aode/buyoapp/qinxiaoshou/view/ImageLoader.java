@@ -27,6 +27,7 @@ public class ImageLoader {
     private int position;
     private ImageView picture;
     private Bitmap bitmap;
+    private Cloth cloth;
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -48,6 +49,40 @@ public class ImageLoader {
         this.position = position;
         this.picture = picture;
     }
+    public ImageLoader(Cloth cloth,ImageView picture){
+        this.cloth = cloth;
+        this.picture = picture;
+    }
+    //单张图片下载步骤
+    public void loadAndRefreshPicture(){
+        //加载图片
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    OkHttpClient client = new OkHttpClient();
+                    Request request = new Request.Builder().url(new url().getUrl() + "/tb/resources/file/cloth/" + cloth.getPicture()).build();
+                    Response response = client.newCall(request).execute();
+                    InputStream is = response.body().byteStream();
+                    Bitmap bm = BitmapFactory.decodeStream(is);
+
+                    bitmap = bm;
+                    Message msg = new Message();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("changpicture", "changpicture");
+                    msg.setData(bundle);
+                    handler.sendMessage(msg);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }catch (NullPointerException e){
+                    picture.setImageResource(R.drawable.cheese_3);
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+
+    }
+
 
   //继续
     public void resume(){

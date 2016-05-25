@@ -95,7 +95,6 @@ public class BusinessCheckProductListRecyclerViewAdapter extends RecyclerView.Ad
                         Intent intent = new Intent(mContext, BusinessUpdateProductMessagesActivity.class);
                         Bundle bundle = new Bundle();
                         bundle.putSerializable("cloth", cloths.get(position));
-                        //bundle.putSerializable("bitmap",bitmap);
                         intent.putExtras(bundle);
                         mContext.startActivity(intent);
                     }

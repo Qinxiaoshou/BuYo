@@ -291,66 +291,7 @@ public class BusinessBiz implements IBusinessBiz {
                 }
             }
         }).start();
-
-
-//上传连接并通过Callback来获取返回结果
-       /* OkHttpUtils
-                .post()
-                .url(url.getUrl() + "/tb/admin/cloth/save")
-                .build()
-                .execute(new Callback() {
-                    @Override
-                    public Object parseNetworkResponse(Response response) throws Exception {
-                        return body;
-                    }
-
-                    @Override
-                    public void onError(Call call, Exception e) {
-                        System.out.println(e);
-                        bAddProductListener.addFailed();
-                    }
-
-                    @Override
-                    public void onResponse(Object response) {
-                        bAddProductListener.addSuccess();
-                    }
-                });*/
     }
-/**
- * 增加商品
- *
- * @param cloth
- * @param bAddProductListener
- *//*
-
-    @Override
-    public void addProduct(Cloth cloth, final BAddProductListener bAddProductListener) {
-        String json = new Gson().toJson(cloth);
-        System.out.println(json);
-        OkHttpUtils
-                .post()
-                .url(url.getUrl() + "/tb/admin/cloth/save")
-                .addParams("clothStr", json)
-                .build()
-                .execute(new Callback() {
-                    @Override
-                    public Object parseNetworkResponse(Response response) throws Exception {
-                        return null;
-                    }
-
-                    @Override
-                    public void onError(Call call, Exception e) {
-                        System.out.println(e);
-                        bAddProductListener.addFailed();
-                    }
-
-                    @Override
-                    public void onResponse(Object response) {
-                        bAddProductListener.addSuccess();
-                    }
-                });
-    }
-*/
 
     /**
      * 删除商品
@@ -467,8 +408,47 @@ public class BusinessBiz implements IBusinessBiz {
      * @param bProductChangeListener
      */
     @Override
-    public void ProductChange(Cloth cloth, final BProductChangeListener bProductChangeListener) {
-        String json = new Gson().toJson(cloth);
+    public void ProductChange(final Cloth cloth, final BProductChangeListener bProductChangeListener,final File picture) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    String json = new Gson().toJson(cloth);
+                    System.out.println(json);
+                    RequestBody fileBody = RequestBody.create(MediaType.parse("application/octet-stream"), picture);
+                    RequestBody requestBody = new MultipartBody.Builder() //建立请求的内容
+                            .setType(MultipartBody.FORM)//表单形式
+                            .addPart(Headers.of(
+                                    "Content-Disposition",
+                                    "form-data; name=\"clothStr\""),
+                                    RequestBody.create(null, json))
+                            .addPart(Headers.of(
+                                    "Content-Disposition",
+                                    "form-data; name=\"picture\"; filename =\"wjd.png\""), fileBody)
+                            .build();
+
+                    Request request = new Request.Builder()//建立请求
+                            .url(url.getUrl() + "/tb/admin/cloth/update")//请求的地址
+                            .post(requestBody)//请求的内容（上面建立的requestBody）
+                            .build();
+                    Response response = client.newCall(request).execute();
+                    if (!response.isSuccessful()) {
+                        bProductChangeListener.changeFailed();
+                        throw new IOException("Unexpected code " + response);
+                    } else {
+                        bProductChangeListener.changeSuccess();
+                    }
+
+                    System.out.println(response.body().string());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+
+
+
+      /*  String json = new Gson().toJson(cloth);
         System.out.println(json);
         OkHttpUtils
                 .post()
@@ -491,7 +471,7 @@ public class BusinessBiz implements IBusinessBiz {
                     public void onResponse(Object response) {
                         bProductChangeListener.changeSuccess();
                     }
-                });
+                });*/
     }
 
 

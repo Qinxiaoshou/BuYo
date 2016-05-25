@@ -46,6 +46,6 @@ public class BusinessProductChangePresenter {
                     }
                 });
             }
-        });
+        },businessProductChangeView.getPicture());
     }
 }
