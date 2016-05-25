@@ -3,6 +3,7 @@ package com.aode.buyoapp.qinxiaoshou.activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -151,58 +152,6 @@ public class BusinessAddNewProductActivity extends AppCompatActivity implements 
     }
 
 
-    /*
-     * 上传图片
-     */
-    public void upload() {
-        try {
-            ByteArrayOutputStream out = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
-            out.flush();
-            out.close();
-            byte[] buffer = out.toByteArray();
-
-            byte[] encode = Base64.encode(buffer, Base64.DEFAULT);
-            String photo = new String(encode);
-
-          /*  RequestParams params = new RequestParams();
-            params.put("photo", photo);
-            String url = "http://110.65.99.66:8080/jerry/UploadImgServlet";
-
-            AsyncHttpClient client = new AsyncHttpClient();
-            client.post(url, params, new AsyncHttpResponseHandler() {
-                @Override
-                public void onSuccess(int statusCode, Header[] headers,
-                                      byte[] responseBody) {
-                    try {
-                        if (statusCode == 200) {
-
-                            Toast.makeText(BusinessAddNewProductActivity.this, "头像上传成功!", 0)
-                                    .show();
-                        } else {
-                            Toast.makeText(BusinessAddNewProductActivity.this,
-                                    "网络访问异常，错误码：" + statusCode, 0).show();
-
-                        }
-                    } catch (Exception e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
-                    }
-                }
-
-                @Override
-                public void onFailure(int statusCode, Header[] headers,
-                                      byte[] responseBody, Throwable error) {
-                    Toast.makeText(BusinessAddNewProductActivity.this,
-                            "网络访问异常，错误码  > " + statusCode, 0).show();
-
-                }
-            });*/
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
     /*
      * 从相册获取
@@ -273,7 +222,7 @@ public class BusinessAddNewProductActivity extends AppCompatActivity implements 
         file = new File(Environment.getExternalStorageDirectory(),PHOTO_FILE_NAME);
         try {
             BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file));
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, bos);
+            bitmap.compress(Bitmap.CompressFormat.PNG,100, bos);
             bos.flush();
             bos.close();
 
@@ -283,7 +232,6 @@ public class BusinessAddNewProductActivity extends AppCompatActivity implements 
         }
         return file;
     }
-
     /**
      * 剪切图片
      */
@@ -293,14 +241,14 @@ public class BusinessAddNewProductActivity extends AppCompatActivity implements 
             Intent intent = new Intent("com.android.camera.action.CROP");
             intent.setDataAndType(uri, "image/*");
             intent.putExtra("crop", "true");
-            // 裁剪框的比例，1：1
-            intent.putExtra("aspectX", 0.6);
+            // 裁剪框的比例，0.6：1
+            intent.putExtra("aspectX", 0.8);
             intent.putExtra("aspectY", 1);
             // 裁剪后输出图片的尺寸大小
-        /*intent.putExtra("outputX", 250);
-        intent.putExtra("outputY", 250);*/
+       /* intent.putExtra("outputX", 800);
+        intent.putExtra("outputY", 400);*/
             // 图片格式
-            intent.putExtra("outputFormat", "JPEG");
+            intent.putExtra("outputFormat", "PNG");
             intent.putExtra("noFaceDetection", true);// 取消人脸识别
             intent.putExtra("return-data", true);// true:不返回uri，false：返回uri
             startActivityForResult(intent, PHOTO_REQUEST_CUT);

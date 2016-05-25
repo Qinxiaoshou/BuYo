@@ -6,8 +6,12 @@ import android.animation.ObjectAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,12 +20,23 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.aode.buyoapp.LL.bean.Cloth;
+import com.aode.buyoapp.LL.url;
 import com.aode.buyoapp.R;
 import com.aode.buyoapp.qinxiaoshou.activity.BusinessUpdateProductMessagesActivity;
+import com.aode.buyoapp.qinxiaoshou.view.ImageLoader;
 
 import org.w3c.dom.Text;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.Serializable;
 import java.util.List;
+import java.util.logging.LogRecord;
+
+import okhttp3.Headers;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 
 /**
@@ -34,6 +49,8 @@ public class BusinessCheckProductListRecyclerViewAdapter extends RecyclerView.Ad
 
     private Context mContext;
     static List<Cloth> cloths;
+    private ImageView picture;
+    private Bitmap bitmap;
 
     public BusinessCheckProductListRecyclerViewAdapter(Context mContext) {
         this.mContext = mContext;
@@ -51,13 +68,20 @@ public class BusinessCheckProductListRecyclerViewAdapter extends RecyclerView.Ad
         return new ViewHolder(view);
     }
 
+    private com.aode.buyoapp.LL.url url = new url();
+
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onBindViewHolder(final BusinessCheckProductListRecyclerViewAdapter.ViewHolder holder, final int position) {
-        holder.iv_pictue.setImageResource(R.drawable.cheese_3);
+        //加载图片
+        holder.setIsRecyclable(false); //recyclerviewd的positon不能复用
+         new ImageLoader(cloths,position,holder.iv_pictue).resume();
+
+
         holder.tv_title.setText(cloths.get(position).getTitle());
         holder.tv_price.setText("￥" + cloths.get(position).getPrice());
-        holder.tv_stock.setText("库存:"+cloths.get(position).getStock());
+        holder.tv_stock.setText("库存:" + cloths.get(position).getStock());
+
 
         final View view = holder.mView;
         view.setOnClickListener(new View.OnClickListener() {  //监听列表条目信息跳转的控件
@@ -71,6 +95,7 @@ public class BusinessCheckProductListRecyclerViewAdapter extends RecyclerView.Ad
                         Intent intent = new Intent(mContext, BusinessUpdateProductMessagesActivity.class);
                         Bundle bundle = new Bundle();
                         bundle.putSerializable("cloth", cloths.get(position));
+                        //bundle.putSerializable("bitmap",bitmap);
                         intent.putExtras(bundle);
                         mContext.startActivity(intent);
                     }
