@@ -22,6 +22,7 @@ import com.aode.buyoapp.LL.Listener.BRegisterListener;
 import com.aode.buyoapp.LL.Listener.BSearchListener;
 import com.aode.buyoapp.LL.Listener.BShowChangeListener;
 import com.aode.buyoapp.LL.Listener.BShowListener;
+import com.aode.buyoapp.LL.Listener.QueryProductBuyIdListener;
 import com.aode.buyoapp.LL.bean.Business;
 import com.aode.buyoapp.LL.bean.Cloth;
 import com.aode.buyoapp.LL.bean.Orders;
@@ -396,6 +397,47 @@ public class BusinessBiz implements IBusinessBiz {
 
                     @Override
                     public List<Cloth> parseNetworkResponse(Response response) throws IOException {
+                        return super.parseNetworkResponse(response);
+                    }
+                });
+    }
+
+    /**
+     * 根据商品id查询商品信息
+     * @param cId
+     * @param queryProductBuyIdListener
+     */
+    @Override
+    public void getProductBuyId(final  String cId,final QueryProductBuyIdListener queryProductBuyIdListener) {
+        abstract class ClothCallback extends Callback<Cloth> {
+            @Override
+            public Cloth parseNetworkResponse(Response response) throws IOException {
+                String string = response.body().string();
+                Type listType = new TypeToken<Cloth>() {
+                }.getType();
+               Cloth cloth = new Gson().fromJson(string, listType);
+                System.out.println("后台查询的商品："+cloth);
+                return cloth;
+            }
+        }
+        OkHttpUtils
+                .post()
+                .url(url.getUrl() + "/tb/admin/cloth/get")
+                .addParams("clothStr", cId)
+                .build()
+                .execute(new ClothCallback() {
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        queryProductBuyIdListener.getFailed();
+                    }
+
+                    @Override
+                    public void onResponse(Cloth response) {
+                        queryProductBuyIdListener.getSuccess(response);
+                    }
+
+                    @Override
+                    public  Cloth parseNetworkResponse(Response response) throws IOException {
                         return super.parseNetworkResponse(response);
                     }
                 });

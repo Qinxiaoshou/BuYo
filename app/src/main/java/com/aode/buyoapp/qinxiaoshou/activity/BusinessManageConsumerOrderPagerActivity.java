@@ -1,4 +1,4 @@
-package com.aode.buyoapp.qinxiaoshou;
+package com.aode.buyoapp.qinxiaoshou.activity;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -7,8 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -16,19 +14,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aode.buyoapp.LL.Home_business;
 import com.aode.buyoapp.LL.Presenter.BusinessOrdersShowPresenter;
 import com.aode.buyoapp.LL.Presenter.BusinessOrdersUpDatePresenter;
+import com.aode.buyoapp.LL.bean.Cloth;
 import com.aode.buyoapp.LL.bean.Orders;
 import com.aode.buyoapp.LL.view.IBusinessOrdersShowView;
 import com.aode.buyoapp.LL.view.IBusinessOrdersUpDateView;
 import com.aode.buyoapp.R;
-import com.aode.buyoapp.qinxiaoshou.activity.BusinessManageConsumerOrderDetailActivity;
-import com.aode.buyoapp.qinxiaoshou.adapter.BusinessOrderManageDataRecyclerViewAdapter;
-import com.aode.buyoapp.qinxiaoshou.fragment.BussinessOrderManageFragment;
+import com.aode.buyoapp.qinxiaoshou.util.ImageLoader;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -130,7 +128,16 @@ public class BusinessManageConsumerOrderPagerActivity extends FragmentActivity i
             holder.tv_price.setText("初始价钱:" + String.valueOf(orderses.get(position).getPrice()));
             holder.tv_realprice.setText("实际价钱:" + String.valueOf(orderses.get(position).getPrice()));
             holder.tv_length.setText("布长:" + orderses.get(position).getLength() + "米");
-            holder.tv_date.setText("日期:" + date);
+            holder.tv_date.setText("下单日期:" + date);
+            //设置图片
+            /**
+             * 2016年5月26日16:38:04
+             * qinxiaoshou
+             * 这里要等到订单有商品id才能修改，根据商品id查询该商品的商品的对象信息，否则报错
+             */
+            Cloth c = new Cloth();
+            c.setPicture("51d82596-cba7-4457-966e-37f1dcaafa31.png");
+            new ImageLoader(c,holder.iv_product_picture).resume();
 
             holder.itemView.setOnClickListener(new View.OnClickListener() {  //监听列表条目信息跳转的控件
                 @Override
@@ -215,6 +222,7 @@ public class BusinessManageConsumerOrderPagerActivity extends FragmentActivity i
             TextView tv_length;
             TextView tv_date;
             Button btn_check;
+            ImageView iv_product_picture;
 
             public ViewHolder(View view) {
                 super(view);
@@ -225,8 +233,10 @@ public class BusinessManageConsumerOrderPagerActivity extends FragmentActivity i
                 tv_price = (TextView) view.findViewById(R.id.tv_price);
                 tv_realprice = (TextView) view.findViewById(R.id.tv_realprice);
                 tv_length = (TextView) view.findViewById(R.id.tv_length);
-                tv_date = (TextView) view.findViewById(R.id.tv_date);
+                tv_date = (TextView) view.findViewById(R.id.tv_buy_date);
                 btn_check = (Button) view.findViewById(R.id.bt_2);
+                //商品图片
+                iv_product_picture = (ImageView) view.findViewById(R.id.iv_product_picture);
             }
         }
     }

@@ -18,6 +18,7 @@ import com.aode.buyoapp.LL.Presenter.UserQueryPermissionPresenter;
 import com.aode.buyoapp.LL.bean.User;
 import com.aode.buyoapp.LL.view.IUserQueryPermissionProductView;
 import com.aode.buyoapp.R;
+import com.aode.buyoapp.qinxiaoshou.util.ImageLoader;
 
 import java.util.List;
 
@@ -103,7 +104,7 @@ public class ConsumerPermissionPageActivity extends AppCompatActivity implements
                 }
                 holder.rl_consumer_permission_content.setVisibility(View.VISIBLE);
                 holder.tv_store_name.setText("店铺:" +bName);
-                holder.iv_pictue.setImageResource(R.drawable.cheese_3);  //默认图片
+                new ImageLoader(user1.getCloths().get(position),holder.iv_pictue).resume();
                 holder.tv_title.setText(user1.getCloths().get(position).getTitle());
                 holder.tv_price.setText("￥" + user1.getCloths().get(position).getPrice());
                 holder.tv_stock.setText("库存:" + user1.getCloths().get(position).getStock());

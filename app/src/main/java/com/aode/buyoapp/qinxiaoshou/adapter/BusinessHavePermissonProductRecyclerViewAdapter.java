@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.aode.buyoapp.LL.bean.Business;
 import com.aode.buyoapp.LL.bean.Cloth;
 import com.aode.buyoapp.R;
+import com.aode.buyoapp.qinxiaoshou.util.ImageLoader;
 
 import java.util.List;
 
@@ -47,7 +48,6 @@ public class BusinessHavePermissonProductRecyclerViewAdapter extends RecyclerVie
 
     @Override
     public void onBindViewHolder(final BusinessHavePermissonProductRecyclerViewAdapter.ViewHolder holder, int position) {
-        System.out.println("toList@@@@@-->" + toBList);
         if (toBList!=null) {
             //取出所有商品
             holder.rl_to_friend_product.setVisibility(View.VISIBLE);
@@ -62,7 +62,8 @@ public class BusinessHavePermissonProductRecyclerViewAdapter extends RecyclerVie
                 tv_title = (TextView) childLayout.findViewById(R.id.tv_title);
                 tv_price = (TextView) childLayout.findViewById(R.id.tv_price);
                 tv_stock = (TextView) childLayout.findViewById(R.id.tv_stock);
-                iv_pictue.setImageResource(R.drawable.cheese_3);  //默认图片
+                new ImageLoader(cloth,iv_pictue).resume();
+
                 tv_title.setText(cloth.getTitle());
                 tv_price.setText("￥" + cloth.getPrice());
                 tv_stock.setText("库存:" + cloth.getStock());

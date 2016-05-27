@@ -86,7 +86,7 @@ public class BusinessManageConsumerOrderDetailActivity extends AppCompatActivity
             holder.tv_d_product_length.setText("购买长度:" + orders.getLength() + "米");
             holder.tv_all_price.setText("￥" + orders.getPrice());
             holder.tv_real_price.setText("￥" + orders.getPrice());
-            holder.tv_d_buytime.setText(dateString);
+            holder.tv_d_buytime.setText("下单时间:"+dateString);
 
         }
 

@@ -1,9 +1,8 @@
-package com.aode.buyoapp.qinxiaoshou;
+package com.aode.buyoapp.qinxiaoshou.activity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -19,16 +18,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aode.buyoapp.LL.Home_person;
+import com.aode.buyoapp.LL.Presenter.QueryProductByIdPresenter;
 import com.aode.buyoapp.LL.Presenter.UserOrdersShowPresenter;
 import com.aode.buyoapp.LL.Presenter.UserOrdersUpDatePresenter;
 import com.aode.buyoapp.LL.bean.Cloth;
 import com.aode.buyoapp.LL.bean.Orders;
 import com.aode.buyoapp.LL.view.IUserOrdersShowView;
 import com.aode.buyoapp.LL.view.IUserOrdersUpDateView;
+import com.aode.buyoapp.LL.view.QueryProductBuyIdView;
 import com.aode.buyoapp.R;
-import com.aode.buyoapp.qinxiaoshou.activity.ConsumerOrderDetailActivity;
-import com.aode.buyoapp.qinxiaoshou.adapter.RecyclerViewAdapter;
-import com.aode.buyoapp.qinxiaoshou.fragment.ConsumerOrderManagerFragment;
+import com.aode.buyoapp.qinxiaoshou.util.ImageLoader;
 
 import java.util.List;
 
@@ -43,8 +42,11 @@ public class ConsumerOrderListActivity extends AppCompatActivity  implements IUs
     private Button button;
     private Toolbar toolbar;
      UserOrdersShowPresenter userOrdersShowPresenter = new UserOrdersShowPresenter(this);
+
     private FragmentTransaction transaction;
     private RecyclerView mRecyclerView;
+    Cloth clothP; //查询到的cloth
+    private String CId ; //需要查询的商品的id
 
 
     @Override
@@ -92,14 +94,14 @@ public class ConsumerOrderListActivity extends AppCompatActivity  implements IUs
 
 
 
+
     /**
      * 用户订单条目适配器
      *
      * @author 覃培周
      * @// FIXME: 2016/4/7
      */
-    public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> implements IUserOrdersUpDateView {
-
+    public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> implements IUserOrdersUpDateView , QueryProductBuyIdView {
         private Context mContext;
         private List<Orders> orderses;
         private ImageView iv_pictue;
@@ -109,6 +111,7 @@ public class ConsumerOrderListActivity extends AppCompatActivity  implements IUs
         private TextView tv_state;
         private Button btn_left;
         public Orders orders = new Orders(); //需要修改的订单对象
+        QueryProductByIdPresenter queryProductByIdPresenter = new QueryProductByIdPresenter(this);
         UserOrdersUpDatePresenter userOrdersUpDatePresenter = new UserOrdersUpDatePresenter(this);
 
         public RecyclerViewAdapter(Context mContext, List<Orders> orderses) {
@@ -116,7 +119,24 @@ public class ConsumerOrderListActivity extends AppCompatActivity  implements IUs
             this.orderses = orderses;
         }
 
+        //根据商品id查询商品信息
+        @Override
+        public String getPId() {
+            System.out.println("@@@@@@@@@@@@需要查询商品id"+CId);
+            return CId;
+        }
 
+        @Override
+        public void toFindProductMainActivity(Cloth cloth) {
+            System.out.println("@#############查询到的商品对象"+cloth);
+            new ImageLoader(clothP,iv_pictue).resume();
+            clothP = cloth;
+        }
+
+        @Override
+        public void showFindProductFailedError() {
+            Toast.makeText(ConsumerOrderListActivity.this,"查询商品信息失败",Toast.LENGTH_SHORT).show();
+        }
         //列表页面的布局实现
         @Override
         public RecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -126,7 +146,6 @@ public class ConsumerOrderListActivity extends AppCompatActivity  implements IUs
 
         @Override
         public void onBindViewHolder(final RecyclerViewAdapter.ViewHolder holder, final int position) {
-            //取出所有商品
 
             holder.ll_i_product_list.removeView(holder.ll_product_content);//移除默认view
             holder.tv_store_name.setText("店铺:" + orderses.get(position).getBusiness().getName());
@@ -134,12 +153,22 @@ public class ConsumerOrderListActivity extends AppCompatActivity  implements IUs
             //添加子view
             LinearLayout childLayout = (LinearLayout) LayoutInflater.from(mContext).inflate(R.layout.business_check_who_hava_permisson_product_item_content, null);
             //设置显示商品的商品条目详情
-            Cloth cloth = orderses.get(position).getCloth();
             iv_pictue = (ImageView) childLayout.findViewById(R.id.iv_pictue);
             tv_title = (TextView) childLayout.findViewById(R.id.tv_title);
             tv_price = (TextView) childLayout.findViewById(R.id.tv_price);
             tv_stock = (TextView) childLayout.findViewById(R.id.tv_stock);
-            iv_pictue.setImageResource(R.drawable.cheese_3);  //默认图片
+            //查询该商品的信息
+            try {
+                CId = orderses.get(position).getcId()+"";
+             //   queryProductByIdPresenter.QueryProductBuyId();
+                //设置图片
+
+            }catch (Exception e){
+                System.out.println("商品id为空");
+                e.printStackTrace();
+            }
+            //根据商品id查询商品信息
+
             tv_title.setText("订单描述:" + orderses.get(position).getDescription());
             tv_price.setText("￥" + orderses.get(position).getPrice());
             tv_stock.setText("购买长度:" + orderses.get(position).getLength() + "米");
@@ -174,6 +203,7 @@ public class ConsumerOrderListActivity extends AppCompatActivity  implements IUs
                     Intent intent = new Intent(mContext, ConsumerOrderDetailActivity.class);
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("order", orderses.get(position));
+                    bundle.putSerializable("cloth",clothP);
                     intent.putExtras(bundle);
                     mContext.startActivity(intent);
                 }

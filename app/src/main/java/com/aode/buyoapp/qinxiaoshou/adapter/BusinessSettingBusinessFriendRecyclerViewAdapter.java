@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -19,6 +20,7 @@ import com.aode.buyoapp.LL.view.IBusinessFriendView;
 import com.aode.buyoapp.LL.view.IBusinessSettedPermissionView;
 import com.aode.buyoapp.R;
 import com.aode.buyoapp.qinxiaoshou.activity.BusinessUpdateBusinessAndPermissionActivity;
+import com.aode.buyoapp.qinxiaoshou.util.ImageLoader;
 
 import java.io.Serializable;
 import java.util.List;
@@ -61,6 +63,7 @@ public class BusinessSettingBusinessFriendRecyclerViewAdapter extends RecyclerVi
             holder.tv_name.setText(businesses.get(position).getName());
             holder.tv_phone.setText("联系方式:" + businesses.get(position).getPhoneNumber());
             holder.tv_address.setText("地址：" + businesses.get(position).getAddress());
+         //   new ImageLoader(businesses.get(position),holder.item_search_iv_icon).resume();
             this.position = position;
 
             holder.mView.setOnClickListener(new View.OnClickListener() {  //监听列表条目信息跳转的控件
@@ -97,6 +100,7 @@ public class BusinessSettingBusinessFriendRecyclerViewAdapter extends RecyclerVi
         TextView tv_phone;
         TextView tv_address;
         RelativeLayout rl_business_item;
+        ImageView item_search_iv_icon;
 
         public ViewHolder(View view) {
             super(view);
@@ -109,6 +113,8 @@ public class BusinessSettingBusinessFriendRecyclerViewAdapter extends RecyclerVi
             tv_phone = (TextView) view.findViewById(R.id.tv_phone);
             //商家地址
             tv_address = (TextView) view.findViewById(R.id.tv_address);
+            //图片
+            item_search_iv_icon = (ImageView) view.findViewById(R.id.item_search_iv_icon);
         }
     }
 }

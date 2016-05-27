@@ -16,10 +16,10 @@ import com.aode.buyoapp.LL.Login_business;
 import com.aode.buyoapp.LL.Presenter.BusinessLoginOutPresenter;
 import com.aode.buyoapp.LL.view.IBusinessLoginOutView;
 import com.aode.buyoapp.R;
-import com.aode.buyoapp.qinxiaoshou.BusinessFriendPagerActivity;
-import com.aode.buyoapp.qinxiaoshou.BusinessManageConsumerOrderPagerActivity;
-import com.aode.buyoapp.qinxiaoshou.BusinessProductManageSwitchActivity;
-import com.aode.buyoapp.qinxiaoshou.BusinessSearchOtherBusinessPagerActivity;
+import com.aode.buyoapp.qinxiaoshou.activity.BusinessFriendPagerActivity;
+import com.aode.buyoapp.qinxiaoshou.activity.BusinessManageConsumerOrderPagerActivity;
+import com.aode.buyoapp.qinxiaoshou.activity.BusinessProductManageSwitchActivity;
+import com.aode.buyoapp.qinxiaoshou.activity.BusinessSearchOtherBusinessPagerActivity;
 
 
 public class Business_Personal extends Fragment implements View.OnClickListener, IBusinessLoginOutView {

@@ -5,6 +5,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 
+import com.aode.buyoapp.qinxiaoshou.util.ImageLoader;
+
 public class AutoLoadRecyclerView extends RecyclerView implements LoadFinishCallBack {
 
 	private onLoadMoreListener loadMoreListener;    //加载更多回调

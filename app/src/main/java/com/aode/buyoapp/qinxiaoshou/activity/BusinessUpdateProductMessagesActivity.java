@@ -22,7 +22,7 @@ import com.aode.buyoapp.LL.Presenter.BusinessProductChangePresenter;
 import com.aode.buyoapp.LL.bean.Cloth;
 import com.aode.buyoapp.LL.view.IBusinessProductChangeView;
 import com.aode.buyoapp.R;
-import com.aode.buyoapp.qinxiaoshou.view.ImageLoader;
+import com.aode.buyoapp.qinxiaoshou.util.ImageLoader;
 
 import java.io.BufferedOutputStream;
 import java.io.File;

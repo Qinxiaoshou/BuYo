@@ -31,6 +31,7 @@ import com.aode.buyoapp.LL.view.IBusinessSettedPermissionView;
 import com.aode.buyoapp.R;
 import com.aode.buyoapp.qinxiaoshou.adapter.BusinessUpdateBusinessPerssionDataRecyclerViewAdapter;
 import com.aode.buyoapp.qinxiaoshou.fragment.BusinessUpdateBusinessPerssionFragment;
+import com.aode.buyoapp.qinxiaoshou.util.ImageLoader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -177,7 +178,7 @@ public class BusinessUpdateBusinessAndPermissionActivity extends FragmentActivit
                 }
             }
 
-            holder.iv_h_perssion_product.setImageResource(R.drawable.cheese_3);
+            new ImageLoader(cloths.get(position),holder.iv_h_perssion_product).resume();
             holder.title.setText(cloths.get(position).getTitle());
             holder.tv_price.setText("￥" + cloths.get(position).getPrice());
             holder.tv_stock.setText("库存:" + cloths.get(position).getStock());

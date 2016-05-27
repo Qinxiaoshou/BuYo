@@ -1,8 +1,5 @@
-package com.aode.buyoapp.qinxiaoshou;
+package com.aode.buyoapp.qinxiaoshou.activity;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,15 +12,11 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.aode.buyoapp.LL.Home_business;
-import com.aode.buyoapp.LL.Home_person;
-import com.aode.buyoapp.LL.Listener.BSearchListener;
 import com.aode.buyoapp.LL.Presenter.BusinessSearchPresenter;
 import com.aode.buyoapp.LL.bean.Business;
 import com.aode.buyoapp.LL.view.IBusinessSearchView;
 import com.aode.buyoapp.R;
-import com.aode.buyoapp.qinxiaoshou.activity.BusinessChooseBusinessAndPermissionActivity;
 import com.aode.buyoapp.qinxiaoshou.adapter.SearchAdapter;
-import com.aode.buyoapp.qinxiaoshou.model.Bean;
 import com.aode.buyoapp.qinxiaoshou.view.MySearchView;
 
 import java.util.ArrayList;

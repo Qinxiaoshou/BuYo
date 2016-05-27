@@ -14,7 +14,7 @@ import android.widget.Toast;
 import com.aode.buyoapp.LL.Presenter.UserLoginOutPresenter;
 import com.aode.buyoapp.LL.view.IUserLoginOutView;
 import com.aode.buyoapp.R;
-import com.aode.buyoapp.qinxiaoshou.ConsumerOrderListActivity;
+import com.aode.buyoapp.qinxiaoshou.activity.ConsumerOrderListActivity;
 import com.aode.buyoapp.qinxiaoshou.activity.ConsumerPermissionPageActivity;
 
 

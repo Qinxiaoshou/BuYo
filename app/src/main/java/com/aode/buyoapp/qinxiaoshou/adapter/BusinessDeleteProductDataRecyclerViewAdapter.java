@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,6 +16,7 @@ import com.aode.buyoapp.LL.Presenter.BusinessProductDeletePresenter;
 import com.aode.buyoapp.LL.bean.Cloth;
 import com.aode.buyoapp.LL.view.IBusinessProductDeleteView;
 import com.aode.buyoapp.R;
+import com.aode.buyoapp.qinxiaoshou.util.ImageLoader;
 
 import java.util.List;
 
@@ -51,6 +53,8 @@ public class BusinessDeleteProductDataRecyclerViewAdapter extends RecyclerView.A
         holder.tv_title.setText(cloths.get(position).getTitle());
         holder.tv_price.setText(cloths.get(position).getPrice()+"￥");
         holder.tv_stock.setText("库存:"+cloths.get(position).getStock());
+        new ImageLoader(cloths.get(position),holder.iv_product_image).resume();
+
         holder.btn_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,6 +91,7 @@ public class BusinessDeleteProductDataRecyclerViewAdapter extends RecyclerView.A
         TextView tv_title;
         TextView tv_price;
         TextView tv_stock;
+        ImageView iv_product_image;
 
         public ViewHolder(View view) {
             super(view);
@@ -94,7 +99,7 @@ public class BusinessDeleteProductDataRecyclerViewAdapter extends RecyclerView.A
             tv_title = (TextView) view.findViewById(R.id.tv_title);
             tv_price = (TextView) view.findViewById(R.id.tv_price);
             tv_stock = (TextView) view.findViewById(R.id.tv_stock);
-
+            iv_product_image = (ImageView) view.findViewById(R.id.iv_product_image);
             mView = view;
         }
     }

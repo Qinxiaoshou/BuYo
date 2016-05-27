@@ -7,11 +7,8 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,20 +20,9 @@ import com.aode.buyoapp.LL.bean.Cloth;
 import com.aode.buyoapp.LL.url;
 import com.aode.buyoapp.R;
 import com.aode.buyoapp.qinxiaoshou.activity.BusinessUpdateProductMessagesActivity;
-import com.aode.buyoapp.qinxiaoshou.view.ImageLoader;
+import com.aode.buyoapp.qinxiaoshou.util.ImageLoader;
 
-import org.w3c.dom.Text;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.Serializable;
 import java.util.List;
-import java.util.logging.LogRecord;
-
-import okhttp3.Headers;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 
 
 /**

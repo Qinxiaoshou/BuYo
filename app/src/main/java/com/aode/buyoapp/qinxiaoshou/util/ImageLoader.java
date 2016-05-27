@@ -1,4 +1,4 @@
-package com.aode.buyoapp.qinxiaoshou.view;
+package com.aode.buyoapp.qinxiaoshou.util;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -8,6 +8,7 @@ import android.os.Message;
 import android.widget.ImageView;
 
 import com.aode.buyoapp.LL.bean.Cloth;
+import com.aode.buyoapp.LL.bean.Orders;
 import com.aode.buyoapp.LL.url;
 import com.aode.buyoapp.R;
 
@@ -28,6 +29,17 @@ public class ImageLoader {
     private ImageView picture;
     private Bitmap bitmap;
     private Cloth cloth;
+
+    public ImageLoader(List<Cloth> cloths, int position, ImageView picture){
+        this.cloth = cloths.get(position);
+        this.position = position;
+        this.picture = picture;
+    }
+    public ImageLoader(Cloth cloth,ImageView picture){
+        this.cloth = cloth;
+        this.picture = picture;
+    }
+
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -44,15 +56,7 @@ public class ImageLoader {
         }
     };
 
-    public ImageLoader(List<Cloth> cloths, int position, ImageView picture){
-        this.cloths = cloths;
-        this.position = position;
-        this.picture = picture;
-    }
-    public ImageLoader(Cloth cloth,ImageView picture){
-        this.cloth = cloth;
-        this.picture = picture;
-    }
+
     //单张图片下载步骤
     public void loadAndRefreshPicture(){
         //加载图片
@@ -75,7 +79,7 @@ public class ImageLoader {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }catch (NullPointerException e){
-                    picture.setImageResource(R.drawable.cheese_3);
+                    picture.setImageResource(R.drawable.buliao2);
                     e.printStackTrace();
                 }
             }
@@ -92,11 +96,10 @@ public class ImageLoader {
             public void run() {
                 try {
                     OkHttpClient client = new OkHttpClient();
-                    Request request = new Request.Builder().url(new url().getUrl() + "/tb/resources/file/cloth/" + cloths.get(position).getPicture()).build();
+                    Request request = new Request.Builder().url(new url().getUrl() + "/tb/resources/file/cloth/" + cloth.getPicture()).build();
                     Response response = client.newCall(request).execute();
                     InputStream is = response.body().byteStream();
                     Bitmap bm = BitmapFactory.decodeStream(is);
-
                     bitmap = bm;
                     Message msg = new Message();
                     Bundle bundle = new Bundle();

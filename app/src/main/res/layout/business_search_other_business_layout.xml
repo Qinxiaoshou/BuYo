@@ -43,12 +43,12 @@
 
     </android.support.v7.widget.Toolbar>
 
-    <android.support.v7.widget.RecyclerView
+    <com.aode.buyoapp.qinxiaoshou.view.AutoLoadRecyclerView
         android:layout_below="@+id/toolbar_business_search"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/rv_search_business"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content" />
 
     <RadioGroup
         android:visibility="gone"

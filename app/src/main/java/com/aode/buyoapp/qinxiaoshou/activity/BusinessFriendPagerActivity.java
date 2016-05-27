@@ -1,4 +1,4 @@
-package com.aode.buyoapp.qinxiaoshou;
+package com.aode.buyoapp.qinxiaoshou.activity;
 
 import android.graphics.Color;
 import android.os.Bundle;

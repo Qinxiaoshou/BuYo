@@ -42,4 +42,6 @@ public class ConsumerOrderDetailsFragment extends Fragment {
         myRecyclerView.setLayoutManager(new LinearLayoutManager(myRecyclerView.getContext()));
         myRecyclerView.setAdapter(new ConsumerOrderDetailsRecyclerViewAdapter(getActivity(),orders));
     }
+
+
 }

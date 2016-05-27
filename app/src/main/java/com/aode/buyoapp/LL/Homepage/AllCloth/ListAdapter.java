@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.aode.buyoapp.LL.bean.Cloth;
 import com.aode.buyoapp.R;
+import com.aode.buyoapp.qinxiaoshou.util.ImageLoader;
 
 import java.util.List;
 
@@ -42,7 +43,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
 
     @Override
     public void onBindViewHolder(final ListViewHolder holder, int position) {
-        holder.iv_itemIv.setImageResource(R.drawable.buliao2);
+       // holder.iv_itemIv.setImageResource(R.drawable.buliao2);
+        new ImageLoader(cloths.get(position),holder.iv_itemIv).resume();
         holder.id_item_abstruct.setText(cloths.get(position).getTitle());
         holder.id_item_price.setText("$" + cloths.get(position).getPrice());
 

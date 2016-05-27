@@ -1,15 +1,10 @@
 package com.aode.buyoapp.qinxiaoshou.activity;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -32,9 +27,7 @@ import com.aode.buyoapp.LL.bean.Cloth;
 import com.aode.buyoapp.LL.bean.Orders;
 import com.aode.buyoapp.LL.view.IUserOrdersAddView;
 import com.aode.buyoapp.R;
-import com.aode.buyoapp.qinxiaoshou.ConsumerOrderListActivity;
-import com.aode.buyoapp.qinxiaoshou.adapter.ConsumerAddOrderDataRecyclerViewAdapter;
-import com.aode.buyoapp.qinxiaoshou.fragment.ConsumerAddOrderDetailsFragment;
+import com.aode.buyoapp.qinxiaoshou.util.ImageLoader;
 
 
 /**
@@ -45,7 +38,6 @@ import com.aode.buyoapp.qinxiaoshou.fragment.ConsumerAddOrderDetailsFragment;
  */
 public class ConsumerAddOrderDetailsActivity extends AppCompatActivity implements IUserOrdersAddView {
 
-    private ConsumerAddOrderDetailsFragment productItemDetailsFragment;
     private TextView tv_g_add_product_title;
     private Button button;
     private Toolbar toolbar;
@@ -158,7 +150,6 @@ public class ConsumerAddOrderDetailsActivity extends AppCompatActivity implement
         };
 
 
-
         public ConsumerAddOrderDataRecyclerViewAdapter(Context mContext, Cloth cloth) {
             this.mContext = mContext;
             this.cloth = cloth;
@@ -177,7 +168,8 @@ public class ConsumerAddOrderDetailsActivity extends AppCompatActivity implement
             orders = new Orders();
             holder.tv_d_username.setText("买家:" + Home_person.loginName);
             holder.tv_d_phone.setText(Home_person.phone);
-            holder.iv_d_product.setImageResource(R.drawable.cheese_3); //默认图片
+            //设置图片
+            new ImageLoader(cloth, holder.iv_d_product).resume();
             holder.tv_d_allPrice_text.setText("￥" + cloth.getPrice()); //默认价格
             holder.tv_sotre_name.setText("卖家:" + cloth.getBusiness().getName());
             holder.vt_d_product_title.setText(cloth.getTitle());

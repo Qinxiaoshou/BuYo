@@ -72,6 +72,7 @@
                     android:orientation="vertical">
 
                     <ImageView
+                        android:id="@+id/iv_product_picture"
                         android:layout_width="100dp"
                         android:layout_height="90dp"
                         android:background="@drawable/cheese_3" />
@@ -134,7 +135,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/tv_date"
+            android:id="@+id/tv_buy_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/ll_1"

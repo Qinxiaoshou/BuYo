@@ -42,7 +42,7 @@
         </RelativeLayout>
 
     </android.support.v7.widget.Toolbar>
-    <android.support.v7.widget.RecyclerView
+    <com.aode.buyoapp.qinxiaoshou.view.AutoLoadRecyclerView
         android:layout_weight="1.0"
         android:layout_below="@+id/toolbar_business_manager_consumer_order_details"
         android:id="@+id/rv_manager_consumer_order"

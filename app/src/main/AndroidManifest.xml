@@ -51,15 +51,12 @@
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".qinxiaoshou.activity.ConsumerOrderDetailActivity" />
         <activity android:name=".qinxiaoshou.activity.ConsumerProductDetailsActivity" />
-        <activity android:name=".qinxiaoshou.BusinessFriendPagerActivity" />
-        <activity android:name=".qinxiaoshou.BusinessProductManageSwitchActivity" />
-        <activity android:name=".qinxiaoshou.BusinessManageConsumerOrderPagerActivity" />
-        <activity android:name=".qinxiaoshou.BusinessSearchOtherBusinessPagerActivity" />
-        <activity android:name=".qinxiaoshou.ConsumerOrderListActivity" />
+        <activity android:name=".qinxiaoshou.activity.BusinessFriendPagerActivity" />
+        <activity android:name=".qinxiaoshou.activity.BusinessProductManageSwitchActivity" />
+        <activity android:name=".qinxiaoshou.activity.BusinessManageConsumerOrderPagerActivity" />
+        <activity android:name=".qinxiaoshou.activity.BusinessSearchOtherBusinessPagerActivity" />
+        <activity android:name=".qinxiaoshou.activity.ConsumerOrderListActivity" />
         <activity android:name=".qinxiaoshou.activity.SearchActivity" />
-        <activity
-            android:name=".qinxiaoshou.ConsumerProductListActivity"
-            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".qinxiaoshou.activity.ConsumerAddOrderDetailsActivity"
             android:windowSoftInputMode="adjustPan" />

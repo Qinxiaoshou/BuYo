@@ -20,6 +20,7 @@ import com.aode.buyoapp.LL.Listener.BRegisterListener;
 import com.aode.buyoapp.LL.Listener.BSearchListener;
 import com.aode.buyoapp.LL.Listener.BShowChangeListener;
 import com.aode.buyoapp.LL.Listener.BShowListener;
+import com.aode.buyoapp.LL.Listener.QueryProductBuyIdListener;
 import com.aode.buyoapp.LL.bean.Business;
 import com.aode.buyoapp.LL.bean.Cloth;
 import com.aode.buyoapp.LL.bean.Orders;
@@ -72,6 +73,9 @@ public interface IBusinessBiz {
 
     //获取除了我商家的其他商家的商品
     void getNoMeProduct(BQueryNoMeProductListener bQueryNoMeProductListener);
+
+    //根据商品id查询商品对象信息
+    void getProductBuyId(String cId,QueryProductBuyIdListener queryProductBuyIdListener);
 
     //修改商品资料
     void ProductChange(Cloth cloth, BProductChangeListener bProductChangeListener,File picture);

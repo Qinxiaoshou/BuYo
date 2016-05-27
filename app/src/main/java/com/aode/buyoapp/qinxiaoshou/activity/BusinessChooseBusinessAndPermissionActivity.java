@@ -30,6 +30,7 @@ import com.aode.buyoapp.LL.view.IBusinessProductView;
 import com.aode.buyoapp.R;
 import com.aode.buyoapp.qinxiaoshou.adapter.BusinessSettingBusinessPerssionDataRecyclerViewAdapter;
 import com.aode.buyoapp.qinxiaoshou.fragment.BusinessSettingBusinessPerssionFragment;
+import com.aode.buyoapp.qinxiaoshou.util.ImageLoader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -127,7 +128,7 @@ public class BusinessChooseBusinessAndPermissionActivity extends FragmentActivit
 
         @Override
         public void onBindViewHolder(final BusinessSettingBusinessPerssionDataRecyclerViewAdapter.ViewHolder holder, final int position) {
-            holder.iv_h_perssion_product.setImageResource(R.drawable.cheese_3);
+           new ImageLoader(oldCloths.get(position),holder.iv_h_perssion_product).resume();
             holder.title.setText(oldCloths.get(position).getTitle());
             holder.tv_price.setText("￥" + oldCloths.get(position).getPrice());
             holder.tv_stock.setText("库存:" + oldCloths.get(position).getStock());
