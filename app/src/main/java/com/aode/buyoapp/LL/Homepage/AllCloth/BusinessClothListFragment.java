@@ -16,9 +16,11 @@ import com.aode.buyoapp.LL.bean.Cloth;
 import com.aode.buyoapp.LL.view.IBusinessNoMeProductView;
 import com.aode.buyoapp.LL.view.IUserClothListView;
 import com.aode.buyoapp.R;
+import com.aode.buyoapp.qinxiaoshou.activity.BusinessProductDetailsActivity;
 import com.aode.buyoapp.qinxiaoshou.activity.ConsumerProductDetailsActivity;
 
 import java.util.List;
+import java.util.logging.Handler;
 
 import de.greenrobot.event.EventBus;
 
@@ -76,7 +78,7 @@ public class BusinessClothListFragment extends Fragment implements IBusinessNoMe
     }
 
     @Override
-    public void toMainActivity(List<Cloth> clothlist) {
+    public void toMainActivity(final List<Cloth> clothlist) {
         //处理信息
         recyclerView = (RecyclerView) view.findViewById(R.id.rv_detail);
         //设置布局管理器,重写使之自适应
@@ -88,7 +90,10 @@ public class BusinessClothListFragment extends Fragment implements IBusinessNoMe
             @Override
             public void onItemClick(View view, int position) {
                 //点击进入商品详情
-                Intent intent = new Intent(getActivity(), ConsumerProductDetailsActivity.class);
+                Intent intent = new Intent(getActivity(), BusinessProductDetailsActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("cloth",clothlist.get(position));
+                intent.putExtras(bundle);
                 startActivity(intent);
                 System.out.println("位置:" + position);
             }

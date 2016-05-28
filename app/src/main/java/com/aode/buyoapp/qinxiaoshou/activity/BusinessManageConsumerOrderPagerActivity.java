@@ -129,15 +129,7 @@ public class BusinessManageConsumerOrderPagerActivity extends FragmentActivity i
             holder.tv_realprice.setText("实际价钱:" + String.valueOf(orderses.get(position).getPrice()));
             holder.tv_length.setText("布长:" + orderses.get(position).getLength() + "米");
             holder.tv_date.setText("下单日期:" + date);
-            //设置图片
-            /**
-             * 2016年5月26日16:38:04
-             * qinxiaoshou
-             * 这里要等到订单有商品id才能修改，根据商品id查询该商品的商品的对象信息，否则报错
-             */
-            Cloth c = new Cloth();
-            c.setPicture("51d82596-cba7-4457-966e-37f1dcaafa31.png");
-            new ImageLoader(c,holder.iv_product_picture).resume();
+            new ImageLoader(orderses.get(position).getCloth(),holder.iv_product_picture).resume();
 
             holder.itemView.setOnClickListener(new View.OnClickListener() {  //监听列表条目信息跳转的控件
                 @Override

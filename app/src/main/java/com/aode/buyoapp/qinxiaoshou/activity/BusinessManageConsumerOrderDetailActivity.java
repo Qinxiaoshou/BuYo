@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.aode.buyoapp.LL.bean.Orders;
 import com.aode.buyoapp.R;
+import com.aode.buyoapp.qinxiaoshou.util.ImageLoader;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -80,7 +81,7 @@ public class BusinessManageConsumerOrderDetailActivity extends AppCompatActivity
             holder.tv_d_phone.setText("");  //数据库字段没有存进phone
             holder.tv_address.setText(orders.getAddress());
             holder.tv_store_name.setText("卖家:"+orders.getCloth().getTitle());
-            holder.iv_d_product.setImageResource(R.drawable.cheese_3);
+            new ImageLoader(orders.getCloth(),holder.iv_d_product).resume();
             holder.vt_d_product_title.setText(orders.getCloth().getTitle());
             holder.tv_price.setText("￥"+orders.getCloth().getPrice()+"/米");
             holder.tv_d_product_length.setText("购买长度:" + orders.getLength() + "米");

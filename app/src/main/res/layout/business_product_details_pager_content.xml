@@ -43,10 +43,12 @@
                 android:typeface="sans" />
 
             <ImageView
+                android:paddingTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerInParent="true"
+                android:maxLines="2"
                 android:paddingRight="10dp"
                 android:src="@drawable/share" />
 
@@ -279,7 +281,7 @@
         android:drawableRight="@drawable/ach"
         android:textSize="20dip" />
     <LinearLayout
-        android:visibility="invisible"
+        android:visibility="gone"
         android:id="@+id/description_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

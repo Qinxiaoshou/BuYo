@@ -40,6 +40,7 @@ public class ConsumerProductDetailsActivity extends AppCompatActivity {
     private ImageView iv_product;
     private TextView tv_company_title;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -17,11 +17,13 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
 import android.view.animation.Transformation;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.aode.buyoapp.LL.bean.Cloth;
 import com.aode.buyoapp.R;
+import com.aode.buyoapp.qinxiaoshou.util.ImageLoader;
 
 
 /**
@@ -85,6 +87,13 @@ class ProductDataRecyclerViewAdapter extends RecyclerView.Adapter<ProductDataRec
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onBindViewHolder(final ProductDataRecyclerViewAdapter.ViewHolder holder, int position) {
+        new ImageLoader(cloth,holder.iv_product).resume();
+        holder.tv_product_data_title.setText(cloth.getTitle());
+        holder.tv_product_data_price.setText(cloth.getPrice()+"/￥");
+      /*  holder.tv_company_title.setText(cloth.getBusiness().getName());
+        holder.tv_store_descrite.setText(cloth.getBusiness().getDescription());*/
+
+
         final TextView expandView = (TextView) holder.mView.findViewById(R.id.expand_view);
         final LinearLayout descriptionView = (LinearLayout) holder.mView.findViewById(R.id.description_layout);
         descriptionView.post(new Runnable() {
@@ -136,11 +145,7 @@ class ProductDataRecyclerViewAdapter extends RecyclerView.Adapter<ProductDataRec
 
             }
         });
-       /* System.out.println("-->" + position);
-        holder.imageView.setImageResource(R.drawable.buliao3);
-        holder.tv_product_data_title.setText(cloth.getTitle());
-        holder.tv_product_data_price.setText(cloth.getPrice() + "￥/米");
-        holder.tv_company_title.setText(cloth.getBusiness().getName());*/
+
     }
 
     @Override
@@ -151,21 +156,24 @@ class ProductDataRecyclerViewAdapter extends RecyclerView.Adapter<ProductDataRec
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
-      /*  public final ImageView imageView;
-        public final TextView tv_product_data_title;
-        public final TextView tv_product_data_price;
-        public final TextView tv_company_title;*/
+        private final ImageView iv_product;
+        private final TextView tv_product_data_title;
+        private final TextView tv_product_data_price;
+        private final TextView tv_company_title;
+        private final TextView tv_store_descrite;
 
         public ViewHolder(View view) {
             super(view);
-         /*   //商家名
-            tv_company_title = (TextView) view.findViewById(R.id.tv_company_title);
             //商品图片
-            imageView = (ImageView) view.findViewById(R.id.iv_product);
+            iv_product = (ImageView) view.findViewById(R.id.iv_product);
             //商品标题
             tv_product_data_title = (TextView) view.findViewById(R.id.tv_product_data_title);
             //商品价格
-            tv_product_data_price = (TextView) view.findViewById(R.id.tv_product_data_price);*/
+            tv_product_data_price = (TextView) view.findViewById(R.id.tv_product_data_price);
+            //店铺名称
+            tv_company_title = (TextView) view.findViewById(R.id.tv_company_title);
+            //店铺描述
+            tv_store_descrite = (TextView) view.findViewById(R.id.tv_store_descrite);
             mView = view;
         }
     }
