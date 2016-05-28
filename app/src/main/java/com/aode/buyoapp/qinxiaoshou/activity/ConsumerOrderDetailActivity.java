@@ -24,6 +24,7 @@ import com.aode.buyoapp.LL.view.QueryProductBuyIdView;
 import com.aode.buyoapp.R;
 import com.aode.buyoapp.qinxiaoshou.adapter.ConsumerOrderDetailsRecyclerViewAdapter;
 import com.aode.buyoapp.qinxiaoshou.fragment.ConsumerOrderDetailsFragment;
+import com.aode.buyoapp.qinxiaoshou.util.ImageLoader;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -115,7 +116,7 @@ public class ConsumerOrderDetailActivity extends FragmentActivity {
         tv_d_phone.setText("");  //数据库字段没有存进phone
         tv_address.setText(order.getAddress());
         tv_store_name.setText("卖家:"+order.getBusiness().getName());
-        iv_d_product.setImageResource(R.drawable.cheese_3);
+        new ImageLoader(order.getCloth(),iv_d_product).resume();
         vt_d_product_title.setText(order.getCloth().getTitle());
         tv_price.setText("￥"+order.getCloth().getPrice()+"/米");
         tv_d_product_length.setText("购买长度:"+order.getLength()+"米");

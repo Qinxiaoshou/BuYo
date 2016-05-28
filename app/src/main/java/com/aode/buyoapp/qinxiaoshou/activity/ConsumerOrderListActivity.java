@@ -33,20 +33,23 @@ import java.util.List;
 
 /**
  * 用户订单列表activity
- * @// FIXME: 2016/4/7
+ *
  * @author 覃培周
+ * @// FIXME: 2016/4/7
  */
-public class ConsumerOrderListActivity extends AppCompatActivity  implements IUserOrdersShowView{
+public class ConsumerOrderListActivity extends AppCompatActivity implements IUserOrdersShowView {
 
     private TextView tv_g_add_product_title;
     private Button button;
+    private Button btn_left;
     private Toolbar toolbar;
-     UserOrdersShowPresenter userOrdersShowPresenter = new UserOrdersShowPresenter(this);
+    private TextView tv_state;
+    UserOrdersShowPresenter userOrdersShowPresenter = new UserOrdersShowPresenter(this);
 
     private FragmentTransaction transaction;
     private RecyclerView mRecyclerView;
     Cloth clothP; //查询到的cloth
-    private String CId ; //需要查询的商品的id
+    private String CId; //需要查询的商品的id
 
 
     @Override
@@ -54,7 +57,7 @@ public class ConsumerOrderListActivity extends AppCompatActivity  implements IUs
         super.onCreate(savedInstanceState);
         setContentView(R.layout.consumer_order_manager_layout);
         userOrdersShowPresenter.ordersShow();
-        toolbar = (Toolbar)findViewById(R.id.toolbar_consumer_manager_order);
+        toolbar = (Toolbar) findViewById(R.id.toolbar_consumer_manager_order);
         tv_g_add_product_title = (TextView) findViewById(R.id.tv_toolbar_consumer_manager_order_title);
         button = (Button) findViewById(R.id.btn_right_text);
         toolbar.setNavigationIcon(R.drawable.left_arrow);//设置导航栏图标
@@ -79,20 +82,18 @@ public class ConsumerOrderListActivity extends AppCompatActivity  implements IUs
 
         mRecyclerView = (RecyclerView) findViewById(R.id.rv_consumer_manager_order);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerView.setAdapter(new RecyclerViewAdapter(this,orderses));
+        mRecyclerView.setAdapter(new RecyclerViewAdapter(this, orderses));
     }
 
     @Override
     public void showFailedError() {
-        Toast.makeText(this,"查询订单列表失败",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "查询订单列表失败", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void showNo() {
-        Toast.makeText(this,"购物车空空的,快去买点什么吧~",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "购物车空空的,快去买点什么吧~", Toast.LENGTH_SHORT).show();
     }
-
-
 
 
     /**
@@ -101,17 +102,11 @@ public class ConsumerOrderListActivity extends AppCompatActivity  implements IUs
      * @author 覃培周
      * @// FIXME: 2016/4/7
      */
-    public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> implements IUserOrdersUpDateView , QueryProductBuyIdView {
+    public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> implements IUserOrdersUpDateView{
         private Context mContext;
         private List<Orders> orderses;
         private ImageView iv_pictue;
-        private TextView tv_title;
-        private TextView tv_price;
-        private TextView tv_stock;
-        private TextView tv_state;
-        private Button btn_left;
         public Orders orders = new Orders(); //需要修改的订单对象
-        QueryProductByIdPresenter queryProductByIdPresenter = new QueryProductByIdPresenter(this);
         UserOrdersUpDatePresenter userOrdersUpDatePresenter = new UserOrdersUpDatePresenter(this);
 
         public RecyclerViewAdapter(Context mContext, List<Orders> orderses) {
@@ -119,24 +114,7 @@ public class ConsumerOrderListActivity extends AppCompatActivity  implements IUs
             this.orderses = orderses;
         }
 
-        //根据商品id查询商品信息
-        @Override
-        public String getPId() {
-            System.out.println("@@@@@@@@@@@@需要查询商品id"+CId);
-            return CId;
-        }
 
-        @Override
-        public void toFindProductMainActivity(Cloth cloth) {
-            System.out.println("@#############查询到的商品对象"+cloth);
-            new ImageLoader(clothP,iv_pictue).resume();
-            clothP = cloth;
-        }
-
-        @Override
-        public void showFindProductFailedError() {
-            Toast.makeText(ConsumerOrderListActivity.this,"查询商品信息失败",Toast.LENGTH_SHORT).show();
-        }
         //列表页面的布局实现
         @Override
         public RecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -147,33 +125,17 @@ public class ConsumerOrderListActivity extends AppCompatActivity  implements IUs
         @Override
         public void onBindViewHolder(final RecyclerViewAdapter.ViewHolder holder, final int position) {
 
-            holder.ll_i_product_list.removeView(holder.ll_product_content);//移除默认view
             holder.tv_store_name.setText("店铺:" + orderses.get(position).getBusiness().getName());
             holder.tv_state.setText(orderses.get(position).getState());
-            //添加子view
-            LinearLayout childLayout = (LinearLayout) LayoutInflater.from(mContext).inflate(R.layout.business_check_who_hava_permisson_product_item_content, null);
-            //设置显示商品的商品条目详情
-            iv_pictue = (ImageView) childLayout.findViewById(R.id.iv_pictue);
-            tv_title = (TextView) childLayout.findViewById(R.id.tv_title);
-            tv_price = (TextView) childLayout.findViewById(R.id.tv_price);
-            tv_stock = (TextView) childLayout.findViewById(R.id.tv_stock);
+            new ImageLoader(orderses.get(position).getCloth(), holder.iv__order_pictue).resume();
+            holder.tv_order_title.setText("订单描述:" + orderses.get(position).getDescription());
+            holder.tv_order_price.setText("￥" + orderses.get(position).getPrice());
+            holder.tv_order_stock.setText("购买长度:" + orderses.get(position).getLength() + "米");
+
+            iv_pictue = holder.iv__order_pictue;
             //查询该商品的信息
-            try {
-                CId = orderses.get(position).getcId()+"";
-             //   queryProductByIdPresenter.QueryProductBuyId();
+                CId = orderses.get(position).getcId() + "";
                 //设置图片
-
-            }catch (Exception e){
-                System.out.println("商品id为空");
-                e.printStackTrace();
-            }
-            //根据商品id查询商品信息
-
-            tv_title.setText("订单描述:" + orderses.get(position).getDescription());
-            tv_price.setText("￥" + orderses.get(position).getPrice());
-            tv_stock.setText("购买长度:" + orderses.get(position).getLength() + "米");
-            //在商铺条目中添加子商品条目
-            holder.ll_i_product_list.addView(childLayout);
 
             //  holder.btn_right.setEnabled(false); //不可点击
             if ("已发货".equals(orderses.get(position).getState())) {
@@ -203,7 +165,6 @@ public class ConsumerOrderListActivity extends AppCompatActivity  implements IUs
                     Intent intent = new Intent(mContext, ConsumerOrderDetailActivity.class);
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("order", orderses.get(position));
-                    bundle.putSerializable("cloth",clothP);
                     intent.putExtras(bundle);
                     mContext.startActivity(intent);
                 }
@@ -239,30 +200,35 @@ public class ConsumerOrderListActivity extends AppCompatActivity  implements IUs
         }
 
 
-        public  class ViewHolder extends RecyclerView.ViewHolder {
+        public class ViewHolder extends RecyclerView.ViewHolder {
             public final View mView;
-            public LinearLayout ll_i_product_list;
             public TextView tv_store_name;
-            public LinearLayout ll_product_content;
-            public TextView tv_state;
             public TextView tv_result;
+            public TextView tv_order_title;
+            public TextView tv_order_price;
+            public TextView tv_order_stock;
+            public TextView tv_state;
             public Button btn_left;
-            // public Button btn_right;
+            public ImageView iv__order_pictue;
+
 
             public ViewHolder(View view) {
                 super(view);
-                //商铺动态添加条目的布局
-                ll_i_product_list = (LinearLayout) view.findViewById(R.id.ll_1);
                 //商铺名称
                 tv_store_name = (TextView) view.findViewById(R.id.tv_store_name);
-                //商铺动态添加的商品默认条目内容
-                ll_product_content = (LinearLayout) view.findViewById(R.id.ll_product_content);
                 //商品交易状态
                 tv_state = (TextView) view.findViewById(R.id.tv_state);
                 //商品订单结果
                 tv_result = (TextView) view.findViewById(R.id.tv_result);
                 //按钮左
                 btn_left = (Button) view.findViewById(R.id.btn_left);
+
+
+                //设置显示商品的商品条目详情
+                iv__order_pictue = (ImageView) view.findViewById(R.id.iv__order_pictue);
+                tv_order_title = (TextView) view.findViewById(R.id.tv_order_title);
+                tv_order_price = (TextView) view.findViewById(R.id.tv_order_price);
+                tv_order_stock = (TextView) view.findViewById(R.id.tv_order_stock);
            /* //按钮右
             btn_right = (Button) view.findViewById(R.id.btn_right);*/
                 mView = view;
