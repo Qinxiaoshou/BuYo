@@ -36,54 +36,53 @@ import java.util.List;
  * @// FIXME: 2016/4/7
  */
 public class BusinessFriendPagerActivity extends AppCompatActivity implements IBusinessFriendView, IBusinessFriendToMeView {
+    Adapter adapter = new Adapter(getSupportFragmentManager());
+    BusinessFriendShowPresenter businessFriendShowPresenter = new BusinessFriendShowPresenter(this);
+    BusinessFriendToMeShowPresenter businessFriendToMeShowPresenter = new BusinessFriendToMeShowPresenter(this);
     private TabLayout tabLayout;
     private Toolbar toolbar;
     private List<Business> bList;   //本店设置过权限的商家
     private List<Business> toBList;  //别的商家对我设置过权限的集合
-    final int PAGE_1 = 3;   //拥有权限的商品界面页面需要默认界面
-    final int PAGE_2 = 4;   //我的友好商家界面需要默认界面
-    int count = 0;  //计算需要默认成功界面的计数器
-    int failcount= 0; //失败加载数据计数器
-    int nocount = 0;  //查找不到数据计数器
-    public Handler handler = new Handler() {
+    final int PAGE_1 = 3;   //成功拥有权限的商品界面页面需要默认界面
+    final int PAGE_2 = 4;   //成功我的友好商家界面需要默认界面
+    final int PAGE_3 = 5;   //失败拥有权限的商品界面页面需要默认界面
+    final int PAGE_4 = 6;   //失败我的友好商家界面需要默认界面
+    private int page1_state;
+    private int page2_state;
+    private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
+            System.out.println("监听到消息");
             Bundle bundle = msg.getData();
-            List<Business> bList = (List<Business>) bundle.getSerializable("bList");
-            List<Business> toBList = (List<Business>) bundle.getSerializable("toBList");
-            int toBLsuccess = bundle.getInt("toBLsuccess");//获得别的商家对我设置过权限成功
-            int bLsuccess = bundle.getInt("bLsuccess");  //我的友好商家界面数据加载成功
-            int count = bundle.getInt("count");   //成功加载数据的界面数
-            int failcount = bundle.getInt("failcount");  //查询失败的界面数
-            int nocount = bundle.getInt("nocount");  //查找不到数据的界面数
-            if (count == 1) {   //只有一个界面有数据
-               if(toBLsuccess==PAGE_1){  //拥有权限的商品fragment能加载数据
-                   adapter.addFragment(new BusinessCheckWhoHaveProductPermissionFragment(toBList), "拥有权限的商品");
-                   adapter.addFragment(new BusinessSettingBusinessFriendFragment(), "我的友好商家");
-                   init();
-               }else if(bLsuccess==PAGE_2){  //我的友好商家fragment加载数据
-                   adapter.addFragment(new BusinessCheckWhoHaveProductPermissionFragment(), "拥有权限的商品");
-                   adapter.addFragment(new BusinessSettingBusinessFriendFragment(bList), "我的友好商家");
-                   init();
-               }
-            }else if(count==2){   //两个界面都有数据
-                adapter.addFragment(new BusinessCheckWhoHaveProductPermissionFragment(toBList), "拥有权限的商品");
-                adapter.addFragment(new BusinessSettingBusinessFriendFragment(bList), "我的友好商家");
-                init();
-            }else if(failcount==2||nocount==2){    //两个界面都没有数据
-                adapter.addFragment(new BusinessCheckWhoHaveProductPermissionFragment(), "拥有权限的商品");
-                adapter.addFragment(new BusinessSettingBusinessFriendFragment(), "我的友好商家");
+            //获得别的商家对我设置过权限的状态
+            //我的友好商家界面的状态
+            String startPage = bundle.getString("startPage");
+            if("startPage".equals(startPage)){
+                if (page1_state == PAGE_1 && page2_state == PAGE_2) {   //两个fragment都有数据
+                    adapter.addFragment(new BusinessCheckWhoHaveProductPermissionFragment(toBList), "拥有权限的商品");
+                    adapter.addFragment(new BusinessSettingBusinessFriendFragment(bList), "我的友好商家");
+                    System.out.println("两个fragment都有数据");
+                } else if (page1_state == PAGE_1 && page2_state == PAGE_4) { //只有拥有权限的商品界面页面有数据
+                    adapter.addFragment(new BusinessCheckWhoHaveProductPermissionFragment(toBList), "拥有权限的商品");
+                    adapter.addFragment(new BusinessSettingBusinessFriendFragment(), "我的友好商家");
+                    System.out.println("只有拥有权限的商品界面页面有数据");
+                } else if (page1_state == PAGE_3 && page2_state == PAGE_2) {  //只有我的友好商家界面有数据
+                    adapter.addFragment(new BusinessCheckWhoHaveProductPermissionFragment(), "拥有权限的商品");
+                    adapter.addFragment(new BusinessSettingBusinessFriendFragment(bList), "我的友好商家");
+                    System.out.println("只有我的友好商家界面有数据");
+                } else if (page1_state == PAGE_3 && page2_state == PAGE_4) {   //两个界面都没有数据
+                    adapter.addFragment(new BusinessCheckWhoHaveProductPermissionFragment(), "拥有权限的商品");
+                    adapter.addFragment(new BusinessSettingBusinessFriendFragment(), "我的友好商家");
+                    System.out.println("两个界面都没有数据");
+                }
                 init();
             }
+
 
 
         }
     };
 
-
-    Adapter adapter = new Adapter(getSupportFragmentManager());
-    BusinessFriendShowPresenter businessFriendShowPresenter = new BusinessFriendShowPresenter(this);
-    BusinessFriendToMeShowPresenter businessFriendToMeShowPresenter = new BusinessFriendToMeShowPresenter(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -157,74 +156,61 @@ public class BusinessFriendPagerActivity extends AppCompatActivity implements IB
     }
 
     @Override
-    public void toFriendToMeMainActivity(List<Business> businesses) {
+    public void toFriendToMeMainActivity(List<Business> businesses) {  //查找我拥有的权限的商品成功
+        System.out.println("查找我拥有的权限的商品成功");
         this.toBList = businesses;
-        Message msg = new Message();
-        count = count + 1;
-        Bundle data = new Bundle();
-        data.putInt("count", count);
-        data.putInt("toBLsuccess", PAGE_1);
-        data.putSerializable("toBList", (Serializable) toBList);
-        msg.setData(data);
-        handler.sendMessage(msg);
-    }
-
-
-    @Override
-    public void toMainActivity(List<Business> businesses) { //我设置过权限的商家集合
-        this.bList = businesses;
-        Message msg = new Message();
-        count = count + 1;
-        Bundle data = new Bundle();
-        data.putInt("count", count);
-        data.putInt("bLsuccess", PAGE_2);
-        msg.setData(data);
-        data.putSerializable("bList", (Serializable) bList);
-        handler.sendMessage(msg);
-    }
-
-    @Override
-    public void showFailedError() {
-        Message msg = new Message();
-        failcount = failcount + 1;
-        Bundle data = new Bundle();
-        data.putInt("failcount", failcount);
-        msg.setData(data);
-        handler.sendMessage(msg);
-        Toast.makeText(getApplicationContext(), "查找友好商家失败", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void showNo() {
-        Message msg = new Message();
-        nocount = nocount + 1;
-        Bundle data = new Bundle();
-        data.putInt("nocount", nocount);
-        msg.setData(data);
-        handler.sendMessage(msg);
-        Toast.makeText(getApplicationContext(), "查找不到友好商家", Toast.LENGTH_SHORT).show();
+        page1_state = PAGE_1;
     }
 
     @Override
     public void ToMeshowFailedError() {
-        Message msg = new Message();
-        failcount = failcount + 1;
-        Bundle data = new Bundle();
-        data.putInt("failcount", failcount);
-        msg.setData(data);
-        handler.sendMessage(msg);
+        System.out.println("查找拥有权限的商品失败");
+        page1_state = PAGE_3;
         Toast.makeText(getApplicationContext(), "查找拥有权限的商品失败", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void ToMeshowNo() {
-        Message msg = new Message();
-        nocount = nocount + 1;
-        Bundle data = new Bundle();
-        data.putInt("nocount", nocount);
-        msg.setData(data);
-        handler.sendMessage(msg);
+        System.out.println("查找不到拥有权限的商品");
+        page1_state = PAGE_3;
         Toast.makeText(getApplicationContext(), "查找不到拥有权限的商品", Toast.LENGTH_SHORT).show();
+    }
+
+
+    @Override
+    public void toMainActivity(List<Business> businesses) { //查找我设置过权限的商家集合成功
+        System.out.println("查找我友好商家集合成功");
+        this.bList = businesses;
+        page2_state = PAGE_2;
+        Message msg = new Message();
+        Bundle bundle = new Bundle();
+        bundle.putString("startPage","startPage");
+        msg.setData(bundle);
+        handler.sendMessage(msg);
+    }
+
+    @Override
+    public void showFailedError() {
+        System.out.println("查找友好商家失败");
+        page2_state = PAGE_4;
+        Toast.makeText(getApplicationContext(), "查找友好商家失败", Toast.LENGTH_SHORT).show();
+        Message msg = new Message();
+        Bundle bundle = new Bundle();
+        bundle.putString("startPage","startPage");
+        msg.setData(bundle);
+        handler.sendMessage(msg);
+    }
+
+    @Override
+    public void showNo() {
+        System.out.println("查找不到友好商家");
+        page2_state = PAGE_4;
+        Toast.makeText(getApplicationContext(), "查找不到友好商家", Toast.LENGTH_SHORT).show();
+        Message msg = new Message();
+        Bundle bundle = new Bundle();
+        bundle.putString("startPage","startPage");
+        msg.setData(bundle);
+        handler.sendMessage(msg);
     }
 
 
