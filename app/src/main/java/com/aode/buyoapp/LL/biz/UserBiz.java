@@ -11,6 +11,7 @@ import com.aode.buyoapp.LL.Listener.OrdersShowListener;
 import com.aode.buyoapp.LL.Listener.OrdersUpDateListener;
 import com.aode.buyoapp.LL.Listener.QueryAllBusinessListener;
 import com.aode.buyoapp.LL.Listener.QueryProductListener;
+import com.aode.buyoapp.LL.Listener.QuerySaleBestFourGoodsListener;
 import com.aode.buyoapp.LL.Listener.RegisterListener;
 import com.aode.buyoapp.LL.Listener.ShowChangeListener;
 import com.aode.buyoapp.LL.Listener.ShowListener;
@@ -544,6 +545,7 @@ public class UserBiz implements IUserBiz {
 
     /**
      * 厂商一览
+     *
      * @param queryAllBusinessPresenter
      */
     @Override
@@ -584,5 +586,49 @@ public class UserBiz implements IUserBiz {
                     }
                 });
 
-}
+    }
+
+    /**
+     * 查询用户界面热卖四个商品
+     *
+     * @param querySaleBestFourGoodsListener
+     */
+    @Override
+    public void QuerySaleBestFourGoods(final QuerySaleBestFourGoodsListener querySaleBestFourGoodsListener) {
+        abstract class SaleBestFourGoodsCallback extends Callback<List<Cloth>> {
+            @Override
+            public List<Cloth> parseNetworkResponse(Response response) throws IOException {
+                String string = response.body().string();
+                Type listType = new TypeToken<LinkedList<Cloth>>() {
+                }.getType();
+                List<Cloth> businesses = new Gson().fromJson(string, listType);
+                return businesses;
+            }
+        }
+        OkHttpUtils
+                .post()
+                .url(url.getUrl() + "/tb/")
+                .build()
+                .execute(new SaleBestFourGoodsCallback() {
+
+                    @Override
+                    public List<Cloth> parseNetworkResponse(Response response) throws IOException {
+                        return super.parseNetworkResponse(response);
+                    }
+
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        querySaleBestFourGoodsListener.getFailed();
+                    }
+
+                    @Override
+                    public void onResponse(List<Cloth> response) {
+                        if (response != null && !response.isEmpty()) {
+                            querySaleBestFourGoodsListener.getSuccess(response);
+                        } else {
+                            querySaleBestFourGoodsListener.getFailed();
+                        }
+                    }
+                });
+    }
 }

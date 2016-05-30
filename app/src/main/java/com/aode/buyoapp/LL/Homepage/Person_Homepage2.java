@@ -13,12 +13,17 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.aode.buyoapp.LL.Homepage.About.Person_Homepage_About;
 import com.aode.buyoapp.LL.Homepage.AllCloth.Person_HomePage_AllCloth;
+import com.aode.buyoapp.LL.Presenter.QuerySaleBestFourGoodsPresenter;
+import com.aode.buyoapp.LL.bean.Cloth;
+import com.aode.buyoapp.LL.view.UQuerySaleBestFourGoodsView;
 import com.aode.buyoapp.R;
 import com.aode.buyoapp.business.BrowseBusinessActivity;
 import com.aode.buyoapp.qinxiaoshou.activity.SearchActivity;
+import com.aode.buyoapp.qinxiaoshou.util.ImageLoader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +34,7 @@ import java.util.List;
  * @author 陈映苗
  * @// FIXME: 2016/5/6
  */
-public class Person_HomePage2 extends Fragment implements ViewPager.OnPageChangeListener {
+public class Person_HomePage2 extends Fragment implements ViewPager.OnPageChangeListener,UQuerySaleBestFourGoodsView {
     private ImageView iv;
     private RelativeLayout rl_changshang_browser, rl_homepage_aboutme, rl_homepage_allcloth;
     private LinearLayout ll;
@@ -40,7 +45,9 @@ public class Person_HomePage2 extends Fragment implements ViewPager.OnPageChange
     private List<ImageView> list = new ArrayList<ImageView>();
     private View view;
     private View view2;
+    private List<Cloth> saleBestFourGoodsList;
     private LinearLayout.LayoutParams params;
+    QuerySaleBestFourGoodsPresenter querySaleBestFourGoodsPresenter = new QuerySaleBestFourGoodsPresenter(this);
     private String[] imageDescriptionArray = {
             "五一特价，全国包邮",
             "高档织锦缎！！富贵花系列",
@@ -52,11 +59,13 @@ public class Person_HomePage2 extends Fragment implements ViewPager.OnPageChange
     public void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        querySaleBestFourGoodsPresenter.QuerySaleBestFourGoods();
         view2 = inflater.inflate(R.layout.fragment_person_homepage2, container, false);
 
         init();
@@ -89,6 +98,9 @@ public class Person_HomePage2 extends Fragment implements ViewPager.OnPageChange
     }
 
     private void init() {
+
+
+
         ImageView iv_search_img = (ImageView) view2.findViewById(R.id.iv_search_img);
         iv_search_img.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -191,6 +203,55 @@ public class Person_HomePage2 extends Fragment implements ViewPager.OnPageChange
     @Override
     public void onPageScrollStateChanged(int state) {
 
+    }
+
+
+    //查询热销商品的方法
+    @Override
+    public void QuerySaleBestFourGoodsToMainActivity(List<Cloth> cloths) {
+        System.out.println("查询热销商品成功");
+        //热销四个商品数据配置
+        try {
+
+            ImageView iv_picture_01 = (ImageView) view2.findViewById(R.id.iv_picture_01);
+            ImageView iv_picture_02 = (ImageView) view2.findViewById(R.id.iv_picture_02);
+            ImageView iv_picture_03 = (ImageView) view2.findViewById(R.id.iv_picture_03);
+            ImageView iv_picture_04 = (ImageView) view2.findViewById(R.id.iv_picture_04);
+
+
+            TextView tv_goods_name01 = (TextView) view2.findViewById(R.id.tv_goods_name01);
+            TextView tv_goods_name02 = (TextView) view2.findViewById(R.id.tv_goods_name02);
+            TextView tv_goods_name03 = (TextView) view2.findViewById(R.id.tv_goods_name03);
+            TextView tv_goods_name04 = (TextView) view2.findViewById(R.id.tv_goods_name04);
+
+            TextView tv_good_descripe_text01 = (TextView) view2.findViewById(R.id.tv_good_descripe_text01);
+            TextView tv_good_descripe_text02 = (TextView) view2.findViewById(R.id.tv_good_descripe_text02);
+            TextView tv_good_descripe_text03 = (TextView) view2.findViewById(R.id.tv_good_descripe_text03);
+            TextView tv_good_descripe_text04 = (TextView) view2.findViewById(R.id.tv_good_descripe_text04);
+
+
+            new ImageLoader(cloths.get(0), iv_picture_01).resume();
+            new ImageLoader(cloths.get(1), iv_picture_02).resume();
+            new ImageLoader(cloths.get(2), iv_picture_03).resume();
+            new ImageLoader(cloths.get(3), iv_picture_04).resume();
+            tv_goods_name01.setText(cloths.get(0).getTitle());
+            tv_goods_name02.setText(cloths.get(1).getTitle());
+            tv_goods_name03.setText(cloths.get(2).getTitle());
+            tv_goods_name04.setText(cloths.get(3).getTitle());
+
+            tv_good_descripe_text01.setText(cloths.get(0).getPattern());
+            tv_good_descripe_text02.setText(cloths.get(1).getPattern());
+            tv_good_descripe_text03.setText(cloths.get(2).getPattern());
+            tv_good_descripe_text04.setText(cloths.get(3).getPattern());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void showQuerySaleBestFourGoodsFailedError() {
+        System.out.println("查询热销商品失败");
+        Toast.makeText(getContext(),"查询热销商品失败",Toast.LENGTH_SHORT).show();
     }
 
     class MyAdapter extends PagerAdapter {

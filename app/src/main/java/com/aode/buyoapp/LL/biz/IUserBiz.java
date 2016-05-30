@@ -10,6 +10,7 @@ import com.aode.buyoapp.LL.Listener.OrdersShowListener;
 import com.aode.buyoapp.LL.Listener.OrdersUpDateListener;
 import com.aode.buyoapp.LL.Listener.QueryAllBusinessListener;
 import com.aode.buyoapp.LL.Listener.QueryProductListener;
+import com.aode.buyoapp.LL.Listener.QuerySaleBestFourGoodsListener;
 import com.aode.buyoapp.LL.Listener.RegisterListener;
 import com.aode.buyoapp.LL.Listener.ShowChangeListener;
 import com.aode.buyoapp.LL.Listener.ShowListener;
@@ -70,4 +71,7 @@ public interface IUserBiz {
 
    //厂商一览
     void QueryAllBusiness(QueryAllBusinessListener queryAllBusinessPresenter);
+
+    //首页的热卖商品信息，显示四个最高点击量的布匹
+    void QuerySaleBestFourGoods(QuerySaleBestFourGoodsListener querySaleBestFourGoodsListener);
 }

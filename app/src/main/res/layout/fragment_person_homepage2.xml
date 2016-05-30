@@ -189,11 +189,13 @@
                     android:orientation="vertical">
 
                     <ImageView
+                        android:id="@+id/iv_picture_01"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/ad12" />
+                        android:background="@drawable/kongbai" />
 
                     <TextView
+                        android:id="@+id/tv_goods_name01"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="14dp"
@@ -202,6 +204,7 @@
                         android:textSize="@dimen/x16" />
 
                     <TextView
+                        android:id="@+id/tv_good_descripe_text01"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
@@ -219,11 +222,13 @@
                     android:orientation="vertical">
 
                     <ImageView
+                        android:id="@+id/iv_picture_02"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/ad8" />
+                        android:background="@drawable/kongbai" />
 
                     <TextView
+                        android:id="@+id/tv_goods_name02"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="14dp"
@@ -232,6 +237,7 @@
                         android:textSize="@dimen/x16" />
 
                     <TextView
+                        android:id="@+id/tv_good_descripe_text02"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
@@ -254,11 +260,13 @@
                     android:orientation="vertical">
 
                     <ImageView
+                        android:id="@+id/iv_picture_03"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/ad12" />
+                        android:background="@drawable/kongbai" />
 
                     <TextView
+                        android:id="@+id/tv_goods_name03"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="14dp"
@@ -267,6 +275,7 @@
                         android:textSize="@dimen/x16" />
 
                     <TextView
+                        android:id="@+id/tv_good_descripe_text03"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
@@ -284,11 +293,13 @@
                     android:orientation="vertical">
 
                     <ImageView
+                        android:id="@+id/iv_picture_04"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/ad8" />
+                        android:background="@drawable/kongbai" />
 
                     <TextView
+                        android:id="@+id/tv_goods_name04"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="14dp"
@@ -297,6 +308,7 @@
                         android:textSize="@dimen/x16" />
 
                     <TextView
+                        android:id="@+id/tv_good_descripe_text04"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
