@@ -9,11 +9,13 @@ import com.aode.buyoapp.LL.Listener.LoginOutListener;
 import com.aode.buyoapp.LL.Listener.OrdersAddListener;
 import com.aode.buyoapp.LL.Listener.OrdersShowListener;
 import com.aode.buyoapp.LL.Listener.OrdersUpDateListener;
+import com.aode.buyoapp.LL.Listener.QueryAllBusinessListener;
 import com.aode.buyoapp.LL.Listener.QueryProductListener;
 import com.aode.buyoapp.LL.Listener.RegisterListener;
 import com.aode.buyoapp.LL.Listener.ShowChangeListener;
 import com.aode.buyoapp.LL.Listener.ShowListener;
 import com.aode.buyoapp.LL.Listener.ClothTypeListener;
+import com.aode.buyoapp.LL.bean.Business;
 import com.aode.buyoapp.LL.bean.Cloth;
 import com.aode.buyoapp.LL.bean.ClothCategory;
 import com.aode.buyoapp.LL.bean.Orders;
@@ -539,4 +541,48 @@ public class UserBiz implements IUserBiz {
 
                 });
     }
+
+    /**
+     * 厂商一览
+     * @param queryAllBusinessPresenter
+     */
+    @Override
+    public void QueryAllBusiness(final QueryAllBusinessListener queryAllBusinessPresenter) {
+        abstract class BsinessCallback extends Callback<List<Business>> {
+            @Override
+            public List<Business> parseNetworkResponse(Response response) throws IOException {
+                String string = response.body().string();
+                Type listType = new TypeToken<LinkedList<Business>>() {
+                }.getType();
+                List<Business> businesses = new Gson().fromJson(string, listType);
+                return businesses;
+            }
+        }
+        OkHttpUtils
+                .post()
+                .url(url.getUrl() + "/tb/admin/business/all")
+                .build()
+                .execute(new BsinessCallback() {
+
+                    @Override
+                    public List<Business> parseNetworkResponse(Response response) throws IOException {
+                        return super.parseNetworkResponse(response);
+                    }
+
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        queryAllBusinessPresenter.getFailed();
+                    }
+
+                    @Override
+                    public void onResponse(List<Business> response) {
+                        if (response != null && !response.isEmpty()) {
+                            queryAllBusinessPresenter.getSuccess(response);
+                        } else {
+                            queryAllBusinessPresenter.getFailed();
+                        }
+                    }
+                });
+
+}
 }

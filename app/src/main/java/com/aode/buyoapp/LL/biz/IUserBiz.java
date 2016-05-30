@@ -8,11 +8,13 @@ import com.aode.buyoapp.LL.Listener.LoginOutListener;
 import com.aode.buyoapp.LL.Listener.OrdersAddListener;
 import com.aode.buyoapp.LL.Listener.OrdersShowListener;
 import com.aode.buyoapp.LL.Listener.OrdersUpDateListener;
+import com.aode.buyoapp.LL.Listener.QueryAllBusinessListener;
 import com.aode.buyoapp.LL.Listener.QueryProductListener;
 import com.aode.buyoapp.LL.Listener.RegisterListener;
 import com.aode.buyoapp.LL.Listener.ShowChangeListener;
 import com.aode.buyoapp.LL.Listener.ShowListener;
 import com.aode.buyoapp.LL.Listener.ClothTypeListener;
+import com.aode.buyoapp.LL.Presenter.QueryAllBusinessPresenter;
 import com.aode.buyoapp.LL.bean.Orders;
 import com.aode.buyoapp.LL.bean.User;
 
@@ -66,5 +68,6 @@ public interface IUserBiz {
     //个人查看个人权限
     void QuseryPermission(String id, BQueryPermissionListener bQueryPermissionListener);
 
-
+   //厂商一览
+    void QueryAllBusiness(QueryAllBusinessListener queryAllBusinessPresenter);
 }

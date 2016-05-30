@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/browse_business_ll"
+    android:orientation="vertical">
+
+    <ImageView style="@style/transverse_line" />
+
+    <RelativeLayout
+        android:id="@+id/rl_browse_1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingBottom="17dp"
+        android:paddingLeft="40dp"
+        android:paddingTop="17dp">
+
+        <ImageView
+            android:id="@+id/iv_business_picture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="17dp"
+            android:background="@drawable/business_picture"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/textView4"
+            style="@style/browser_business_changshang"
+            android:layout_toEndOf="@+id/iv_business_picture"
+            android:text="@string/buyo_business" />
+
+        <TextView
+            android:id="@+id/textView5"
+            style="@style/browser_business_changshang_detail"
+            android:layout_below="@+id/textView4"
+            android:layout_toEndOf="@+id/iv_business_picture"
+            android:text="@string/detail1" />
+
+        <TextView
+            android:id="@+id/tv_address_business"
+            style="@style/browser_business_changshang_detail2"
+            android:layout_below="@+id/textView5"
+            android:layout_toEndOf="@+id/iv_business_picture"
+            android:text="@string/detail2" />
+
+        <TextView
+            android:visibility="gone"
+            style="@style/browser_business_changshang_fenshu"
+            android:layout_toEndOf="@+id/textView5"
+            android:text="@string/fenshu" />
+
+    </RelativeLayout>
+
+    <ImageView style="@style/transverse_line" />
+
+</LinearLayout>
