@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.aode.buyoapp.LL.Presenter.RecruitsPresenter;
@@ -21,10 +22,11 @@ import java.util.List;
  * Created by LiLei on 2016/5/14.Go.
  * 招聘页面
  */
-public class Person_Recruits extends Fragment implements RecruitsView {
+public class Business_Recruits extends Fragment implements RecruitsView {
     private View view;
     private RecyclerView recyclerView;
     private RecruitsListAdapter recruitsListAdapter;
+    private ImageView iv_recruits_add;
 
     RecruitsPresenter recruitsPresenter = new RecruitsPresenter(this);
 
@@ -35,8 +37,10 @@ public class Person_Recruits extends Fragment implements RecruitsView {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_person_recruits, container, false);
+        view = inflater.inflate(R.layout.fragment_business_recruits, container, false);
+
         recruitsPresenter.recruitsList();
+        add();
         return view;
     }
 
@@ -48,7 +52,25 @@ public class Person_Recruits extends Fragment implements RecruitsView {
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        recruitsPresenter.recruitsList();
+    }
+
+    private void add() {
+        iv_recruits_add = (ImageView) view.findViewById(R.id.iv_recruits_add);
+        iv_recruits_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Business_Recruits_Add.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    @Override
     public void toMainActivity(final List<Recruit> recruits) {
+        System.out.println("招聘信息：" + recruits);
         recyclerView = (RecyclerView) view.findViewById(R.id.person_recruits);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(recruitsListAdapter = new RecruitsListAdapter(getContext(), recruits));

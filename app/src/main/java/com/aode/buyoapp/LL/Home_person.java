@@ -15,6 +15,9 @@ import com.aode.buyoapp.LL.Personal.Person_Personal;
 import com.aode.buyoapp.LL.Recruits.Person_Recruits;
 import com.aode.buyoapp.R;
 
+/**
+ * Created by LiLei on 2016/5/24.Go.
+ */
 public class Home_person extends AppCompatActivity implements Login_person.onNameListener,Person_Personal.onLoginOutListener {
 
     private Person_HomePage2 homePage;

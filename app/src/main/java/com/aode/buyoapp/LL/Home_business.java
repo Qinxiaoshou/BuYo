@@ -10,14 +10,14 @@ import android.widget.Toast;
 import com.aode.buyoapp.LL.Homepage.Business_HomePage2;
 import com.aode.buyoapp.LL.Logistics.Person_Logistics;
 import com.aode.buyoapp.LL.Personal.Business_Personal;
-import com.aode.buyoapp.LL.Recruits.Person_Recruits;
+import com.aode.buyoapp.LL.Recruits.Business_Recruits;
 import com.aode.buyoapp.LL.bean.Business;
 import com.aode.buyoapp.R;
 
 public class Home_business extends AppCompatActivity {
     private Business_HomePage2 homePage;
     private Person_Logistics logistics;
-    private Person_Recruits recruits;
+    private Business_Recruits recruits;
     private Business_Personal personal;
     private RadioGroup tabs;
     private long exitTime = 0;
@@ -71,7 +71,7 @@ public class Home_business extends AppCompatActivity {
                         break;
                     case R.id.rb_Recruits:
                         if (recruits == null)
-                            recruits = new Person_Recruits();
+                            recruits = new Business_Recruits();
                         if (recruits != fragment) {
                             if (!recruits.isAdded()) {
                                 getSupportFragmentManager().beginTransaction().hide(fragment).add(R.id.business_homepage, recruits).commit();

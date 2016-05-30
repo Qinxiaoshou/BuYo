@@ -8,24 +8,21 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.aode.buyoapp.LL.bean.Cloth;
+import com.aode.buyoapp.LL.bean.Recruit;
 import com.aode.buyoapp.R;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class RecruitsListAdapter extends RecyclerView.Adapter<RecruitsListAdapter.RecruitsListViewHolder> {
     private Context context;
-    private List<Cloth> cloths;
+    private List<Recruit> recruits;
 
-    public RecruitsListAdapter(Context context) {
+
+    public RecruitsListAdapter(Context context, List<Recruit> recruits) {
         this.context = context;
+        this.recruits = recruits;
     }
-
-
-   /* public RecruitsListAdapter(Context context, List<Cloth> cloths) {
-        this.context = context;
-        this.cloths = cloths;
-    }*/
 
 
     //接口
@@ -38,6 +35,7 @@ public class RecruitsListAdapter extends RecyclerView.Adapter<RecruitsListAdapte
     public void setOnItemClickLitener(OnItemClickLitener mOnItemClickLitener) {
         this.mOnItemClickLitener = mOnItemClickLitener;
     }
+
     @Override
     public RecruitsListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         RecruitsListViewHolder viewHolder = new RecruitsListViewHolder(LayoutInflater.from(context).inflate(R.layout.recruits_message_item, parent, false));
@@ -46,10 +44,12 @@ public class RecruitsListAdapter extends RecyclerView.Adapter<RecruitsListAdapte
 
     @Override
     public void onBindViewHolder(final RecruitsListViewHolder holder, int position) {
-       /* holder.iv_itemIv.setImageResource(R.drawable.buliao2);
-        holder.id_item_abstruct.setText(cloths.get(position).getTitle());
-        holder.id_item_price.setText("$" + cloths.get(position).getPrice());*/
-
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String dateString = formatter.format(recruits.get(position).getDate());
+        holder.tv_recruits_workName.setText(recruits.get(position).getTitle());
+        holder.iv_recruits_firm.setText(recruits.get(position).getIssuer());
+        holder.iv_recruits_time.setText(dateString);
+        holder.iv_recruits_area.setText(recruits.get(position).getAddress());
         // 如果设置了回调，则设置点击事件
         if (mOnItemClickLitener != null) {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -64,7 +64,7 @@ public class RecruitsListAdapter extends RecyclerView.Adapter<RecruitsListAdapte
 
     @Override
     public int getItemCount() {
-        return 10;
+        return recruits.size();
     }
 
     class RecruitsListViewHolder extends RecyclerView.ViewHolder {

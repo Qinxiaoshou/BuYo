@@ -13,6 +13,9 @@ import com.aode.buyoapp.LL.bean.Business;
 import com.aode.buyoapp.LL.view.IBusinessLoginView;
 import com.aode.buyoapp.R;
 
+/**
+ * Created by LiLei on 2016/5/24.Go.
+ */
 public class Login_business extends AppCompatActivity implements IBusinessLoginView {
     private String name, password;
     private Button btn_login_login, btn_register;
