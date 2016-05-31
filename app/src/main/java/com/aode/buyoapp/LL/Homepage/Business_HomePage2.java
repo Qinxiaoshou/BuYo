@@ -84,7 +84,6 @@ public class Business_HomePage2 extends Fragment implements ViewPager.OnPageChan
     @Override
     public void onDestroy() {
         isStop = true;
-        System.out.println("说好的finish?");
         super.onDestroy();
     }
 

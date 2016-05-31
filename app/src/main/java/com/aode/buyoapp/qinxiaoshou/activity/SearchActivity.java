@@ -1,7 +1,6 @@
 package com.aode.buyoapp.qinxiaoshou.activity;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -11,7 +10,13 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.aode.buyoapp.LL.Presenter.SearchPresenter;
+import com.aode.buyoapp.LL.bean.Business;
+import com.aode.buyoapp.LL.bean.Cloth;
+import com.aode.buyoapp.LL.view.SearchView;
 import com.aode.buyoapp.R;
+
+import java.util.List;
 
 /**
  * 布约app搜索界面
@@ -19,13 +24,15 @@ import com.aode.buyoapp.R;
  * @author 覃培周
  * @// FIXME: 2016/5/7
  */
-public class SearchActivity extends AppCompatActivity {
+public class SearchActivity extends AppCompatActivity implements SearchView {
     EditText editText;
     Button btn_right_text;
     public String choose;
     Spinner spinner_search;
     private ImageView iv_back;
+    private String etsearch;
 
+    SearchPresenter searchPresenter = new SearchPresenter(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,11 +56,39 @@ public class SearchActivity extends AppCompatActivity {
         btn_right_text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String etsearch = editText.getText().toString().trim();
+                etsearch = editText.getText().toString().trim();
                 Toast.makeText(getApplicationContext(), "类型:" + choose + ",内容:" + etsearch, Toast.LENGTH_SHORT).show();
+                searchPresenter.Search();
             }
         });
 
+    }
+
+    @Override
+    public String getKey() {
+        return choose;
+    }
+
+    @Override
+    public String getChooseTitle() {
+        return etsearch;
+    }
+
+    @Override
+    public void toMainClothActivity(List<Cloth> list) {
+        if (!list.isEmpty())
+            Toast.makeText(this, list.toString(), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void toMainBusinessActivity(List<Business> list) {
+        if (!list.isEmpty())
+            Toast.makeText(this, list.toString(), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showFailedError() {
+        Toast.makeText(this, "搜索失败,请检查你的网络是否有效", Toast.LENGTH_SHORT).show();
     }
 
     //下拉框选择事件
