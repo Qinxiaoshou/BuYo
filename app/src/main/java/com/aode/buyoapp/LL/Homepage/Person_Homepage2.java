@@ -34,7 +34,7 @@ import java.util.List;
  * @author 陈映苗
  * @// FIXME: 2016/5/6
  */
-public class Person_HomePage2 extends Fragment implements ViewPager.OnPageChangeListener,UQuerySaleBestFourGoodsView {
+public class Person_HomePage2 extends Fragment implements ViewPager.OnPageChangeListener, UQuerySaleBestFourGoodsView {
     private ImageView iv;
     private RelativeLayout rl_changshang_browser, rl_homepage_aboutme, rl_homepage_allcloth;
     private LinearLayout ll;
@@ -97,8 +97,14 @@ public class Person_HomePage2 extends Fragment implements ViewPager.OnPageChange
         super.onDestroy();
     }
 
-    private void init() {
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (!hidden)
+            querySaleBestFourGoodsPresenter.QuerySaleBestFourGoods();
+    }
 
+    private void init() {
 
 
         ImageView iv_search_img = (ImageView) view2.findViewById(R.id.iv_search_img);
@@ -243,7 +249,7 @@ public class Person_HomePage2 extends Fragment implements ViewPager.OnPageChange
             tv_good_descripe_text02.setText(cloths.get(1).getPattern());
             tv_good_descripe_text03.setText(cloths.get(2).getPattern());
             tv_good_descripe_text04.setText(cloths.get(3).getPattern());
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -251,7 +257,7 @@ public class Person_HomePage2 extends Fragment implements ViewPager.OnPageChange
     @Override
     public void showQuerySaleBestFourGoodsFailedError() {
         System.out.println("查询热销商品失败");
-        Toast.makeText(getContext(),"查询热销商品失败",Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "查询热销商品失败", Toast.LENGTH_SHORT).show();
     }
 
     class MyAdapter extends PagerAdapter {

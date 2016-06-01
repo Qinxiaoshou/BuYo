@@ -22,7 +22,7 @@ public class Person_Recruits_Detail extends AppCompatActivity implements Recruit
 
     private ImageView iv_Recruits_msg_back;
     private Recruit recruit;
-    private TextView tv_recruits_work_workName, tv_recruits_work_area, tv_recruits_work_content,tv_recruits_work_time;
+    private TextView tv_recruits_work_workName, tv_recruits_work_area, tv_recruits_work_content, tv_recruits_work_time;
 
     RecruitsDetailPresenter recruitsDetailPresenter = new RecruitsDetailPresenter(this);
 
@@ -57,11 +57,13 @@ public class Person_Recruits_Detail extends AppCompatActivity implements Recruit
         tv_recruits_work_time = (TextView) findViewById(R.id.tv_recruits_work_time);
         tv_recruits_work_workName.setText(recruits.getTitle());
         tv_recruits_work_area.setText(recruits.getIssuer());
-        tv_recruits_work_content.setText("要求:"+recruits.getContent() + "\n\n电话:" + recruits.getPhoneNumber() + "\n\n地址:" + recruits.getAddress());
+        tv_recruits_work_content.setText("要求:" + recruits.getContent() + "\n\n电话:" + recruits.getPhoneNumber() + "\n\n地址:" + recruits.getAddress());
 
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        String dateString = formatter.format(recruits.getDate());
-        tv_recruits_work_time.setText(dateString);
+        if (recruits.getDate() != null && "".equals(recruits.getDate())) {
+            String dateString = formatter.format(recruits.getDate());
+            tv_recruits_work_time.setText(dateString);
+        }
 
     }
 

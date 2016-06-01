@@ -57,7 +57,7 @@ public class SearchActivity extends AppCompatActivity implements SearchView {
             @Override
             public void onClick(View v) {
                 etsearch = editText.getText().toString().trim();
-                Toast.makeText(getApplicationContext(), "类型:" + choose + ",内容:" + etsearch, Toast.LENGTH_SHORT).show();
+                /*Toast.makeText(getApplicationContext(), "类型:" + choose + ",内容:" + etsearch, Toast.LENGTH_SHORT).show();*/
                 searchPresenter.Search();
             }
         });

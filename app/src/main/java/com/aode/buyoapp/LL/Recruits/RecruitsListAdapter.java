@@ -45,10 +45,12 @@ public class RecruitsListAdapter extends RecyclerView.Adapter<RecruitsListAdapte
     @Override
     public void onBindViewHolder(final RecruitsListViewHolder holder, int position) {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        String dateString = formatter.format(recruits.get(position).getDate());
+        if (recruits.get(position).getDate() != null && "".equals(recruits.get(position).getDate())) {
+            String dateString = formatter.format(recruits.get(position).getDate());
+            holder.iv_recruits_time.setText(dateString);
+        }
         holder.tv_recruits_workName.setText(recruits.get(position).getTitle());
         holder.iv_recruits_firm.setText(recruits.get(position).getIssuer());
-        holder.iv_recruits_time.setText(dateString);
         holder.iv_recruits_area.setText(recruits.get(position).getAddress());
         // 如果设置了回调，则设置点击事件
         if (mOnItemClickLitener != null) {

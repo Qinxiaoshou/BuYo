@@ -41,9 +41,8 @@
 
 
     <string-array name="activitysearch">
-        <item>全部</item>
-        <item>商家</item>
         <item>布匹</item>
+        <item>商家</item>
     </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->
