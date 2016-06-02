@@ -86,7 +86,7 @@ public class ConsumerProductDetailsActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     if ("".equals(Home_person.id) || Home_person.id == null) {
-                        Toast.makeText(getApplicationContext(), "请登录，再购买", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "请登录个人用户账号，再购买", Toast.LENGTH_SHORT).show();
                     } else {
                         Intent intent = new Intent(ConsumerProductDetailsActivity.this, ConsumerAddOrderDetailsActivity.class);
                         Bundle bundle = new Bundle();

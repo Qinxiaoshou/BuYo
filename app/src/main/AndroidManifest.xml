@@ -57,6 +57,7 @@
         <activity android:name=".qinxiaoshou.activity.BusinessSearchOtherBusinessPagerActivity" />
         <activity android:name=".qinxiaoshou.activity.ConsumerOrderListActivity" />
         <activity android:name=".qinxiaoshou.activity.SearchActivity" />
+        <activity android:name=".qinxiaoshou.activity.SearchBusinessActivity" />
         <activity
             android:name=".qinxiaoshou.activity.ConsumerAddOrderDetailsActivity"
             android:windowSoftInputMode="adjustPan" />
@@ -65,6 +66,8 @@
         <activity android:name=".qinxiaoshou.activity.ConsumerPermissionPageActivity" />
         <activity android:name=".business.activity.BusinessDetailActivity"></activity>
         <activity android:name=".business.BrowseBusinessActivity" />
+
+
         <activity android:name=".LL.Login_business" />
         <activity android:name=".LL.Register_person" />
         <activity android:name=".LL.Register_business" />

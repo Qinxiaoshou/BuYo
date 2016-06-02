@@ -49,6 +49,12 @@ public class Person_Message extends AppCompatActivity implements IUserMessageVie
         });
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        userMessagePresenter.Show();
+    }
+
     public void msg() {
         tv_person_name = (TextView) findViewById(R.id.tv_person_name);
         tv_person_phone = (TextView) findViewById(R.id.tv_person_phone);

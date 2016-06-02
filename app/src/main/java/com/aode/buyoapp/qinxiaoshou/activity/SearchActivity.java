@@ -1,7 +1,10 @@
 package com.aode.buyoapp.qinxiaoshou.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -30,14 +33,17 @@ public class SearchActivity extends AppCompatActivity implements SearchView {
     public String choose;
     Spinner spinner_search;
     private ImageView iv_back;
+    private RecyclerView rv_serach;
     private String etsearch;
 
+    private SearchClothAdapter searchClothAdapter;
+    private SearchBusinessAdapter searchBusinessAdapter;
     SearchPresenter searchPresenter = new SearchPresenter(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activityt_search);
+        setContentView(R.layout.activity_search);
         spinner_search = (Spinner) findViewById(R.id.spinner_search);
         editText = (EditText) findViewById(R.id.et_serch);
         btn_right_text = (Button) findViewById(R.id.btn_right_text);
@@ -75,15 +81,50 @@ public class SearchActivity extends AppCompatActivity implements SearchView {
     }
 
     @Override
-    public void toMainClothActivity(List<Cloth> list) {
-        if (!list.isEmpty())
-            Toast.makeText(this, list.toString(), Toast.LENGTH_SHORT).show();
+    public void toMainClothActivity(final List<Cloth> list) {
+        System.out.println(list);
+        if (!list.isEmpty()) {
+            rv_serach = (RecyclerView) findViewById(R.id.rv_serach);
+            rv_serach.setLayoutManager(new LinearLayoutManager(this));
+            rv_serach.setAdapter(searchClothAdapter = new SearchClothAdapter(this, list));
+            searchClothAdapter.setOnItemClickLitener(new SearchClothAdapter.OnItemClickLitener() {
+                @Override
+                public void onItemClick(View view, int position) {
+                    //点击进入商品详情
+                    Intent intent = new Intent(getApplication(), ConsumerProductDetailsActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("cloth", list.get(position));
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                    System.out.println("位置:" + position);
+                }
+            });
+        } else {
+            Toast.makeText(this, " 暂无此布匹", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
-    public void toMainBusinessActivity(List<Business> list) {
-        if (!list.isEmpty())
-            Toast.makeText(this, list.toString(), Toast.LENGTH_SHORT).show();
+    public void toMainBusinessActivity(final List<Business> list) {
+            System.out.println(list);
+        if (!list.isEmpty()) {
+            rv_serach = (RecyclerView) findViewById(R.id.rv_serach);
+            rv_serach.setLayoutManager(new LinearLayoutManager(this));
+            rv_serach.setAdapter(searchBusinessAdapter = new SearchBusinessAdapter(this, list));
+            searchBusinessAdapter.setOnItemClickLitener(new SearchBusinessAdapter.OnItemClickLitener() {
+                @Override
+                public void onItemClick(View view, int position) {
+                    //点击进入商家详情
+                    Intent intent = new Intent(getApplication(), SearchBusinessActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("business", list.get(position));
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+            });
+        } else {
+            Toast.makeText(this, " 暂无此商家", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override

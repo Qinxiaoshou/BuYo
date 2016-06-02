@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#dedede"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ff1f19"
+        android:paddingBottom="6.5dp"
+        android:paddingLeft="23dp"
+        android:paddingTop="6.5dp">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/back" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="商家信息"
+            android:textColor="#FFFFFF"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/buliao3" />
+
+    <RelativeLayout
+        android:id="@+id/rl_store_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="14dp">
+
+        <ImageView
+            android:id="@+id/iv_business_logo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/lib_im_chat_head_icon" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/iv_business_logo"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_search_business_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingTop="10dp"
+                android:text="秋明山专卖店"
+                android:textColor="#ff0000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tv_search_business_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_search_business_name"
+                android:paddingLeft="20dp"
+                android:singleLine="true"
+                android:text="店铺描述"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="5dp"
+        android:background="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/tv_search_business_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:text="电话:"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:typeface="sans" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="5dp"
+        android:background="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/tv_search_business_license"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:text="营业执照:"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:typeface="sans" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="5dp"
+        android:background="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/tv_search_business_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:text="地址:"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:typeface="sans" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="5dp"
+        android:background="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/tv_search_business_sales"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:text="销量:"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:typeface="sans" />
+</LinearLayout>

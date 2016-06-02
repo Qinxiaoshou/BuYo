@@ -32,6 +32,12 @@ public class Business_Message extends AppCompatActivity implements IBusinessMess
         update();
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        businessMessagePresenter.Show();
+    }
+
     public void update() {
         button = (Button) findViewById(R.id.btn_update_BusinessMessage);
         button.setOnClickListener(new View.OnClickListener() {
