@@ -70,7 +70,7 @@ public class Business_Recruits extends Fragment implements RecruitsView {
 
     @Override
     public void toMainActivity(final List<Recruit> recruits) {
-        System.out.println("招聘信息：" + recruits);
+
         recyclerView = (RecyclerView) view.findViewById(R.id.person_recruits);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(recruitsListAdapter = new RecruitsListAdapter(getContext(), recruits));

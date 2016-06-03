@@ -82,7 +82,7 @@ public class SearchActivity extends AppCompatActivity implements SearchView {
 
     @Override
     public void toMainClothActivity(final List<Cloth> list) {
-        System.out.println(list);
+
         if (!list.isEmpty()) {
             rv_serach = (RecyclerView) findViewById(R.id.rv_serach);
             rv_serach.setLayoutManager(new LinearLayoutManager(this));
@@ -106,7 +106,7 @@ public class SearchActivity extends AppCompatActivity implements SearchView {
 
     @Override
     public void toMainBusinessActivity(final List<Business> list) {
-            System.out.println(list);
+
         if (!list.isEmpty()) {
             rv_serach = (RecyclerView) findViewById(R.id.rv_serach);
             rv_serach.setLayoutManager(new LinearLayoutManager(this));
