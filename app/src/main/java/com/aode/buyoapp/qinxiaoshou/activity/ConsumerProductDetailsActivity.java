@@ -44,10 +44,11 @@ public class ConsumerProductDetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //获取商品信息
+        Intent intent = getIntent();
+        cloth = (Cloth) intent.getSerializableExtra("cloth");
         try {
-            //获取商品信息
-            Intent intent = getIntent();
-            cloth = (Cloth) intent.getSerializableExtra("cloth");
+
             setContentView(R.layout.business_product_message_layout);
             toolbar = (Toolbar) findViewById(R.id.toolbar_business_product_details);
             tv_rg_name = (TextView) findViewById(R.id.tv_rg_name);

@@ -30,12 +30,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 布约app第二版首页界面
+ * 布约app第二版商家首页界面
  *
  * @author 陈映苗
  * @// FIXME: 2016/5/6
  */
-public class Person_HomePage2 extends Fragment implements ViewPager.OnPageChangeListener, UQuerySaleBestFourGoodsView {
+public class Business_HomePage3 extends Fragment implements ViewPager.OnPageChangeListener, UQuerySaleBestFourGoodsView {
     private ImageView iv;
     private RelativeLayout rl_changshang_browser, rl_homepage_aboutme, rl_homepage_allcloth;
     private LinearLayout ll;
@@ -67,7 +67,7 @@ public class Person_HomePage2 extends Fragment implements ViewPager.OnPageChange
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         querySaleBestFourGoodsPresenter.QuerySaleBestFourGoods();
-        view2 = inflater.inflate(R.layout.fragment_person_homepage2, container, false);
+        view2 = inflater.inflate(R.layout.fragment_business_homepage4, container, false);
 
         init();
 
@@ -255,7 +255,7 @@ public class Person_HomePage2 extends Fragment implements ViewPager.OnPageChange
             iv_picture_01.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                     //跳转到商品详情
+                    //跳转到商品详情
                     Intent intent = new Intent(getActivity(), ConsumerProductDetailsActivity.class);
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("cloth", cloths.get(0));

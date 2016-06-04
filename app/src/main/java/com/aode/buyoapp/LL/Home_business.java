@@ -8,6 +8,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.aode.buyoapp.LL.Homepage.Business_HomePage2;
+import com.aode.buyoapp.LL.Homepage.Business_HomePage3;
 import com.aode.buyoapp.LL.Logistics.Person_Logistics;
 import com.aode.buyoapp.LL.Personal.Business_Personal;
 import com.aode.buyoapp.LL.Recruits.Business_Recruits;
@@ -15,7 +16,7 @@ import com.aode.buyoapp.LL.bean.Business;
 import com.aode.buyoapp.R;
 
 public class Home_business extends AppCompatActivity {
-    private Business_HomePage2 homePage;
+    private Business_HomePage3 homePage;
     private Person_Logistics logistics;
     private Business_Recruits recruits;
     private Business_Personal personal;
@@ -37,7 +38,7 @@ public class Home_business extends AppCompatActivity {
     }
 
     public void initView() {
-        homePage = new Business_HomePage2();
+        homePage = new Business_HomePage3();
         getSupportFragmentManager().beginTransaction().add(R.id.business_homepage, homePage).commit();
         fragment = homePage;
         tabs = (RadioGroup) findViewById(R.id.person_menu);
