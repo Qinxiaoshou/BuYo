@@ -73,7 +73,7 @@
             android:textSize="18dp" />
 
         <EditText
-            android:id="@+id/change_RealName"
+            android:id="@+id/change_Name"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@null"

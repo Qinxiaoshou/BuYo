@@ -117,7 +117,7 @@ public class SearchActivity extends AppCompatActivity implements SearchView {
                     //点击进入商家详情
                     Intent intent = new Intent(getApplication(), SearchBusinessActivity.class);
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("business", list.get(position));
+                    bundle.putSerializable("business",list.get(position));
                     intent.putExtras(bundle);
                     startActivity(intent);
                 }

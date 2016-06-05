@@ -15,6 +15,10 @@ import com.aode.buyoapp.LL.bean.User;
 import com.aode.buyoapp.LL.view.IUserMessageView;
 import com.aode.buyoapp.R;
 
+/**
+ * Created by LiLei on 2016/5/20.Go.
+ */
+
 public class Person_Message extends AppCompatActivity implements IUserMessageView {
     private Button button;
     private TextView tv_person_name, tv_person_realName, tv_person_phone, tv_person_email, tv_person_gender;
@@ -31,10 +35,10 @@ public class Person_Message extends AppCompatActivity implements IUserMessageVie
         //获取个人信息
         msg();
         //修改信息按钮事件
-        update();
+        upDate();
     }
 
-    public void update() {
+    public void upDate() {
         button = (Button) findViewById(R.id.btn_update_personMessage);
         button.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -7,14 +7,15 @@ import android.view.KeyEvent;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.aode.buyoapp.LL.Homepage.Business_HomePage2;
 import com.aode.buyoapp.LL.Homepage.Business_HomePage3;
 import com.aode.buyoapp.LL.Logistics.Person_Logistics;
 import com.aode.buyoapp.LL.Personal.Business_Personal;
 import com.aode.buyoapp.LL.Recruits.Business_Recruits;
 import com.aode.buyoapp.LL.bean.Business;
 import com.aode.buyoapp.R;
-
+/**
+ * Created by LiLei on 2016/5/20.Go.
+ */
 public class Home_business extends AppCompatActivity {
     private Business_HomePage3 homePage;
     private Person_Logistics logistics;

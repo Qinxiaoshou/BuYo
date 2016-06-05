@@ -15,6 +15,9 @@ import com.aode.buyoapp.LL.bean.User;
 import com.aode.buyoapp.LL.view.IUserMessageChangeView;
 import com.aode.buyoapp.R;
 
+/**
+ * Created by LiLei on 2016/5/20.Go.
+ */
 
 public class Person_Message_update extends AppCompatActivity implements IUserMessageChangeView {
     private Button button;
@@ -36,10 +39,10 @@ public class Person_Message_update extends AppCompatActivity implements IUserMes
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
 
-        update();
+        upDate();
     }
 
-    public void update() {
+    public void upDate() {
         button = (Button) findViewById(R.id.btn_update_personMessage_confirm);
         button.setOnClickListener(
                 new View.OnClickListener() {
@@ -47,7 +50,7 @@ public class Person_Message_update extends AppCompatActivity implements IUserMes
                     public void onClick(View v) {
                         //获得view的值存入一个对象返回过去
                         change_LoginName = ((EditText) findViewById(R.id.change_LoginName)).getText().toString();
-                        change_realName = ((EditText) findViewById(R.id.change_RealName)).getText().toString();
+                        change_realName = ((EditText) findViewById(R.id.change_Name)).getText().toString();
                         change_Phone = ((EditText) findViewById(R.id.change_Phone)).getText().toString();
                         change_Email = ((EditText) findViewById(R.id.change_Email)).getText().toString();
 

@@ -220,10 +220,13 @@ public class BusinessBiz implements IBusinessBiz {
                 .post()
                 .url(url.getUrl() + "/tb/admin/business/update")
                 .addParams("id", business.getId())
-                .addParams("LoginName", business.getLoginName())
+                .addParams("loginName", business.getLoginName())
                 .addParams("name", business.getName())
+                .addParams("contacts", business.getContacts())
                 .addParams("phoneNumber", business.getPhoneNumber())
                 .addParams("address", business.getAddress())
+                .addParams("identities", business.getIdentities())
+                .addParams("payment", business.getPayment())
                 .addParams("description", business.getDescription())
                 .build()
                 .execute(new Callback() {
@@ -404,19 +407,20 @@ public class BusinessBiz implements IBusinessBiz {
 
     /**
      * 根据商品id查询商品信息
+     *
      * @param cId
      * @param queryProductBuyIdListener
      */
     @Override
-    public void getProductBuyId(final  String cId,final QueryProductBuyIdListener queryProductBuyIdListener) {
+    public void getProductBuyId(final String cId, final QueryProductBuyIdListener queryProductBuyIdListener) {
         abstract class ClothCallback extends Callback<Cloth> {
             @Override
             public Cloth parseNetworkResponse(Response response) throws IOException {
                 String string = response.body().string();
                 Type listType = new TypeToken<Cloth>() {
                 }.getType();
-               Cloth cloth = new Gson().fromJson(string, listType);
-                System.out.println("后台查询的商品："+cloth);
+                Cloth cloth = new Gson().fromJson(string, listType);
+                System.out.println("后台查询的商品：" + cloth);
                 return cloth;
             }
         }
@@ -437,7 +441,7 @@ public class BusinessBiz implements IBusinessBiz {
                     }
 
                     @Override
-                    public  Cloth parseNetworkResponse(Response response) throws IOException {
+                    public Cloth parseNetworkResponse(Response response) throws IOException {
                         return super.parseNetworkResponse(response);
                     }
                 });
@@ -450,7 +454,7 @@ public class BusinessBiz implements IBusinessBiz {
      * @param bProductChangeListener
      */
     @Override
-    public void ProductChange(final Cloth cloth, final BProductChangeListener bProductChangeListener,final File picture) {
+    public void ProductChange(final Cloth cloth, final BProductChangeListener bProductChangeListener, final File picture) {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -461,8 +465,8 @@ public class BusinessBiz implements IBusinessBiz {
                     RequestBody requestBody = new MultipartBody.Builder() //建立请求的内容
                             .setType(MultipartBody.FORM)//表单形式
                             .addPart(Headers.of(
-                                    "Content-Disposition",
-                                    "form-data; name=\"clothStr\""),
+                                            "Content-Disposition",
+                                            "form-data; name=\"clothStr\""),
                                     RequestBody.create(null, json))
                             .addPart(Headers.of(
                                     "Content-Disposition",
