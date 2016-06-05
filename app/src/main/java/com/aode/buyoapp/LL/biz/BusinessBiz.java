@@ -18,6 +18,7 @@ import com.aode.buyoapp.LL.Listener.BProductChangeListener;
 import com.aode.buyoapp.LL.Listener.BQueryBusinessPermissionListener;
 import com.aode.buyoapp.LL.Listener.BQueryNoMeProductListener;
 import com.aode.buyoapp.LL.Listener.BQueryProductListener;
+import com.aode.buyoapp.LL.Listener.BQueryProductsBuyBIdListener;
 import com.aode.buyoapp.LL.Listener.BRegisterListener;
 import com.aode.buyoapp.LL.Listener.BSearchListener;
 import com.aode.buyoapp.LL.Listener.BShowChangeListener;
@@ -953,6 +954,47 @@ public class BusinessBiz implements IBusinessBiz {
                     @Override
                     public void onResponse(Object response) {
                         bOrdersUpDateListener.BOrdersUpDateSuccess();
+                    }
+                });
+    }
+
+    /**
+     * 根据商家id查询出所有该商家的商品
+     * @param bId
+     * @param bQueryProductsBuyBidLIstener
+     */
+
+    @Override
+    public void QueryProductsBuyBId(String bId, final BQueryProductsBuyBIdListener bQueryProductsBuyBidLIstener) {
+        abstract class ClothCallback extends Callback<List<Cloth>> {
+            @Override
+            public List<Cloth> parseNetworkResponse(Response response) throws IOException {
+                String string = response.body().string();
+                Type listType = new TypeToken<LinkedList<Cloth>>() {
+                }.getType();
+                List<Cloth> cloths = new Gson().fromJson(string, listType);
+                return cloths;
+            }
+        }
+        OkHttpUtils
+                .post()
+                .url(url.getUrl() + "/tb/admin/cloth/listByBus")
+                .addParams("id", bId)
+                .build()
+                .execute(new ClothCallback() {
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        bQueryProductsBuyBidLIstener.getFailed();
+                    }
+
+                    @Override
+                    public void onResponse(List<Cloth> response) {
+                        bQueryProductsBuyBidLIstener.getSuccess(response);
+                    }
+
+                    @Override
+                    public List<Cloth> parseNetworkResponse(Response response) throws IOException {
+                        return super.parseNetworkResponse(response);
                     }
                 });
     }

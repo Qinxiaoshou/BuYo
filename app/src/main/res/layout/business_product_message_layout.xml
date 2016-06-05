@@ -277,6 +277,7 @@
                     android:background="#bababa" />
                 <RelativeLayout
                     android:id="@+id/rl_enter_store_ways"
+                    android:clickable="true"
                     android:paddingTop="10dp"
                     android:layout_centerHorizontal="true"
                     android:layout_below="@+id/tv_horizontal_drive2"

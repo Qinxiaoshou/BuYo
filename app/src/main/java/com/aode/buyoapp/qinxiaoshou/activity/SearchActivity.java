@@ -13,12 +13,15 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.aode.buyoapp.LL.Presenter.QueryProductsBuyBIdPresenter;
 import com.aode.buyoapp.LL.Presenter.SearchPresenter;
 import com.aode.buyoapp.LL.bean.Business;
 import com.aode.buyoapp.LL.bean.Cloth;
+import com.aode.buyoapp.LL.view.QueryProductsBuyBidView;
 import com.aode.buyoapp.LL.view.SearchView;
 import com.aode.buyoapp.R;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -27,7 +30,7 @@ import java.util.List;
  * @author 覃培周
  * @// FIXME: 2016/5/7
  */
-public class SearchActivity extends AppCompatActivity implements SearchView {
+public class SearchActivity extends AppCompatActivity implements SearchView, QueryProductsBuyBidView {
     EditText editText;
     Button btn_right_text;
     public String choose;
@@ -35,10 +38,15 @@ public class SearchActivity extends AppCompatActivity implements SearchView {
     private ImageView iv_back;
     private RecyclerView rv_serach;
     private String etsearch;
+    private String BId;
+    private int Tposition;
+    private List<Business> Tlist;
+    private List<Cloth> cloths;
 
     private SearchClothAdapter searchClothAdapter;
     private SearchBusinessAdapter searchBusinessAdapter;
     SearchPresenter searchPresenter = new SearchPresenter(this);
+    QueryProductsBuyBIdPresenter queryProductsBuyBIdPresenter = new QueryProductsBuyBIdPresenter(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,24 +115,43 @@ public class SearchActivity extends AppCompatActivity implements SearchView {
     @Override
     public void toMainBusinessActivity(final List<Business> list) {
 
+
         if (!list.isEmpty()) {
             rv_serach = (RecyclerView) findViewById(R.id.rv_serach);
             rv_serach.setLayoutManager(new LinearLayoutManager(this));
             rv_serach.setAdapter(searchBusinessAdapter = new SearchBusinessAdapter(this, list));
+
+
             searchBusinessAdapter.setOnItemClickLitener(new SearchBusinessAdapter.OnItemClickLitener() {
                 @Override
                 public void onItemClick(View view, int position) {
+
                     //点击进入商家详情
-                    Intent intent = new Intent(getApplication(), SearchBusinessActivity.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("business",list.get(position));
-                    intent.putExtras(bundle);
-                    startActivity(intent);
+                    BId = list.get(position).getId();
+                    queryProductsBuyBIdPresenter.QueryProductsBuyBId();
+                    Tposition = position;
+                    Tlist = list;
                 }
             });
         } else {
             Toast.makeText(this, " 暂无此商家", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    //查询该商家的商品集合
+    @Override
+    public String getBId() {
+        return BId;
+    }
+
+    @Override
+    public void toMainActivity(List<Cloth> clothlist) {
+        Intent intent = new Intent(getApplication(), SearchBusinessActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("business", Tlist.get(Tposition));
+        bundle.putSerializable("clothlist", (Serializable) clothlist);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 
     @Override

@@ -12,13 +12,19 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aode.buyoapp.LL.Home_person;
+import com.aode.buyoapp.LL.Presenter.QueryProductsBuyBIdPresenter;
 import com.aode.buyoapp.LL.bean.Cloth;
+import com.aode.buyoapp.LL.view.QueryProductsBuyBidView;
 import com.aode.buyoapp.R;
 import com.aode.buyoapp.qinxiaoshou.util.ImageLoader;
+
+import java.io.Serializable;
+import java.util.List;
 
 
 /**
@@ -27,7 +33,7 @@ import com.aode.buyoapp.qinxiaoshou.util.ImageLoader;
  * @author 覃培周
  * @// FIXME: 2016/4/7
  */
-public class ConsumerProductDetailsActivity extends AppCompatActivity {
+public class ConsumerProductDetailsActivity extends AppCompatActivity implements QueryProductsBuyBidView {
 
     private TextView tv_g_add_product_title;
     private Button button;
@@ -39,7 +45,9 @@ public class ConsumerProductDetailsActivity extends AppCompatActivity {
     private TextView tv_product_data_price;
     private ImageView iv_product;
     private TextView tv_company_title;
-
+    private TextView tv_store_descrite;
+    private RelativeLayout rl_enter_store_ways;
+    QueryProductsBuyBIdPresenter queryProductsBuyBIdPresenter = new QueryProductsBuyBIdPresenter(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,11 +69,21 @@ public class ConsumerProductDetailsActivity extends AppCompatActivity {
             tv_product_data_price = (TextView) findViewById(R.id.tv_product_data_price);
             //商店标题
             tv_company_title = (TextView) findViewById(R.id.tv_company_title);
+            //店铺描述
+            tv_store_descrite = (TextView) findViewById(R.id.tv_store_descrite);
+            //进入店铺
+            rl_enter_store_ways  = (RelativeLayout) findViewById(R.id.rl_enter_store_ways);
+
 
             new ImageLoader(cloth, iv_product).resume();
             tv_product_data_title.setText(cloth.getTitle());
             tv_product_data_price.setText(cloth.getPrice() + "/米");
             tv_company_title.setText(cloth.getBusiness().getName());
+            if(cloth.getBusiness().getDescription()==null){
+                tv_store_descrite.setText("");
+            }else{
+                tv_store_descrite.setText(cloth.getBusiness().getDescription());
+            }
 
             button = (Button) findViewById(R.id.btn_right_text);
             toolbar.setNavigationIcon(R.drawable.left_arrow);//设置导航栏图标
@@ -80,6 +98,13 @@ public class ConsumerProductDetailsActivity extends AppCompatActivity {
             rg_h_open_permission.setVisibility(View.VISIBLE);
             tv_rg_name.setText("立即购买");
             button.setVisibility(View.GONE);
+            rl_enter_store_ways.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //进入店铺
+                    queryProductsBuyBIdPresenter.QueryProductsBuyBId();
+                }
+            });
 
             //跳转到添加订单页面
 
@@ -144,5 +169,28 @@ public class ConsumerProductDetailsActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+
+    //查询该商店的商品集合
+    @Override
+    public String getBId() {
+        return cloth.getBusiness().getId();
+    }
+
+    @Override
+    public void toMainActivity(List<Cloth> clothlist) {
+        Intent intent = new Intent(getApplication(), SearchBusinessActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("business", cloth.getBusiness());
+        bundle.putSerializable("clothlist", (Serializable) clothlist);
+        intent.putExtras(bundle);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public void showFailedError() {
+
     }
 }

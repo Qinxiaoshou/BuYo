@@ -16,6 +16,7 @@ import com.aode.buyoapp.LL.Listener.BProductChangeListener;
 import com.aode.buyoapp.LL.Listener.BQueryBusinessPermissionListener;
 import com.aode.buyoapp.LL.Listener.BQueryNoMeProductListener;
 import com.aode.buyoapp.LL.Listener.BQueryProductListener;
+import com.aode.buyoapp.LL.Listener.BQueryProductsBuyBIdListener;
 import com.aode.buyoapp.LL.Listener.BRegisterListener;
 import com.aode.buyoapp.LL.Listener.BSearchListener;
 import com.aode.buyoapp.LL.Listener.BShowChangeListener;
@@ -115,6 +116,9 @@ public interface IBusinessBiz {
     //个人修改自己的订单
     void OrdersUpDate(Orders orders, BOrdersUpDateListener bOrdersUpDateListener);
 
+
+    //根据商家id查询商家商品集合
+    void QueryProductsBuyBId(String bId ,BQueryProductsBuyBIdListener bQueryProductsBuyBIdListener);
 
 
 }

@@ -90,9 +90,17 @@ class ProductDataRecyclerViewAdapter extends RecyclerView.Adapter<ProductDataRec
         new ImageLoader(cloth,holder.iv_product).resume();
         holder.tv_product_data_title.setText(cloth.getTitle());
         holder.tv_product_data_price.setText(cloth.getPrice()+"/￥");
-      /*  holder.tv_company_title.setText(cloth.getBusiness().getName());
-        holder.tv_store_descrite.setText(cloth.getBusiness().getDescription());*/
-
+        if(cloth.getBusiness()==null){
+            holder.tv_company_title.setText("");
+            holder.tv_store_descrite.setText("");
+        }else {
+            holder.tv_company_title.setText(cloth.getBusiness().getName());
+            if(cloth.getBusiness().getDescription()==null){
+                holder.tv_store_descrite.setText("");
+            }else{
+                holder.tv_store_descrite.setText(cloth.getBusiness().getDescription());
+            }
+        }
 
         final TextView expandView = (TextView) holder.mView.findViewById(R.id.expand_view);
         final LinearLayout descriptionView = (LinearLayout) holder.mView.findViewById(R.id.description_layout);
