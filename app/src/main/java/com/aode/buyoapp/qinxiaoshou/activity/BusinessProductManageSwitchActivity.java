@@ -25,7 +25,7 @@ import com.aode.buyoapp.qinxiaoshou.fragment.MessageFragment;
  */
 public class BusinessProductManageSwitchActivity extends FragmentActivity {
 
-    private Button btn_message, btn_call,btn_dowm;
+    //private Button btn_message, btn_call,btn_dowm;
     private ImageView iv_back; //返回键
     private BusinessSortProductFragment callFragment;
     private MessageFragment messageFragment;
@@ -42,12 +42,12 @@ public class BusinessProductManageSwitchActivity extends FragmentActivity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.business_product_list_layout);
 
-        btn_message = (Button) findViewById(R.id.btn_message);
+        /*btn_message = (Button) findViewById(R.id.btn_message);
         btn_call = (Button) findViewById(R.id.btn_call);
         btn_dowm = (Button) findViewById(R.id.btn_down);
         btn_message.setOnClickListener(onClicker);
         btn_call.setOnClickListener(onClicker);
-        btn_dowm .setOnClickListener(onClicker);
+        btn_dowm .setOnClickListener(onClicker);*/
         iv_back = (ImageView) findViewById(R.id.iv_back_bussines);
         iv_back.setOnClickListener(new OnClickListener() {
             @Override
@@ -144,7 +144,7 @@ public class BusinessProductManageSwitchActivity extends FragmentActivity {
         transaction.commitAllowingStateLoss();
     }
 
-    private OnClickListener onClicker = new OnClickListener() {
+    /*private OnClickListener onClicker = new OnClickListener() {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
@@ -182,6 +182,6 @@ public class BusinessProductManageSwitchActivity extends FragmentActivity {
 
             }
         }
-    };
+    };*/
 
 }

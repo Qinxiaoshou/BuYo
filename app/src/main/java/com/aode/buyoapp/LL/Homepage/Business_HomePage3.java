@@ -217,7 +217,6 @@ public class Business_HomePage3 extends Fragment implements ViewPager.OnPageChan
     //热销商品展示是渣到爆的代码，别笑！
     @Override
     public void QuerySaleBestFourGoodsToMainActivity(final List<Cloth> cloths) {
-        System.out.println("查询热销商品成功");
         //热销四个商品数据配置
         try {
 
@@ -251,7 +250,6 @@ public class Business_HomePage3 extends Fragment implements ViewPager.OnPageChan
             tv_good_descripe_text02.setText("￥ "+cloths.get(1).getPrice());
             tv_good_descripe_text03.setText("￥ "+cloths.get(2).getPrice());
             tv_good_descripe_text04.setText("￥ "+cloths.get(3).getPrice());
-
             iv_picture_01.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -259,7 +257,6 @@ public class Business_HomePage3 extends Fragment implements ViewPager.OnPageChan
                     Intent intent = new Intent(getActivity(), ConsumerProductDetailsActivity.class);
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("cloth", cloths.get(0));
-                    System.out.println("cloth:&&&"+cloths.get(0));
                     intent.putExtras(bundle);
                     startActivity(intent);
                 }

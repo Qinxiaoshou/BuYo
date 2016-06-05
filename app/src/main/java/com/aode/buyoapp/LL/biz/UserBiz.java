@@ -602,6 +602,7 @@ public class UserBiz implements IUserBiz {
                 Type listType = new TypeToken<LinkedList<Cloth>>() {
                 }.getType();
                 List<Cloth> businesses = new Gson().fromJson(string, listType);
+                System.out.println("热销商品集合:"+businesses);
                 return businesses;
             }
         }
