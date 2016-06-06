@@ -177,6 +177,7 @@
                 </RelativeLayout>
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:weightSum="3"
                     android:id="@+id/ll_count_message"
                     android:layout_below="@+id/rl_store_message"
@@ -355,7 +356,7 @@
                                     android:layout_toRightOf="@+id/iv_l"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="类别 : "
+                                    android:text="花纹 : "
                                     android:textColor="#000000"
                                     android:textSize="18sp"/>
                                 <TextView
@@ -385,7 +386,7 @@
                                     android:layout_toRightOf="@+id/iv_l_2"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="材料描述 : "
+                                    android:text="颜色描述 : "
                                     android:textColor="#000000"
                                     android:textSize="18sp"/>
                                 <TextView

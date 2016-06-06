@@ -23,6 +23,8 @@ import com.aode.buyoapp.LL.view.QueryProductsBuyBidView;
 import com.aode.buyoapp.R;
 import com.aode.buyoapp.qinxiaoshou.util.ImageLoader;
 
+import org.w3c.dom.Text;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -47,6 +49,8 @@ public class ConsumerProductDetailsActivity extends AppCompatActivity implements
     private TextView tv_company_title;
     private TextView tv_store_descrite;
     private RelativeLayout rl_enter_store_ways;
+    private TextView tv_type;
+    private TextView tv_good_descripe;
     QueryProductsBuyBIdPresenter queryProductsBuyBIdPresenter = new QueryProductsBuyBIdPresenter(this);
 
     @Override
@@ -73,7 +77,10 @@ public class ConsumerProductDetailsActivity extends AppCompatActivity implements
             tv_store_descrite = (TextView) findViewById(R.id.tv_store_descrite);
             //进入店铺
             rl_enter_store_ways  = (RelativeLayout) findViewById(R.id.rl_enter_store_ways);
-
+            //花纹
+            tv_type = (TextView) findViewById(R.id.tv_type);
+            //颜色
+            tv_good_descripe = (TextView) findViewById(R.id.tv_good_descripe);
 
             new ImageLoader(cloth, iv_product).resume();
             tv_product_data_title.setText(cloth.getTitle());
@@ -83,6 +90,16 @@ public class ConsumerProductDetailsActivity extends AppCompatActivity implements
                 tv_store_descrite.setText("");
             }else{
                 tv_store_descrite.setText(cloth.getBusiness().getDescription());
+            }
+            if(cloth.getPattern()==null){
+                tv_type.setText("");
+            }else{
+                tv_type.setText("  "+cloth.getPattern());
+            }
+            if(cloth.getColor()==null){
+                tv_good_descripe.setText("");
+            }else{
+                tv_good_descripe.setText(cloth.getColor());
             }
 
             button = (Button) findViewById(R.id.btn_right_text);

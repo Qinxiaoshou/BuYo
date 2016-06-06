@@ -140,7 +140,7 @@ public class SearchBusinessActivity extends AppCompatActivity {
                         @Override
                         public void onAnimationEnd(Animator animation) {
                             System.out.println("点击了商家产品条目，产生了跳转");
-                            Intent intent = new Intent(mContext, BusinessProductDetailsActivity.class);
+                            Intent intent = new Intent(mContext, ConsumerProductDetailsActivity.class);
                             Bundle bundle = new Bundle();
                             bundle.putSerializable("cloth", cloths.get(position));
                             intent.putExtras(bundle);
