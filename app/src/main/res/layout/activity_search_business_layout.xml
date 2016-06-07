@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/sv_info"
+    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/buliao3" />
+
+    <RelativeLayout
+        android:id="@+id/rl_store_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="14dp">
+
+        <ImageView
+            android:id="@+id/iv_business_logo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/lib_im_chat_head_icon" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/iv_business_logo"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_search_business_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingTop="10dp"
+                android:text="秋明山专卖店"
+                android:textColor="#ff0000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tv_search_business_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_search_business_name"
+                android:paddingLeft="16dp"
+                android:singleLine="true"
+                android:text="店铺描述"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_search_business_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="76dp"
+        android:paddingTop="20dp"
+        android:text="电话:"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:typeface="sans" />
+
+
+    <TextView
+        android:id="@+id/tv_search_business_license"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="76dp"
+        android:paddingTop="20dp"
+        android:text="营业执照:"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:typeface="sans" />
+
+
+    <TextView
+        android:id="@+id/tv_search_business_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="76dp"
+        android:paddingTop="20dp"
+        android:text="地址:"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:typeface="sans" />
+
+
+    <TextView
+        android:id="@+id/tv_search_business_sales"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="76dp"
+        android:paddingTop="20dp"
+        android:text="销量:"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:typeface="sans" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="#b6b5b2" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:text="店铺商品"
+        android:textSize="20sp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:background="#b6b5b2" />
+        <com.aode.buyoapp.qinxiaoshou.view.AutoLoadRecyclerView
+            android:id="@+id/rv_store_products"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+</LinearLayout>
+</ScrollView>

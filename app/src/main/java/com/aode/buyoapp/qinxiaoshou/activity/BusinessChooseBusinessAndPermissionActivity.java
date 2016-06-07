@@ -1,12 +1,8 @@
 package com.aode.buyoapp.qinxiaoshou.activity;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -28,8 +24,6 @@ import com.aode.buyoapp.LL.bean.Cloth;
 import com.aode.buyoapp.LL.view.IBusinessPermissionView;
 import com.aode.buyoapp.LL.view.IBusinessProductView;
 import com.aode.buyoapp.R;
-import com.aode.buyoapp.qinxiaoshou.adapter.BusinessSettingBusinessPerssionDataRecyclerViewAdapter;
-import com.aode.buyoapp.qinxiaoshou.fragment.BusinessSettingBusinessPerssionFragment;
 import com.aode.buyoapp.qinxiaoshou.util.ImageLoader;
 
 import java.util.ArrayList;
@@ -128,7 +122,7 @@ public class BusinessChooseBusinessAndPermissionActivity extends FragmentActivit
 
         @Override
         public void onBindViewHolder(final BusinessSettingBusinessPerssionDataRecyclerViewAdapter.ViewHolder holder, final int position) {
-           new ImageLoader(oldCloths.get(position),holder.iv_h_perssion_product).resume();
+            new ImageLoader(oldCloths.get(position), holder.iv_h_perssion_product).resume();
             holder.title.setText(oldCloths.get(position).getTitle());
             holder.tv_price.setText("￥" + oldCloths.get(position).getPrice());
             holder.tv_stock.setText("库存:" + oldCloths.get(position).getStock());
