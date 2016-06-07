@@ -12,6 +12,7 @@
         android:layout_width="160dp"
         android:layout_height="0dp"
         android:layout_gravity="center_horizontal"
+        android:src="@drawable/no_picture"
         android:layout_weight="8" />
 
     <TextView

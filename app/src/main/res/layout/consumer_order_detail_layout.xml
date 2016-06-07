@@ -197,7 +197,7 @@
                     android:id="@+id/iv_d_product"
                     android:layout_width="98dp"
                     android:layout_height="98dp"
-                    android:background="@drawable/shape_d_image"
+                    android:background="@drawable/no_picture"
                     />
 
                 <RelativeLayout

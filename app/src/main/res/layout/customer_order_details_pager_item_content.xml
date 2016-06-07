@@ -81,7 +81,7 @@
                     <ImageView
                         android:layout_width="100dp"
                         android:layout_height="90dp"
-                        android:background="@drawable/cheese_3" />
+                        android:background="@drawable/no_picture" />
                 </LinearLayout>
 
                 <RelativeLayout

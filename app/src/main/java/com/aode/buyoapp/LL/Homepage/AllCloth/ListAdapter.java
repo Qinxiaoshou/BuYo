@@ -43,10 +43,14 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
 
     @Override
     public void onBindViewHolder(final ListViewHolder holder, int position) {
-       // holder.iv_itemIv.setImageResource(R.drawable.buliao2);
-        new ImageLoader(cloths.get(position),holder.iv_itemIv).resume();
+        // holder.iv_itemIv.setImageResource(R.drawable.buliao2);
+        if (cloths.get(position).getPicture() == null) {
+            holder.iv_itemIv.setImageResource(R.drawable.no_picture);
+        } else {
+            new ImageLoader(cloths.get(position), holder.iv_itemIv).resume();
+        }
         holder.id_item_abstruct.setText(cloths.get(position).getTitle());
-        holder.id_item_price.setText("$" + cloths.get(position).getPrice());
+        holder.id_item_price.setText("￥" + cloths.get(position).getPrice());
 
         // 如果设置了回调，则设置点击事件
         if (mOnItemClickLitener != null) {

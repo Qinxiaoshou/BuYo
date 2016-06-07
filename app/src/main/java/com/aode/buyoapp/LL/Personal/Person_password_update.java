@@ -6,6 +6,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.aode.buyoapp.LL.Home_person;
@@ -17,11 +18,19 @@ public class Person_password_update extends AppCompatActivity implements IUserPa
     private Button btn_update_personPassword;
     private String change_oldPassword, change_newPassword;
     private UserPasswordChangePresenter userPasswordChangePresenter = new UserPasswordChangePresenter(this);
-
+    private ImageView iv_back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_person_password_update);
+        //返回键
+        iv_back = (ImageView) findViewById(R.id.iv_back);
+        iv_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         Toolbar toolbar = (Toolbar) findViewById(R.id.tb_personMessage);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);

@@ -39,7 +39,7 @@ public class SearchBusinessAdapter extends RecyclerView.Adapter<SearchBusinessAd
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        MyViewHolder holder = new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.activity_search_item, parent,
+        MyViewHolder holder = new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.activity_search_business_item, parent,
                 false));
         return holder;
     }
@@ -47,6 +47,7 @@ public class SearchBusinessAdapter extends RecyclerView.Adapter<SearchBusinessAd
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         holder.tv_search_title.setText("商家名：" + businesses.get(position).getName());
+
         holder.tv_search_address.setText("地址：" + businesses.get(position).getAddress());
         holder.tv_search_size.setText("销售量：" + businesses.get(position).getSales());
         // 如果设置了回调，则设置点击事件

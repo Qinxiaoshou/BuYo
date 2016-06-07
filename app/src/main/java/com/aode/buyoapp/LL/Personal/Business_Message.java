@@ -1,11 +1,13 @@
 package com.aode.buyoapp.LL.Personal;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,11 +26,20 @@ public class Business_Message extends AppCompatActivity implements IBusinessMess
     private TextView tv_business_loginName, tv_business_name, tv_business_phone, tv_business_address, tv_business_contacts, tv_business_identities, tv_business_payment, tv_business_introduce;
     private Business business;
     private BusinessMessagePresenter businessMessagePresenter = new BusinessMessagePresenter(this);
-
+    private ImageView iv_back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_business_message);
+        //返回键
+        iv_back = (ImageView) findViewById(R.id.iv_back);
+        iv_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.tb_personMessage);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);

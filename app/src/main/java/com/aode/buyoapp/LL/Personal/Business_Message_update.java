@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.aode.buyoapp.LL.Home_business;
@@ -29,11 +30,20 @@ public class Business_Message_update extends AppCompatActivity implements IBusin
      * 修改商家资料交互接口
      */
     BusinessMessageChangePresenter businessMessageChangePresenter = new BusinessMessageChangePresenter(this);
+    private ImageView iv_back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_business_message_update);
+        //返回键
+        iv_back = (ImageView) findViewById(R.id.iv_back);
+        iv_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         Toolbar toolbar = (Toolbar) findViewById(R.id.tb_personMessage);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
@@ -46,6 +56,7 @@ public class Business_Message_update extends AppCompatActivity implements IBusin
     }
 
     public void getEdit() {
+
         bLoginName = (EditText) findViewById(R.id.change_bLoginName);
         Name = (EditText) findViewById(R.id.change_Name);
         contacts = (EditText) findViewById(R.id.change_contacts);

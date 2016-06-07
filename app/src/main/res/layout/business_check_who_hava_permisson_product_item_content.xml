@@ -22,7 +22,7 @@
                 android:id="@+id/iv_pictue"
                 android:layout_width="100dp"
                 android:layout_height="90dp"
-                android:background="#fff" />
+                android:background="@drawable/no_picture" />
         </LinearLayout>
 
         <RelativeLayout

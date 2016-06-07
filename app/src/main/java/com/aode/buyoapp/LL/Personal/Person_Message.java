@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,13 +23,22 @@ import com.aode.buyoapp.R;
 public class Person_Message extends AppCompatActivity implements IUserMessageView {
     private Button button;
     private TextView tv_person_name, tv_person_realName, tv_person_phone, tv_person_email, tv_person_gender;
-
+    private ImageView iv_back;
     private UserMessagePresenter userMessagePresenter = new UserMessagePresenter(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_person_message);
+        //返回键
+        iv_back = (ImageView) findViewById(R.id.iv_back);
+        iv_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.tb_personMessage);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);

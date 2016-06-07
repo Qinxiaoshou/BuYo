@@ -191,9 +191,9 @@
                     <ImageView
                         android:id="@+id/iv_picture_01"
                         android:clickable="true"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/kongbai" />
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:background="@drawable/no_picture" />
 
                     <TextView
                         android:id="@+id/tv_goods_name01"
@@ -225,9 +225,9 @@
                     <ImageView
                         android:id="@+id/iv_picture_02"
                         android:clickable="true"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/kongbai" />
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:background="@drawable/no_picture" />
 
                     <TextView
                         android:id="@+id/tv_goods_name02"
@@ -264,9 +264,9 @@
                     <ImageView
                         android:id="@+id/iv_picture_03"
                         android:clickable="true"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/kongbai" />
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:background="@drawable/no_picture" />
 
                     <TextView
                         android:id="@+id/tv_goods_name03"
@@ -298,9 +298,9 @@
                     <ImageView
                         android:id="@+id/iv_picture_04"
                         android:clickable="true"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/kongbai" />
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:background="@drawable/no_picture" />
 
                     <TextView
                         android:id="@+id/tv_goods_name04"

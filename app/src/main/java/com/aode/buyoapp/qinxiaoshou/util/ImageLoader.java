@@ -79,7 +79,7 @@ public class ImageLoader {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }catch (NullPointerException e){
-                    picture.setImageResource(R.drawable.buliao2);
+                    picture.setImageResource(R.drawable.no_picture);
                     e.printStackTrace();
                 }
             }

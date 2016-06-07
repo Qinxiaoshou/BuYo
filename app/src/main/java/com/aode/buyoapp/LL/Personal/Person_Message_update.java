@@ -6,6 +6,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -25,7 +26,7 @@ public class Person_Message_update extends AppCompatActivity implements IUserMes
     private String change_LoginName, change_realName, change_Phone, change_Email;
     private String change_gender = "男";
     private User user;
-
+    private ImageView iv_back;
     /**
      * 修改商家资料交互接口
      */
@@ -35,6 +36,14 @@ public class Person_Message_update extends AppCompatActivity implements IUserMes
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_person_message_update);
+        //返回键
+        iv_back = (ImageView) findViewById(R.id.iv_back);
+        iv_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         Toolbar toolbar = (Toolbar) findViewById(R.id.tb_personMessage);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);

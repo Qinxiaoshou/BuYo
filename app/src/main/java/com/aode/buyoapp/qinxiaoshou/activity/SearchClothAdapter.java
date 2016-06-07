@@ -5,10 +5,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.aode.buyoapp.LL.Homepage.Person_HomePage;
 import com.aode.buyoapp.LL.bean.Cloth;
 import com.aode.buyoapp.R;
+import com.aode.buyoapp.qinxiaoshou.util.ImageLoader;
 
 import java.util.List;
 
@@ -47,8 +50,11 @@ public class SearchClothAdapter extends RecyclerView.Adapter<SearchClothAdapter.
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         holder.tv_search_title.setText("布匹名：" + cloths.get(position).getTitle());
-        holder.tv_search_address.setText("颜色：" + cloths.get(position).getColor());
+        holder.tv_color.setText("颜色：" + cloths.get(position).getColor());
         holder.tv_search_size.setText("大小：" + cloths.get(position).getSize());
+        holder.tv_price.setText("￥"+cloths.get(position).getPrice());
+        //设置图片
+        new ImageLoader(cloths.get(position),holder.iv_product);
         // 如果设置了回调，则设置点击事件
         if (mOnItemClickLitener != null) {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -68,13 +74,15 @@ public class SearchClothAdapter extends RecyclerView.Adapter<SearchClothAdapter.
 
 
     class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView tv_search_title, tv_search_address, tv_search_size;
-
+        TextView tv_search_title, tv_color, tv_search_size,tv_price;
+        ImageView iv_product ;
         public MyViewHolder(View view) {
             super(view);
-            tv_search_title = (TextView) view.findViewById(R.id.tv_search_title);
-            tv_search_address = (TextView) view.findViewById(R.id.tv_search_address);
-            tv_search_size = (TextView) view.findViewById(R.id.tv_search_size);
+            tv_price = (TextView) view.findViewById(R.id.tv_price);
+            iv_product = (ImageView) view.findViewById(R.id.iv_product);
+            tv_search_title = (TextView) view.findViewById(R.id.tv_product_title);
+            tv_color = (TextView) view.findViewById(R.id.tv_color);
+            tv_search_size = (TextView) view.findViewById(R.id.tv_size);
         }
     }
 }
