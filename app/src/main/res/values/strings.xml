@@ -10,7 +10,7 @@
     <string name="login">登录</string>
     <string name="confirm_pwd">请确认密码</string>
     <string name="keyword">关键词 :</string>
-    <string name="name">请输入真实姓名</string>
+    <string name="name">请输入店铺名字</string>
     <string name="changshang_browser">厂商一览</string>
     <string name="all_classify">全部分类</string>
     <string name="choose_address">地址筛选</string>

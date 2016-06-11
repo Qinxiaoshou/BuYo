@@ -45,7 +45,7 @@ public class SearchBusinessAdapter extends RecyclerView.Adapter<SearchBusinessAd
     }
 
     @Override
-    public void onBindViewHolder(final MyViewHolder holder, int position) {
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
         holder.tv_search_title.setText("商家名：" + businesses.get(position).getName());
 
         holder.tv_search_address.setText("地址：" + businesses.get(position).getAddress());
@@ -55,6 +55,7 @@ public class SearchBusinessAdapter extends RecyclerView.Adapter<SearchBusinessAd
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    System.out.println("商家搜索的条目点击"+position);
                     int pos = holder.getLayoutPosition();
                     mOnItemClickLitener.onItemClick(holder.itemView, pos);
                 }

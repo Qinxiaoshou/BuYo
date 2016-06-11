@@ -2,33 +2,27 @@ package com.aode.buyoapp.business;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.aode.buyoapp.LL.Home_person;
 import com.aode.buyoapp.LL.Presenter.QueryAllBusinessPresenter;
+import com.aode.buyoapp.LL.Presenter.QueryProductsBuyBIdPresenter;
 import com.aode.buyoapp.LL.bean.Business;
 import com.aode.buyoapp.LL.bean.Cloth;
-import com.aode.buyoapp.LL.bean.Orders;
 import com.aode.buyoapp.LL.view.QueryAllBusinessView;
+import com.aode.buyoapp.LL.view.QueryProductsBuyBidView;
 import com.aode.buyoapp.R;
-import com.aode.buyoapp.business.activity.BusinessDetailActivity;
-import com.aode.buyoapp.qinxiaoshou.util.ImageLoader;
+import com.aode.buyoapp.qinxiaoshou.activity.SearchBusinessActivity;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -37,11 +31,12 @@ import java.util.List;
  * @author 陈映苗
  * @// FIXME: 2016/5/7
  */
-public class BrowseBusinessActivity extends AppCompatActivity implements QueryAllBusinessView {
+public class BrowseBusinessActivity extends AppCompatActivity implements QueryAllBusinessView  {
 
     private ImageView iv_browse_business_back;
     private List<Business> businesses;
     QueryAllBusinessPresenter queryAllBusinessPresenter = new QueryAllBusinessPresenter(this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,31 +70,36 @@ public class BrowseBusinessActivity extends AppCompatActivity implements QueryAl
     }
 
 
+
+
     /**
      * 商家一览适配器
      *
      * @author 覃培周
      * @// FIXME: 2016/5/30
      */
-    public class QueryAllBusinessRecyclerViewAdapter extends RecyclerView.Adapter<QueryAllBusinessRecyclerViewAdapter.ViewHolder> {
+    public class QueryAllBusinessRecyclerViewAdapter extends RecyclerView.Adapter<QueryAllBusinessRecyclerViewAdapter.ViewHolder>implements QueryProductsBuyBidView {
 
         private Context mContext;
+        private View view;
 
 
         public QueryAllBusinessRecyclerViewAdapter(Context mContext) {
             this.mContext = mContext;
         }
-
+        private Business aimBusiness;
+        QueryProductsBuyBIdPresenter queryProductsBuyBIdPresenter = new QueryProductsBuyBIdPresenter(this);
 
         //订单详情页面的布局实现
         @Override
         public QueryAllBusinessRecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_browse_business_layout, parent, false);
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_browse_business_layout, parent, false);
             return new ViewHolder(view);
         }
 
         @Override
-        public void onBindViewHolder(final QueryAllBusinessRecyclerViewAdapter.ViewHolder holder, int position) {
+        public void onBindViewHolder(final QueryAllBusinessRecyclerViewAdapter.ViewHolder holder, final int position) {
+
             try {
                 holder.businessName.setText(businesses.get(position).getName());
                 if(null==businesses.get(position).getDescription()){
@@ -113,6 +113,15 @@ public class BrowseBusinessActivity extends AppCompatActivity implements QueryAl
                 }else{
                     holder.tv_address_business.setText("厂商地址 ： "+businesses.get(position).getAddress());
                 }
+
+                view.setOnClickListener(new View.OnClickListener() {  //监听列表条目信息跳转的控件
+                    @Override
+                    public void onClick(View v) {
+                        aimBusiness = businesses.get(position);
+                        queryProductsBuyBIdPresenter.QueryProductsBuyBId();
+                       // finish();
+                    }
+                });
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -124,6 +133,30 @@ public class BrowseBusinessActivity extends AppCompatActivity implements QueryAl
             return businesses.size();
         }
 
+        /**
+         * 根据商家id查询商品信息
+         * @return
+         */
+        @Override
+        public String getBId() {
+            return aimBusiness.getId();
+        }
+
+        @Override
+        public void toMainActivity(List<Cloth> clothlist) {
+            System.out.println("商家的商品:"+clothlist);
+            Intent intent = new Intent(mContext, SearchBusinessActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("business", aimBusiness);
+            bundle.putSerializable("clothlist", (Serializable) clothlist);
+            intent.putExtras(bundle);
+            mContext.startActivity(intent);
+        }
+
+        @Override
+        public void showFailedError() {
+
+        }
         public class ViewHolder extends RecyclerView.ViewHolder {
             public final View mView;
             private final TextView businessName;
