@@ -5,6 +5,7 @@
     android:orientation="vertical">
 
     <RelativeLayout
+        android:id="@+id/rl_logistics_shunfeng"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -28,6 +29,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/rl_logistics_huitong"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -51,6 +53,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/rl_logistics_yuantong"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -74,6 +77,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/rl_logistics_yunda"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -97,6 +101,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/rl_logistics_shentong"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
