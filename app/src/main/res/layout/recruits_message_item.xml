@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="80dp"
     android:layout_centerVertical="true"
     android:orientation="vertical">
@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/iv_recruits_firm"
         android:layout_toEndOf="@+id/iv_recruits_collect"
-        android:paddingTop="10dp"
+        android:paddingTop="5dp"
         android:text="佛山-南海区|专科"
         android:textColor="#ababab"
         android:textSize="10sp" />
@@ -52,17 +52,10 @@
         android:layout_below="@+id/iv_recruits_firm"
         android:layout_toRightOf="@id/iv_recruits_area"
         android:paddingLeft="25.5dp"
-        android:paddingTop="10dp"
+        android:paddingTop="5dp"
         android:text="8000-10000元/月"
         android:textColor="#ff4b4b"
         android:textSize="10sp" />
-
-    <ImageView
-        android:id="@+id/iv_recruits_new"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignParentRight="true"
-        android:background="@drawable/recruits_new" />
 
     <ImageView
         android:id="@+id/iv_recruits_enter"
@@ -70,7 +63,8 @@
         android:layout_height="20dp"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:paddingRight="27dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="3dp"
         android:src="@drawable/recruits_enter" />
 
     <TextView
@@ -79,7 +73,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@id/iv_recruits_enter"
-        android:paddingTop="5dp"
+        android:paddingTop="3dp"
+
+        android:paddingRight="15dp"
         android:text="2016-05-15" />
 
     <View

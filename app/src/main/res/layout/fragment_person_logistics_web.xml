@@ -17,9 +17,9 @@
             android:layout_gravity="center"
             android:paddingBottom="6.5dp"
             android:paddingLeft="16dp"
-            android:textSize="20dp"
+            android:paddingTop="9dp"
             android:text="顺丰快递"
-           />
+            android:textSize="20dp" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -44,8 +44,9 @@
             android:layout_gravity="center"
             android:paddingBottom="6.5dp"
             android:paddingLeft="16dp"
-            android:textSize="20dp"
-           android:text="百世汇通"/>
+            android:paddingTop="6.5dp"
+            android:text="百世汇通"
+            android:textSize="20dp" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -69,8 +70,9 @@
             android:layout_gravity="center"
             android:paddingBottom="6.5dp"
             android:paddingLeft="16dp"
-            android:textSize="20dp"
-            android:text="圆通快递"/>
+            android:paddingTop="6.5dp"
+            android:text="圆通快递"
+            android:textSize="20dp" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -94,8 +96,9 @@
             android:layout_gravity="center"
             android:paddingBottom="6.5dp"
             android:paddingLeft="16dp"
-            android:textSize="20dp"
-            android:text="韵达快运" />
+            android:paddingTop="6.5dp"
+            android:text="韵达快运"
+            android:textSize="20dp" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -119,8 +122,9 @@
             android:layout_gravity="center"
             android:paddingBottom="6.5dp"
             android:paddingLeft="16dp"
-            android:textSize="20dp"
-            android:text="申通快递" />
+            android:paddingTop="6.5dp"
+            android:text="申通快递"
+            android:textSize="20dp" />
 
         <ImageView
             android:layout_width="wrap_content"

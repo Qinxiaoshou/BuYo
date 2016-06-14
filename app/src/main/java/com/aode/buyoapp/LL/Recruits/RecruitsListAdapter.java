@@ -75,7 +75,6 @@ public class RecruitsListAdapter extends RecyclerView.Adapter<RecruitsListAdapte
         TextView iv_recruits_firm;
         TextView iv_recruits_area;
         TextView iv_recruits_money;
-        ImageView iv_recruits_new;
         ImageView iv_recruits_enter;
         TextView iv_recruits_time;
 
@@ -86,7 +85,6 @@ public class RecruitsListAdapter extends RecyclerView.Adapter<RecruitsListAdapte
             iv_recruits_firm = (TextView) view.findViewById(R.id.iv_recruits_firm);
             iv_recruits_area = (TextView) view.findViewById(R.id.iv_recruits_area);
             iv_recruits_money = (TextView) view.findViewById(R.id.iv_recruits_money);
-            iv_recruits_new = (ImageView) view.findViewById(R.id.iv_recruits_new);
             iv_recruits_enter = (ImageView) view.findViewById(R.id.iv_recruits_enter);
             iv_recruits_time = (TextView) view.findViewById(R.id.iv_recruits_time);
         }
