@@ -8,6 +8,7 @@
     android:paddingBottom="8dp">
 
     <ImageView
+        android:id="@+id/iv_boyo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/buyo"
@@ -15,18 +16,19 @@
         android:layout_centerVertical="true"
         android:layout_toEndOf="@+id/imageView2" />
     <ImageView
+        android:layout_toLeftOf="@+id/iv_talking"
         android:id="@+id/iv_search_img"
         android:clickable="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_search"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:background="@drawable/ic_search_white_18dp"
+        />
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageView2" />
     <ImageView
+        android:id="@+id/iv_talking"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/roundedrectangle"

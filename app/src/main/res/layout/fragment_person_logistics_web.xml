@@ -10,14 +10,16 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <ImageView
+        <TextView
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_gravity="center"
             android:paddingBottom="6.5dp"
             android:paddingLeft="16dp"
-            android:src="@drawable/logistics_shunfeng" />
+            android:textSize="20dp"
+            android:text="顺丰快递"
+           />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -25,6 +27,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:paddingRight="21.5dp"
+
             android:src="@drawable/homepage_about_enter" />
     </RelativeLayout>
 
@@ -34,14 +37,15 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <ImageView
+        <TextView
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_gravity="center"
             android:paddingBottom="6.5dp"
             android:paddingLeft="16dp"
-            android:src="@drawable/logistics_huitong" />
+            android:textSize="20dp"
+           android:text="百世汇通"/>
 
         <ImageView
             android:layout_width="wrap_content"
@@ -58,14 +62,15 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <ImageView
+        <TextView
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_gravity="center"
             android:paddingBottom="6.5dp"
             android:paddingLeft="16dp"
-            android:src="@drawable/logistics_yuantong" />
+            android:textSize="20dp"
+            android:text="圆通快递"/>
 
         <ImageView
             android:layout_width="wrap_content"
@@ -82,14 +87,15 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <ImageView
+        <TextView
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_gravity="center"
             android:paddingBottom="6.5dp"
             android:paddingLeft="16dp"
-            android:src="@drawable/logistics_yunda" />
+            android:textSize="20dp"
+            android:text="韵达快运" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -106,14 +112,15 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <ImageView
+        <TextView
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_gravity="center"
             android:paddingBottom="6.5dp"
             android:paddingLeft="16dp"
-            android:src="@drawable/logistics_shentong" />
+            android:textSize="20dp"
+            android:text="申通快递" />
 
         <ImageView
             android:layout_width="wrap_content"
