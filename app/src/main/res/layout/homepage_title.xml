@@ -19,8 +19,8 @@
         android:layout_toLeftOf="@+id/iv_talking"
         android:id="@+id/iv_search_img"
         android:clickable="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:background="@drawable/ic_search_white_18dp"
         />
     <ImageView
